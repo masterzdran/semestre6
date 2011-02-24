@@ -1,0 +1,2 @@
+http://www.olimex.com/dev/enc28j60-h.html
+http://www.microchip.com/wwwproducts/Devices.aspx?dDocName=en022889
