@@ -23,35 +23,6 @@ SHELL			= /bin/sh
 SVN_PATH		= ./..
 #=======================================================================
 PROJECT_PATH	= $(SVN_PATH)/code
-SOURCE				= $(PROJECT_PATH)/src
-DEVICE				= $(SOURCE)/device
-PERIPHERICAL	= $(SOURCE)/peripherical
-TODEPLOY			= $(SOURCE)/deploy
-PROGRAM				= $(SOURCE)/program
-PCOMPILE			= $(SOURCE)/tests
-TARGET				= $(PROJECT_PATH)/target
-TEST					= $(PROJECT_PATH)/test
-#=======================================================================
-MYLIB				= $(SOURCE)/lib
-INCLUDE			= $(SOURCE)/include
-CLIB				= $(SOURCE)/clib/lib
-CINCLUDE		= $(SOURCE)/clib/inc
-HEADER			= 
-SEARCHLIB		= -I$(MYLIB)
-#Executables
-CC 				= arm-eabi-gcc
-AS				= arm-eabi-as
-LD				= arm-eabi-ld
-OPENOCD		= openocd
-#Debugger
-DEBUGGER		= arm-eabi-insight
-#Commom Options
-OUTPUT 				= -o
-LDSCRIPT			= -T  
-DEBUGSTABS			= --gstabs
-DEBUGSYMBOLS		= -g
-COPTIONS 			= -Wall -pedantic
-COMPILE_ONLY 		= -c 
 #Phony Target
 .PHONY 				= clean
 .PHONY				= clear
@@ -59,6 +30,8 @@ COMPILE_ONLY 		= -c
 .PHONY				= device
 .PHONY				= program
 .PHONY				= deploy
+#=======================================================================
+include $(PROJECT_PATH)/common.mk
 #=======================================================================
 LDS_PATH		=  	$(TODEPLOY)/ldscript
 OPENOCD_FILE	=	$(TODEPLOY)/openocd/openocd_lpc2106.cfg
@@ -76,7 +49,6 @@ endif
 VPATH 			= $(MYLIB):$(CLIB):$(libdir)
 #VPATH 			= $(MYLIB)
 #=======================================================================
-#OBJECT =		start.o startosc.o TIMER.o GPIO.o LCD.o keyboard.o libc.a libgcc.a libLPC2106.a
 LIBOBJECT =		libc.a libgcc.a  libLPC2106.a libPeripherical.a
 OBJECT =		$(MYLIB)/start.o $(PROGRAM)/Tacografo.o $(PROGRAM)/Menu.o $(PROGRAM)/MenuFunctions.o $(PROGRAM)/Clock.o $(PROGRAM)/Percurso.o
 #=======================================================================

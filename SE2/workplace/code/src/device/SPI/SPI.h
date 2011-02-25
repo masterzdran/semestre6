@@ -1,8 +1,7 @@
 #ifndef SPI_H
 #define SPI_H
-
-#define pSPI      ((pLPC_SPI) 0xE0020000)
-
+#include "TYPES.h"
+#include "LPC21XX.h"
 typedef struct _SPI{
     U32		CONTROL;
     U32		STATUS;

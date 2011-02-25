@@ -15,50 +15,37 @@
 # DEETC - Dep. de Eng. Electrónica e Telecomunicações e Computadores
 # ISEL  - Instituto Superior de Engenharia de Lisboa
 #=======================================================================
+#															StartUp
+#=======================================================================
 #Shell Path
 SHELL			= /bin/sh
 #Environmental Paths
 SVN_PATH		= ./../../../..
 #=======================================================================
 PROJECT_PATH	= $(SVN_PATH)/code
-SOURCE				= $(PROJECT_PATH)/src
-TARGET				= $(PROJECT_PATH)/target
-TEST					= $(PROJECT_PATH)/test
 #=======================================================================
-MYLIB			= $(SOURCE)/lib
-INCLUDE		= $(SOURCE)/include
-SEARCHLIB		= -I $(INCLUDE) -I $(MYLIB)
-#Executables
-CC 				= arm-eabi-gcc
-AS				= arm-eabi-as
-LD				= arm-eabi-ld
-#Debugger
-DEBUGGER		= arm-eabi-insight
-#Commom Options
-OUTPUT 					= -o
-LDSCRIPT				= -T 
-DEBUGSTABS			= --gstabs
-DEBUGSYMBOLS		= -g
-COPTIONS 				= -Wall -pedantic
-COMPILE_ONLY 		= -c 
+include $(PROJECT_PATH)/common.mk
+#=======================================================================
 #Phony Target
 .PHONY 					= clean
 .PHONY					= clear
 #=======================================================================
-#															Start
-#=======================================================================
+
 all: startosc.o start.o
 
 startosc.o: startosc.c startosc.h 
-	$(CC) $(SEARCHLIB) $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $< 
+	@echo "----------------------------------------------------------------------"
+	$(CC)   $(COPTIONS)   $(SEARCHLIB) $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $< 
 	cp $@ $(MYLIB)/$@
 	cp startosc.h $(INCLUDE)/
 
 start.o: start.S
+	@echo "----------------------------------------------------------------------"
 	$(AS) $(DEBUGSTABS) $(OUTPUT) $@  $^
 	cp $@ $(MYLIB)/$@
 
 clean:
+	@echo "----------------------------------------------------------------------"
 	rm  startosc.o start.o 
 	rm  $(INCLUDE)/startosc.h
 	

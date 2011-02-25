@@ -20,6 +20,8 @@
 #ifndef TIMER_H
 #define TIMER_H
 #include "TYPES.h"
+#include "LPC21XX.h"
+
 #include "GPIO.h"
 #include "startosc.h"
 
@@ -106,29 +108,28 @@ typedef struct _TIMER{
     U32		CR1;
     U32		CR2;
     U32		CR3;          
-    U32		EMR;             //0xE000 403C
-    U32   DUMMY01;         //0xE000 4040
-    U32   DUMMY02;         //0xE000 4044
-    U32   DUMMY03;         //0xE000 4048
-    U32   DUMMY04;         //0xE000 404C
-    U32   DUMMY05;         //0xE000 4050
-    U32   DUMMY06;         //0xE000 4054
-    U32   DUMMY07;         //0xE000 4058
-    U32   DUMMY08;         //0xE000 405C
-    U32   DUMMY09;         //0xE000 4060
-    U32   DUMMY10;         //0xE000 4064
-    U32   DUMMY11;         //0xE000 4068
-    U32   DUMMY12;         //0xE000 406C
-    U32   CTCR;            //0xE000 4070
+    U32		EMR;             
+    U32   DUMMY01;         
+    U32   DUMMY02;         
+    U32   DUMMY03;         
+    U32   DUMMY04;         
+    U32   DUMMY05;         
+    U32   DUMMY06;         
+    U32   DUMMY07;         
+    U32   DUMMY08;         
+    U32   DUMMY09;         
+    U32   DUMMY10;         
+    U32   DUMMY11;         
+    U32   DUMMY12;         
+    U32   CTCR;            
 }LPC_TIMER,*pLPC_TIMER;
 
-#define pTIMER0 ((pLPC_TIMER) 0xE0004000)
-#define pTIMER1 ((pLPC_TIMER) 0xE0008000)
+
 
 #define SECOND  1
 #define MILI    1000
 #define MICRO   1000000
-#define NANO    1000000000 //in this oscilator is not possible to go at nano level :(
+#define NANO    1000000000 
 
 #define     timer_sleep_seconds(A,B)            (TIMER_delay(A,((( getSystemClock()/SECOND)/((A)->PR))*B)))
 #define     timer_sleep_miliseconds(A,B)        (TIMER_delay(A,((( getSystemClock()/MILI)/((A)->PR))*B)))
