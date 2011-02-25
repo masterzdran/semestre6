@@ -20,109 +20,110 @@
 #ifndef RTC_H
 #define RTC_H
 #include "TYPES.h"
-#define     pRTC      			(((pLPC_RTC) 0xE0024000))
+#include "LPC21XX.h"
+
 #define		__MINUTES_IN_DAY__  1440
 #define		__SECONDS_IN_HOUR__	3600
 #define		__SECONDS_IN_DAY__	86400
 
 typedef struct _RTC{
-                      //SIZE|Description                  |Address
-    U8     ILR;       //  02|Interrupt Location Register  |0xE002 4000
+                      /*SIZE|Description                  |Address    */
+    U8     ILR;       /*  02|Interrupt Location Register  |0xE002 4000*/
     U8     DUMMY01;
     U16    DUMMY02;
     /*----------------------------------------------------------------*/
-    U16    CTC;       //  15|Clock Tick Counter           |0xE002 4004
+    U16    CTC;       /*  15|Clock Tick Counter           |0xE002 4004*/
     U16    DUMMY03;
     /*----------------------------------------------------------------*/
-    U8     CCR;       //  04|Clock Control Register       |0xE002 4008
+    U8     CCR;       /*  04|Clock Control Register       |0xE002 4008*/
     U8     DUMMY04;
     U16    DUMMY05;
     /*----------------------------------------------------------------*/
-    U8     CIIR;      //  08|Counter Increment Interrupt Register|0xE002 400C
+    U8     CIIR;      /*  08|Counter Increment Interrupt Register|0xE002 400C*/
     U8     DUMMY06;
     U16    DUMMY07;
     /*----------------------------------------------------------------*/
-    U8     AMR;       //  08|Alarm Mask Register          |0xE002 4010
+    U8     AMR;       /*  08|Alarm Mask Register          |0xE002 4010*/
     U8     DUMMY08;
     U16    DUMMY09;
     /*----------------------------------------------------------------*/
-    U32    CTIME0;    //  32|Consolidated Time Register 0 |0xE002 4014
-    U32    CTIME1;    //  32|Consolidated Time Register 1 |0xE002 4018
-    U32    CTIME2;    //  32|Consolidated Time Register 2 |0xE002 401C
+    U32    CTIME0;    /*  32|Consolidated Time Register 0 |0xE002 4014*/
+    U32    CTIME1;    /*  32|Consolidated Time Register 1 |0xE002 4018*/
+    U32    CTIME2;    /*  32|Consolidated Time Register 2 |0xE002 401C*/
     /*----------------------------------------------------------------*/
-    U8     SEC;       //  06|Seconds Counter              |0xE002 4020
+    U8     SEC;       /*  06|Seconds Counter              |0xE002 4020*/
     U8     DUMMY10;
     U16    DUMMY11;
     /*----------------------------------------------------------------*/
-    U8     MIN;       //  06|Minutes Register             |0xE002 4024
+    U8     MIN;       /*  06|Minutes Register             |0xE002 4024*/
     U8     DUMMY12;
     U16    DUMMY13;
     /*----------------------------------------------------------------*/
-    U8     HOUR;      //  05|Hours Register               |0xE002 4028
+    U8     HOUR;      /*  05|Hours Register               |0xE002 4028*/
     U8     DUMMY14;
     U16    DUMMY15;
     /*----------------------------------------------------------------*/
-    U8     DOM;       //  05|Day of Month Register        |0xE002 402C
+    U8     DOM;       /*  05|Day of Month Register        |0xE002 402C*/
     U8     DUMMY16;
     U16    DUMMY17;
     /*----------------------------------------------------------------*/
-    U8     DOW;       //  03|Day of Week Register         |0xE002 4030
+    U8     DOW;       /*  03|Day of Week Register         |0xE002 4030*/
     U8     DUMMY18;
     U16    DUMMY19;
     /*----------------------------------------------------------------*/
-    U16    DOY;       //  09|Day of Year Register         |0xE002 4034
+    U16    DOY;       /*  09|Day of Year Register         |0xE002 4034*/
     U16    DUMMY20;
     /*----------------------------------------------------------------*/
-    U8     MONTH;     //  04|Months Register              |0xE002 4038
+    U8     MONTH;     /*  04|Months Register              |0xE002 4038*/
     U8     DUMMY21;
     U16    DUMMY22;
     /*----------------------------------------------------------------*/
-    U16    YEAR;      //  12|Years Register               |0xE002 403C
+    U16    YEAR;      /*  12|Years Register               |0xE002 403C*/
     U16    DUMMY23;  
-	/*----------------------------------------------------------------*/
-	U32	   DUMMY24;   //								  |0xE002 4040
-	U32	   DUMMY25;   //								  |0xE002 4044
-	U32	   DUMMY26;   //								  |0xE002 4048
-	U32	   DUMMY27;   //								  |0xE002 404C
-	U32	   DUMMY28;   //								  |0xE002 4050
-	U32	   DUMMY29;   //								  |0xE002 4054
-	U32	   DUMMY30;   //								  |0xE002 4058
-	U32	   DUMMY31;   //								  |0xE002 405C
     /*----------------------------------------------------------------*/
-    U8     ALSEC;     //  06|Alarm value for Seconds      |0xE002 4060
+    U32	   DUMMY24;
+    U32	   DUMMY25;
+    U32	   DUMMY26;
+    U32	   DUMMY27;
+    U32	   DUMMY28;
+    U32	   DUMMY29;
+    U32	   DUMMY30;
+    U32	   DUMMY31;
+    /*----------------------------------------------------------------*/
+    U8     ALSEC;     /*  06|Alarm value for Seconds      |0xE002 4060*/
     U8     DUMMY32;
     U16    DUMMY33;
     /*----------------------------------------------------------------*/    
-    U8     ALMIN;     //  06|Alarm value for Minutes     |0xE002 4064
+    U8     ALMIN;     /*  06|Alarm value for Minutes     |0xE002 4064*/
     U8     DUMMY34;
     U16    DUMMY35;
     /*----------------------------------------------------------------*/
-    U8     ALHOUR;    //  05|Alarm value for Hours       |0xE002 4068
+    U8     ALHOUR;    /*  05|Alarm value for Hours       |0xE002 4068*/
     U8     DUMMY36;
     U16    DUMMY37;
     /*----------------------------------------------------------------*/
-    U8     ALDOM;     //  05|Alarm value for Day of Month|0xE002 406C
+    U8     ALDOM;     /*  05|Alarm value for Day of Month|0xE002 406C*/
     U8     DUMMY38;
     U16    DUMMY39;
     /*----------------------------------------------------------------*/
-    U8     ALDOW;     //  03|Alarm value for Day of Week |0xE002 4070
+    U8     ALDOW;     /*  03|Alarm value for Day of Week |0xE002 4070*/
     U8     DUMMY40;
     U16    DUMMY41;
     /*----------------------------------------------------------------*/
-    U16    ALDOY;     //  09|Alarm value for Day of Year |0xE002 4074
+    U16    ALDOY;     /*  09|Alarm value for Day of Year |0xE002 4074*/
     U16    DUMMY42;
     /*----------------------------------------------------------------*/
-    U8     ALMON;     //  04|Alarm value for Months      |0xE002 4078
+    U8     ALMON;     /*  04|Alarm value for Months      |0xE002 4078*/
     U8     DUMMY43;
     U16    DUMMY44;
     /*----------------------------------------------------------------*/
-    U16    ALYEAR;    //  12|Alarm value for Year        |0xE002 407C
+    U16    ALYEAR;    /*  12|Alarm value for Year        |0xE002 407C*/
     U16    DUMMY45;
     /*----------------------------------------------------------------*/
-    U16    PREINT;    //  13|Prescaler value, integer portion|0xE002 4080
+    U16    PREINT;    /*  13|Prescaler value, integer portion|0xE002 4080*/
     U16    DUMMY46;
     /*----------------------------------------------------------------*/
-    U16    PREFRAC;   //  15|Prescaler value, integer portion|0xE002 4084
+    U16    PREFRAC;   /*  15|Prescaler value, integer portion|0xE002 4084*/
     U16    DUMMY47;
     /*----------------------------------------------------------------*/
 }LPC_RTC,*pLPC_RTC;

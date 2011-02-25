@@ -19,11 +19,8 @@
 **/ 
 #ifndef WATCHDOG_H
 #define WATCHDOG_H
-#include "startosc.h"
-#include "TIMER.h"
-#include "VIC.h"
-
-#define pWatchDog     ((pLPC_WATCHDOG)  0xE0000000)
+#include "TYPES.h"
+#include "LPC21XX.h"
 
 typedef struct _WATCHDOG{
     U8		MODE_REGISTER;
@@ -42,12 +39,8 @@ typedef struct _WATCHDOG{
 #define   __WDINT_MASK__        0x8
 #define   __WDMOD_MASK__        0xF
 
-/*
-#define   __WDRESET_DISABLE__   0x0
-#define   __WDRESET_ENABLE__    0x2
-*/
-#define   __DECREASE_COUNT__        CCLK * 4        // CCLK  = PCLK
-#define   __MIN_DECREASE_COUNT__    CCLK * 256 * 4  // CCLK  = PCLK
+#define   __DECREASE_COUNT__        CCLK * 4        
+#define   __MIN_DECREASE_COUNT__    CCLK * 256 * 4  
 
 #define   __WDFEED_MASK__     0xF
 #define   __WD_FEED_AA__         ((const unsigned char ) 0xAA )
@@ -62,7 +55,7 @@ typedef struct _WATCHDOG{
 #define WD_RESET_ENABLE()        ( pWatchDog->MODE_REGISTER |= __WDRESET_MASK__ )
 #define WD_RESET_DISABLE()       ( pWatchDog->MODE_REGISTER &= ~(__WDRESET_MASK__) )
 #define WD_COME_FROM_RESET()     ( pWatchDog->MODE_REGISTER & __WDTOF_MASK__ )
-#define WD_READ_TIME()           (pWatchDog->TIMER_VALUE)
+#define WD_READ_TIME()           ( pWatchDog->TIMER_VALUE)
 
 void WATCHDOG_init(U32 value);
 void WD_reset();

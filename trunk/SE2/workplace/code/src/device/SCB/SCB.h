@@ -20,17 +20,7 @@
 #ifndef SCB_H
 #define SCB_H
 #include "TYPES.h"
-/**
- * Definição dos endereços das estruturas 
- **/
-#define    pEXT_INT       ((pLPC_EXT_INT) 0xE01FC140)
-#define    pMAM           ((pLPC_MAM)     0xE01FC000)     
-#define    pPLL           ((pLPC_PLL)     0xE01FC080)     
-#define    pPOWER         ((pLPC_POWER)   0xE01FC0C0)
-#define    pAPBDIV        ((pLPC_APB)     0xE01FC100)
-#define    pSCS           ((pLPC_SCS)     0xE01FC1A0)
-
-
+#include "LPC21XX.h"
 /**
  * Definição da estrutura das interrupções externas 
  **/

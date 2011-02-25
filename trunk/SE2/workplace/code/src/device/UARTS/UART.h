@@ -1,8 +1,8 @@
 #ifndef UART_H
 #define UART_H
+#include "TYPES.h"
+#include "LPC21XX.h"
 
-#define pUART0              ((pLPC_UART) 0xE0000000)
-#define pUART1              ((pLPC_UART) 0xE0010000)
 
 typedef struct _UART{
   union{

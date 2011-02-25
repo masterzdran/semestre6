@@ -21,10 +21,7 @@
 #define I2C_H
 
 #include "TYPES.h"
-/**
- * Definição do endereço do periférico I2C 
- **/
-#define     pI2C      (((pLPC_I2C) 0xE001C000))
+#include "LPC21XX.h"
 
 /**
  * Definição da estrutura I2C
@@ -62,14 +59,14 @@ typedef struct _I2C{
 /**
  * Mascaras referentes ao I2C 
  **/
-#define __I2CONSET_MASK__       0xFC    //bits 0,1 and 7 are reserved
+#define __I2CONSET_MASK__       0xFC    /*NOTE: bits 0,1 and 7 are reserved*/
 #define __I2EN_ENABLE__         0x40
 #define __I2C_STA_ENABLE__      0x20
 #define __I2C_STO_ENABLE__      0x10
 #define __I2C_SI_ENABLE__       0x08
 #define __I2C_AA_ENABLE__       0x04
 
-#define __I2CONCLR_MASK__       0x6C     //bits 0,1,4 and 7 are reserved
+#define __I2CONCLR_MASK__       0x6C     /*NOTE: bits 0,1,4 and 7 are reserved*/
 #define __I2C_AAC_CLEAR__       0x04
 #define __I2C_SIC_CLEAR__       0x08
 #define __I2C_STAC_CLEAR__      0x20
