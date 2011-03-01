@@ -130,10 +130,14 @@ typedef struct _TIMER{
 #define MILI    1000
 #define MICRO   1000000
 #define NANO    1000000000 
-
+/*
 #define     timer_sleep_seconds(A,B)            (TIMER_delay(A,((( getSystemClock()/SECOND)/((A)->PR))*B)))
 #define     timer_sleep_miliseconds(A,B)        (TIMER_delay(A,((( getSystemClock()/MILI)/((A)->PR))*B)))
 #define     timer_sleep_microseconds(A,B)     	(TIMER_delay(A,((( getSystemClock()/MICRO)/((A)->PR))*B)))
+*/
+#define     timer_sleep_seconds(A,B)            (TIMER_delay(A,((( getPeriphericalClock()/SECOND)/((A)->PR))*B)))
+#define     timer_sleep_miliseconds(A,B)        (TIMER_delay(A,((( getPeriphericalClock()/MILI)/((A)->PR))*B)))
+#define     timer_sleep_microseconds(A,B)     	(TIMER_delay(A,((( getPeriphericalClock()/MICRO)/((A)->PR))*B)))
 
 #define timer_start(A)                  ((A)->TCR |= __TCR_ENABLE__)
 #define timer_stop(A)                   ((A)->TCR &= ~(__TCR_ENABLE__))

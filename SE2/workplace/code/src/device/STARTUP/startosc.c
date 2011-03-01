@@ -35,7 +35,7 @@ SysClockInfo getSystemClockInfo(){
   return systemClock;    
 }
 
-U32 getSystemClock(){
+U32 getPeriphericalClock(){
   U8 val = 0;
   U8 div  = (pAPBDIV->APBDIV) & 0x3;
   div  = (pAPBDIV->APBDIV) & 0x3;
