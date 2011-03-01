@@ -18,5 +18,5 @@ typedef struct _system_clock{
 
 void StartOsc(void);
 SysClockInfo getSystemClockInfo();
-U32 getSystemClock();
+U32 getPeriphericalClock();
 #endif

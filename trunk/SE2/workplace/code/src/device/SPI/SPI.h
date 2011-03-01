@@ -30,6 +30,13 @@
 #define __SPINT_INTERRUPT__ 0x01
 #define __SPINT_RESERVED__  0xFE
 
+#
+
+#define __SPI_PRIOR_TO_FIRST_SCK_RISING_EDGE__    (0x0 << 3)  /* CPOL = 0, CPHA = 0 */
+#define __SPI_FIRST_SCK_RISING_EDGE__             (0x1 << 3)  /* CPOL = 0, CPHA = 1 */
+#define __SPI_PRIOR_TO_FIRST_SCK_FALLING_EDGE__   (0x2 << 3)  /* CPOL = 1, CPHA = 0 */
+#define __SPI_FIRST_SCK_FALLING_EDGE__            (0x3 << 3)  /* CPOL = 1, CPHA = 1 */
+
 
 typedef struct _SPI{
     U8		CONTROL;
@@ -40,12 +47,16 @@ typedef struct _SPI{
     U8    DUMMY03[3];
     U8		CLOCK_COUNTER;
     U8    DUMMY04[3];
-}LPC_SPI,pLPC_SPI;
+}LPC_SPI,*pLPC_SPI;
 
 typedef struct _SPI_INT{
     U8    SPINT;
     U8    DUMMY01[3];
-}LPC_SPI_INT,pLPC_SPI_INT;
+}LPC_SPI_INT,*pLPC_SPI_INT;
 
+typedef struct _SPI_DEVICE{
+  
+  
+}SPI_Device,*pSPI_Device;
 
 #endif
