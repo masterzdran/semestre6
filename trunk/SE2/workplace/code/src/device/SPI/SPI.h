@@ -37,6 +37,7 @@
 #define __SPI_PRIOR_TO_FIRST_SCK_FALLING_EDGE__   (0x2 << 3)  /* CPOL = 1, CPHA = 0 */
 #define __SPI_FIRST_SCK_FALLING_EDGE__            (0x3 << 3)  /* CPOL = 1, CPHA = 1 */
 
+#define __SPI_CONFIG_PORT__               (__PINSEL0_SPI_SPP_SSEL__|__PINSEL0_SPI_SPP_MOSI__|__PINSEL0_SPI_SPP_MISO__|__PINSEL0_SPI_SPP_SCK__)
 
 typedef struct _SPI{
     U8		CONTROL;
@@ -54,9 +55,5 @@ typedef struct _SPI_INT{
     U8    DUMMY01[3];
 }LPC_SPI_INT,*pLPC_SPI_INT;
 
-typedef struct _SPI_DEVICE{
-  
-  
-}SPI_Device,*pSPI_Device;
 
 #endif
