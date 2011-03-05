@@ -60,7 +60,7 @@
  SPI
  ==============================================================================
 */
-#define pSPI      ((pLPC_SPI) 0xE0020000)
+#define pSPI      ((pLPC_SPI)         0xE0020000)
 #define pSPIINT   ((pLPC_SPI_INT)     0xE002001C)
 
 /*
