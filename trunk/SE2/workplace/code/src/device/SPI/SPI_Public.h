@@ -8,7 +8,9 @@ typedef enum _spi_errors{
 	SPI_INVALID_PORT,
 	SPI_INVALID_MASTER_CLOCK_DIVIDER,
 	SPI_INVALID_SLAVE_CLOCK_DIVIDER,
-  SPI_DEVICE_NOT_STARTED
+  SPI_INVALID_NUMBER_OF_BITS,
+  SPI_INVALID_CLOCK_VALUE,
+  SPI_DEVICE_NOT_STARTED  
 } SPI_ERRORS;
 
 typedef enum _spi_mode{
@@ -35,6 +37,8 @@ typedef enum _spi_byte_shift{
   SPI_MSB = 0,
   SPI_LSB  
 }SPI_BYTE_SHIFT;
+
+
 typedef struct _SPI_DEVICE{
   const void (*irqHandler)(void);	/*função de tratamento de interrupções*/
   U8              clock;		      /*ritmo do sinal de relógio*/  
