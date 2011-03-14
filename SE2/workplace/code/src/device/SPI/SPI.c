@@ -76,15 +76,20 @@ U8 SPI_init(SPI_Device devices[], U32 nbrDevices){
       if (devices[nbrDevices].clock < 8){
         return SPI_INVALID_MASTER_CLOCK_DIVIDER; /* as master divider must be >= 8 */
       }
+      if (devices[nbrDevices].clock & 1){
+        return SPI_INVALID_CLOCK_VALUE;
+      }
     }else{
       if (devices[nbrDevices].clock > 7){
         return SPI_INVALID_SLAVE_CLOCK_DIVIDER; /* as slave divider must be < 8 */
       }
     }
     /*Correct the number of bits to transfer by default. When nbrbits is 0, by default will transmit 16 bits each time*/
+    /*Return error*/
     if (devices[nbrDevices]->nbrbits < 8 && devices[nbrDevices]->nbrbits > 0 ){
-      devices[nbrDevices]->nbrbits = 8;
+      return SPI_INVALID_NUMBER_OF_BITS;
     }
+    
     chipSelect |= devices[nbrDevices].chipSelect;
     devices[nbrDevices].started=1;
   }
@@ -96,7 +101,7 @@ U8 SPI_init(SPI_Device devices[], U32 nbrDevices){
   POWER_Off_Peripherical(PW_SSP);     		/* Ensure SSP is disable */
   POWER_On_Peripherical(PW_SPI);      		/* (1) */
   gpio_init_PINSEL0(__SPI_CONFIG_PORT__); 	/* (3) */
-  pSPI->CONTROL &= ~__SPCR_MSTR__;      		/* Set as slave to prevent communications */
+  pSPI->CONTROL |= __SPCR_MSTR__;      		/* Set as slave to prevent communications */
   
   return SPI_SUCESS;
 }
@@ -151,7 +156,7 @@ U8 SPI_start_device(pSPI_Device device){
 
 void SPI_stop_device(pSPI_Device device){
   gpio_clear(device->chipSelect);
-  pSPI->CONTROL &= ~__SPCR_MSTR__;	
+  pSPI->CONTROL &= ~__SPCR_SPIE__;	
 }
 
 U8 SPI_transfer(pSPI_Device device, U32 size, const U8 *tx_data, U8 *rx_buffer){
