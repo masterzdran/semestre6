@@ -36,7 +36,7 @@ static void (*spiIRQ)(void) = NULL;
  * • SSEL pin can be used for a different function when the SPI interface is 
  * used in Master mode only (see Table 12–135). 
  * • SPI can be configured as SSP interface (see Section 13–2). * 
- * */
+ **/
 
 
 /**
@@ -57,42 +57,100 @@ static void (*spiIRQ)(void) = NULL;
  *    interface in the VIC.
  * U8 clockDivider
  * */
-void SPI_init(SPI_Device devices[], U32 nbrDevices){
+U8 SPI_init(SPI_Device devices[], U32 nbrDevices){
   if (devices == NULL || nbrDevices == 0){
-    return;     /* invalid parameters */
+    return SPI_INVALID_PARAMETERS;     /* invalid parameters */
   }
   U32 chipSelect = 0;
     
-  while (--nbrDevices){
-    if (devices[nbrDevices].port && __SPI_CONFIG_PORT__){
-        return; /* invalid device port configuration */
+  while (--nbrDevices >=0 ){
+    if (devices[nbrDevices].chipSelect && __SPI_CONFIG_PORT__){
+        return SPI_INVALID_PORT; /* invalid device port configuration */
     }
-    chipSelect |= devices[nbrDevices].port;
+    /* 
+     In Master mode, this register must be an even number greater than or equal to 8. (Page 166)
+     In Slave mode, the SPI clock rate provided by the master must not exceed 1/8 
+     of the peripheral clock. The content of the S0SPCCR register is not relevant.
+     */
+    if (devices[nbrDevices].role == SPI_MASTER) {
+      if (devices[nbrDevices].clock < 8){
+        return SPI_INVALID_MASTER_CLOCK_DIVIDER; /* as master divider must be >= 8 */
+      }
+    }else{
+      if (devices[nbrDevices].clock > 7){
+        return SPI_INVALID_SLAVE_CLOCK_DIVIDER; /* as slave divider must be < 8 */
+      }
+    }
+    chipSelect |= devices[nbrDevices].chipSelect;
+    devices[nbrDevices].started=1;
   }
   /* Config chip select port */  
-  gpio_init_PINSEL0();
-  gpio_set_direction(devices[nbrDevices].port,GPIO_OUT);
+  gpio_init_PINSEL0(chipSelect);
+  gpio_set_direction(chipSelect,GPIO_OUT);
 
   /* init */
-  POWER_Off_Peripherical(PW_SSP);     /* Ensure SSP is disable */
-  POWER_On_Peripherical(PW_SPI);      /* (1) */
-  gpio_init_PINSEL0(__SPI_CONFIG_PORT__); /* (3) */
-  pSPI->CONTROL = __SPCR_MSTR__;      /* Set as Master */
+  POWER_Off_Peripherical(PW_SSP);     		/* Ensure SSP is disable */
+  POWER_On_Peripherical(PW_SPI);      		/* (1) */
+  gpio_init_PINSEL0(__SPI_CONFIG_PORT__); 	/* (3) */
+  pSPI->CONTROL |= __SPCR_MSTR__;      		/* Set as Master */
+  return SPI_SUCESS;
 }
 
-void SPI_select_device(pSPI_Device device){
-  /* 
-   In Master mode, this register must be an even number greater than or equal to 8. (Page 166)
-   In Slave mode, the SPI clock rate provided by the master must not exceed 1/8 
-   of the peripheral clock. The content of the S0SPCCR register is not relevant.
-   */
+/**
+ 4.3.2 Master operation
+	The following sequence describes how to process a data transfer with the SPI block when
+	it is set up as the master. This process assumes that any prior data transfer has already
+	completed.
+	1. Set the SPI clock counter register to the desired clock rate.
+	2. Set the SPI control register to the desired settings.
+	3. Write the data to transmitted to the SPI data register. This write starts the SPI data
+	transfer.
+	4. Wait for the SPIF bit in the SPI status register to be set to 1. The SPIF bit will be set
+	after the last cycle of the SPI data transfer.
+	5. Read the SPI status register.
+	6. Read the received data from the SPI data register (optional).
+	7. Go to step 3 if more data is required to transmit.
+	Note: A read or write of the SPI data register is required in order to clear the SPIF status
+	bit. Therefore, if the optional read of the SPI data register does not take place, a write to
+	this register is required in order to clear the SPIF status bit.
+4.3.3 Slave operation
+	The following sequence describes how to process a data transfer with the SPI block when
+	it is set up as slave. This process assumes that any prior data transfer has already
+	completed. It is required that the system clock driving the SPI logic be at least 8X faster
+	than the SPI.
+	1. Set the SPI control register to the desired settings.
+	2. Write the data to transmitted to the SPI data register (optional). Note that this can only
+	be done when a slave SPI transfer is not in progress.
+	3. Wait for the SPIF bit in the SPI status register to be set to 1. The SPIF bit will be set
+	after the last sampling clock edge of the SPI data transfer.
+	4. Read the SPI status register.
+	5. Read the received data from the SPI data register (optional).
+	6. Go to step 2 if more data is required to transmit.
+	Note: A read or write of the SPI data register is required in order to clear the SPIF status
+	bit. Therefore, at least one of the optional reads or writes of the SPI data register must
+	take place, in order to clear the SPIF status bit.
+*/
+U8 SPI_start_device(pSPI_Device device){
+  U16 clear;
+  if (device->started == 0){
+    return SPI_DEVICE_NOT_STARTED;
+  }
   pSPI->CLOCK_COUNTER = device->clock ; /* (2) */
-  pSPI->
-  
+  clear = pSPI->STATUS;
+  clear = pSPI->DATA;
+  /*setting device parameters*/
+  pSPI->CONTROL |= (device->role << __SPCR_MSTR_SHIFT__ | device->nbrbits << __SPCR_BITS_SHIFT__ | device->mode  << __SPCR_CPHA_SHIFT__);
+  /*enable chipselect*/
+  gpio_set(device->chipSelect);
 }
-
+void SPI_stop_device(pSPI_Device device){
+	
+}
 
 void SPI_init_peripherical();
-
 void SPI_write();
 void SPI_read();
+
+void SPI_start(pSPI_Device device);
+void SPI_end(pSPI_Device device);
+void SPI_transfer(pSPI_Device device, U32 size, const U8 *tx_data, U8 *rx_buffer);
