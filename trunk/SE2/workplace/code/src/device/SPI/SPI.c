@@ -97,6 +97,7 @@ U8 SPI_init(SPI_Device devices[], U32 nbrDevices){
   POWER_On_Peripherical(PW_SPI);      		/* (1) */
   gpio_init_PINSEL0(__SPI_CONFIG_PORT__); 	/* (3) */
   pSPI->CONTROL &= ~__SPCR_MSTR__;      		/* Set as slave to prevent communications */
+  
   return SPI_SUCESS;
 }
 
@@ -123,7 +124,21 @@ U8 SPI_start_device(pSPI_Device device){
   if (device->started == 0){
     return SPI_DEVICE_NOT_STARTED;
   }
-  pSPI->CLOCK_COUNTER = device->clock ; /* (2) */
+  if (device->role){
+    pSPI->CLOCK_COUNTER = device->clock ; /* (2) */
+  }
+  /*Setting the IRQ handler in VIC*/
+  /*
+  if (device->irqHandler){
+    pSPI->CONTROL |= __SPINT_INTERRUPT__ << __SPCR_SPIE_SHIFT__;
+    VIC_ConfigIRQ(IRQ_SPI_SSP,IRQ_PRIORITY_05,spiIRQ);
+  }
+  */
+  if(device->nbrbits >7 || device->nbrbits == 0 ){
+    pSPI->CONTROL |= __SPCR_BIT_ENABLE__;
+  }else{
+    pSPI->CONTROL &= (~__SPCR_BIT_ENABLE__)&__SPCR_MASK__;
+  }
   clear = pSPI->STATUS;
   clear = pSPI->DATA;
   /*setting device parameters*/
@@ -131,6 +146,7 @@ U8 SPI_start_device(pSPI_Device device){
   
   /*enable chipselect*/
   gpio_set(device->chipSelect);
+  
 }
 
 void SPI_stop_device(pSPI_Device device){

@@ -31,14 +31,19 @@ typedef enum _spi_status{
   SPI_TRANSFER_SUCCESS = 0x80  
 }SPI_STATUS;
 
+typedef enum _spi_byte_shift{
+  SPI_MSB = 0,
+  SPI_LSB  
+}SPI_BYTE_SHIFT;
 typedef struct _SPI_DEVICE{
   const void (*irqHandler)(void);	/*função de tratamento de interrupções*/
-  U8        clock;		/*ritmo do sinal de relógio*/  
-  U8        chipSelect:4;	/*define a identificação do periférico*/
-  U8        nbrbits:4;		/*número de bits de uma palavra*/
-  SPI_MODE  mode:2;			/*modo SPI (CPHA, CPOL).*/
-  SPI_ROLE  role:1;			/*qual o papel do periferico: 1- Master; 0- Slave*/
-  U8        started:1;  /*indicação se o periférico foi préviamente iniciada. Por omissão o mesmo deve estar a 0. Não se garante o comportamento caso na construção se coloque a 1.*/
+  U8              clock;		      /*ritmo do sinal de relógio*/  
+  U8              chipSelect:4;	  /*define a identificação do periférico*/
+  U8              nbrbits:4;		  /*número de bits de uma palavra*/
+  SPI_MODE        mode:2;			    /*modo SPI (CPHA, CPOL).*/
+  SPI_ROLE        role:1;			    /*qual o papel do periferico: 1- Master; 0- Slave*/
+  U8              started:1;      /*indicação se o periférico foi préviamente iniciada. Por omissão o mesmo deve estar a 0. Não se garante o comportamento caso na construção se coloque a 1.*/
+  SPI_BYTE_SHIFT  byteShift:1;
 }SPI_Device,*pSPI_Device;
 
 
