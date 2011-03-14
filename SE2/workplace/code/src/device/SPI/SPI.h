@@ -8,15 +8,17 @@
 
 
 
-#define __SPCR_MASK__     0xF8
-#define __SPCR_RESERVED__ 0xF003
-#define __SPCR_CPHA__     0x08
-#define __SPCR_CPOL__     0x10
-#define __SPCR_MSTR__     0x20
-#define __SPCR_LSBF__     0x40
-#define __SPCR_SPIE__     0x80
-#define __SPCR_BITS__	  0xF00
+#define __SPCR_MASK__       0xFFC
+#define __SPCR_RESERVED__   0xF003
+#define __SPCR_BIT_ENABLE__ 0x04
+#define __SPCR_CPHA__       0x08
+#define __SPCR_CPOL__       0x10
+#define __SPCR_MSTR__       0x20
+#define __SPCR_LSBF__       0x40
+#define __SPCR_SPIE__       0x80
+#define __SPCR_BITS__	      0xF00
 
+#define __SPCR_BIT_ENABLE_SHIFT__     2
 #define __SPCR_CPHA_SHIFT__     3
 #define __SPCR_CPOL_SHIFT__     4
 #define __SPCR_MSTR_SHIFT__     5

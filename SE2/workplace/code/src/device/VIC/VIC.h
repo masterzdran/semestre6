@@ -192,6 +192,42 @@ typedef struct _VIC{
 #define     __INTERRUPT_EINT0__        (U8)    0xE
 #define     __INTERRUPT_EINT1__        (U8)    0xF
 
+typedef enum _interrupt_source{
+	IRQ_WATCHDOG = 0,
+	IRQ_SOFTWARE,
+	IRQ_DbgCommRx,
+	IRQ_DbgCommTX,
+	IRQ_TIMER0,
+	IRQ_TIMER1,
+	IRQ_UART0,
+	IRQ_UART1,
+	IRQ_PWM,
+	IRQ_I2C,
+	IRQ_SPI_SSP,
+	IRQ_PLL=0xC,
+	IRQ_RTC,
+	IRQ_EXT_INT0,
+	IRQ_EXT_INT1	
+}IRQ_SOURCE;
+
+typedef enum _interrupt_priority{
+	IRQ_PRIORITY_00 = 0,
+	IRQ_PRIORITY_01
+	IRQ_PRIORITY_02
+	IRQ_PRIORITY_03
+	IRQ_PRIORITY_04
+	IRQ_PRIORITY_05
+	IRQ_PRIORITY_06
+	IRQ_PRIORITY_07
+	IRQ_PRIORITY_08
+	IRQ_PRIORITY_09
+	IRQ_PRIORITY_10
+	IRQ_PRIORITY_11
+	IRQ_PRIORITY_12
+	IRQ_PRIORITY_13
+	IRQ_PRIORITY_14
+	IRQ_PRIORITY_15
+}IRQ_PRIORITY;
 /**
  * Assinatura das funções publicas
  * */
