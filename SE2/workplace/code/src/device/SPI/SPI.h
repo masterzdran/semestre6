@@ -38,7 +38,7 @@
 #define __SPINT_INTERRUPT__ 0x01
 #define __SPINT_RESERVED__  0xFE
 
-#
+
 
 #define __SPI_PRIOR_TO_FIRST_SCK_RISING_EDGE__    (0x0 << 3)  /* CPOL = 0, CPHA = 0 */
 #define __SPI_FIRST_SCK_RISING_EDGE__             (0x1 << 3)  /* CPOL = 0, CPHA = 1 */
