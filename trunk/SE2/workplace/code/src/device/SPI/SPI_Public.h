@@ -23,6 +23,14 @@ typedef enum _spi_role{
   SPI_MASTER   
 }SPI_ROLE;
 
+typedef enum _spi_status{
+  SPI_SLAVE_ABORT = 0x08,
+  SPI_MODE_FAULT  = 0x10,
+  SPI_READ_OVERRUN  = 0x20,
+  SPI_WRITE_COLLISION = 0x40,
+  SPI_TRANSFER_SUCCESS = 0x80  
+}SPI_STATUS;
+
 typedef struct _SPI_DEVICE{
   const void (*irqHandler)(void);	/*função de tratamento de interrupções*/
   U8        clock;		/*ritmo do sinal de relógio*/  

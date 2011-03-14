@@ -81,6 +81,10 @@ U8 SPI_init(SPI_Device devices[], U32 nbrDevices){
         return SPI_INVALID_SLAVE_CLOCK_DIVIDER; /* as slave divider must be < 8 */
       }
     }
+    /*Correct the number of bits to transfer by default. When nbrbits is 0, by default will transmit 16 bits each time*/
+    if (devices[nbrDevices]->nbrbits < 8 && devices[nbrDevices]->nbrbits > 0 ){
+      devices[nbrDevices]->nbrbits = 8;
+    }
     chipSelect |= devices[nbrDevices].chipSelect;
     devices[nbrDevices].started=1;
   }
@@ -92,7 +96,7 @@ U8 SPI_init(SPI_Device devices[], U32 nbrDevices){
   POWER_Off_Peripherical(PW_SSP);     		/* Ensure SSP is disable */
   POWER_On_Peripherical(PW_SPI);      		/* (1) */
   gpio_init_PINSEL0(__SPI_CONFIG_PORT__); 	/* (3) */
-  pSPI->CONTROL |= __SPCR_MSTR__;      		/* Set as Master */
+  pSPI->CONTROL &= ~__SPCR_MSTR__;      		/* Set as slave to prevent communications */
   return SPI_SUCESS;
 }
 
@@ -113,6 +117,45 @@ U8 SPI_init(SPI_Device devices[], U32 nbrDevices){
 	Note: A read or write of the SPI data register is required in order to clear the SPIF status
 	bit. Therefore, if the optional read of the SPI data register does not take place, a write to
 	this register is required in order to clear the SPIF status bit.
+*/
+U8 SPI_start_device(pSPI_Device device){
+  U16 clear;
+  if (device->started == 0){
+    return SPI_DEVICE_NOT_STARTED;
+  }
+  pSPI->CLOCK_COUNTER = device->clock ; /* (2) */
+  clear = pSPI->STATUS;
+  clear = pSPI->DATA;
+  /*setting device parameters*/
+  pSPI->CONTROL |= (device->role << __SPCR_MSTR_SHIFT__ | device->nbrbits << __SPCR_BITS_SHIFT__ | device->mode  << __SPCR_CPHA_SHIFT__);
+  
+  /*enable chipselect*/
+  gpio_set(device->chipSelect);
+}
+
+void SPI_stop_device(pSPI_Device device){
+  gpio_clear(device->chipSelect);
+  pSPI->CONTROL &= ~__SPCR_MSTR__;	
+}
+
+U8 SPI_transfer(pSPI_Device device, U32 size, const U8 *tx_data, U8 *rx_buffer){
+  const U8 *send = tx_data;
+  U8 *receive  = rx_buffer;
+  
+  for(;size;++send,++receive,--size){
+    pSPI->DATA = *send;
+    
+    /*TODO: Verify STATUS ERRORS*/
+    while(!(pSPI->STATUS & SPI_TRANSFER_SUCCESS)); /* Wait for transmission is complete */
+    
+    
+    *receive = pSPI->DATA;
+  }
+  return SPI_SUCESS;
+}
+
+/*TODO: Code for Slave mode*/
+/*
 4.3.3 Slave operation
 	The following sequence describes how to process a data transfer with the SPI block when
 	it is set up as slave. This process assumes that any prior data transfer has already
@@ -128,29 +171,5 @@ U8 SPI_init(SPI_Device devices[], U32 nbrDevices){
 	6. Go to step 2 if more data is required to transmit.
 	Note: A read or write of the SPI data register is required in order to clear the SPIF status
 	bit. Therefore, at least one of the optional reads or writes of the SPI data register must
-	take place, in order to clear the SPIF status bit.
-*/
-U8 SPI_start_device(pSPI_Device device){
-  U16 clear;
-  if (device->started == 0){
-    return SPI_DEVICE_NOT_STARTED;
-  }
-  pSPI->CLOCK_COUNTER = device->clock ; /* (2) */
-  clear = pSPI->STATUS;
-  clear = pSPI->DATA;
-  /*setting device parameters*/
-  pSPI->CONTROL |= (device->role << __SPCR_MSTR_SHIFT__ | device->nbrbits << __SPCR_BITS_SHIFT__ | device->mode  << __SPCR_CPHA_SHIFT__);
-  /*enable chipselect*/
-  gpio_set(device->chipSelect);
-}
-void SPI_stop_device(pSPI_Device device){
-	
-}
-
-void SPI_init_peripherical();
-void SPI_write();
-void SPI_read();
-
-void SPI_start(pSPI_Device device);
-void SPI_end(pSPI_Device device);
-void SPI_transfer(pSPI_Device device, U32 size, const U8 *tx_data, U8 *rx_buffer);
+	take place, in order to clear the SPIF status bit. 
+ * */
