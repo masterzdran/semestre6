@@ -33,11 +33,11 @@ include $(PROJECT_PATH)/common.mk
 
 all: SPI.o
 
-SPI.o: SPI.c SPI.h
+SPI.o: SPI.c SPI.h SPI_Public.h
 	@echo "----------------------------------------------------------------------"
 	$(CC)  $(COPTIONS)  $(SEARCHLIB) $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $< 
 	cp $@ $(MYLIB)/$@
-	cp SPI.h $(INCLUDE)/
+	cp SPI_Public.h $(INCLUDE)/SPI.h
 	
 clean:
 	@echo "----------------------------------------------------------------------"
