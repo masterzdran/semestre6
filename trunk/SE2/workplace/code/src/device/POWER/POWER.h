@@ -1,14 +1,16 @@
 #ifndef POWER_H
 #define POWER_H
+#include "TYPES.h"
+#include "SCB.h"
 
 #define pPower    ((pLPC_POWER) 0xE01FC0C0)
-
+/*
 typedef struct _POWER{
     U8 POWER_CONTROL;
     U8 DUMMY[3];
     U32 POWER_CONTROL_PERIPHERICAL;
 }LPC_POWER,*pLPC_POWER;
-
+*/
 
 #define __PCON_IDL__          0x000001
 #define __PCON_PD__           0x000002
@@ -37,4 +39,11 @@ typedef enum PowerPeriphericals{
   PW_SSP=__PCSSP_ENABLE__
 } ePWPeripherical;
 
-#endif POWER_H
+
+
+
+void POWER_Off_Peripherical(ePWPeripherical peripherical);
+void POWER_On_Peripherical(ePWPeripherical peripherical);
+void POWER_Down();
+void POWER_Idle();
+#endif
