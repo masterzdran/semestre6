@@ -2,6 +2,7 @@
 #define SPI_H
 #include "TYPES.h"
 #include "LPC21XX.h"
+#include "GPIO.h"
 
 
 

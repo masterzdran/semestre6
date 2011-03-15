@@ -1,5 +1,5 @@
-#ifndef SPI_H
-#define SPI_H
+#ifndef SPI_PUBLIC_H
+#define SPI_PUBLIC_H
 #include "TYPES.h"
 
 typedef enum _spi_errors{
@@ -8,9 +8,7 @@ typedef enum _spi_errors{
 	SPI_INVALID_PORT,
 	SPI_INVALID_MASTER_CLOCK_DIVIDER,
 	SPI_INVALID_SLAVE_CLOCK_DIVIDER,
-  SPI_INVALID_NUMBER_OF_BITS,
-  SPI_INVALID_CLOCK_VALUE,
-  SPI_DEVICE_NOT_STARTED  
+  SPI_DEVICE_NOT_STARTED
 } SPI_ERRORS;
 
 typedef enum _spi_mode{
@@ -32,13 +30,13 @@ typedef enum _spi_status{
   SPI_WRITE_COLLISION = 0x40,
   SPI_TRANSFER_SUCCESS = 0x80  
 }SPI_STATUS;
-
+			
 typedef enum _spi_byte_shift{
   SPI_MSB = 0,
   SPI_LSB  
 }SPI_BYTE_SHIFT;
 
-
+#pragma GCC diagnostic ignored "-Wno-packed-bitfield-compat"
 typedef struct _SPI_DEVICE{
   const void (*irqHandler)(void);	/*função de tratamento de interrupções*/
   U8              clock;		      /*ritmo do sinal de relógio*/  
@@ -48,7 +46,7 @@ typedef struct _SPI_DEVICE{
   SPI_ROLE        role:1;			    /*qual o papel do periferico: 1- Master; 0- Slave*/
   U8              started:1;      /*indicação se o periférico foi préviamente iniciada. Por omissão o mesmo deve estar a 0. Não se garante o comportamento caso na construção se coloque a 1.*/
   SPI_BYTE_SHIFT  byteShift:1;
-}SPI_Device,*pSPI_Device;
+}__attribute__ ((packed)) SPI_Device,*pSPI_Device;
 
 
 
