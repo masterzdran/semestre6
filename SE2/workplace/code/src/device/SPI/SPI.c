@@ -18,16 +18,17 @@
 #=======================================================================
 **/ 
 #include "SPI.h"
-#include "POWER.H"
+#include "SPI_Public.h"
+#include "POWER.h"
 #include "startosc.h"
 #include "LPC21XX.h"
 #include "VIC.h"
 
 
-static void (*spiIRQ)(void) = NULL;
+static void (*spiIRQ)(void) = 0;
 
 
-/*
+/**
  * Remark on Page 158:
  * The following features and registers are available in LPC2104/01, LPC2105/01, 
  * and LPC2106/01 only: 
@@ -57,11 +58,12 @@ static void (*spiIRQ)(void) = NULL;
  *    interface in the VIC.
  * U8 clockDivider
  * */
-U8 SPI_init(SPI_Device devices[], U32 nbrDevices){
-  if (devices == NULL || nbrDevices == 0){
+U8 SPI_init( pSPI_Device devices, U32 nbrDevices){
+	U32 chipSelect = 0;
+  if (devices == 0 || nbrDevices == 0){
     return SPI_INVALID_PARAMETERS;     /* invalid parameters */
   }
-  U32 chipSelect = 0;
+  
     
   while (--nbrDevices >=0 ){
     if (devices[nbrDevices].chipSelect && __SPI_CONFIG_PORT__){
@@ -76,20 +78,15 @@ U8 SPI_init(SPI_Device devices[], U32 nbrDevices){
       if (devices[nbrDevices].clock < 8){
         return SPI_INVALID_MASTER_CLOCK_DIVIDER; /* as master divider must be >= 8 */
       }
-      if (devices[nbrDevices].clock & 1){
-        return SPI_INVALID_CLOCK_VALUE;
-      }
     }else{
       if (devices[nbrDevices].clock > 7){
         return SPI_INVALID_SLAVE_CLOCK_DIVIDER; /* as slave divider must be < 8 */
       }
     }
     /*Correct the number of bits to transfer by default. When nbrbits is 0, by default will transmit 16 bits each time*/
-    /*Return error*/
-    if (devices[nbrDevices]->nbrbits < 8 && devices[nbrDevices]->nbrbits > 0 ){
-      return SPI_INVALID_NUMBER_OF_BITS;
+    if (devices[nbrDevices].nbrbits < 8 && devices[nbrDevices].nbrbits > 0 ){
+      devices[nbrDevices].nbrbits = 8;
     }
-    
     chipSelect |= devices[nbrDevices].chipSelect;
     devices[nbrDevices].started=1;
   }
@@ -101,7 +98,7 @@ U8 SPI_init(SPI_Device devices[], U32 nbrDevices){
   POWER_Off_Peripherical(PW_SSP);     		/* Ensure SSP is disable */
   POWER_On_Peripherical(PW_SPI);      		/* (1) */
   gpio_init_PINSEL0(__SPI_CONFIG_PORT__); 	/* (3) */
-  pSPI->CONTROL |= __SPCR_MSTR__;      		/* Set as slave to prevent communications */
+  pSPI->CONTROL &= ~__SPCR_MSTR__;      		/* Set as slave to prevent communications */
   
   return SPI_SUCESS;
 }
@@ -151,12 +148,13 @@ U8 SPI_start_device(pSPI_Device device){
   
   /*enable chipselect*/
   gpio_set(device->chipSelect);
+	return SPI_SUCESS;
   
 }
 
 void SPI_stop_device(pSPI_Device device){
   gpio_clear(device->chipSelect);
-  pSPI->CONTROL &= ~__SPCR_SPIE__;	
+  pSPI->CONTROL &= ~__SPCR_MSTR__;	
 }
 
 U8 SPI_transfer(pSPI_Device device, U32 size, const U8 *tx_data, U8 *rx_buffer){
