@@ -176,7 +176,7 @@ typedef struct _SCS{
 
 #define     __POWER_CONTROL_IDL_ENABLE__            ((U8 ) 0x01)
 #define     __POWER_CONTROL_PD_ENABLE__             ((U8 ) 0x02)
-
+/*
 #define     __PCTIM0_ENABLE__     ((U32 ) 0x000002)
 #define     __PCTIM1_ENABLE__     ((U32 ) 0x000004)
 #define     __PCUART0_ENABLE__    ((U32 ) 0x000008)
@@ -187,7 +187,7 @@ typedef struct _SCS{
 #define     __PCRTC_ENABLE__      ((U32 ) 0x000200)
 #define     __PCSSP_ENABLE__      ((U32 ) 0x200000)
 #define     __POWER_MASK__        ((U32 ) 0x2003BE)
-
+*/		
 #define     __APBDIV_CLOCK_1_FOURTH_CLOCK__            ((U16) 0x0 )
 #define     __APBDIV_CLOCK_EQUAL_CLOCK__               ((U16) 0x1 )
 #define     __APBDIV_CLOCK_HALF_CLOCK__                ((U16) 0x2 )
