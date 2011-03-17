@@ -30,7 +30,7 @@ include $(PROJECT_PATH)/common.mk
 .PHONY 					= clean
 .PHONY					= clear
 .PHONY					= all
-MAKEPATHS				= LPC2106 TYPES SCB STARTUP GPIO TIMER RTC I2C  VIC WD POWER SPI
+MAKEPATHS				= LPC2106 TYPES SCB STARTUP POWER GPIO TIMER RTC I2C  VIC WD  SPI UARTS
 #=======================================================================
 
 all: 

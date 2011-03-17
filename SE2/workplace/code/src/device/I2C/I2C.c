@@ -21,6 +21,7 @@
 #include "GPIO.h"
 #include "TIMER.h"
 #include "SCB.h"
+#include "POWER.h"
 
 #define I2C_FREQ_DIV 800
 /**
