@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeLite_Project Name="workplace" InternalType="Console">
+  <VirtualDirectory Name="code">
+    <VirtualDirectory Name="src">
+      <VirtualDirectory Name="collection">
+        <VirtualDirectory Name="buffer">
+          <File Name="code/src/collection/buffer/BUFFER.c"/>
+          <File Name="code/src/collection/buffer/BUFFER.h"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="peripherical">
+        <VirtualDirectory Name="KEYBOARD">
+          <File Name="code/src/peripherical/KEYBOARD/Makefile"/>
+          <File Name="code/src/peripherical/KEYBOARD/Keyboard.h"/>
+          <File Name="code/src/peripherical/KEYBOARD/Keyboard1.c"/>
+          <File Name="code/src/peripherical/KEYBOARD/Keyboard1.h"/>
+          <File Name="code/src/peripherical/KEYBOARD/KBReader.c"/>
+          <File Name="code/src/peripherical/KEYBOARD/Keyboard.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="EEPROM">
+          <File Name="code/src/peripherical/EEPROM/Makefile"/>
+          <File Name="code/src/peripherical/EEPROM/EEPROM.c"/>
+          <File Name="code/src/peripherical/EEPROM/EEPROM.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="LCD">
+          <File Name="code/src/peripherical/LCD/LCD.h"/>
+          <File Name="code/src/peripherical/LCD/Makefile"/>
+          <File Name="code/src/peripherical/LCD/LCD.c"/>
+        </VirtualDirectory>
+        <File Name="code/src/peripherical/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="device">
+        <VirtualDirectory Name="RTC">
+          <File Name="code/src/device/RTC/Makefile"/>
+          <File Name="code/src/device/RTC/RTC.c"/>
+          <File Name="code/src/device/RTC/RTC.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="TIMER">
+          <File Name="code/src/device/TIMER/Makefile"/>
+          <File Name="code/src/device/TIMER/TIMER.c"/>
+          <File Name="code/src/device/TIMER/TIMER.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="LPC2106">
+          <File Name="code/src/device/LPC2106/Makefile"/>
+          <File Name="code/src/device/LPC2106/LPC21XX.h"/>
+          <File Name="code/src/device/LPC2106/LPC2106.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="SCB">
+          <File Name="code/src/device/SCB/Makefile"/>
+          <File Name="code/src/device/SCB/SCB.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="I2C">
+          <File Name="code/src/device/I2C/Makefile"/>
+          <File Name="code/src/device/I2C/I2C.h"/>
+          <File Name="code/src/device/I2C/I2C.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="TYPES">
+          <File Name="code/src/device/TYPES/Makefile"/>
+          <File Name="code/src/device/TYPES/TYPES.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="STARTUP">
+          <File Name="code/src/device/STARTUP/Makefile"/>
+          <File Name="code/src/device/STARTUP/startosc.h"/>
+          <File Name="code/src/device/STARTUP/startosc.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="VIC">
+          <File Name="code/src/device/VIC/Makefile"/>
+          <File Name="code/src/device/VIC/VIC.h"/>
+          <File Name="code/src/device/VIC/VIC.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="UARTS">
+          <File Name="code/src/device/UARTS/Makefile"/>
+          <File Name="code/src/device/UARTS/UART.h"/>
+          <File Name="code/src/device/UARTS/UART.c"/>
+          <File Name="code/src/device/UARTS/UART_Public.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="SPI">
+          <File Name="code/src/device/SPI/SPI.c"/>
+          <File Name="code/src/device/SPI/Makefile"/>
+          <File Name="code/src/device/SPI/SPI.h"/>
+          <File Name="code/src/device/SPI/SPI_Public.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="GPIO">
+          <File Name="code/src/device/GPIO/Makefile"/>
+          <File Name="code/src/device/GPIO/GPIO.c"/>
+          <File Name="code/src/device/GPIO/GPIO.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="WD">
+          <File Name="code/src/device/WD/Makefile"/>
+          <File Name="code/src/device/WD/WATCHDOG.c"/>
+          <File Name="code/src/device/WD/WATCHDOG.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="POWER">
+          <File Name="code/src/device/POWER/Makefile"/>
+          <File Name="code/src/device/POWER/POWER.c"/>
+          <File Name="code/src/device/POWER/POWER.h"/>
+        </VirtualDirectory>
+        <File Name="code/src/device/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="tests">
+        <VirtualDirectory Name="Tacografo">
+          <VirtualDirectory Name="Menu">
+            <File Name="code/src/tests/Tacografo/Menu/Makefile"/>
+            <File Name="code/src/tests/Tacografo/Menu/Menu.c"/>
+            <File Name="code/src/tests/Tacografo/Menu/MenuFunctions.c"/>
+            <File Name="code/src/tests/Tacografo/Menu/MenuFunctions.h"/>
+            <File Name="code/src/tests/Tacografo/Menu/Menu.h"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Percurso">
+            <File Name="code/src/tests/Tacografo/Percurso/Makefile"/>
+            <File Name="code/src/tests/Tacografo/Percurso/Percurso.c"/>
+            <File Name="code/src/tests/Tacografo/Percurso/Percurso.h"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Clock">
+            <File Name="code/src/tests/Tacografo/Clock/Makefile"/>
+            <File Name="code/src/tests/Tacografo/Clock/Clock.h"/>
+            <File Name="code/src/tests/Tacografo/Clock/Clock.c"/>
+          </VirtualDirectory>
+          <File Name="code/src/tests/Tacografo/Makefile"/>
+          <File Name="code/src/tests/Tacografo/save test"/>
+          <File Name="code/src/tests/Tacografo/Tacografo.h"/>
+          <File Name="code/src/tests/Tacografo/Tacografo.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="lcd-test">
+          <File Name="code/src/tests/lcd-test/Makefile"/>
+          <File Name="code/src/tests/lcd-test/lcd_test.c"/>
+        </VirtualDirectory>
+        <File Name="code/src/tests/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="deploy">
+        <VirtualDirectory Name="ldscript">
+          <File Name="code/src/deploy/ldscript/ldscript_ram"/>
+          <File Name="code/src/deploy/ldscript/ldscript_rom"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="lib">
+        <File Name="code/src/lib/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="include">
+        <File Name="code/src/include/LCD.h"/>
+        <File Name="code/src/include/SPI.h"/>
+        <File Name="code/src/include/assert.h"/>
+        <File Name="code/src/include/UART.h"/>
+        <File Name="code/src/include/LPC21XX.h"/>
+        <File Name="code/src/include/I2C.h"/>
+        <File Name="code/src/include/errno.h"/>
+        <File Name="code/src/include/Clock.h"/>
+        <File Name="code/src/include/_global.h"/>
+        <File Name="code/src/include/time.h"/>
+        <File Name="code/src/include/VIC.h"/>
+        <File Name="code/src/include/startosc.h"/>
+        <File Name="code/src/include/Tacografo.h"/>
+        <File Name="code/src/include/LPC2106.h"/>
+        <File Name="code/src/include/Percurso.h"/>
+        <File Name="code/src/include/ctype.h"/>
+        <File Name="code/src/include/chrono.h"/>
+        <File Name="code/src/include/Keyboard.h"/>
+        <File Name="code/src/include/_stdio.h"/>
+        <File Name="code/src/include/stdlib.h"/>
+        <File Name="code/src/include/defines.h"/>
+        <File Name="code/src/include/stddef.h"/>
+        <File Name="code/src/include/stdio.h"/>
+        <File Name="code/src/include/TIMER.h"/>
+        <File Name="code/src/include/_time.h"/>
+        <File Name="code/src/include/MenuFunctions.h"/>
+        <File Name="code/src/include/WATCHDOG.h"/>
+        <File Name="code/src/include/POWER.h"/>
+        <File Name="code/src/include/stdarg.h"/>
+        <File Name="code/src/include/_stdlib.h"/>
+        <File Name="code/src/include/iomanip.h"/>
+        <File Name="code/src/include/iostream.h"/>
+        <File Name="code/src/include/EEPROM.h"/>
+        <File Name="code/src/include/TYPES.h"/>
+        <File Name="code/src/include/setjmp.h"/>
+        <File Name="code/src/include/SCB.h"/>
+        <File Name="code/src/include/_config.h"/>
+        <File Name="code/src/include/GPIO.h"/>
+        <File Name="code/src/include/RTC.h"/>
+        <File Name="code/src/include/Menu.h"/>
+        <File Name="code/src/include/string.h"/>
+        <File Name="code/src/include/limits.h"/>
+      </VirtualDirectory>
+      <File Name="code/src/Makefile"/>
+    </VirtualDirectory>
+    <File Name="code/Makefile"/>
+  </VirtualDirectory>
+  <Description/>
+  <Dependencies/>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="gnu gcc" DebuggerType="GNU gdb debugger" Type="" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g" C_Options="-g" Required="yes" PreCompiledHeader="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;"/>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="gnu gcc" DebuggerType="GNU gdb debugger" Type="" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="" C_Options="" Required="yes" PreCompiledHeader="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="-O2" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Release" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;"/>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+    </Configuration>
+  </Settings>
+  <VirtualDirectory Name="src">
+    <File Name="main.c"/>
+  </VirtualDirectory>
+</CodeLite_Project>
