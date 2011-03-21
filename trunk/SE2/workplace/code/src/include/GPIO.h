@@ -1,4 +1,4 @@
-/**
+/*
 #=======================================================================
 # SE1   - Sistemas Embebidos 1
 #-----------------------------------------------------------------------
@@ -16,29 +16,40 @@
 # DEETC - Dep. de Eng. Electrónica e Telecomunicações e Computadores
 # ISEL  - Instituto Superior de Engenharia de Lisboa
 #=======================================================================
-**/ 
+*/
+
+/**
+ * @author Nuno Cancelo, (nuno.cancelo<at>gmail.com)
+ * @date November/2010
+ * 
+ * @file GPIO.h
+ * @brief This header file has the needed configuration to work with GPIO ports of LPC2106 from Philips.
+ * 
+ * */
 #ifndef GPIO_H
 #define GPIO_H
 #include "TYPES.h"
 #include "LPC21XX.h"
 
 /**
- * Definição de algumas macros para facilitar a conversão das funcionalidades de cada porto 
- **/
+ * @brief Macro definition of the GPIO fucntions. This definition simplify the function mask of each port, so it could be easy to switch function. @see GPIO Functions
+ * @defgroup FUNCTION_MASK
+ * @{
+ */
 #define FUNCTION_0          ((U8)   0x0)
 #define FUNCTION_1          ((U8)   0x1)
 #define FUNCTION_2          ((U8)   0x2)
 #define PORT                ((U8)   0x2)
-
 /**
- * Definição do tipo de direcção para o porto GPIO
+ * @}
  * */
-#define GPIO_IN             ((U8)   0x0)
-#define GPIO_OUT            ((U8)   0x1)
-
+/**
+ * @brief Definition of the direction of the Port. Should be used when working with GPIO methods.
+ */
+typedef enum _gpio_direction{GPIO_IN=0x0,GPIO_OUT=0x1}GPIO_DIRECTION;
 
 /**
- * Definição das mascaras referentes às funcionalidades do PINSEL0 
+ * @brief Definição das mascaras referentes às funcionalidades do PINSEL0 
  **/
 /*----------------------------------------------------------------------*/
 #define     __PINSEL0_GPIO_PORT_0_0__       (FUNCTION_0 << (PORT * 0))
@@ -107,7 +118,13 @@
 /*----------------------------------------------------------------------*/
 
 /**
- * Definição da estrutura referente ao GPIO
+ * @brief GPIO data type structure. This struct has the needed fields name to communicate with the lpc registers.
+ * @details 
+ * IOPIN: GPIO Port Pin value register.
+ * IOSET: GPIO Port Output Set register.
+ * IODIR: GPIO Port Direction control register.
+ * IOCLR: GPIO Port Output Clear register.  
+ * Should use gpio_init??????? functions, so this register could be properly read.
  **/ 
 typedef struct _GPIO{
 	U32 IOPIN;	/* GPIO Port Pin value register.             0xE002 8000*/
@@ -116,9 +133,6 @@ typedef struct _GPIO{
 	U32 IOCLR;	/* GPIO Port Output Clear register.          0xE002 800C*/
 }LPC_GPIO,*pLPC_GPIO;
 
-/**
- * Assinatura das funções publicas
- **/
 U32 gpio_read(U32 mask);
 void gpio_clear(U32 mask);
 void gpio_set(U32 mask);

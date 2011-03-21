@@ -25,7 +25,7 @@
  GPIO
  ==============================================================================
 */
-#define       pGPIO 	      ((pLPC_GPIO)	0xE0028000)
+#define       pGPIO 	    ((pLPC_GPIO)	0xE0028000)
 #define     __PINSEL0__     (*((PDWord)0xE002C000))
 #define     __PINSEL1__     (*((PDWord)0xE002C004))
 
