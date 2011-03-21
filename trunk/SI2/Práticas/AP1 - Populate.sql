@@ -21,3 +21,8 @@ end
 select * from Sensor
 select * from Leitura
 select * from Alarme
+
+/*I- c)*/
+SELECT @@TOTAL_READ AS 'Reads', GETDATE() AS 'As of'
+--relatório de escrita 
+SELECT @@TOTAL_WRITE AS 'Writes', GETDATE() AS 'As of'
