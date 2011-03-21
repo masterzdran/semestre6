@@ -15,15 +15,34 @@ create trigger alarmeLeitura
 	on Leitura
 	after INSERT
 	as
+		declare @valor decimal(10), @sensor char(9), @inf decimal(10), @sup decimal(10), @instante datetime
+		select @valor = valor, @sensor = sensorName, @instante=instanteLeitura from INSERTED
+		select @inf = limitInf, @sup = limitSup from Sensor 
+			where (Sensor.name = @sensor)
+		
 		begin
+		if( @valor > @sup OR @valor < @inf)
 		insert into dbo.Alarme(
 			sensorName, 
 			sensorLimInf, 
 			sensorLimSup,
 			leituraValor,
 			instanteLeitura)
-		select novo.sensorName, Sensor.limitInf, Sensor.limitSup, novo.valor, novo.instanteLeitura
-			from INSERTED as novo INNER JOIN Sensor
-				on novo.sensorName = Sensor.name
-				where (novo.valor>Sensor.limitSup OR novo.valor<Sensor.limitInf)
+		values(@sensor,
+			   @inf,
+			   @sup,
+			   @valor,
+			   @instante)		
 		end
+
+/*
+create view alarme_tipo(id_alarm, nome, inf, sup, valor, dataHora, tipo)
+	as
+		select (id, sensorName, sensorLimInf, sensorLimSup, leituraValor, instanteLeitura
+			(select case
+				when valor>sup then 'max'
+				else 'min'
+			 end
+			)
+		) from Alarme
+		*/
