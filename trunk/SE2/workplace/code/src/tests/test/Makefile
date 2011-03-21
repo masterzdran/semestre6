@@ -15,7 +15,7 @@
 # DEETC - Dep. de Eng. Electrónica e Telecomunicações e Computadores
 # ISEL  - Instituto Superior de Engenharia de Lisboa
 #=======================================================================
-#															LCD TEST
+#															SPI
 #=======================================================================
 #Shell Path
 SHELL			= /bin/sh
@@ -23,45 +23,26 @@ SHELL			= /bin/sh
 SVN_PATH		= ./../../../..
 #=======================================================================
 PROJECT_PATH	= $(SVN_PATH)/code
-SOURCE				= $(PROJECT_PATH)/src
-DEVICE				= $(SOURCE)/device
-TARGET				= $(PROJECT_PATH)/target
-TEST					= $(PROJECT_PATH)/test
 #=======================================================================
-MYLIB			= $(SOURCE)/lib
-PROGRAM		= $(SOURCE)/program
-INCLUDE		= $(SOURCE)/include
-SEARCHLIB		= -I $(INCLUDE) -I $(MYLIB)
-#Executables
-CC 				= arm-eabi-gcc
-AS				= arm-eabi-as
-LD				= arm-eabi-ld
-#Debugger
-DEBUGGER		= arm-eabi-insight
-#Commom Options
-OUTPUT 					= -o
-LDSCRIPT				= -T 
-DEBUGSTABS			= --gstabs
-DEBUGSYMBOLS		= -g
-COPTIONS 				= -Wall -pedantic
-COMPILE_ONLY 		= -c 
+include $(PROJECT_PATH)/common.mk
+#=======================================================================
 #Phony Target
 .PHONY 					= clean
 .PHONY					= clear
 #=======================================================================
 
-#OBJECT				=  start.o startosc.o  TIMER.o   GPIO.o LCD.o 
-
 all: test.o
 
-lcd_test.o: test.c
-	$(CC) $(SEARCHLIB) $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $< 
+test.o: test.c test.h
+	@echo "----------------------------------------------------------------------"
+	$(CC)  $(COPTIONS)  $(SEARCHLIB) $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $< 
 	cp $@ $(PROGRAM)/$@
+	cp test.h $(INCLUDE)/
 	
 clean:
+	@echo "----------------------------------------------------------------------"
 	rm  test.o
-	rm  $(PROGRAM)/test.o
-	
+	rm  $(INCLUDE)/test.h
 	
 clear:
 	clear

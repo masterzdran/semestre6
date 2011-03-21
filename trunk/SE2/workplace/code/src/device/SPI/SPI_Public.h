@@ -49,6 +49,9 @@ typedef struct _SPI_DEVICE{
 }SPI_Device,*pSPI_Device;
 
 U8 SPI_init( pSPI_Device devices, U32 nbrDevices);
+U8 SPI_start_device(pSPI_Device device);
+void SPI_stop_device(pSPI_Device device);
+U8 SPI_transfer(pSPI_Device device, U32 size, const U8 *tx_data, U8 *rx_buffer);
 
 
 #endif
