@@ -3,14 +3,33 @@ set dateformat dmy;
 
 /*I - b)*/
 /*procedimento que recebe o identificador e gera uma leitura*/
+IF EXISTS(SELECT * FROM sys.objects WHERE type = 'P' AND name = 'geraLeitura')
+	DROP PROCEDURE geraLeitura
+go
 
-drop procedure geraLeitura
-create procedure geraLeitura(@sensor char(9)) as
+create procedure geraLeitura(@sensor char(9))
+as
 	begin transaction
 	insert into dbo.Leitura(sensorName, valor, instanteLeitura) values(@sensor, 20 * rand(), SYSDATETIME())
 	commit
 	
-drop trigger alarmeLeitura
+
+/*II-b)*/
+IF EXISTS(SELECT * FROM sys.objects WHERE type = 'P' AND name = 'geraLeituraEAlarme')
+	DROP PROCEDURE geraLeituraEAlarme
+go
+
+create procedure geraLeituraEAlarme(@sensor char(9))
+as
+	begin transaction
+	insert into dbo.Leitura(sensorName, valor, instanteLeitura) values(@sensor, 20 * rand(), SYSDATETIME())
+	commit
+
+/*II-c)*/
+IF EXISTS(SELECT * FROM sys.objects WHERE type = 'TR' AND name = 'alarmeLeitura')
+	DROP TRIGGER alarmeLeitura
+go
+
 create trigger alarmeLeitura
 	on Leitura
 	after INSERT
