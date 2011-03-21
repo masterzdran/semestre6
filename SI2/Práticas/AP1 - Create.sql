@@ -44,7 +44,7 @@ create table Alarme(
 	sensorLimSup decimal not null,
 	leituraValor decimal(10) not null,
 	instanteLeitura datetime not null,
-	/*tipo char(3) not null,*/
+	tipo char(3) not null,
 	constraint pk_Alarme primary key(id),
-	/*constraint ck_Alarme_Tipo check(tipo='min' or tipo='max')*/
+	constraint ck_Alarme_Tipo check(tipo='min' or tipo='max')
 )
