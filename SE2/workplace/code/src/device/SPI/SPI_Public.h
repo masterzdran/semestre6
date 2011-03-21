@@ -48,6 +48,7 @@ typedef struct _SPI_DEVICE{
   U32   byteShift:1;    /*SPI_BYTE_SHIFT*/
 }SPI_Device,*pSPI_Device;
 
+U8 SPI_init( pSPI_Device devices, U32 nbrDevices);
 
 
 #endif

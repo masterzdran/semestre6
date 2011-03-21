@@ -50,7 +50,7 @@ VPATH 			= $(MYLIB):$(CLIB):$(libdir)
 #VPATH 			= $(MYLIB)
 #=======================================================================
 LIBOBJECT =		libc.a libgcc.a  libLPC2106.a libPeripherical.a
-OBJECT =		$(MYLIB)/start.o $(PROGRAM)/Tacografo.o $(PROGRAM)/Menu.o $(PROGRAM)/MenuFunctions.o $(PROGRAM)/Clock.o $(PROGRAM)/Percurso.o
+OBJECT =		$(MYLIB)/start.o $(PROGRAM)/test.o
 #=======================================================================
 all: $(END_EXEC) 
 
