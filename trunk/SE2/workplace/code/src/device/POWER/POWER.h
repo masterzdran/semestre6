@@ -4,39 +4,39 @@
 #include "SCB.h"
 #include "LPC21XX.h"
 
-
+/**
+ * @defgroup POWER_CONTROL_MACROS
+ * @{
+ * */
 #define __PCON_IDL__          0x000001
 #define __PCON_PD__           0x000002
 #define __PCON_MASK__         0x000003
-
-#define __PCTIM0_ENABLE__     0x000002
-#define __PCTIM1_ENABLE__     0x000004
-#define __PCUART0_ENABLE__    0x000008
-#define __PCUART1_ENABLE__    0x000010
-#define __PCPWM0_ENABLE__     0x000020
-#define __PCI2C_ENABLE__      0x000080
-#define __PCSPI_ENABLE__      0x000100
-#define __PCRTC_ENABLE__      0x000200
-#define __PCSSP_ENABLE__      0x200000
 #define __POWER_MASK__        0x2003BE
 
+/**
+ * @}
+ */
+/**
+ * @brief Definition of the valid values that should be used when iteraction with power functions
+ * */
 typedef enum PowerPeriphericals{
-  PW_Timer0=__PCTIM0_ENABLE__,
-  PW_Timer1=__PCTIM1_ENABLE__,
-  PW_Uart0=__PCUART0_ENABLE__,
-  PW_Uart1=__PCUART1_ENABLE__,
-  PW_PWCLock=__PCPWM0_ENABLE__,
-  PW_I2C=__PCI2C_ENABLE__,
-  PW_SPI=__PCSPI_ENABLE__,
-  PW_RTC=__PCRTC_ENABLE__,
-  PW_SSP=__PCSSP_ENABLE__
+  PW_Timer0		=0x000002,
+  PW_Timer1		=0x000004,
+  PW_Uart0		=0x000008,
+  PW_Uart1		=0x000010,
+  PW_PWCLock	=0x000020,
+  PW_I2C		=0x000080,
+  PW_SPI		=0x000100,
+  PW_RTC		=0x000200,
+  PW_SSP		=0x200000
 } ePWPeripherical;
 
 
-
-
 void POWER_Off_Peripherical(ePWPeripherical peripherical);
+
 void POWER_On_Peripherical(ePWPeripherical peripherical);
+
 void POWER_Down();
+
 void POWER_Idle();
 #endif

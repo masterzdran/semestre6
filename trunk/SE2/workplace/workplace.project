@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CodeLite_Project Name="workplace" InternalType="Console">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00010001N0005Debug000000000000]]>
+    </Plugin>
+  </Plugins>
   <VirtualDirectory Name="code">
     <VirtualDirectory Name="src">
       <VirtualDirectory Name="debugger">
@@ -196,9 +201,6 @@
       <File Name="code/src/Makefile"/>
     </VirtualDirectory>
     <File Name="code/Makefile"/>
-    <VirtualDirectory Name="SE2">
-      <File Name="code/SE2/main.c"/>
-    </VirtualDirectory>
     <File Name="code/Makefile - tacografo"/>
   </VirtualDirectory>
   <Description/>
@@ -213,7 +215,7 @@
       </Linker>
       <ResourceCompiler Options=""/>
     </GlobalSettings>
-    <Configuration Name="Debug" CompilerType="gnu gcc" DebuggerType="GNU gdb debugger" Type="" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+    <Configuration Name="Debug" CompilerType="ARM gnu gcc" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
       <Compiler Options="-g" C_Options="-g" Required="yes" PreCompiledHeader="">
         <IncludePath Value="."/>
       </Compiler>
@@ -272,7 +274,4 @@
       </AdditionalRules>
     </Configuration>
   </Settings>
-  <VirtualDirectory Name="src">
-    <File Name="main.c"/>
-  </VirtualDirectory>
 </CodeLite_Project>

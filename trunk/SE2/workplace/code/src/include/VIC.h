@@ -1,4 +1,4 @@
-/**
+/*
 #=======================================================================
 # SE1   - Sistemas Embebidos 1
 #-----------------------------------------------------------------------
@@ -25,8 +25,8 @@
 
 
 /**
- * Estrutura que define os campos dos Vectores de Controlo 
- **/
+ * @brief Definition of one pointer to an VIC VECTOR INTERRUPT structure
+ * */
 typedef struct _VIC_VECTCNT{
       U8 VectCntl0;
       U8  DUMMY03;
@@ -79,8 +79,8 @@ typedef struct _VIC_VECTCNT{
 }LPC_VIC_VECTCNT,*pLPC_VIC_VECTCNT;  
 
 /**
- * Estrutura que define os endereços dos Vectores
- **/
+ * @brief Definition of one pointer to an VIC VECTOR ADDRESS structure
+ * */
 typedef struct _VIC_VECTADDR{
       U32 VectAddr0;
       U32 VectAddr1;
@@ -100,14 +100,16 @@ typedef struct _VIC_VECTADDR{
       U32 VectAddr15;
 }LPC_VIC_VECTADDR,*pLPC_VIC_VECTADDR;
 
-
+/**
+ * @brief Definition of one pointer to an VIC DEFAULT VECTOR structure
+ * */
 typedef struct _VIC_DEFVECTADDR{
       U32 VectAddr;
       U32 DefVectAddr;
 }LPC_VIC_DEFVECTADDR,*pLPC_VIC_DEFVECTADDR;
 
 /**
- * Estrutura que define os campos do VIC
+ * @brief Definition of one pointer to an VIC structure
  * */
 typedef struct _VIC{
       U32 IRQStatus;
@@ -124,7 +126,8 @@ typedef struct _VIC{
 }LPC_VIC,*pLPC_VIC;
 
 /**
- * Definição de macros
+ * @defgroup VIC_CONFIG_MASK 
+ * @{
  * */
 #define __VIC_VECTCNTL_MASK__       (U8) 0x1F
 #define __VIC_PROTECTION_MASK__     (U8) 0x01
@@ -192,6 +195,12 @@ typedef struct _VIC{
 #define     __INTERRUPT_EINT0__        (U8)    0xE
 #define     __INTERRUPT_EINT1__        (U8)    0xF
 
+/**
+ * @}
+ */
+ /**
+  * @brief Interrupt Sources
+  * */
 typedef enum _interrupt_source{
 	IRQ_WATCHDOG = 0,
 	IRQ_SOFTWARE,
@@ -210,6 +219,9 @@ typedef enum _interrupt_source{
 	IRQ_EXT_INT1	
 }IRQ_SOURCE;
 
+/**
+ * @brief Interrupt Priorioty
+ * */
 typedef enum _interrupt_priority{
 	IRQ_PRIORITY_00 = 0,
 	IRQ_PRIORITY_01,
@@ -228,9 +240,8 @@ typedef enum _interrupt_priority{
 	IRQ_PRIORITY_14,
 	IRQ_PRIORITY_15
 }IRQ_PRIORITY;
-/**
- * Assinatura das funções publicas
- * */
+
+
 Bool VIC_ConfigIRQ(U8 peripherical, U8 priority,void (*fx)(void));
 void VIC_init();
 void disableIRQ(U8 peripherical);

@@ -1,4 +1,4 @@
-/**
+/*
 #=======================================================================
 # SE1   - Sistemas Embebidos 1
 #-----------------------------------------------------------------------
@@ -21,69 +21,49 @@
 #define SCB_H
 #include "TYPES.h"
 #include "LPC21XX.h"
+
 /**
- * Definição da estrutura das interrupções externas 
+ * @brief Definition of the External Interrupt structure
  **/
 typedef struct _EXT{
     U8     EXTINT;
-    U8     DUMMY01;
-    U16    DUMMY02;
+    U8     DUMMY01[3];
     U8     EXTWAKE;
-    U8     DUMMY03;
-    U16    DUMMY04;
+    U8     DUMMY03[3];
     U8     EXTMODE;
-    U8     DUMMY05;
-    U16    DUMMY06;
+    U8     DUMMY05[3];
     U8     EXTPOLAR;
-    U8     DUMMY07;
-    U16    DUMMY08;
+    U8     DUMMY07[3];
 }LPC_EXT_INT,*pLPC_EXT_INT;
 
 /**
- * Definição do MAM 
+ * @brief Definition of the MAM structure
  **/
 typedef struct _MAM{
     U32 CONTROL_REGISTER;
     U32 TIMING;          
-    U32 DUMMY01;         
-    U32 DUMMY02;         
-    U32 DUMMY03;         
-    U32 DUMMY04;         
-    U32 DUMMY05;         
-    U32 DUMMY06;         
-    U32 DUMMY07;         
-    U32 DUMMY08;         
-    U32 DUMMY09;         
-    U32 DUMMY10;         
-    U32 DUMMY11;         
-    U32 DUMMY12;         
-    U32 DUMMY13;         
-    U32 DUMMY14;         
+    U32 DUMMY01[14];         
     U8  MEMORY_MAPPING_CONTROL; 
-    U8  DUMMY15;
-    U16 DUMMY16;
+    U8  DUMMY15[3];
 }LPC_MAM,*pLPC_MAM;
 
 /**
- * Definição da PLL 
+ * @brief Definition of the PLL structure
  **/
 typedef struct _PLL{
     U8    CONTROL;
-    U8    DUMMY01;
-    U16   DUMMY02;
+    U8    DUMMY01[3];
     U8    CONFIGURATION;
-    U8    DUMMY03;
-    U16   DUMMY04;
+    U8    DUMMY03[3];
     U16   STATUS;
     U16   DUMMY05;
     U8    FEED;
-    U8    DUMMY06;
-    U16   DUMMY07;
+    U8    DUMMY06[3];
 }LPC_PLL,*pLPC_PLL;
 
 /**
- * Definição do POWER
- * */
+ * @brief Definition of the POWER structure
+ **/
 typedef struct _POWER{
     U32   POWER_CONTROL;
     U32   POWER_CONTROL_PERIPHERICAL;
@@ -91,14 +71,14 @@ typedef struct _POWER{
 
 
 /**
- * Definição do APB 
+ * @brief Definition of the APB structure
  **/
 typedef struct _APB{
     U32   APBDIV;
 }LPC_APB,*pLPC_APB;
 
 /**
- * Definiçaõ do SCS 
+ * @brief Definition of the SCS structure
  **/
 typedef struct _SCS{
     U32   SCS;  
@@ -176,18 +156,7 @@ typedef struct _SCS{
 
 #define     __POWER_CONTROL_IDL_ENABLE__            ((U8 ) 0x01)
 #define     __POWER_CONTROL_PD_ENABLE__             ((U8 ) 0x02)
-/*
-#define     __PCTIM0_ENABLE__     ((U32 ) 0x000002)
-#define     __PCTIM1_ENABLE__     ((U32 ) 0x000004)
-#define     __PCUART0_ENABLE__    ((U32 ) 0x000008)
-#define     __PCUART1_ENABLE__    ((U32 ) 0x000010)
-#define     __PCPWM0_ENABLE__     ((U32 ) 0x000020)
-#define     __PCI2C_ENABLE__      ((U32 ) 0x000080)
-#define     __PCSPI_ENABLE__      ((U32 ) 0x000100)
-#define     __PCRTC_ENABLE__      ((U32 ) 0x000200)
-#define     __PCSSP_ENABLE__      ((U32 ) 0x200000)
-#define     __POWER_MASK__        ((U32 ) 0x2003BE)
-*/		
+		
 #define     __APBDIV_CLOCK_1_FOURTH_CLOCK__            ((U16) 0x0 )
 #define     __APBDIV_CLOCK_EQUAL_CLOCK__               ((U16) 0x1 )
 #define     __APBDIV_CLOCK_HALF_CLOCK__                ((U16) 0x2 )

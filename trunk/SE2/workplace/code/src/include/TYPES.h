@@ -1,4 +1,4 @@
-/**
+/*
 #=======================================================================
 # SE1   - Sistemas Embebidos 1
 #-----------------------------------------------------------------------
@@ -42,7 +42,7 @@ typedef   PU16  PWord;
 typedef   PU32  PDWord;
 
 /**
- * Definição da estrutura Data 
+ * @brief Date structure definition
  **/
 typedef struct _date{
   U16    year; 
@@ -50,7 +50,7 @@ typedef struct _date{
   U8     day;  
 }DATE;
 /**
- * Definição da estrutura Hora 
+ * @brief Time structure definition 
  **/
 typedef struct _time{
   U8     hour;
@@ -58,11 +58,11 @@ typedef struct _time{
   U8     second;  
 }TIME;
 
-enum boolean {false,true};
-typedef enum boolean Bool ;
+typedef enum boolean {false,true}Bool;
+
 
 /**
- * Definição da estrutura Data/Hora 
+ * @brief Date-Time structure definition
  **/
 typedef struct _datetime{
   DATE date;

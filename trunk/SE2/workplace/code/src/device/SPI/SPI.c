@@ -1,4 +1,4 @@
-/**
+/*
 #=======================================================================
 # SE1   - Sistemas Embebidos 1
 #-----------------------------------------------------------------------
@@ -17,18 +17,18 @@
 # ISEL  - Instituto Superior de Engenharia de Lisboa
 #=======================================================================
 **/ 
+#include "LPC21XX.h"
 #include "SPI.h"
 #include "SPI_Public.h"
 #include "POWER.h"
 #include "startosc.h"
-#include "LPC21XX.h"
 #include "VIC.h"
 
 
 static void (*spiIRQ)(void) = 0;
 
 
-/**
+/*
  * Remark on Page 158:
  * The following features and registers are available in LPC2104/01, LPC2105/01, 
  * and LPC2106/01 only: 
@@ -40,7 +40,7 @@ static void (*spiIRQ)(void) = 0;
  **/
 
 
-/**
+/*
  * SPI_init();
  * According to the Manual:
  * "The SPI peripheral is configured using the following registers:
@@ -58,6 +58,12 @@ static void (*spiIRQ)(void) = 0;
  *    interface in the VIC.
  * U8 clockDivider
  * */
+ /**
+  * @brief Spi devices init
+  * @param devices: pointer to an array of SPI_Devices
+  * @param nbrDevices: number of devices in the array
+  * @return: @see SPI_ERRORS
+  **/
 U8 SPI_init( pSPI_Device devices, S32 nbrDevices){
   U32 chipSelect = 0;
   if (devices == 0 || nbrDevices == 0){
@@ -85,7 +91,7 @@ U8 SPI_init( pSPI_Device devices, S32 nbrDevices){
     }
     /*Correct the number of bits to transfer by default. When nbrbits is 0, by default will transmit 16 bits each time*/
     if (devices[nbrDevices].nbrbits < 8 && devices[nbrDevices].nbrbits > 0 ){
-      devices[nbrDevices].nbrbits = 8;
+      return SPI_INVALID_NUMBER_OF_BITS;
     }
     chipSelect |= devices[nbrDevices].chipSelect;
     devices[nbrDevices].started=1;
@@ -103,7 +109,7 @@ U8 SPI_init( pSPI_Device devices, S32 nbrDevices){
   return SPI_SUCESS;
 }
 
-/**
+/*
  4.3.2 Master operation
 	The following sequence describes how to process a data transfer with the SPI block when
 	it is set up as the master. This process assumes that any prior data transfer has already
@@ -121,6 +127,11 @@ U8 SPI_init( pSPI_Device devices, S32 nbrDevices){
 	bit. Therefore, if the optional read of the SPI data register does not take place, a write to
 	this register is required in order to clear the SPIF status bit.
 */
+/**
+ * @brief Start the device
+ * @param device: pointer to the device to be started
+ * @return SPI_DEVICE_NOT_STARTED if the device is not started, SPI_SUCESS otherwise. @see SPI_ERRORS
+ * */
 U8 SPI_start_device(pSPI_Device device){
   U16 clear;
   if (device->started == 0){
@@ -152,12 +163,24 @@ U8 SPI_start_device(pSPI_Device device){
 	return SPI_SUCESS;
   
 }
-
+/**
+ * @brief stop the device
+ * @param device: pointer to the device to be stopped
+ * */
 void SPI_stop_device(pSPI_Device device){
   gpio_clear(device->chipSelect);
   pSPI->CONTROL &= ~__SPCR_MSTR__;	
 }
 
+/**
+ * @brief Transfer Data
+ * @param device: pointer to the device to be stopped
+ * @param size: number of bytes to be transmitted
+ * @param tx_data: pointer to char buffer with the data to be transmitted
+ * @param rx_buffer: pointer to char buffer with the data to be filled with the reception
+ * @todo Verify and Test SPI Errors
+ * @return SPI_SUCESS
+ * */
 U8 SPI_transfer(pSPI_Device device, U32 size, const U8 *tx_data, U8 *rx_buffer){
   const U8 *send = tx_data;
   U8 *receive  = rx_buffer;
@@ -174,7 +197,7 @@ U8 SPI_transfer(pSPI_Device device, U32 size, const U8 *tx_data, U8 *rx_buffer){
   return SPI_SUCESS;
 }
 
-/*TODO: Code for Slave mode*/
+/** @todo: Code for Slave mode*/
 /*
 4.3.3 Slave operation
 	The following sequence describes how to process a data transfer with the SPI block when

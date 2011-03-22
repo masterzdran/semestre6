@@ -19,7 +19,7 @@ int main(){
       10,   /*clock divider */
       1<<8,    /*id do periferico = GPIO pin 8*/
       8,    /*num bits palavra*/
-      SPI_Prior_to_first_SCK_rising_edge,    /*mode*/
+      SPI_PRIOR_TO_FIRST_SCK_RISING_EDGE,    /*mode*/
       SPI_MASTER,    /*role = master*/
       0,    /*not started yet*/
       SPI_MSB     /*byte shitf ??*/

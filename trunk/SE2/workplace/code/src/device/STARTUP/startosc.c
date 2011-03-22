@@ -1,5 +1,8 @@
 #include  "startosc.h"
 
+/**
+ * @brief Oscilator initialization. This function should be used only once and be called in LPC startup in assembly
+ * */
 void StartOsc(void) {
   
     pPLL->CONFIGURATION =__PLL_P_VALUE__ | __PLL_M_VALUE__;
@@ -21,20 +24,9 @@ void StartOsc(void) {
     pAPBDIV->APBDIV = __APBDIV_CLOCK_EQUAL_CLOCK__;
 }
 
-SysClockInfo getSystemClockInfo(){
-  SysClockInfo systemClock;
-  U8 div  = (pAPBDIV->APBDIV) & 0x3;
-  U8 val  = pPLL->CONFIGURATION;
-
-  systemClock.m     = (val & 0x1F) +1;
-  systemClock.p     = 1<<((val >> 5) & 0x3);
-  systemClock.cclk  = __FOSC__ * (systemClock.m);
-  systemClock.fcco  = __FOSC__ * (systemClock.m) * (systemClock.p) * 2;
-  systemClock.div   = (div)?div:4;
-  systemClock.sclk  = (__FOSC__ * (systemClock.m ))/ ((div)?div:4);
-  return systemClock;    
-}
-
+/**
+ * @brief Get the current peripherical clock
+ * */
 U32 getPeriphericalClock(){
   U8 val = 0;
   U8 div  = (pAPBDIV->APBDIV) & 0x3;
