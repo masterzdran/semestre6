@@ -48,15 +48,16 @@
 #define __SPI_PRIOR_TO_FIRST_SCK_FALLING_EDGE__   (0x2 << 3)  /* CPOL = 1, CPHA = 0 */
 #define __SPI_FIRST_SCK_FALLING_EDGE__            (0x3 << 3)  /* CPOL = 1, CPHA = 1 */
 
-#define __SPI_CONFIG_PORT__               (__PINSEL0_SPI_SPP_SSEL__|__PINSEL0_SPI_SPP_MOSI__|__PINSEL0_SPI_SPP_MISO__|__PINSEL0_SPI_SPP_SCK__)
+#define __SPI_CONFIG_PORT__               	(__PINSEL0_SPI_SPP_SSEL__|__PINSEL0_SPI_SPP_MOSI__|__PINSEL0_SPI_SPP_MISO__|__PINSEL0_SPI_SPP_SCK__)
+#define __SPI_PORTS__               		(1<<4 | 1 << 5 | 1 << 6 | 1 << 7)
 
 typedef struct _SPI{
-    U8		CONTROL;
-    U8    DUMMY01[3];
+    U16		CONTROL;
+    U8    DUMMY01[2];
     U8		STATUS;
     U8    DUMMY02[3];
-    U8		DATA;
-    U8    DUMMY03[3];
+    U16		DATA;
+    U8    DUMMY03[2];
     U8		CLOCK_COUNTER;
     U8    DUMMY04[3];
 }LPC_SPI,*pLPC_SPI;

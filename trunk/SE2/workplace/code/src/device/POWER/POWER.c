@@ -20,10 +20,10 @@
 #include "POWER.h"
 
 void POWER_Off_Peripherical(ePWPeripherical peripherical){
-    pPower->POWER_CONTROL_PERIPHERICAL &= ~peripherical;
+    pPOWER->POWER_CONTROL_PERIPHERICAL &= ~peripherical;
 }
 void POWER_On_Peripherical(ePWPeripherical peripherical){
-    pPower->POWER_CONTROL_PERIPHERICAL|= peripherical;
+    pPOWER->POWER_CONTROL_PERIPHERICAL|= peripherical;
 }
 /**
  * Function that powerdown the device. According to the Manual, page 32:
@@ -32,7 +32,7 @@ void POWER_On_Peripherical(ePWPeripherical peripherical){
  * the PD bit to be cleared, and the processor to resume execution."
  * */
 void POWER_Down(){
-    pPower->POWER_CONTROL |= __PCON_PD__;
+    pPOWER->POWER_CONTROL |= __PCON_PD__;
 }
 /**
  * Function that turn the device into idle mode. According to the Manual, page 32:
@@ -42,6 +42,6 @@ void POWER_Down(){
  * resume execution."
  * */
 void POWER_Idle(){
-  pPower->POWER_CONTROL |= __PCON_IDL__;
+  pPOWER->POWER_CONTROL |= __PCON_IDL__;
 }
 

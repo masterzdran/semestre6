@@ -40,7 +40,7 @@ typedef enum _spi_byte_shift{
 typedef struct _SPI_DEVICE{
   const void (*irqHandler)(void);	/*função de tratamento de interrupções*/
   U32   clock;		      /*ritmo do sinal de relógio*/  
-  U32   chipSelect:4;	  /*define a identificação do periférico*/
+  U32   chipSelect;	  /*define a identificação do periférico*/
   U32   nbrbits:4;		  /*número de bits de uma palavra*/
   U32   mode:2;			    /*modo SPI (CPHA, CPOL). do tipo SPI_MODE*/
   U32   role:1;			    /*qual o papel do periferico: 1- Master; 0- Slave SPI_ROLE*/
@@ -48,7 +48,7 @@ typedef struct _SPI_DEVICE{
   U32   byteShift:1;    /*SPI_BYTE_SHIFT*/
 }SPI_Device,*pSPI_Device;
 
-U8 SPI_init( pSPI_Device devices, U32 nbrDevices);
+U8 SPI_init( pSPI_Device devices, S32 nbrDevices);
 U8 SPI_start_device(pSPI_Device device);
 void SPI_stop_device(pSPI_Device device);
 U8 SPI_transfer(pSPI_Device device, U32 size, const U8 *tx_data, U8 *rx_buffer);
