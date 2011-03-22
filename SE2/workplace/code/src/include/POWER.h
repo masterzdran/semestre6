@@ -2,15 +2,8 @@
 #define POWER_H
 #include "TYPES.h"
 #include "SCB.h"
+#include "LPC21XX.h"
 
-#define pPower    ((pLPC_POWER) 0xE01FC0C0)
-/*
-typedef struct _POWER{
-    U8 POWER_CONTROL;
-    U8 DUMMY[3];
-    U32 POWER_CONTROL_PERIPHERICAL;
-}LPC_POWER,*pLPC_POWER;
-*/
 
 #define __PCON_IDL__          0x000001
 #define __PCON_PD__           0x000002

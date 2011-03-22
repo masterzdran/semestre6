@@ -17,12 +17,12 @@ int main(){
     {
       0,
       10,   /*clock divider */
-      0,    /*id do periferico = 0*/
+      1<<8,    /*id do periferico = GPIO pin 8*/
       8,    /*num bits palavra*/
-      0,    /*mode*/
-      1,    /*role = master*/
+      SPI_Prior_to_first_SCK_rising_edge,    /*mode*/
+      SPI_MASTER,    /*role = master*/
       0,    /*not started yet*/
-      0     /*byte shitf ??*/
+      SPI_MSB     /*byte shitf ??*/
     }
   };
   TIMER_init(pTIMER1,58982400/MICRO);
@@ -35,25 +35,13 @@ int main(){
   WATCHDOG_init(0x0FFFFFFF);  
   interrupt_enable(); 
   */
-/*
-typedef struct _SPI_DEVICE{
-  const void (*irqHandler)(void);	*função de tratamento de interrupções*
-  U32   clock;		      *ritmo do sinal de relógio*  
-  U32   chipSelect:4;	  *define a identificação do periférico*
-  U32   nbrbits:4;		  *número de bits de u[]ma palavra*
-  U32   mode:2;			    *modo SPI (CPHA, CPOL). do tipo SPI_MODE*
-  U32   role:1;			    *qual o papel do periferico: 1- Master; 0- Slave SPI_ROLE*
-  U32   started:1;      *indicação se o periférico foi préviamente iniciada. Por omissão o mesmo deve estar a 0. Não se garante o comportamento caso na construção se coloque a 1.*
-  U32   byteShift:1;    *SPI_BYTE_SHIFT*
-}SPI_Device,*pSPI_Device;
-*/
-  
+
 
   
   SPI_init(spis, 1);
   
  
-	while(1){
+  while(1){
     U8 out_buffer[] = {0x35, 0x7a};
     U8 in_buffer[sizeof(out_buffer)];
     SPI_start_device(&spis[0]);
