@@ -1,4 +1,4 @@
-/**
+/*
 #=======================================================================
 # SE1   - Sistemas Embebidos 1
 #-----------------------------------------------------------------------
@@ -20,35 +20,37 @@
 #include "VIC.h"
 #include "SCB.h"
 /**
- * Inicialização do VIC
+ * @brief VIC init
  * */
 void VIC_init(){
     pVIC->IntEnClr                = 0xFFFFFFFF; 	  /*clear all interrupts*/
     pVIC->SoftIntClear            = 0xFFFFFFFF; 	  /*clear all sw interrupts*/
     pVIC->IntSelect               = 0;				      /*select IRQ*/
     /*pVIC->IntEnable               = 0xFFFFFFFF;*/ /*enable all interrupts*/
-	  /*pVIC_VECTDEFADDR->DefVectAddr = 0;			   */ /*clear old default isr address*/
-	  /*pVIC_VECTDEFADDR->VectAddr	  = 0;			   */ /*clear old isr address*/
+	/*pVIC_VECTDEFADDR->DefVectAddr = 0;			   */ /*clear old default isr address*/
+	/*pVIC_VECTDEFADDR->VectAddr	  = 0;			   */ /*clear old isr address*/
 }
 /**
- * Função que desactiva da interrupção provocada pela fonte 'peripherical'
+ * @brief Disable Irq 
+ * @param peripherical: disable interrupt of this peripherical
  * */
 void disableIRQ(U8 peripherical){
   pVIC->IntEnClr |=  (1 << peripherical);
 }
 
 /**
- * Função que activa da interrupção provocada pela fonte 'peripherical'
- **/
+ * @brief Enable Irq 
+ * @param peripherical: enable interrupt of this peripherical
+ * */
 void enableIRQ(U8 peripherical){
   pVIC->IntEnable |= (1 << peripherical);
 }
 
 /**
- * Configuração de uma interrupção, com os seguintes parametros:
- * U8 peripherical: identificação do periférico (Tabela de valores de Periférico)
- * U8 priority: prioridade a ser atribuida (0-15)
- * void (*fx)(void): função que vai tratar dessa interrupção
+ * @brief Vectored Interrupt configuration
+ * @param peripherical: id of the peripherical @see IRQ_SOURCE
+ * @param priority: valid value (0-15)
+ * @param (*fx): pointer to the interrupt handler function
  **/
 Bool VIC_ConfigIRQ(U8 peripherical, U8 priority,void (*fx)(void)){
   PU32 vicAddr = 0,vicCtrl=0;
@@ -66,11 +68,17 @@ Bool VIC_ConfigIRQ(U8 peripherical, U8 priority,void (*fx)(void)){
  return true;
 }
 
+/**
+ * @brief CPU interrupt enable
+ * */
 void interrupt_enable() {
 	asm("mrs r0, cpsr");
 	asm("bic r0, r0, #(3 << 6)");
 	asm("msr cpsr_c, r0");
 }
+/**
+ * @brief CPU interrupt disable
+ * */
 void interrupt_disable() {
 	asm("mrs r0, cpsr");
 	asm("orr r0, r0, #(3 << 6)");

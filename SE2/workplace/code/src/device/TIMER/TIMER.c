@@ -1,4 +1,4 @@
-/**
+/*
 #=======================================================================
 # SE1   - Sistemas Embebidos 1
 #-----------------------------------------------------------------------
@@ -20,48 +20,61 @@
 #include "SCB.h"
 #include "TIMER.h"
 
-/*
- * Possible Clock available:
- * 14745600 
- * 29491200
- * 44236800
- * 58982400     <--- Clock choosed (PCLCK = CCLKC)
-* */
-
+/**
+ * @defgroup TIMER_CONTROL_VALUES
+ * @{
+ */
 #define _Timer0_Capture_MAX 3
 #define _Timer1_Capture_MAX 2
 #define _Timer0_Match_MAX 2
 #define _Timer1_Match_MAX 2
+/**
+ * @}
+ */
 
-U8 timer_match_aux1;
-U8 timer_match_aux2;
 
+/**
+ * @brief Initialization of the timer
+ * @param timer: pointer to timer structure
+ * @param countNbr: value in whitch the timer pr is counting
+ * */
 void TIMER_init(pLPC_TIMER timer, U32 countNbr){
   timer->TCR    = __TCR_DISABLE__|__TCR_RESET_ENABLE__;
-  /*timer->CTCR   |= __CTCR_MODE_0__;*/ /*Model 00 This feature isn't avaiable*/
+  timer->CTCR   |= __CTCR_MODE_0__;
   timer->PR     = countNbr;                           
   timer->TCR    = __TCR_ENABLE__|__TCR_RESET_DISABLE__; 
 }
 
+/**
+ * @brief Timer delay. Wait for some time
+ * @param timer: pointer to timer structure
+ * @param elapse: value to be waited
+ * */
 void TIMER_delay(pLPC_TIMER timer, U32 elapse){
     U32 time;
     timer->PC = 0;                          
     time = timer_elapsed(timer,0);
     while(timer_elapsed(timer,time)<= elapse);
 }
+/**
+ * @brief Enable of the timer
+ * @param timer: timer to be enabled
+ */
 void TIMER_enable(pLPC_TIMER timer){
 	timer->TCR    = __TCR_ENABLE__|__TCR_RESET_DISABLE__;
 }
 /**
- * LPC_TIMER timer: Timer
- * TCapture timerCapture: Pin enable
- * U32 captureMask: Counting Method
- * U32 countNbr: Number of counting 
+ * @brief Init of Timer capture
+ * @param timer: pointer to timer structure
+ * @param channel: valid Timer Capture channel.0-2 in Timer 0, 0-1 in Timer 1
+ * @param captureMask: Counting Method
+ * @param countNbr: Number of counting
+ * @param ctcrFunction: valid value of timer capture mode
  * */
 
 void TIMER_capture_init(pLPC_TIMER timer,U8 channel, U32 captureMask, U32 countNbr,tCtcrFunction ctcrFunction){
-  U32 _Timer0_Capture_Mask[3]={__PINSEL0_TIMER_0_CAPTURE_0_0__,__PINSEL0_TIMER_0_CAPTURE_0_1__,__PINSEL0_TIMER_0_CAPTURE_0_2__};
-  U32 _Timer1_Capture_Mask[2]={__PINSEL0_TIMER_1_CAPTURE_1_0__,__PINSEL0_TIMER_1_CAPTURE_1_1__};
+  U32 _Timer0_Capture_Mask[3]={PINSEL0_TIMER_0_CAPTURE_0_0,PINSEL0_TIMER_0_CAPTURE_0_1,PINSEL0_TIMER_0_CAPTURE_0_2};
+  U32 _Timer1_Capture_Mask[2]={PINSEL0_TIMER_1_CAPTURE_1_0,PINSEL0_TIMER_1_CAPTURE_1_1};
 
   /*Enable GPIO for Timer Capture or Else*/
   if (timer  == pTIMER0 ){
@@ -83,17 +96,18 @@ void TIMER_capture_init(pLPC_TIMER timer,U8 channel, U32 captureMask, U32 countN
   timer->TCR                    = __TCR_ENABLE__|__TCR_RESET_DISABLE__; 
 }
 /**
- * LPC_TIMER timer: Timer
- * TMatch timerMatch: Pin enable
- * U32 MatchMask: Counting Method
- * U32 countNbr: Number of counting 
- * 
- * TODO: Working, need to be Generic...
+ * @brief Enable of External Match
+ * @param timer: pointer to timer structure
+ * @param channel: valid Timer Match channel.0-1 in Timer 0, 0-1 in Timer 1
+ * @param MatchMask: Counting Method
+ * @param countNbr: Number of counting 
+ * @param emrFunction: valid value of timer match mode
+ * @todo : Working, need to be Generic...
  * 
  * */
 void TIMER_ext_match_init(pLPC_TIMER timer,U8 channel, U32 MatchMask, U32 countNbr,tEmrFunction emrFunction){
-  U32 _Timer1_Match_Mask[2]={__PINSEL0_TIMER_1_MATCH_1_0__,__PINSEL0_TIMER_1_MATCH_1_1__};
-  U32 _Timer0_Match_Mask[2]={__PINSEL0_TIMER_0_MATCH_0_0__,__PINSEL0_TIMER_0_MATCH_0_1__};
+  U32 _Timer1_Match_Mask[2]={PINSEL0_TIMER_1_MATCH_1_0,PINSEL0_TIMER_1_MATCH_1_1};
+  U32 _Timer0_Match_Mask[2]={PINSEL0_TIMER_0_MATCH_0_0,PINSEL0_TIMER_0_MATCH_0_1};
   if (timer  == pTIMER0 ){
     if (channel >= _Timer0_Match_MAX)
       return;
@@ -112,57 +126,39 @@ void TIMER_ext_match_init(pLPC_TIMER timer,U8 channel, U32 MatchMask, U32 countN
   timer->EMR    |= (1<<channel) | ((emrFunction << 2*channel)<<4) ;                              
   if(MatchMask & __MATCH_INTERRUPT__)
 	  timer->IR		= (1<<channel);
-  /*After being configured needs to be started*/
-  /*timer->TCR    = __TCR_ENABLE__|__TCR_RESET_DISABLE__;*/
-  timer_match_aux1=2;
-  timer_match_aux2=1;
-
 }
 
-void TIMER_ext_match_changeTime(pLPC_TIMER timer,U8 channel, U8 up, U8 dif){
-  if ((timer_match_aux2-dif)<0 || (timer_match_aux2+dif)>200)
-	return;
-	
-  timer->TCR    = __TCR_DISABLE__|__TCR_RESET_ENABLE__;
-  if (up){
-	for (;dif>0;--dif){
-	  *(&(timer->MR0) + channel)*=(timer_match_aux2++);
-	  *(&(timer->MR0) + channel)/=(timer_match_aux1++);
-	}
-  }else{
-	for (;dif>0;--dif){
-	  *(&(timer->MR0) + channel)*=(--timer_match_aux1);
-	  *(&(timer->MR0) + channel)/=(--timer_match_aux2);
-	}
-  }
-  timer->TCR    = __TCR_ENABLE__|__TCR_RESET_DISABLE__;
-}
-/*
-void TIMER_ext_match_stop(pLPC_TIMER timer){
-  timer->TCR    = __TCR_DISABLE__|__TCR_RESET_ENABLE__;
-}
-
-void TIMER_ext_match_start(pLPC_TIMER timer){
-  timer->TCR    = __TCR_ENABLE__|__TCR_RESET_DISABLE__;
-}
-*/
+/**
+ * @brief External Match stop
+ * @param timer: pointer to timer structure
+ * @param channel: valid Timer Match channel.0-1 in Timer 0, 0-1 in Timer 1
+ * @param emrFunction: valid value of timer match mode
+ * */
 void TIMER_ext_match_stop(pLPC_TIMER timer,U8 channel, U32 emrFunction){
   timer->TCR    = __TCR_DISABLE__|__TCR_RESET_ENABLE__;
   timer->EMR    &= ~(1<<channel) | ~((emrFunction << 2*channel)<<4);
   timer->TCR    = __TCR_ENABLE__|__TCR_RESET_DISABLE__;   
 }
-
+/**
+ * @brief External Match start
+ * @param timer: pointer to timer structure
+ * @param channel: valid Timer Match channel.0-1 in Timer 0, 0-1 in Timer 1
+ * @param emrFunction: valid value of timer match mode
+ * */
 void TIMER_ext_match_start(pLPC_TIMER timer,U8 channel, U32 emrFunction){
   timer->TCR    = __TCR_DISABLE__|__TCR_RESET_ENABLE__;
   timer->EMR    |= (1<<channel) | ((emrFunction << 2*channel)<<4);
   timer->TCR    = __TCR_ENABLE__|__TCR_RESET_DISABLE__;   
 }
+
+
 /**
- * LPC_TIMER timer: Timer
- * TMatch timerMatch: Pin enable
- * U32 MatchMask: Counting Method
- * U32 countNbr: Number of counting 
- * Not Tested:Deprecated
+ * @brief Timer match init
+ * @param timer:  pointer to timer structure
+ * @param timerMatch: Pin enable
+ * @param MatchMask: Counting Method
+ * @param countNbr: Number of counting 
+ * @warning Not Tested:Deprecated
  * */
 void TIMER_match_init(pLPC_TIMER timer,TMatch timerMatch, U32 MatchMask, U32 countNbr){
   /*Enable GPIO for Timer Capture or Else*/

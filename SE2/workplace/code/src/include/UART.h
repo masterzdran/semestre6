@@ -46,6 +46,7 @@ typedef enum{
   UART_NOT_INITIATED  
 }UART_ERRORS;
 
+
 typedef struct{
   pLPC_UART   uartAddr;
   U32         baudrate;

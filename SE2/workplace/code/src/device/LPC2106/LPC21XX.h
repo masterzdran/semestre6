@@ -17,6 +17,15 @@
 # ISEL  - Instituto Superior de Engenharia de Lisboa
 #=======================================================================
 */
+/**
+ * @author Nuno Cancelo, (nuno.cancelo<at>gmail.com)
+ * @author Nuno Sousa,   (ng.sousa<at>gmail.com)
+ * @date November/2010
+ * 
+ * @file  LPC21XX.h
+ * @brief Module to configure GPIO ports of LPC2106 from Philips
+ * 
+ * */
 #ifndef LPC21XX_H
 #define LPC21XX_H
 #include "LPC2106.h"

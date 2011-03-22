@@ -1,6 +1,4 @@
 /*
- * @defgroup HEADER_FILES
- * @{
 #=======================================================================
 # SE1   - Sistemas Embebidos 1
 #-----------------------------------------------------------------------
@@ -18,15 +16,14 @@
 # DEETC - Dep. de Eng. Electrónica e Telecomunicações e Computadores
 # ISEL  - Instituto Superior de Engenharia de Lisboa
 #=======================================================================
- * @}
 */
-
 /**
  * @author Nuno Cancelo, (nuno.cancelo<at>gmail.com)
+ * @author Nuno Sousa,   (ng.sousa<at>gmail.com)
  * @date November/2010
  * 
- * @file GPIO.h
- * @brief This header file has the needed configuration to work with GPIO ports of LPC2106 from Philips.
+ * @file  GPIO.h
+ * @brief Module to configure GPIO ports of LPC2106 from Philips
  * 
  * */
 #ifndef GPIO_H
@@ -35,7 +32,7 @@
 #include "LPC21XX.h"
 
 /**
- * @brief Macro definition of the GPIO fucntions. This definition simplify the function mask of each port, so it could be easy to switch function. @see GPIO Functions
+ * @brief Macro definition of the GPIO functions. This definition simplify the function mask of each port, so it could be easy to switch function. @see GPIO Functions
  * @defgroup FUNCTION_MASK
  * @{
  */
@@ -49,17 +46,67 @@
 /**
  * @brief Definition of the direction of the Port. Should be used when working with GPIO methods.
  */
-typedef enum _gpio_direction{GPIO_IN=0x0,GPIO_OUT=0x1}GPIO_DIRECTION;
+typedef enum {GPIO_IN=0x0,GPIO_OUT=0x1}GPIO_DIRECTION;
 
 /**
  * @brief Definition of the various functions specified for PINSEL0. 
  * @details 
- * These macro shoul be used when one (or several) funtion(s) is wished. These macros should be used when gpio_init(U32 pinsel0_mask,U32 pinsel1_mask),gpio_init_PINSEL0(U32 mask),gpio_init_PINSEL1(U32 mask) is used.
+ * This enum should be used when one (or several) funtion(s) is wished. These macros should be used when gpio_init(U32 pinsel0_mask,U32 pinsel1_mask),gpio_init_PINSEL0(U32 mask),gpio_init_PINSEL1(U32 mask) is used.
  * @remarks Since we used JTAG to program the LPC2106, the definition of PINSEL1 are not defined.
  * @todo Define PINSEL1 funtions to take advantage of all functionlities of LPC2106.
- * @defgroup GPIO_FUNTIONS
- * @{
  **/
+typedef enum {
+	PINSEL0_GPIO_PORT_0_0       =	(FUNCTION_0 << (PORT * 0)),
+	PINSEL0_UART_0_TXD          =	(FUNCTION_1 << (PORT * 0)),
+	PINSEL0_PWM_1               =	(FUNCTION_2 << (PORT * 0)),
+	PINSEL0_GPIO_PORT_0_1       =	(FUNCTION_0 << (PORT * 1)),
+	PINSEL0_UART_0_RXD          =	(FUNCTION_1 << (PORT * 1)),
+	PINSEL0_PWM_3               =	(FUNCTION_2 << (PORT * 1)),
+	PINSEL0_GPIO_PORT_0_2       =	(FUNCTION_0 << (PORT * 2)),
+	PINSEL0_I2C_SCL             =	(FUNCTION_1 << (PORT * 2)),
+	PINSEL0_TIMER_0_CAPTURE_0_0 =	(FUNCTION_2 << (PORT * 2)),
+	PINSEL0_GPIO_PORT0_3        =	(FUNCTION_0 << (PORT * 3)),
+	PINSEL0_I2C_SDA             =	(FUNCTION_1 << (PORT * 3)),
+	PINSEL0_TIMER_0_MATCH_0_0   =	(FUNCTION_2 << (PORT * 3)),
+	PINSEL0_GPIO_PORT_0_4       =	(FUNCTION_0 << (PORT * 4)),
+	PINSEL0_SPI_SPP_SCK         =	(FUNCTION_1 << (PORT * 4)),
+	PINSEL0_TIMER_0_CAPTURE_0_1 =	(FUNCTION_2 << (PORT * 4)),
+	PINSEL0_GPIO_PORT_0_5       =	(FUNCTION_0 << (PORT * 5)),
+	PINSEL0_SPI_SPP_MISO        =	(FUNCTION_1 << (PORT * 5)),
+	PINSEL0_TIMER_0_MATCH_0_1   =	(FUNCTION_2 << (PORT * 5)),
+	PINSEL0_GPIO_PORT_0_6       =	(FUNCTION_0 << (PORT * 6)),
+	PINSEL0_SPI_SPP_MOSI        =	(FUNCTION_1 << (PORT * 6)),
+	PINSEL0_TIMER_0_CAPTURE_0_2 =	(FUNCTION_2 << (PORT * 6)),
+	PINSEL0_GPIO_PORT_0_7       =	(FUNCTION_0 << (PORT * 7)),
+	PINSEL0_SPI_SPP_SSEL        =	(FUNCTION_1 << (PORT * 7)),
+	PINSEL0_PWM_2               =	(FUNCTION_2 << (PORT * 7)),
+	PINSEL0_GPIO_PORT_0_8       =	(FUNCTION_0 << (PORT * 8)),
+	PINSEL0_UART_1_TXD          =	(FUNCTION_1 << (PORT * 8)),
+	PINSEL0_PWM_4               =	(FUNCTION_2 << (PORT * 8)),
+	PINSEL0_GPIO_PORT_0_9       =	(FUNCTION_0 << (PORT * 9)),
+	PINSEL0_UART_1_RXD          =	(FUNCTION_1 << (PORT * 9)),
+	PINSEL0_PWM_6               =	(FUNCTION_2 << (PORT * 9)),
+	PINSEL0_GPIO_PORT_0_10      =	(FUNCTION_0 << (PORT *10)),
+	PINSEL0_UART_1_RTS          =	(FUNCTION_1 << (PORT *10)),
+	PINSEL0_TIMER_1_CAPTURE_1_0 =	(FUNCTION_2 << (PORT *10)),
+	PINSEL0_GPIO_PORT_0_11      =	(FUNCTION_0 << (PORT *11)),
+	PINSEL0_UART_1_CTS          =	(FUNCTION_1 << (PORT *11)),
+	PINSEL0_TIMER_1_CAPTURE_1_1 =	(FUNCTION_2 << (PORT *11)),
+	PINSEL0_GPIO_PORT_0_12      =	(FUNCTION_0 << (PORT *12)),
+	PINSEL0_UART_1_DSR          =	(FUNCTION_1 << (PORT *12)),
+	PINSEL0_TIMER_1_MATCH_1_0   =	(FUNCTION_2 << (PORT *12)),
+	PINSEL0_GPIO_PORT_0_13      =	(FUNCTION_0 << (PORT *13)),
+	PINSEL0_UART_1_DTR          =	(FUNCTION_1 << (PORT *13)),
+	PINSEL0_TIMER_1_MATCH_1_1    =	(FUNCTION_2 << (PORT *13)),
+	PINSEL0_GPIO_PORT_0_14      =	(FUNCTION_0 << (PORT *14)),
+	PINSEL0_UART_1_DCD          =	(FUNCTION_1 << (PORT *14)),
+	PINSEL0_EINT_1              =	(FUNCTION_2 << (PORT *14)),
+	PINSEL0_GPIO_PORT_0_15      =	(FUNCTION_0 << (PORT *15)),
+	PINSEL0_UART_1_RI           =	(FUNCTION_1 << (PORT *15)),
+	PINSEL0_EINT_2              =	(FUNCTION_2 << (PORT *15))
+}PINSEL0_FUNCTIONS;
+ 
+/* 
 #define     __PINSEL0_GPIO_PORT_0_0__       (FUNCTION_0 << (PORT * 0))
 #define     __PINSEL0_UART_0_TXD__          (FUNCTION_1 << (PORT * 0))
 #define     __PINSEL0_PWM_1__               (FUNCTION_2 << (PORT * 0))
@@ -108,8 +155,9 @@ typedef enum _gpio_direction{GPIO_IN=0x0,GPIO_OUT=0x1}GPIO_DIRECTION;
 #define     __PINSEL0_GPIO_PORT_0_15__      (FUNCTION_0 << (PORT *15))
 #define     __PINSEL0_UART_1_RI__           (FUNCTION_1 << (PORT *15))
 #define     __PINSEL0_EINT_2__              (FUNCTION_2 << (PORT *15))
+*/
+
 /**
- * @}
  * @brief GPIO data type structure. This struct has the needed fields name to communicate with the lpc registers.
  * @details 
  * IOPIN: GPIO Port Pin value register.
@@ -123,63 +171,18 @@ typedef enum _gpio_direction{GPIO_IN=0x0,GPIO_OUT=0x1}GPIO_DIRECTION;
  * Should use gpio_init(U32 pinsel0_mask,U32 pinsel1_mask),gpio_init_PINSEL0(U32 mask),gpio_init_PINSEL1(U32 mask) functions, so this register could be properly read.
  **/ 
 typedef struct _GPIO{
-	U32 IOPIN;	/* GPIO Port Pin value register.             0xE002 8000*/
-	U32 IOSET;	/* GPIO Port Output Set register.            0xE002 8004*/
-	U32 IODIR;	/* GPIO Port Direction control register.     0xE002 8008*/
-	U32 IOCLR;	/* GPIO Port Output Clear register.          0xE002 800C*/
+	U32 IOPIN;	
+	U32 IOSET;	
+	U32 IODIR;	
+	U32 IOCLR;	
 }LPC_GPIO,*pLPC_GPIO;
 
-
-/**
- * @brief Read GPIO port defined by 'mask' and return the value read
- * @param U32 mask: bitmap mask with the activated bits of the port to be read
- * @return U32
- **/
 U32 gpio_read(U32 mask);
-
-/**
- * @brief clear bits defined by 'mask' of gpio port
- * @param U32 mask: bitmap mask with the bits to be cleared
- * @warning The action write 'ZERO' the every bit of the mask.
- **/ 
 void gpio_clear(U32 mask);
-/**
- * @brief Set bit defined by the 'mask' in gpio port
- * @param U32 mask: bitmap mask with the bits to be setted.
- * @warning The action write 'ONE' the every bit of the mask.
- **/ 
 void gpio_set(U32 mask);
-/**
- * @brief This method write the value in the bits define by the mask.
- * @param U32 mask: bitmap mask which are needed to be written.
- * @param U32 value: value to be written in the bits of the mask.
- * @warning The 'value' should be set before the be written in the bits of mask. No shift will be made to set the @param value in the port.
- * @warning Before writing the @param value, the bits defined by the mask will be cleared. All value processing of the return should be made by the calling program.
- **/ 
 void gpio_write(U32 mask, U32 value );
-/**
- * @brief Initialization of GPIO port setting the masks of the parameters.
- * @param U32 pinsel0_mask: mask of the bits to be set with the desired GPIO Function (PINSEL0)
- * @param U32 pinsel1_mask: mask of the bits to be set with the desired GPIO Function (PINSEL1)
- **/
 void gpio_init(U32 pinsel0_mask,U32 pinsel1_mask);
-/**
- * @brief Define the direction of GPIO port defined by the mask
- * @param U32 mask: bitmap mask of the bit needed to be directed
- * @param U8 direction: Direction of the port. Should use typedef enum _gpio_direction to set an valid value.
- **/ 
 void gpio_set_direction(U32 mask, U8 direction);
-/**
- * @brief Initialization of GPIO port setting the masks of the parameters.
- * @param U32 mask: mask of the bits to be set with the desired GPIO Function (PINSEL0)
- **/
 void gpio_init_PINSEL0(U32 mask);
-/**
- * @brief Initialization of GPIO port setting the masks of the parameters.
- * @param U32 mask: mask of the bits to be set with the desired GPIO Function (PINSEL1)
- **/
 void gpio_init_PINSEL1(U32 mask);
-
-
-
 #endif

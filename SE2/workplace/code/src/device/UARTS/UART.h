@@ -4,6 +4,9 @@
 #include "LPC21XX.h"
 #include "startosc.h"
 
+/**
+ * @brief UART structure definition
+ * */
 typedef struct _UART{
   union{                  /*Addr: 0xE000 C000*/
     U8    RBR;
@@ -42,13 +45,13 @@ typedef struct _UART{
 }LPC_UART,*pLPC_UART;
 
 
-/**
+/*
  * Dividers:
  * D1 = PCLK / (16 * (256 *UnDLM + UnDLL))
  * D2 = D1 * 1 / (1 + DIVADDVAL/MULVAL)
  **/
  
- /**
+ /*
   * Conditions:
   * The value of MULVAL and DIVADDVAL should comply to the following conditions:
   * 1. 0 < MULVAL ≤ 15
@@ -58,12 +61,17 @@ typedef struct _UART{
   * */
 
 
-#define DLL_MASK                        (0xFF)
-/**
+
+/*
  Auto-Baud:
 ratemin = (2 * PCLK)/(16 * 2^15) <= UART0baud <= (PCLK)/(16 * (2 + databits + paritybits +stopbits)) = ratemax
 read page 94
 **/
+/**
+ * @defgroup UART_CONFIG_MACRO
+ * @{
+ * */
+#define DLL_MASK                        (0xFF)
 #define __FDR_BAUD_RATE_DIVISOR_VALUE__         (0x0F)
 #define __FDR_BAUD_RATE_MULTIPLIER_VALUE__      (0xF0)
 #define __FDR_RESERVERD__        ~(0xFF)
@@ -135,12 +143,10 @@ read page 94
 #define __UTER_RESERVED__                   ~(0x1 << 7)
 #define __UTER_TXEN__                   ~(0x1 << 7)
 
-
-
 #define UART_STOP_BIT_SHIFT           (0x2)
 #define UART_PARATY_CONFIG_SHIFT      (0x4)
-#define  UART0_PISEL  (__PINSEL0_UART_0_RXD__|__PINSEL0_UART_0_TXD__)
-#define  UART1_PISEL  (__PINSEL0_UART_1_CTS__|__PINSEL0_UART_1_DCD__|__PINSEL0_UART_1_DSR__|__PINSEL0_UART_1_DTR__ |__PINSEL0_UART_1_RI__| __PINSEL0_UART_1_RTS__ | __PINSEL0_UART_1_RXD__ |__PINSEL0_UART_1_TXD__)
+#define  UART0_PISEL  (PINSEL0_UART_0_RXD|PINSEL0_UART_0_TXD)
+#define  UART1_PISEL  (PINSEL0_UART_1_CTS|PINSEL0_UART_1_DCD|PINSEL0_UART_1_DSR|PINSEL0_UART_1_DTR|PINSEL0_UART_1_RI|PINSEL0_UART_1_RTS|PINSEL0_UART_1_RXD|PINSEL0_UART_1_TXD)
 
 #define  DATA_CONFIG(A)  ((A)->bits | (A)->stopbits << UART_STOP_BIT_SHIFT | __ULCR_PARITY_ENABLE__ | (A)->parity << UART_PARATY_CONFIG_SHIFT)
 
@@ -152,5 +158,7 @@ read page 94
 #define  ULSR_TRANSMITTER_HOLDING_REGISTER_EMPTY(A)     ((A)->uartAddr->LSR & __ULSR_TRANSMITTER_HOLDING_REGISTER_EMPTY__)
 #define  ULSR_TRANSMITTER_EMPTY(A)                      ((A)->uartAddr->LSR & __ULSR_TRANSMITTER_EMPTY__)
 #define  ULSR_ERROR_IN_RX_FIFO(A)                       ((A)->uartAddr->LSR & __ULSR_ERROR_IN_RX_FIFO__)
-
+/**
+ * @}
+ **/
 #endif

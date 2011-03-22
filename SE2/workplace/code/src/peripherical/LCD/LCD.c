@@ -90,7 +90,7 @@ void LCD_init(pLPC_TIMER timer){
     /* Begin inicialization */
 
     ptimer=timer;
-    gpio_init_PINSEL0(__PINSEL0_GPIO_PORT_0_11__|__PINSEL0_GPIO_PORT_0_10__|__PINSEL0_GPIO_PORT_0_9__|__PINSEL0_GPIO_PORT_0_8__|__PINSEL0_GPIO_PORT_0_7__|__PINSEL0_GPIO_PORT_0_6__);
+    gpio_init_PINSEL0(PINSEL0_GPIO_PORT_0_11|PINSEL0_GPIO_PORT_0_10|PINSEL0_GPIO_PORT_0_9|PINSEL0_GPIO_PORT_0_8|PINSEL0_GPIO_PORT_0_7|PINSEL0_GPIO_PORT_0_6);
     gpio_set_direction(LCD_GPIO_MASK,GPIO_OUT);
     gpio_clear(RS_MASK);
     gpio_clear(ENABLE_MASK);

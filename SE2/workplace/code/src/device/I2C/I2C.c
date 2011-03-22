@@ -29,6 +29,7 @@
  * */
 #define __PINSEL0_GPIO_I2C_SCL__      (0x3 << (PORT * 2))
 #define __PINSEL0_GPIO_I2C_SDA__      (0x3 << (PORT * 3))
+
 void I2C_init(){
   /*I2C Pin Select*/
   /*gpio_init_PINSEL0(__PINSEL0_GPIO_I2C_SCL__|__PINSEL0_GPIO_I2C_SDA__);*/

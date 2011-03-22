@@ -1,4 +1,4 @@
-/**
+/*
 #=======================================================================
 # SE1   - Sistemas Embebidos 1
 #-----------------------------------------------------------------------
@@ -20,7 +20,10 @@
 #include "WATCHDOG.h"
 #include "VIC.h"
 
-
+/**
+ * @brief Watchdog init
+ * @param value: countin value
+ * */
 void WATCHDOG_init(U32 value){
   /*
    * Set the watchdog timer constant reload value in WDTC register.
@@ -42,10 +45,10 @@ void WATCHDOG_init(U32 value){
   WD_ENABLE();							                                  /*enable WD*/
   WD_FEED();							
 }
-/*
- * When reseting the WatchDog Interrupts must be disabled.
- * If an interrupt occurs during feed sequence an abort condition will occur
- */
+
+/**
+ * @brief Reset of the watchdog. This method should be call to prevent watchdog call an interrupt.
+ * */
 void WD_reset(){
 	U32 int_enabled = pVIC->IntEnable;
 	pVIC->IntEnClr = int_enabled;

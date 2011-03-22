@@ -3,9 +3,13 @@
 #include "TYPES.h"
 #include "SCB.h"
     
-
+/**
+ * @defgroup START_OSC_CONFIG_MACROS
+ * @{
+ */
 #define     PLL_FEED()              {pPLL->FEED = __PLL_FEED_AA__; pPLL->FEED = __PLL_FEED_55__;}
 #define		__SYSTEM_CLOCK__		58982400
+
 typedef struct _system_clock{
   U32 cclk;
   U32 fcco;
@@ -16,7 +20,9 @@ typedef struct _system_clock{
   U8  DUMMY;  
 }SysClockInfo;
 
+/*
+ * @}
+ * */
 void StartOsc(void);
-SysClockInfo getSystemClockInfo();
 U32 getPeriphericalClock();
 #endif

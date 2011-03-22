@@ -2,14 +2,14 @@
 #include "UART_Public.h"
 #include "POWER.h"
 #include "GPIO.h"
-/**
+/*
 The following features and registers are available in LPC2104/01, LPC2105/01, and LPC2106/01 only:
   • Fractional baud rate controller: U0FDR (Table 9–82) / U1FDR (Table 10–99).
   • Auto-baud control: U0ACR (Table 9–91) / U1ACR (Table 10–111) and U0IIR/U0IER 
     bits 9:8 (Table 9–84 and Table 9–85) / U1IIR/U1IER bits 9:8 (Table 10–101 and Table 10–102).
   • Software flow control: U0TER (Table 9–92) / U1TER (Table 10–112).
 */
-/**
+/*
   Basic configuration
   The UART0 peripheral is configured using the following registers:
   1. Power: In the PCONP register (Table 3–27), set bit PCUART0.
@@ -35,7 +35,7 @@ The following features and registers are available in LPC2104/01, LPC2105/01, an
     (Table 10–105). This enables access to U1IER (Table 10–101). Interrupts are enabled
     in the VIC using the VICIntEnable register (Table 5–43).
 */
-/**
+/*
 The Divisor Latch Access
 Bit (DLAB) is contained in U0LCR[7] and enables access to the Divisor Latches.
 The divisor latches are used to determine the baud rate for all UART transfers. When
@@ -68,10 +68,10 @@ U32 UART_init(pUart uart){
   clock = periphericalClock /(16 * (uart->baudrate));
   
   if (uart->uartAddr == pUART0){
-    poweron = __PCUART0_ENABLE__;
+    poweron = PW_Uart0;
     pinsel =  UART0_PISEL;   
   }else{
-    poweron =  __PCUART1_ENABLE__;
+    poweron =  PW_Uart1;
     pinsel =   UART1_PISEL;    
   }
 
