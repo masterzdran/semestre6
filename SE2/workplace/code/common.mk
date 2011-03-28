@@ -17,16 +17,17 @@
 #=======================================================================#=======================================================================
 SOURCE				= $(PROJECT_PATH)/src
 DEVICE				= $(SOURCE)/device
-PERIPHERICAL	= $(SOURCE)/peripherical
+PERIPHERICAL		= $(SOURCE)/peripherical
+DEBUGGER			= $(SOURCE)/debugger
 TODEPLOY			= $(SOURCE)/deploy
 PROGRAM				= $(SOURCE)/program
 PCOMPILE			= $(SOURCE)/tests
 TARGET				= $(PROJECT_PATH)/target
-TEST					= $(PROJECT_PATH)/test
+TEST				= $(PROJECT_PATH)/test
 #=======================================================================
-MYLIB				= $(SOURCE)/lib
+MYLIB			= $(SOURCE)/lib
 INCLUDE			= $(SOURCE)/include
-CLIB				= $(SOURCE)/clib/lib
+CLIB			= $(SOURCE)/clib/lib
 CINCLUDE		= $(SOURCE)/clib/inc
 HEADER			= 
 SEARCHLIB		= -I$(MYLIB) -I$(INCLUDE)
@@ -35,9 +36,9 @@ CC 				= arm-eabi-gcc
 AS				= arm-eabi-as
 LD				= arm-eabi-ld
 AR				= arm-eabi-ar rcs
-OPENOCD		= openocd
+OPENOCD			= openocd
 #Debugger
-DEBUGGER		= arm-eabi-insight
+#DEBUGGER		= arm-eabi-insight
 #Commom Options
 OUTPUT 				= -o
 LDSCRIPT			= -T  
