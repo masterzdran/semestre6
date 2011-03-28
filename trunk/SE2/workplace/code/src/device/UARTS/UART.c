@@ -117,3 +117,7 @@ U32 UART_read(pUart uart,U8 *block, U32 size){
   }
   return UART_SUCCESS;  
 }
+
+U32 UART_receiver_data_ready(pUart uart){
+	return (uart->uartAddr->LSR & __ULSR_RECEIVER_DATA_READY__ );
+}

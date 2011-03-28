@@ -64,14 +64,14 @@ static void (*spiIRQ)(void) = 0;
   * @param nbrDevices: number of devices in the array
   * @return: @see SPI_ERRORS
   **/
-U8 SPI_init( pSPI_Device devices, S32 nbrDevices){
+U8 SPI_init( pSPI_Device devices, U32 nbrDevices){
   U32 chipSelect = 0;
   if (devices == 0 || nbrDevices == 0){
     return SPI_INVALID_PARAMETERS;     /* invalid parameters */
   }
   
     
-  while (--nbrDevices >=0 ){
+  while (nbrDevices-- >0 ){
     if (devices[nbrDevices].chipSelect & __SPI_PORTS__){
         return SPI_INVALID_PORT; /* invalid device port configuration */
     }

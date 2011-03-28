@@ -1,0 +1,53 @@
+#=======================================================================
+# SE1   - Sistemas Embebidos 1
+#-----------------------------------------------------------------------
+# Turma:	LI51N
+# Semestre:	Inverno 2010/2011
+# Data:		Novembro/2010
+#-----------------------------------------------------------------------
+# Nome: 	Nuno Cancelo
+# Numero:	31401
+#-----------------------------------------------------------------------
+# Nome:		Nuno Sousa
+# Numero:	33595
+#-----------------------------------------------------------------------
+# LEIC  - Licenciatura em Engenharia Informática e Computadores
+# DEETC - Dep. de Eng. Electrónica e Telecomunicações e Computadores
+# ISEL  - Instituto Superior de Engenharia de Lisboa
+#=======================================================================
+#															Base Make
+#=======================================================================
+#Shell Path
+SHELL			= /bin/sh
+#Environmental Paths
+SVN_PATH		= ./../../..
+#=======================================================================
+PROJECT_PATH	= $(SVN_PATH)/code
+#=======================================================================
+include $(PROJECT_PATH)/common.mk
+#=======================================================================
+#Phony Target
+.PHONY 					= clean
+.PHONY					= clear
+.PHONY					= all
+MAKEPATHS				= console
+#=======================================================================
+
+all: 
+	@echo "============================"
+	@echo "Compiling the Debugger Library"
+	@echo "============================"	
+	@$(foreach MPATH, $(MAKEPATHS), $(MAKE) -C $(DEBUGGER)/$(MPATH);)
+	$(AR) $(MYLIB)/libDebugger.a $(MYLIB)/*.o
+	@rm -rf $(MYLIB)/*.o	
+
+clean:
+	@echo "============================"
+	@echo "Cleaning the Debugger Library"
+	@echo "============================"	
+	@$(foreach MPATH, $(MAKEPATHS), $(MAKE) -C $(DEBUGGER)/$(MPATH) clean;)
+	@rm -rf $(MYLIB)/libDebugger.a
+	
+clear:
+	clear
+
