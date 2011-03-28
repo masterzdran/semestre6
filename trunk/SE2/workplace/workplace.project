@@ -41,6 +41,10 @@
           <File Name="code/src/peripherical/LCD/LCD.c"/>
         </VirtualDirectory>
         <File Name="code/src/peripherical/Makefile"/>
+        <VirtualDirectory Name="ENC28J60">
+          <File Name="code/src/peripherical/ENC28J60/ENC28J60.h"/>
+          <File Name="code/src/peripherical/ENC28J60/ENC28J60.c"/>
+        </VirtualDirectory>
       </VirtualDirectory>
       <VirtualDirectory Name="device">
         <VirtualDirectory Name="RTC">
