@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Session Name="/home/nac/Projects/SistemasEmbebidos/SE2/SE2.workspace">
-  <int Value="0" Name="m_selectedTab"/>
-  <wxString Value="/home/nac/Projects/SistemasEmbebidos/SE2/SE2.workspace" Name="m_workspaceName"/>
-  <TabInfoArray Name="TabInfoArray"/>
+<Session Name="/home/nac/ISEL/semestre6/SE2/workplace/SE2.workspace">
+  <int Value="1" Name="m_selectedTab"/>
+  <wxString Value="/home/nac/ISEL/semestre6/SE2/workplace/SE2.workspace" Name="m_workspaceName"/>
+  <TabInfoArray Name="TabInfoArray">
+    <TabInfo>
+      <wxString Value="/home/nac/ISEL/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/ENC28J60.h" Name="FileName"/>
+      <int Value="24" Name="FirstVisibleLine"/>
+      <int Value="112" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks">
+        <wxString Value="16"/>
+      </wxArrayString>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/nac/ISEL/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/ENC28J60.c" Name="FileName"/>
+      <int Value="40" Name="FirstVisibleLine"/>
+      <int Value="127" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/nac/ISEL/semestre6/SE2/workplace/code/src/device/TYPES/TYPES.h" Name="FileName"/>
+      <int Value="32" Name="FirstVisibleLine"/>
+      <int Value="19" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/nac/ISEL/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/Ethernet.c" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="2" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/nac/ISEL/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/Ethernet.h" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="3" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+  </TabInfoArray>
   <SerializedObject Name="m_breakpoints">
     <long Value="0" Name="Count"/>
   </SerializedObject>
