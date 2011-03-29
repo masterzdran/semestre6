@@ -10,16 +10,7 @@
       <VirtualDirectory Name="debugger">
         <VirtualDirectory Name="console">
           <File Name="code/src/debugger/console/console.c"/>
-          <File Name="code/src/debugger/console/console.h"/>
-          <VirtualDirectory Name="console_source">
-            <File Name="code/src/debugger/console/console_source/consoleXXX.c"/>
-            <File Name="code/src/debugger/console/console_source/consoleXXX.h"/>
-            <File Name="code/src/debugger/console/console_source/serialXXX.c"/>
-            <File Name="code/src/debugger/console/console_source/serialXXX.h"/>
-          </VirtualDirectory>
-          <File Name="code/src/debugger/console/Makefile"/>
         </VirtualDirectory>
-        <File Name="code/src/debugger/Makefile"/>
       </VirtualDirectory>
       <VirtualDirectory Name="collection">
         <VirtualDirectory Name="buffer">
@@ -27,7 +18,6 @@
           <File Name="code/src/collection/buffer/BUFFER.h"/>
           <File Name="code/src/collection/buffer/BUFFER"/>
           <File Name="code/src/collection/buffer/Makefile"/>
-          <File Name="code/src/collection/buffer/TYPES.h"/>
         </VirtualDirectory>
       </VirtualDirectory>
       <VirtualDirectory Name="peripherical">
@@ -50,7 +40,12 @@
           <File Name="code/src/peripherical/LCD/LCD.c"/>
         </VirtualDirectory>
         <File Name="code/src/peripherical/Makefile"/>
-        <VirtualDirectory Name="ENC28J60"/>
+        <VirtualDirectory Name="ENC28J60">
+          <File Name="code/src/peripherical/ENC28J60/ENC28J60.h"/>
+          <File Name="code/src/peripherical/ENC28J60/ENC28J60.c"/>
+          <File Name="code/src/peripherical/ENC28J60/Ethernet.c"/>
+          <File Name="code/src/peripherical/ENC28J60/Ethernet.h"/>
+        </VirtualDirectory>
       </VirtualDirectory>
       <VirtualDirectory Name="device">
         <VirtualDirectory Name="RTC">
@@ -152,7 +147,6 @@
         <VirtualDirectory Name="test">
           <File Name="code/src/tests/test/Makefile"/>
           <File Name="code/src/tests/test/test.c"/>
-          <File Name="code/src/tests/test/test.h"/>
         </VirtualDirectory>
       </VirtualDirectory>
       <VirtualDirectory Name="deploy">
@@ -208,16 +202,11 @@
         <File Name="code/src/include/string.h"/>
         <File Name="code/src/include/limits.h"/>
         <File Name="code/src/include/BUFFER.h"/>
-        <File Name="code/src/include/test.h"/>
       </VirtualDirectory>
       <File Name="code/src/Makefile"/>
     </VirtualDirectory>
     <File Name="code/Makefile"/>
     <File Name="code/Makefile - tacografo"/>
-    <VirtualDirectory Name="SE2">
-      <File Name="code/SE2/main.c"/>
-    </VirtualDirectory>
-    <File Name="code/common.mk"/>
   </VirtualDirectory>
   <Description/>
   <Dependencies/>
@@ -290,8 +279,4 @@
       </AdditionalRules>
     </Configuration>
   </Settings>
-  <VirtualDirectory Name="workplace">
-    <File Name="POWER_Public.h"/>
-    <File Name="SistemasEmbebidos2"/>
-  </VirtualDirectory>
 </CodeLite_Project>

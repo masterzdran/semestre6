@@ -14,8 +14,9 @@
 # LEIC  - Licenciatura em Engenharia Informática e Computadores
 # DEETC - Dep. de Eng. Electrónica e Telecomunicações e Computadores
 # ISEL  - Instituto Superior de Engenharia de Lisboa
+
 #=======================================================================
-#															test
+#															ENC28J60
 #=======================================================================
 #Shell Path
 SHELL			= /bin/sh
@@ -30,19 +31,14 @@ include $(PROJECT_PATH)/common.mk
 .PHONY 					= clean
 .PHONY					= clear
 #=======================================================================
-
-all: test.o
-
-test.o: test.c test.h
-	@echo "----------------------------------------------------------------------"
-	$(CC)  $(COPTIONS)  $(SEARCHLIB) $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $< 
-	cp $@ $(PROGRAM)/$@
-	cp test.h $(INCLUDE)/
+ENC28J60.o: ENC28J60.c ENC28J60.h
+	$(CC) $(SEARCHLIB) $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $< 
+	cp $@ $(MYLIB)/$@
+	cp ENC28J60.h $(INCLUDE)/
 	
 clean:
-	@echo "----------------------------------------------------------------------"
-	rm  test.o
-	rm  $(INCLUDE)/test.h
-	
+	rm  ENC28J60.o
+	rm  $(INCLUDE)/ENC28J60.h
+
 clear:
 	clear
