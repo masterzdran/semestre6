@@ -1,0 +1,43 @@
+2.
+
+using System;
+public struct Ponto {
+public int x, y;
+public static void Main() {
+Ponto p;
+p.x = p.y = 1;
+Object o = p;			//Boxing explicito
+p = (Point) o;			//unboxing
+p.x = 2;
+o=p;					//boxing implicito
+}
+}
+
+3.
+
+using System;
+public struct A { public int x; }
+public struct C :A { public int y; }
+public class B { public int w; }
+public class D : B { public int z;}
+public class Program{
+	public static void Main(){
+		A a;
+		Object o1 = a;		//boxing
+		Object o2 = a;		//boxing
+		B b= new D();		
+		D d= new B();		
+		o1.x = 2;
+		( (A) o2 ). x = 4;
+		A k = o2;
+		((D) b).z=3;
+		Console.WriteLine(a);
+		Console.WriteLine(k);
+		Console.WriteLine(o1);
+		Console.WriteLine(o2);
+		Console.WriteLine(b);
+		Console.WriteLine(d);
+	}
+}
+
+a)
