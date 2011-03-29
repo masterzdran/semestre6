@@ -1,0 +1,9 @@
+3.
+a)
+1 assembly (f2) composto por 3 módulos (f1, f2 e f3)
+
+b)
+f1:float64 (private) e M1
+f2: referencia o M1 do f1 e o M1 e M2 do f3
+f3:int 32 (private) e M1 e M2
+
