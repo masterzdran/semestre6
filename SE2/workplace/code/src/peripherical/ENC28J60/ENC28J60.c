@@ -57,24 +57,11 @@ static void ENC_bank_select(U8 bankNbr){
     ENC_write_control_register(ECON1,aux);    
 }
 
-static U8 ENC_read_reg8(U8 addressvoid write_physical_register(int addr, U16 data) {
-  reg_write8(MIREGADR, addr);
-  reg_write16(MIWRL, data);
-}
-
-U16 read_physical_register(int addr) {
-  U8 aux;
-  reg_write8(MIREGADR, addr);
-  bit_field_set(MICMD, MICMD_MIIRD);
-  do {
-    aux = reg_read8(MISTAT);
-  } while ((aux & MISTAT_BUSY) != 0);
-  bit_field_clear(MICMD, MICMD_MIIRD);
-  return reg_read16(MIRDL);
-}, U8 bankID){
+static U8 ENC_read_reg8(U8 address, U8 bankID){
     ENC_bank_select(bankID);
     return ENC_read_control_register(address);
 }
+
 static U16 ENC_read_reg16(U8 address, U8 bankID){
     U16 data = 0;
     ENC_bank_select(bankID);
@@ -111,7 +98,7 @@ void ENC_write_physical_register(U8 address, U16 data) {
     ENC_write_reg(MIWRL,BANK02,data,true);
 }
 
-U16 read_physical_register(int addr) {
+U16 read_physical_register(U8 address) {
   U8 aux;
   ENC_write_reg(MIREGADR,BANK02,address,false);
   ENC_bit_field_set(MICMD,MICMD_MIIRD);
