@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeLite_Workspace Name="SE2" Database="./SE2.tags">
+  <Project Name="workplace" Path="workplace.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Project Name="workplace" ConfigName="Debug"/>
+      <Project Name="workplace" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Project Name="workplace" ConfigName="Release"/>
+      <Project Name="workplace" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>
