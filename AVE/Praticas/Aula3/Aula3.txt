@@ -1,0 +1,349 @@
+|------------------------------------------------------------------------------------------|
+| 1)  Considere o seguinte troço de código em C#. Existem erros de compilação? Justifique. | 
+|------------------------------------------------------------------------------------------|
+Não é possível copiar tipos valor diferentes. Não é possível fazer conversões(explicitas ou 
+implicitas) porque não existe uma relação entre as estruturas.
+|------------------------------------------------------------------------------------------|
+| 2)  Considere o seguinte troço de código:												   |
+|------------------------------------------------------------------------------------------|
+struct Counter{ 
+  int value; 
+  public override string ToString() { 
+    return value.ToString(); 
+  } 
+  public void Increment() { value++;  } 
+} 
+
+class Program  { 
+   static void Main() { 
+      Counter x = new Counter(); 							//Nova variável tipo valor
+      object o = x; 										//Cópia da variável do tipo valor
+      x.Increment(); Console.WriteLine(x.ToString()); 		//incrementa x (x=1)
+      Console.WriteLine(o);                                 //O mantem a cópia do valor e não da referencia, logo o=0
+      ((Counter)o).Increment(); Console.WriteLine(o);       //Faz uma conversão para Counter e  incrementa. No então 
+															//  como é um objecto tipo valor, o incremento é efectuado 
+															//	no stack que é eliminado assim que sai da função. o = 0
+      Counter c = (Counter)x; 								//c fica com uma cópia de x (c = 1)
+      c.Increment(); Console.WriteLine(c);     				//incrementa o valor c. c = 2
+      Console.WriteLine(x);        							//x=1
+   } 
+}
+|------------------------------------------------------------------------------------------|
+| 3) Dadas as definições 																   |
+|------------------------------------------------------------------------------------------|
+	class A {
+		public virtual void m(){...}
+	} 
+	class B:A{
+		public virtual void m(){...}
+	}
+|------------------------------------------------------------------------------------------|	
+| a. Diga qual a relação entre os métodos m das duas classes. 							   |
+|------------------------------------------------------------------------------------------|
+Classe B extende de A e implementa o metodo m. Por ter a directiva virtual, é utilizado o 
+metodo da classe B sempre que for invocado.
+
+|------------------------------------------------------------------------------------------|
+| b. Considere a classe C:B{public override void m(){...}}.Qual a relação entre este 	   |
+| método m e os outros? 																   |
+|------------------------------------------------------------------------------------------|
+Classe C extende de B e redefine o metodo m. Por utilizar a directiva override, a chamada 
+ao metodo m, é executado o metodo da classe C.
+
+
+|------------------------------------------------------------------------------------------|
+|4)  Considere o seguinte troço de código.
+|...
+|class Program {  
+|	static void Main(string[] args){  
+|		  Point p1 = new Point(1, 2), p2 = new Point(3, 4);  
+|		  p1.add(p2, ref p2);  
+|		  Console.WriteLine("p1={0}, p2={1}", p1,p2);  
+|	}  
+|}  
+|------------------------------------------------------------------------------------------|
+| a)  Indique e justifique a informação apresentada na consola resultante da execução da   |
+| classe Program.  																		   |	
+|------------------------------------------------------------------------------------------|
+Uma vez que Point é um tipo valor, o seu conteudo valor é copiado. Desta forma temos dois 
+objectos com valores distintos.
+|------------------------------------------------------------------------------------------|
+| b)  Indique e justifique as alterações no output no caso do tipo Point ser definido como |
+| tipo referência.  																	   |
+|------------------------------------------------------------------------------------------|
+Uma vez que Point é um tipo referencia, o seu endereço é copiado. Desta forma temos dois 
+objectos a serem apontados para o mesmo endereço de memoria, e todas as alterações são 
+efectuadas sobre o mesmo. Desta forma no resultado aparecem o mesmo valor.
+
+|------------------------------------------------------------------------------------------|
+ 5)  Considere a seguinte definição das classes A, B, C e Printer:  
+ class A {  
+	public virtual void m(){ Console.WriteLine("I'm A"); }  
+ }  
+ class B:A {  
+	public override void m() { Console.WriteLine("I'm B"); }  
+ }  
+ class C:B {  
+	public void m() { Console.WriteLine("I'm C"); }  
+ }  
+ class Printer {  
+	public static void Print(C c) {  
+		((A) c).m();  
+		((B) c).m();  
+		c.m();  
+	}  
+ } 
+ a)  Indique e justifique a informação apresentada na consola resultante da execução de   
+ Printer.Print(new C());  
+|------------------------------------------------------------------------------------------|
+	A classe B faz override da função m, logo a chamada a esta função é executada o metodo de B.
+	A classe C redefine a função m. Como não tem a directiva virtual, presumo, que a função seja 
+  ratada como metodo da classe e não uma herança, pelo que na sua chamada é executado o seu metodo. 
+
+
+
+|------------------------------------------------------------------------------------------|
+ b)  Considere a definição da interface 
+ interface I { void m(); }  
+	 e as seguintes alterações às classes A e Printer:  
+ class A: I {...} 
+ class Printer { 
+	public static void Print(I c) { … } 
+ } 
+ Em relação à alínea anterior justifique quais as diferenças verificadas na execução de 
+	Printer.Print(new C()); 
+|------------------------------------------------------------------------------------------|
+   Como é implementada a interface I, todas as classes estão dentro do mesmo "contexto". 
+   Logo, quando classe B faz override do metodo define o comportamente de todas as classes da herança.
+
+|------------------------------------------------------------------------------------------|
+6)  Considere o seguinte troço de código: 
+	interface ICounter { void Increment(); } 
+	struct Counter: ICounter { 
+		int value; 
+		public override string ToString() { 
+		return value.ToString(); 
+		} 
+		public void Increment() { value++;  } 
+	}
+	class Program  { 
+		static void Main() { 
+			Counter x = new Counter(); 
+			  object o = x; 
+			  x.Increment(); Console.WriteLine(x.ToString()); 
+			  Console.WriteLine(o);                                           
+			  ((ICounter)o).Increment(); Console.WriteLine(o);     
+			  ICounter c = (ICounter)x; 
+			  c.Increment(); Console.WriteLine(c);     
+			  Console.WriteLine(x);        
+	   } 
+	}
+Diga, justificando, qual o output apresentado na consola após a execução do programa. 	
+|------------------------------------------------------------------------------------------|
+	  Counter x = new Counter(); 						// Novo objecto Counter que implementa ICounter
+	  object o = x; 									// Cast para Object
+	  x.Increment(); Console.WriteLine(x.ToString()); 	// Incrementa x. x=1;
+	  Console.WriteLine(o);                             // Object mantem-se. o = 0  	            
+	  ((ICounter)o).Increment(); Console.WriteLine(o);  // Incremento de object. Como é um tipo dados o resultado fica no stack. o = 0 <------- Question.
+	  ICounter c = (ICounter)x; 						// Copia o valor x para o valor c
+	  c.Increment(); Console.WriteLine(c);     			// incrementa c. c= 2
+	  Console.WriteLine(x);        						// x = 1
+|------------------------------------------------------------------------------------------|
+ 7)  Considere o seguinte troço de código.  
+ public interface I {void Ave();} 
+	public class A : I { 
+	  void I.Ave() { Console.WriteLine("A -> I"); } 
+	  public virtual void Ave() { 
+		Console.WriteLine("A");  
+	  } 
+	} 
+	public class B : A, I { 
+	  void I.Ave() { Console.WriteLine("B -> I"); } 
+	  public new virtual void Ave() {    
+		Console.WriteLine("B");  
+	  } 
+	} 
+	public class C : B { 
+	  public override void Ave() { 
+		Console.WriteLine("C");  
+	  } 
+	}
+	static class Program{ 
+	  static void Main(){ 
+		  C c = new C(); 
+		  B b = c; 
+		  A a = c; 
+		  I i = c; 
+	 
+		  c.Ave(); 
+		  b.Ave(); 
+		  a.Ave(); 
+		  i.Ave(); 
+	  } 
+	} 
+a)  Indique e justifique a informação apresentada na consola resultante da execução da classe 
+Program. 	
+|------------------------------------------------------------------------------------------|
+		  c.Ave();  imprime C, porque faz override do metodo 
+		  b.Ave();  imprime C, porque a classe C fez override do metodo e C extende de B
+		  a.Ave();  imprime A, porque A define um metodo virtual
+		  i.Ave();  imprime B->I, porque i é uma interface e é definido em B a sua composição. C por herança recebe o método.
+
+|------------------------------------------------------------------------------------------|
+ b)  Modificando apenas os atributos dos métodos, diga quais as alterações necessárias, de modo 
+ a que a execução das instruções c.Ave(); b.Ave(); a.Ave(); apresentem na consola: 
+ C B A. 
+|------------------------------------------------------------------------------------------|
+ basta tirar o override da definição do metodo em C.
+|------------------------------------------------------------------------------------------|
+8) 
+    interface I
+    {
+        void visit(Visitor v);
+        void print();
+    }
+
+    struct A : I
+    {
+        int n;
+        public void incN(int inc)
+        {
+            n += inc;
+        }
+        public void visit(Visitor v)
+        {
+            v.update(ref this);
+        }
+        public void print()
+        {
+            Console.WriteLine("A =" + n);
+        }
+    }
+    interface Visitor { void update(ref A a); }
+
+    class R1 : Visitor
+    {
+        public void update(ref A a) { a.incN(1); }
+    }
+
+    class R2 : R1
+    {
+        public virtual void update(ref A a) { a.incN(2); }
+    }
+
+    class R3 : R2, Visitor
+    {
+        public override void update(ref A a) { a.incN(31); }
+        void Visitor.update(ref A a) { a.incN(32); }
+    }
+
+    class Test
+    {
+        static void Main()
+        {
+            A a = new A(); a.incN(1); a.print();
+            a.visit(new R1()); a.print();
+            I i = a; ((A)i).incN(1); i.print();
+            i.visit(new R1()); i.print();
+            i.visit(new R2()); i.print();
+            i.visit(new R3()); i.print();
+        }
+    } 
+
+ a) Diga e justifique qual o output resultante da execução do método Main da classe Test, 
+identificando as operações de boxing e unboxing. 
+|------------------------------------------------------------------------------------------|
+            A a = new A(); a.incN(1); a.print();		//1
+            a.visit(new R1()); a.print();				//2 box dentro do metodo visit (quando chama o update)
+            I i = a; ((A)i).incN(1); i.print();			//2 (Unbox em ((A)i).incN(1))
+            i.visit(new R1()); i.print();				//3
+            i.visit(new R2()); i.print(); 				//5
+            i.visit(new R3()); i.print();				//36
+
+
+
+|------------------------------------------------------------------------------------------|
+b) Considere a nova definição da interface Visitor – 
+        interface Visitor{void update(ref I i);}  
+Ao recompilar a estrutura A para usar a nova interface Visitor, diga e justifique se é necessária, 
+ou não, alguma alteração à implementação do método visit, para que compile com sucesso. Em 
+caso afirmativo indique as modificações a efectuar. 
+|------------------------------------------------------------------------------------------|
+
+
+
+
+|------------------------------------------------------------------------------------------|
+c) Considerando que a assinatura de update é actualizada em cada uma das classes R1, R2 e R3 em 
+conformidade com a nova definição da interface I e de acordo com as actualizações realizadas, ou 
+não, à estrutura A no ponto anterior, indique e justifique as diferenças no output em relação ao cenário 
+da alínea a. 
+ 
+|------------------------------------------------------------------------------------------|
+
+
+
+
+
+
+
+
+
+|------------------------------------------------------------------------------------------|
+9)  Considere o seguinte troço de código.  
+interface Shape{ 
+  void Print(); 
+} 
+class Rectangle:Shape{  
+  public void Print(){Console.WriteLine("Rectangle");} 
+} 
+class Square:Rectangle {  
+  public void Print(){ Console.Write("Square");  } 
+} 
+static class Program{ 
+  static void Main(){ 
+    Rectangle r =  
+       new Square();  
+    r.Print();  
+    ((Shape) r).Print(); 
+  } 
+} 
+a.  Indique e justifique a informação apresentada na consola resultante da execução da classe 
+Program. 
+|------------------------------------------------------------------------------------------|
+Rectangle, porque o seu tipo é Rectangle
+Rectangle, porque é feito um box para um tipo base
+|------------------------------------------------------------------------------------------|
+b.  Considere agora o seguinte troço de código. A informação apresentada na Consola é igual à 
+alínea a? Justifique. 
+
+interface Shape{ 
+  void Print(); 
+} 
+class Rectangle:Shape{  
+  public void Print(){Console.WriteLine("Rectangle");}
+} 
+class Square:Rectangle, Shape{  
+  public void Print(){ Console.Write("Square");  } 
+} 
+static class Program{ 
+  static void Main(){ 
+    Rectangle r =  
+       new Square();  
+    r.Print();  
+    ((Shape) r).Print(); 
+  } 
+} 
+|------------------------------------------------------------------------------------------|
+Rectangle, porque o seu tipo é Rectangle
+Square, porque implementa a interface Shape.
+
+|------------------------------------------------------------------------------------------|
+c.  Indique e justifique as  alterações às classes Rectangle e Square  da alínea b para que o 
+output seja Square  Square. 
+|------------------------------------------------------------------------------------------|
+
+|------------------------------------------------------------------------------------------|
+d.  Indique e justifique as alterações às classes Rectangle e Square da alínea b para que o 
+output seja Rectangle  Rectangle. 
+|------------------------------------------------------------------------------------------|
