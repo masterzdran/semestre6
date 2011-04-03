@@ -40,4 +40,20 @@ public class Program{
 	}
 }
 
-a)
+a) ver ficheiro questao3.cs
+b) indicado no ficheiro questao3.cs
+
+4.
+
+a) é necessário fazer override ao método GetHashCode sempre que se faz o mesmo ao método Equals
+b) a correcta será a última uma vez que é a única que tem em consideração a possibilidade de estarmos a comparar objectos de classes que se extendem.
+
+5.
+
+a) não se pode usar o operador == para comparar structs
+b) a primeira comparação dá true uma vez que são objectos do mesmo tipo e iguais
+no caso da 2ª comparação dá false uma vez que as referências para os objectos são diferentes. structs são tipos valor e as referências para estes são diferentes uma vez que estõa em posiçãos diferentes do stack
+
+6.
+o método F de B esconde o metodo F de A mas no caso de G como é virtual e B tem override este é redefinido. 
+Chamando F com A ou B chama métodos diferentes mas no caso de G, devido à redefinição, chama sempre B.G

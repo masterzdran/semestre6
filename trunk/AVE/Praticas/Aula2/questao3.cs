@@ -11,7 +11,7 @@ public class Program{
 		B b= new D();		//conversao implicita
 //		D d= new B();		//erro conversao - necessario conversao explicita
 //		D d= (D) new B();	//erro em run-time!!
-		D d= (D) new D();
+		D d= (D) new D();	
 //		o1.x = 2;			//necessario cast para fazer unboxing
 		A aux1= ((A) o1);
 		aux1.x=2;
