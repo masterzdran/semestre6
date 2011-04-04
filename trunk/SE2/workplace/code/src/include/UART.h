@@ -1,5 +1,5 @@
 #ifndef UART_PUBLIC_H
-#define SPI_H
+#define UART_PUBLIC_H
 #include "TYPES.h"
 #include "LPC21XX.h"
 

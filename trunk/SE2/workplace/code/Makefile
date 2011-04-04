@@ -51,7 +51,7 @@ VPATH 			= $(MYLIB):$(CLIB):$(libdir)
 #VPATH 			= $(MYLIB)
 #=======================================================================
 LIBOBJECT =		libc.a libgcc.a  libLPC2106.a libPeripherical.a libDebugger.a
-OBJECT =		$(MYLIB)/start.o $(PROGRAM)/test.o
+OBJECT =		$(MYLIB)/start.o $(PROGRAM)/test.o $(MYLIB)/console.o
 #=======================================================================
 all: $(END_EXEC) 
 
@@ -60,13 +60,13 @@ all: $(END_EXEC)
 $(END_EXEC): program 
 	cp src/device/STARTUP/start.o src/lib/start.o
 #	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(MYLIB)/start.o $(PROGRAM)/tacografo.o -L$(MYLIB) -lPeripherical -lLPC2106 -lc -lgcc
-	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(OBJECT) -L$(MYLIB) -lPeripherical -lLPC2106 -lDebugger -lc -lgcc
+	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(OBJECT) -L$(MYLIB) -lPeripherical -lLPC2106 -lc -lgcc
 
 peripherical: device
 	@echo "----------------------------------------------------------------------"
 	$(MAKE) -C $(PERIPHERICAL)
 
-debugger: device
+debugger: peripherical
 	@echo "----------------------------------------------------------------------"
 	$(MAKE) -C $(DEBUGGER)
 

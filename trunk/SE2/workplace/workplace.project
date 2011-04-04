@@ -10,7 +10,10 @@
       <VirtualDirectory Name="debugger">
         <VirtualDirectory Name="console">
           <File Name="code/src/debugger/console/console.c"/>
+          <File Name="code/src/debugger/console/Makefile"/>
+          <File Name="code/src/debugger/console/console.h"/>
         </VirtualDirectory>
+        <File Name="code/src/debugger/Makefile"/>
       </VirtualDirectory>
       <VirtualDirectory Name="collection">
         <VirtualDirectory Name="buffer">

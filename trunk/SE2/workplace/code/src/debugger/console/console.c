@@ -135,12 +135,12 @@ U8 console_size() {
   U32         started:1; 
  * */
 void console_init() {
-		conUart.uartAddr = pUART0; 
-		conUart.baudrate=57600; 
-		conUart.bits=U_LENGTH_SELECT_8_BIT; 
-		conUart.parity=U_PARITY_SELECT_FORCED_ZERO; 
-		conUart.stopbits=1; 
-		conUart.started=0;
+	conUart.uartAddr = pUART0; 
+	conUart.baudrate=57600; 
+	conUart.bits=U_LENGTH_SELECT_8_BIT; 
+	conUart.parity=U_PARITY_SELECT_FORCED_ZERO; 
+	conUart.stopbits=0; 
+	conUart.started=0;
 	UART_init(&conUart);
 }
 

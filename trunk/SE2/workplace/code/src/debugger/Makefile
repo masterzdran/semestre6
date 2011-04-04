@@ -38,8 +38,8 @@ all:
 	@echo "Compiling the Debugger Library"
 	@echo "============================"	
 	@$(foreach MPATH, $(MAKEPATHS), $(MAKE) -C $(DEBUGGER)/$(MPATH);)
-	$(AR) $(MYLIB)/libDebugger.a $(MYLIB)/*.o
-	@rm -rf $(MYLIB)/*.o	
+	#$(AR) $(MYLIB)/libDebugger.a $(MYLIB)/*.o
+	#@rm -rf $(MYLIB)/*.o	
 
 clean:
 	@echo "============================"

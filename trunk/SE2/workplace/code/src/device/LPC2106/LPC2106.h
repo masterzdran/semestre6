@@ -134,7 +134,7 @@
 /**
  * @brief Definition of one pointer to an UART(0) structure
  * */
-#define pUART0              ((pLPC_UART) 0xE0000000)
+#define pUART0              ((pLPC_UART) 0xE000C000)
 /**
  * @brief Definition of one pointer to an UART(1) structure
  * */
