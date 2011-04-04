@@ -44,93 +44,93 @@ typedef enum{
 }ENC_BANK_ID;
 
 typedef enum{
-        ERDPTL      = 0x00  | ENC_REGISTER_ETH,
-        ERDPTH      = 0x01  | ENC_REGISTER_ETH,
-        EWRPTL      = 0x02  | ENC_REGISTER_ETH,
-        EWRPTH      = 0x03  | ENC_REGISTER_ETH,
-        ETXSTL      = 0x04  | ENC_REGISTER_ETH,
-        ETXSTH      = 0x05  | ENC_REGISTER_ETH,
-        ETXNDL      = 0x06  | ENC_REGISTER_ETH,
-        ETXNDH      = 0x07  | ENC_REGISTER_ETH,
-        ERXSTL      = 0x08  | ENC_REGISTER_ETH,
-        ERXSTH      = 0x09  | ENC_REGISTER_ETH,
-        ERXNDL      = 0x0A  | ENC_REGISTER_ETH,
-        ERXNDH      = 0x0B  | ENC_REGISTER_ETH,
-        ERXRDPTL    = 0x0C  | ENC_REGISTER_ETH,
-        ERXRDPTH    = 0x0D  | ENC_REGISTER_ETH,
-        ERXWRPTL    = 0x0E  | ENC_REGISTER_ETH,
-        ERXWRPTH    = 0x0F  | ENC_REGISTER_ETH,
-        EDMASTL     = 0x10  | ENC_REGISTER_ETH,
-        EDMASTH     = 0x11  | ENC_REGISTER_ETH,
-        EDMANDL     = 0x12  | ENC_REGISTER_ETH,
-        EDMANDH     = 0x13  | ENC_REGISTER_ETH,
-        EDMADST     = 0x14  | ENC_REGISTER_ETH,
-        EDMADSTH    = 0x15  | ENC_REGISTER_ETH,
-        EDMACSL     = 0x16  | ENC_REGISTER_ETH,
-        EDMACSH     = 0x17  | ENC_REGISTER_ETH
+        B0_ERDPTL      = 0x00  | ENC_REGISTER_ETH,
+        B0_ERDPTH      = 0x01  | ENC_REGISTER_ETH,
+        B0_EWRPTL      = 0x02  | ENC_REGISTER_ETH,
+        B0_EWRPTH      = 0x03  | ENC_REGISTER_ETH,
+        B0_ETXSTL      = 0x04  | ENC_REGISTER_ETH,
+        B0_ETXSTH      = 0x05  | ENC_REGISTER_ETH,
+        B0_ETXNDL      = 0x06  | ENC_REGISTER_ETH,
+        B0_ETXNDH      = 0x07  | ENC_REGISTER_ETH,
+        B0_ERXSTL      = 0x08  | ENC_REGISTER_ETH,
+        B0_ERXSTH      = 0x09  | ENC_REGISTER_ETH,
+        B0_ERXNDL      = 0x0A  | ENC_REGISTER_ETH,
+        B0_ERXNDH      = 0x0B  | ENC_REGISTER_ETH,
+        B0_ERXRDPTL    = 0x0C  | ENC_REGISTER_ETH,
+        B0_ERXRDPTH    = 0x0D  | ENC_REGISTER_ETH,
+        B0_ERXWRPTL    = 0x0E  | ENC_REGISTER_ETH,
+        B0_ERXWRPTH    = 0x0F  | ENC_REGISTER_ETH,
+        B0_EDMASTL     = 0x10  | ENC_REGISTER_ETH,
+        B0_EDMASTH     = 0x11  | ENC_REGISTER_ETH,
+        B0_EDMANDL     = 0x12  | ENC_REGISTER_ETH,
+        B0_EDMANDH     = 0x13  | ENC_REGISTER_ETH,
+        B0_EDMADST     = 0x14  | ENC_REGISTER_ETH,
+        B0_EDMADSTH    = 0x15  | ENC_REGISTER_ETH,
+        B0_EDMACSL     = 0x16  | ENC_REGISTER_ETH,
+        B0_EDMACSH     = 0x17  | ENC_REGISTER_ETH
 }ENC_BANK0_REGISTER;
 
 typedef enum{
-        EHT0     = 0x00  | ENC_REGISTER_ETH,
-        EHT1     = 0x01  | ENC_REGISTER_ETH,
-        EHT2     = 0x02  | ENC_REGISTER_ETH,
-        EHT3     = 0x03  | ENC_REGISTER_ETH,
-        EHT4     = 0x04  | ENC_REGISTER_ETH,
-        EHT5     = 0x05  | ENC_REGISTER_ETH,
-        EHT6     = 0x06  | ENC_REGISTER_ETH,
-        EHT7     = 0x07  | ENC_REGISTER_ETH,
-        EPMM0    = 0x08  | ENC_REGISTER_ETH,
-        EPMM1    = 0x09  | ENC_REGISTER_ETH,
-        EPMM2    = 0x0A  | ENC_REGISTER_ETH,
-        EPMM3    = 0x0B  | ENC_REGISTER_ETH,
-        EPMM4    = 0x0C  | ENC_REGISTER_ETH,
-        EPMM5    = 0x0D  | ENC_REGISTER_ETH,
-        EPMM6    = 0x0E  | ENC_REGISTER_ETH,
-        EPMM7    = 0x0F  | ENC_REGISTER_ETH,
-        EPMCSL   = 0x10  | ENC_REGISTER_ETH,
-        EPMCSH   = 0x11  | ENC_REGISTER_ETH,
-        EPMOL    = 0x14  | ENC_REGISTER_ETH,
-        EPMOH    = 0x15  | ENC_REGISTER_ETH,
-        ERXFCON  = 0x18  | ENC_REGISTER_ETH,
-        EPKTCNT  = 0x19  | ENC_REGISTER_ETH
+        B1_EHT0     = 0x00  | ENC_REGISTER_ETH,
+        B1_EHT1     = 0x01  | ENC_REGISTER_ETH,
+        B1_EHT2     = 0x02  | ENC_REGISTER_ETH,
+        B1_EHT3     = 0x03  | ENC_REGISTER_ETH,
+        B1_EHT4     = 0x04  | ENC_REGISTER_ETH,
+        B1_EHT5     = 0x05  | ENC_REGISTER_ETH,
+        B1_EHT6     = 0x06  | ENC_REGISTER_ETH,
+        B1_EHT7     = 0x07  | ENC_REGISTER_ETH,
+        B1_EPMM0    = 0x08  | ENC_REGISTER_ETH,
+        B1_EPMM1    = 0x09  | ENC_REGISTER_ETH,
+        B1_EPMM2    = 0x0A  | ENC_REGISTER_ETH,
+        B1_EPMM3    = 0x0B  | ENC_REGISTER_ETH,
+        B1_EPMM4    = 0x0C  | ENC_REGISTER_ETH,
+        B1_EPMM5    = 0x0D  | ENC_REGISTER_ETH,
+        B1_EPMM6    = 0x0E  | ENC_REGISTER_ETH,
+        B1_EPMM7    = 0x0F  | ENC_REGISTER_ETH,
+        B1_EPMCSL   = 0x10  | ENC_REGISTER_ETH,
+        B1_EPMCSH   = 0x11  | ENC_REGISTER_ETH,
+        B1_EPMOL    = 0x14  | ENC_REGISTER_ETH,
+        B1_EPMOH    = 0x15  | ENC_REGISTER_ETH,
+        B1_ERXFCON  = 0x18  | ENC_REGISTER_ETH,
+        B1_EPKTCNT  = 0x19  | ENC_REGISTER_ETH
 }ENC_BANK1_REGISTER;
 
 typedef enum{
-        MACON1      = 0x00  | ENC_REGISTER_MAC_MII,
-        MACON3      = 0x02  | ENC_REGISTER_MAC_MII,
-        MACON4      = 0x03  | ENC_REGISTER_MAC_MII,
-        MABBIPG     = 0x04  | ENC_REGISTER_MAC_MII,
-        MAIPGL      = 0x06  | ENC_REGISTER_MAC_MII,
-        MAIPGH      = 0x07  | ENC_REGISTER_MAC_MII,
-        MACLCON1    = 0x08  | ENC_REGISTER_MAC_MII,
-        MACLCON2    = 0x09  | ENC_REGISTER_MAC_MII,
-        MAMXFLL     = 0x0A  | ENC_REGISTER_MAC_MII,
-        MAMXFLH     = 0x0B  | ENC_REGISTER_MAC_MII,
-        MICMD       = 0x12  | ENC_REGISTER_MAC_MII,
-        MIREGADR    = 0x14  | ENC_REGISTER_MAC_MII,
-        MIWRL       = 0x16  | ENC_REGISTER_MAC_MII,
-        MIWRH       = 0x17  | ENC_REGISTER_MAC_MII,
-        MIRDL       = 0x18  | ENC_REGISTER_MAC_MII,
-        MIRDH       = 0x19  | ENC_REGISTER_MAC_MII
+        B2_MACON1      = 0x00  | ENC_REGISTER_MAC_MII,
+        B2_MACON3      = 0x02  | ENC_REGISTER_MAC_MII,
+        B2_MACON4      = 0x03  | ENC_REGISTER_MAC_MII,
+        B2_MABBIPG     = 0x04  | ENC_REGISTER_MAC_MII,
+        B2_MAIPGL      = 0x06  | ENC_REGISTER_MAC_MII,
+        B2_MAIPGH      = 0x07  | ENC_REGISTER_MAC_MII,
+        B2_MACLCON1    = 0x08  | ENC_REGISTER_MAC_MII,
+        B2_MACLCON2    = 0x09  | ENC_REGISTER_MAC_MII,
+        B2_MAMXFLL     = 0x0A  | ENC_REGISTER_MAC_MII,
+        B2_MAMXFLH     = 0x0B  | ENC_REGISTER_MAC_MII,
+        B2_MICMD       = 0x12  | ENC_REGISTER_MAC_MII,
+        B2_MIREGADR    = 0x14  | ENC_REGISTER_MAC_MII,
+        B2_MIWRL       = 0x16  | ENC_REGISTER_MAC_MII,
+        B2_MIWRH       = 0x17  | ENC_REGISTER_MAC_MII,
+        B2_MIRDL       = 0x18  | ENC_REGISTER_MAC_MII,
+        B2_MIRDH       = 0x19  | ENC_REGISTER_MAC_MII
 }ENC_BANK2_REGISTER;
 
 typedef enum{
-        MAADR5          = 0x00  | ENC_REGISTER_MAC_MII,
-        MAADR6          = 0x01  | ENC_REGISTER_MAC_MII,
-        MAADR3          = 0x02  | ENC_REGISTER_MAC_MII,
-        MAADR4          = 0x03  | ENC_REGISTER_MAC_MII,
-        MAADR1          = 0x04  | ENC_REGISTER_MAC_MII,
-        MAADR2          = 0x05  | ENC_REGISTER_MAC_MII,
-        EBSTSD          = 0x06  | ENC_REGISTER_ETH,
-        EBSTCON         = 0x07  | ENC_REGISTER_ETH,
-        EBSTCSL         = 0x08  | ENC_REGISTER_ETH,
-        EBSTCSH         = 0x09  | ENC_REGISTER_ETH,
-        MISTAT          = 0x0A  | ENC_REGISTER_MAC_MII,
-        EREVID          = 0x12  | ENC_REGISTER_ETH,
-        ECOCON          = 0x15  | ENC_REGISTER_ETH,
-        EFLOCON         = 0x17  | ENC_REGISTER_ETH,
-        EPAUSL          = 0x18  | ENC_REGISTER_ETH,
-        EPAUSH          = 0x19  | ENC_REGISTER_ETH,
+        B3_MAADR5          = 0x00  | ENC_REGISTER_MAC_MII,
+        B3_MAADR6          = 0x01  | ENC_REGISTER_MAC_MII,
+        B3_MAADR3          = 0x02  | ENC_REGISTER_MAC_MII,
+        B3_MAADR4          = 0x03  | ENC_REGISTER_MAC_MII,
+        B3_MAADR1          = 0x04  | ENC_REGISTER_MAC_MII,
+        B3_MAADR2          = 0x05  | ENC_REGISTER_MAC_MII,
+        B3_EBSTSD          = 0x06  | ENC_REGISTER_ETH,
+        B3_EBSTCON         = 0x07  | ENC_REGISTER_ETH,
+        B3_EBSTCSL         = 0x08  | ENC_REGISTER_ETH,
+        B3_EBSTCSH         = 0x09  | ENC_REGISTER_ETH,
+        B3_MISTAT          = 0x0A  | ENC_REGISTER_MAC_MII,
+        B3_EREVID          = 0x12  | ENC_REGISTER_ETH,
+        B3_ECOCON          = 0x15  | ENC_REGISTER_ETH,
+        B3_EFLOCON         = 0x17  | ENC_REGISTER_ETH,
+        B3_EPAUSL          = 0x18  | ENC_REGISTER_ETH,
+        B3_EPAUSH          = 0x19  | ENC_REGISTER_ETH
 }ENC_BANK3_REGISTER;
 
 typedef enum{
@@ -138,9 +138,18 @@ typedef enum{
 	EIR     = 0x1C,
 	ESTAT   = 0x1D,
 	ECON2   = 0x1E,
-	ECON1   = 0x1F,
+	ECON1   = 0x1F
 }ENC_SHARED_REGISTER;
 
+typedef enum{
+	BBIPG0 = 1 << 0,
+	BBIPG1 = 1 << 1,
+	BBIPG2 = 1 << 2,
+	BBIPG3 = 1 << 3,
+	BBIPG4 = 1 << 4,
+	BBIPG5 = 1 << 5,
+	BBIPG6 = 1 << 6
+}MABBIPG_REGISTER;
 
 /* SPI Operation Codes */
 typedef enum {
@@ -372,5 +381,25 @@ typedef enum{
     PHLCON_LFRQ0	= (1 << 2),
     PHLCON_STRCH	= (1 << 1)
 }PHLCON_REGISTER;
+
+
+U16 ENC_read_reg(U8 address, U8 bankID,Bool asShort);
+void ENC_write_reg(U8 address, U8 bankID,U16 data,Bool asShort);
+void ENC_write_physical_register(U8 address, U16 data);
+U16 read_physical_register(U8 address) ;
+U8 ENC_read_control_register(U8 address);
+void ENC_read_buffer_memory(U8* buffer, U32 size);
+void ENC_write_control_register(U8 address, U8 data);
+void ENC_write_buffer_memory(U8* data, U32 size);
+void ENC_bit_field_set(U8 address, U8 data);
+void ENC_bit_field_clear(U8 address, U8 data);
+void ENC_system_reset_command();
+
+
+
+#define ENC_write_reg16(A, B, C)  	ENC_write_reg((A), (B),(C),true)
+#define ENC_write_reg8(A, B, C)  	ENC_write_reg((A), (B),(C),false)
+#define ENC_read_reg8(A, B) 		ENC_read_reg((A), (B),false)
+#define ENC_read_reg16(A, B) 		ENC_read_reg((A), (B),true)
 #endif
 

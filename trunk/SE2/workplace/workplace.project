@@ -45,6 +45,7 @@
           <File Name="code/src/peripherical/ENC28J60/ENC28J60.c"/>
           <File Name="code/src/peripherical/ENC28J60/Ethernet.c"/>
           <File Name="code/src/peripherical/ENC28J60/Ethernet.h"/>
+          <File Name="code/src/peripherical/ENC28J60/Makefile"/>
         </VirtualDirectory>
       </VirtualDirectory>
       <VirtualDirectory Name="device">

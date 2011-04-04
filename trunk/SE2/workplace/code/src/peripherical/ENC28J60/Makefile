@@ -31,14 +31,23 @@ include $(PROJECT_PATH)/common.mk
 .PHONY 					= clean
 .PHONY					= clear
 #=======================================================================
+all: ENC28J60.o ETHERNET.o
+
 ENC28J60.o: ENC28J60.c ENC28J60.h
-	$(CC) $(SEARCHLIB) $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $< 
+	$(CC)  $(COPTIONS) $(SEARCHLIB) $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $< 
 	cp $@ $(MYLIB)/$@
 	cp ENC28J60.h $(INCLUDE)/
 	
+ETHERNET.o: Ethernet.c Ethernet.h	
+	$(CC)  $(COPTIONS) $(SEARCHLIB) $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $< 
+	cp $@ $(MYLIB)/$@
+	cp Ethernet.h $(INCLUDE)/
+
 clean:
 	rm  ENC28J60.o
 	rm  $(INCLUDE)/ENC28J60.h
+	rm  ETHERNET.o
+	rm  $(INCLUDE)/Ethernet.h
 
 clear:
 	clear
