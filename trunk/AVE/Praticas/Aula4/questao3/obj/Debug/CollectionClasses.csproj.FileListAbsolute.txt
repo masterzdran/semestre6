@@ -1,0 +1,5 @@
+D:\ISEL\Semestre6\AVE\Praticas\Aula4\questao3\bin\Debug\CollectionClasses1.exe
+D:\ISEL\Semestre6\AVE\Praticas\Aula4\questao3\bin\Debug\CollectionClasses1.pdb
+D:\ISEL\Semestre6\AVE\Praticas\Aula4\questao3\obj\Debug\ResolveAssemblyReference.cache
+D:\ISEL\Semestre6\AVE\Praticas\Aula4\questao3\obj\Debug\CollectionClasses1.exe
+D:\ISEL\Semestre6\AVE\Praticas\Aula4\questao3\obj\Debug\CollectionClasses1.pdb
