@@ -1,0 +1,10 @@
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\bin\Debug\DataAdaptersRefrescamento.exe
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\bin\Debug\DataAdaptersRefrescamento.pdb
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\ResolveAssemblyReference.cache
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\DataAdaptersRefrescamento.Form1.resources
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\DataAdaptersRefrescamento.Properties.Resources.resources
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\DataAdaptersRefrescamento.csproj.GenerateResource.Cache
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\DataAdaptersRefrescamento.exe
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\DataAdaptersRefrescamento.pdb
+C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\DataAdaptersRefrescamento.exe
+C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\DataAdaptersRefrescamento.pdb

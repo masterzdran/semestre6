@@ -1,0 +1,8 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\DataRelationsDataBinding2.Form1.resources
+obj\Debug\DataRelationsDataBinding2.Properties.Resources.resources
+obj\Debug\DataRelationsDataBinding2.csproj.GenerateResource.Cache
+bin\Debug\DataRelationsDataBinding2.exe
+bin\Debug\DataRelationsDataBinding2.pdb
+obj\Debug\DataRelationsDataBinding2.exe
+obj\Debug\DataRelationsDataBinding2.pdb
