@@ -63,6 +63,8 @@ U32 UART_init(pUart uart){
   if(!(uart->bits >= UART_PARITY_SELECT_MIN && uart->bits <= UART_PARITY_SELECT_MAX)){
     return UART_INVALID_PARITY_TRANSMITION;
   }
+  
+  
   /* Obter o clock dos periféricos */
   periphericalClock = getPeriphericalClock();
   clock = periphericalClock /(16 * (uart->baudrate));
@@ -76,7 +78,8 @@ U32 UART_init(pUart uart){
   }
 
   /*1. Power: In the PCONP register (Table 3–27), set bit PCUART.*/
-  pPOWER->POWER_CONTROL_PERIPHERICAL |= poweron;
+  POWER_On_Peripherical(poweron);
+  /*pPOWER->POWER_CONTROL_PERIPHERICAL |= poweron;*/
 
   /*2. Baud rate: In register U0LCR (Table 9–88), set bit DLAB =1.*/
   uart->uartAddr->LCR = __ULCR_DIVISOR_LATCH_ACCESS_BIT__; /*Reset all values and set DLAB*/

@@ -26,24 +26,29 @@
 
 static Uart conUart;
 
+#define LINE_BUFFER_SIZE 74
+#define BUFFER_SIZE     256
+#define READ_BUFFER     10
+
 void console_dump_hex (U8 * buffer, size_t size) {
 	U16 total = 0;
-	char line[74], * pl1, * pl2;
+	char line[LINE_BUFFER_SIZE], * pl1, * pl2;
 	U8 * p = buffer;
 	U8 nBytes;
 	
 	while (size > 0) {
 		int i;
-		memset(line, ' ', sizeof line - 1);
+		memset(line, ' ', LINE_BUFFER_SIZE - 1);
 		pl1 = line;
 		pl2 = line + 55;
-		line[sizeof line - 3] = '\n';
-		line[sizeof line - 2] = '\r';
-		line[sizeof line - 1] = '\0';
-		pl1 += sprintf((char*)pl1, "%04X: ", total);
+		line[LINE_BUFFER_SIZE - 3] = '\n';
+		line[LINE_BUFFER_SIZE - 2] = '\r';
+		line[LINE_BUFFER_SIZE - 1] = '\0';
+        
+		pl1 += sprintf(pl1, "%04X: ", total);
 		nBytes = (size<16)?size:16;
 		for (i = 0; i < nBytes; ++i, ++p) {
-			pl1 += sprintf((char*)pl1, "%02X ", *p);
+			pl1 += sprintf(pl1, "%02X ", *p);
 			*pl2++ = (isprint(*p) && *p != '\t' &&
 				*p != '\r' && *p != '\n' && *p != '\xc') ? *p : '.';
 		}
@@ -55,29 +60,31 @@ void console_dump_hex (U8 * buffer, size_t size) {
 }
 
 int console_printf(const char * fmt, ...) {
-	char buf[256];
+	char buf[BUFFER_SIZE];
 	va_list vlp;
 	size_t r;
 	va_start(vlp, fmt);
-	if( (r = vsprintf(buf, fmt, vlp)) >= sizeof(buf) )
+	if( (r = vsprintf(buf, fmt, vlp)) >= sizeof(BUFFER_SIZE) ){
 		console_write_block("ERROR: vsprintf - insufficient buffer size!\r\n", 46);
-	console_write_block(buf, (U32) r);
+    }
+
+    console_write_block(buf,r);
 	return r;
 }
 
 int console_vprintf(const char * fmt, va_list vlp) {
-	char buf[256];
+	char buf[BUFFER_SIZE];
 	size_t r;
-	if( (r = vsprintf(buf, fmt, vlp)) >= sizeof(buf) )
+	if( (r = vsprintf(buf, fmt, vlp)) >= BUFFER_SIZE )
 		console_write_block("ERROR: vsprintf - insufficient buffer size!\r\n", 46);
-	console_write_block(buf, (U32)r);
+	console_write_block(buf, r);
 	return r;
 }
 
 #include <_stdio.h>
 
 static int scan_read_char(void * str, int ch) {
-	static char buffer[10];
+	static char buffer[READ_BUFFER];
 	static int count = 0;
 	if (ch == _WANT)
 		if (count > 0)
@@ -135,12 +142,14 @@ U8 console_size() {
   U32         started:1; 
  * */
 void console_init() {
+
 	conUart.uartAddr = pUART0; 
 	conUart.baudrate=57600; 
 	conUart.bits=U_LENGTH_SELECT_8_BIT; 
 	conUart.parity=U_PARITY_SELECT_FORCED_ZERO; 
-	conUart.stopbits=0; 
+	conUart.stopbits=ONE_STOP_BIT; 
 	conUart.started=0;
+    
 	UART_init(&conUart);
 }
 
