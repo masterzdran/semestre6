@@ -85,13 +85,17 @@ typedef enum{
   UART_NOT_INITIATED  
 }UART_ERRORS;
 
+typedef enum{
+    ONE_STOP_BIT=0,
+    TWO_STOP_BITS=1
+}UART_STOP_BITS;
 
 typedef struct{
   pLPC_UART   uartAddr;
   U32         baudrate;
   U32         bits:2;               /* Should use UART_WORD_LENGTH_SELECT enum */
   U32         parity:2;             /* Should use UART_PARITY_SELECT enum */
-  U32         stopbits:1;           /* 0 or 1 */
+  U32         stopbits:1;           /* Should use UART_STOP_BITS enum */
   U32         started:1;         /* should be initiaded with 0 */
 }Uart,*pUart;
 
