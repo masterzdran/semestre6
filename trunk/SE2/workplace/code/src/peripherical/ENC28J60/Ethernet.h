@@ -1,6 +1,6 @@
 #ifndef __ETHERNET_H_
 #define __ETHERNET_H_
-
+#include "SPI.h"
 #define MAX_FRAME_LEN   1518
 #define MAX_TX_RETRY    10
 
@@ -13,10 +13,25 @@
 #define __ETHERNET_RX_BUFFER_SIZE__   4096
 #define __ETHERNET_TX_BUFFER_SIZE__   4096
 
+#define MAC_NBR_BYTES 6
 typedef enum{
 	ETHERNET_OK=0,
 	ETHERNET_NULL_POINTER=1,
 	ETHERNET_ZERO_SIZE_PACKET=2,
-	ETHERNET_PACKET_TOO_LONG=3	
+	ETHERNET_PACKET_TOO_LONG=3,
+	ETHERNET_MAC_NULL_POINTER=4,
+    ETHERNET_SPI_INIT_ERROR=5
 }ETHERNET_ERRORS;
+
+typedef enum{
+    ETHERNET_HALF_DUPLEX = 0,
+    ETHERNET_FULL_DUPLEX = 1
+}ETHERNET_COM_SYSTEM;
+
+typedef struct{
+    SPI_Device ethernetDevice;
+    ETHERNET_COM_SYSTEM duplex;
+    U8 mac[MAC_NBR_BYTES] ;        
+}ETHERNET_Device,*pETHERNET_Device;
+
 #endif

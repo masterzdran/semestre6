@@ -123,8 +123,3 @@ U16 read_physical_register(U8 address) {
   
   return ENC_read_reg(B2_MIRDL,BANK02,true);
 }
-
-
-void ENC_init(){
-    
-}
