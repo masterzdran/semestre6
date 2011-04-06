@@ -1,0 +1,8 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\DataAdaptersRefrescamento.Form1.resources
+obj\Debug\DataAdaptersRefrescamento.Properties.Resources.resources
+obj\Debug\DataAdaptersRefrescamento.csproj.GenerateResource.Cache
+bin\Debug\DataAdaptersRefrescamento.exe
+bin\Debug\DataAdaptersRefrescamento.pdb
+obj\Debug\DataAdaptersRefrescamento.exe
+obj\Debug\DataAdaptersRefrescamento.pdb

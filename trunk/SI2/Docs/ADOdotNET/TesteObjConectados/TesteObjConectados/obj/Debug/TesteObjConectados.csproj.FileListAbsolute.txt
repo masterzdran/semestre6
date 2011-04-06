@@ -1,0 +1,10 @@
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjConectados\TesteObjConectados\obj\Debug\TesteObjConectados.exe
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjConectados\TesteObjConectados\obj\Debug\TesteObjConectados.pdb
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjConectados\TesteObjConectados\obj\Debug\ResolveAssemblyReference.cache
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjConectados\TesteObjConectados\bin\Debug\TesteObjConectados.exe
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjConectados\TesteObjConectados\bin\Debug\TesteObjConectados.pdb
+C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjConectados\TesteObjConectados\obj\Debug\TesteObjConectados.exe
+C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjConectados\TesteObjConectados\obj\Debug\TesteObjConectados.pdb
+C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjConectados\TesteObjConectados\bin\Debug\TesteObjConectados.exe
+C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjConectados\TesteObjConectados\bin\Debug\TesteObjConectados.pdb
+C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjConectados\TesteObjConectados\obj\Debug\ResolveAssemblyReference.cache

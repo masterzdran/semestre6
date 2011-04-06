@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CriarDataSets", "CriarDataSets\CriarDataSets.csproj", "{ACB2CC89-A761-43CD-BCED-4806B62A6346}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBinding", "DataBinding\DataBinding.csproj", "{A34773F1-7F56-4AF1-A50A-06C4CFD18628}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataRelations", "DataRelations\DataRelations.csproj", "{CC3FDE4E-9D37-4017-9A39-9ECFFF1C338D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataRelationsDataBinding", "DataRelationsDataBinding\DataRelationsDataBinding.csproj", "{F148539D-D937-41F7-BBE5-D96417362B1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAdapters", "DataAdapters\DataAdapters.csproj", "{32E0407B-58BE-4BB6-A9B7-7EC36F30456F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAdaptersRefrescamento", "DataAdaptersRefrescamento\DataAdaptersRefrescamento.csproj", "{DAC167EF-44E3-40D0-BF46-32C9E2E7A9A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACB2CC89-A761-43CD-BCED-4806B62A6346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACB2CC89-A761-43CD-BCED-4806B62A6346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACB2CC89-A761-43CD-BCED-4806B62A6346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACB2CC89-A761-43CD-BCED-4806B62A6346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A34773F1-7F56-4AF1-A50A-06C4CFD18628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A34773F1-7F56-4AF1-A50A-06C4CFD18628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A34773F1-7F56-4AF1-A50A-06C4CFD18628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A34773F1-7F56-4AF1-A50A-06C4CFD18628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC3FDE4E-9D37-4017-9A39-9ECFFF1C338D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC3FDE4E-9D37-4017-9A39-9ECFFF1C338D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC3FDE4E-9D37-4017-9A39-9ECFFF1C338D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC3FDE4E-9D37-4017-9A39-9ECFFF1C338D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F148539D-D937-41F7-BBE5-D96417362B1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F148539D-D937-41F7-BBE5-D96417362B1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F148539D-D937-41F7-BBE5-D96417362B1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F148539D-D937-41F7-BBE5-D96417362B1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E0407B-58BE-4BB6-A9B7-7EC36F30456F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E0407B-58BE-4BB6-A9B7-7EC36F30456F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E0407B-58BE-4BB6-A9B7-7EC36F30456F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E0407B-58BE-4BB6-A9B7-7EC36F30456F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAC167EF-44E3-40D0-BF46-32C9E2E7A9A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC167EF-44E3-40D0-BF46-32C9E2E7A9A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC167EF-44E3-40D0-BF46-32C9E2E7A9A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC167EF-44E3-40D0-BF46-32C9E2E7A9A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

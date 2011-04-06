@@ -1,0 +1,9 @@
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdapters\bin\Debug\DataAdapters.exe.config
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdapters\bin\Debug\DataAdapters.exe
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdapters\bin\Debug\DataAdapters.pdb
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdapters\obj\Debug\ResolveAssemblyReference.cache
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdapters\obj\Debug\DataAdapters.Form1.resources
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdapters\obj\Debug\DataAdapters.Properties.Resources.resources
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdapters\obj\Debug\DataAdapters.csproj.GenerateResource.Cache
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdapters\obj\Debug\DataAdapters.exe
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdapters\obj\Debug\DataAdapters.pdb

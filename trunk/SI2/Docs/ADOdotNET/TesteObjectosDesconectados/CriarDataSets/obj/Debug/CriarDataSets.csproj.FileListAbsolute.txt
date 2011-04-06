@@ -1,0 +1,5 @@
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\CriarDataSets\obj\Debug\CriarDataSets.exe
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\CriarDataSets\obj\Debug\CriarDataSets.pdb
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\CriarDataSets\bin\Debug\CriarDataSets.exe
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\CriarDataSets\bin\Debug\CriarDataSets.pdb
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\CriarDataSets\obj\Debug\ResolveAssemblyReference.cache

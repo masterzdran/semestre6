@@ -1,0 +1,8 @@
+<Modules>
+  <Module PersistentId="ACB2CC89-A761-43CD-BCED-4806B62A6346" ModuleId="CriarDataSets" />
+  <Module PersistentId="32E0407B-58BE-4BB6-A9B7-7EC36F30456F" ModuleId="DataAdapters" />
+  <Module PersistentId="DAC167EF-44E3-40D0-BF46-32C9E2E7A9A1" ModuleId="DataAdaptersRefrescamento" />
+  <Module PersistentId="A34773F1-7F56-4AF1-A50A-06C4CFD18628" ModuleId="DataBinding" />
+  <Module PersistentId="CC3FDE4E-9D37-4017-9A39-9ECFFF1C338D" ModuleId="DataRelations" />
+  <Module PersistentId="F148539D-D937-41F7-BBE5-D96417362B1B" ModuleId="DataRelationsDataBinding" />
+</Modules>

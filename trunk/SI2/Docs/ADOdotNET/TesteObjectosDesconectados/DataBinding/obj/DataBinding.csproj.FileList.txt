@@ -1,0 +1,8 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\DataBinding.Form1.resources
+obj\Debug\DataBinding.Properties.Resources.resources
+obj\Debug\DataBinding.csproj.GenerateResource.Cache
+bin\Debug\DataBinding.exe
+bin\Debug\DataBinding.pdb
+obj\Debug\DataBinding.exe
+obj\Debug\DataBinding.pdb

@@ -1,0 +1,8 @@
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelationsDataBinding\bin\Debug\DataRelationsDataBinding.exe
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelationsDataBinding\bin\Debug\DataRelationsDataBinding.pdb
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelationsDataBinding\obj\Debug\ResolveAssemblyReference.cache
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelationsDataBinding\obj\Debug\DataRelationsDataBinding.Form1.resources
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelationsDataBinding\obj\Debug\DataRelationsDataBinding.Properties.Resources.resources
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelationsDataBinding\obj\Debug\DataRelationsDataBinding.csproj.GenerateResource.Cache
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelationsDataBinding\obj\Debug\DataRelationsDataBinding.exe
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelationsDataBinding\obj\Debug\DataRelationsDataBinding.pdb

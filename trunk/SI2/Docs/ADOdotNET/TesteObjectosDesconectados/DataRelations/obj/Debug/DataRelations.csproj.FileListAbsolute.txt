@@ -1,0 +1,5 @@
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelations\bin\Debug\DataRelations.exe
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelations\bin\Debug\DataRelations.pdb
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelations\obj\Debug\ResolveAssemblyReference.cache
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelations\obj\Debug\DataRelations.exe
+C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataRelations\obj\Debug\DataRelations.pdb

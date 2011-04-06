@@ -1,0 +1,5 @@
+bin\Debug\CriarDataSets.exe
+bin\Debug\CriarDataSets.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\CriarDataSets.exe
+obj\Debug\CriarDataSets.pdb
