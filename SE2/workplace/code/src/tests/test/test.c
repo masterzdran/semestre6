@@ -11,16 +11,16 @@
 #include "console.h"
 #define  LCD_MASK   ((U32) 0x7F00)
 
-
+/*
 static U8 ether_addr[] = {0x02, 0x65, 0x7A, 0x65, 0x71, 00};
 static U8 packet[2000];
-
+*/
 
 
 int main(){
-	U32 aux32;
+	/* U32 aux32; */
 	U8 aux8;
-	U8 hasData;
+	/* U8 hasData; */
   SPI_Device spis[1]= {
     {
       0,
@@ -33,6 +33,8 @@ int main(){
       SPI_MSB     	/*byte shitf ??*/
     }
   };
+  
+
   TIMER_init(pTIMER1,58982400/MICRO);
   TIMER_init(pTIMER0,58982400/MICRO);
   rtc_init();

@@ -15,7 +15,7 @@
 # DEETC - Dep. de Eng. Electrónica e Telecomunicações e Computadores
 # ISEL  - Instituto Superior de Engenharia de Lisboa
 #=======================================================================
-#															GPIO
+#			GPIO
 #=======================================================================
 #Shell Path
 SHELL			= /bin/sh
