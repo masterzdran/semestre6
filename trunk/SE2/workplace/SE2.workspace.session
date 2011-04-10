@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Session Name="/home/nac/ISEL/semestre6/SE2/workplace/SE2.workspace">
+<Session Name="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/SE2.workspace">
   <int Value="0" Name="m_selectedTab"/>
-  <wxString Value="/home/nac/ISEL/semestre6/SE2/workplace/SE2.workspace" Name="m_workspaceName"/>
+  <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/SE2.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="/home/nac/ISEL/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/ENC28J60.c" Name="FileName"/>
-      <int Value="56" Name="FirstVisibleLine"/>
-      <int Value="100" Name="CurrentLine"/>
+      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/tests/test/test.c" Name="FileName"/>
+      <int Value="23" Name="FirstVisibleLine"/>
+      <int Value="36" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/home/nac/ISEL/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/ENC28J60.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
+      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/Makefile" Name="FileName"/>
+      <int Value="45" Name="FirstVisibleLine"/>
+      <int Value="63" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/debugger/console/console.c" Name="FileName"/>
+      <int Value="15" Name="FirstVisibleLine"/>
+      <int Value="20" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/debugger/console/Makefile" Name="FileName"/>
+      <int Value="20" Name="FirstVisibleLine"/>
+      <int Value="43" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/peripherical/Makefile" Name="FileName"/>
+      <int Value="34" Name="FirstVisibleLine"/>
+      <int Value="35" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/debugger/Makefile" Name="FileName"/>
+      <int Value="23" Name="FirstVisibleLine"/>
+      <int Value="50" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
   </TabInfoArray>

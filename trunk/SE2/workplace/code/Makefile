@@ -50,7 +50,8 @@ endif
 VPATH 			= $(MYLIB):$(CLIB):$(libdir)
 #VPATH 			= $(MYLIB)
 #=======================================================================
-LIBOBJECT =		libc.a libgcc.a  libLPC2106.a libPeripherical.a libDebugger.a
+#LIBOBJECT =		libc.a libgcc.a  libLPC2106.a libPeripherical.a libDebugger.a
+LYBRARIES = 	-lPeripherical -lLPC2106 -lc -lgcc
 OBJECT =		$(MYLIB)/start.o $(PROGRAM)/test.o $(MYLIB)/console.o
 #=======================================================================
 all: $(END_EXEC) 
@@ -60,7 +61,7 @@ all: $(END_EXEC)
 $(END_EXEC): program 
 	cp src/device/STARTUP/start.o src/lib/start.o
 #	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(MYLIB)/start.o $(PROGRAM)/tacografo.o -L$(MYLIB) -lPeripherical -lLPC2106 -lc -lgcc
-	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(OBJECT) -L$(MYLIB) -lPeripherical -lLPC2106 -lc -lgcc
+	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(OBJECT) -L$(MYLIB) $(LYBRARIES)
 
 peripherical: device
 	@echo "----------------------------------------------------------------------"
