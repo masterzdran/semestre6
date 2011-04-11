@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="History.cs" />
     <Compile Include="Token1.cs" />
     <Compile Include="tokens.cs" />
   </ItemGroup>

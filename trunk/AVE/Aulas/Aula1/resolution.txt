@@ -1,0 +1,75 @@
+1.
+csc Hello.cs
+->Manifest
+* inclui modulo externo mscorlib (.NET library) versão 4.0
+* inclui modulo Hello
+* indica o endere‡o de memoria base (0x00400000)
+* o alinhamento
+* o endere‡o de stack
+* que ‚ uma aplica‡Æo de linha de comandos
+* mostra as flags (ILONLY) 
+ 
+->Programa
+* class private chamada beforefieldinit
+* tem o construtor por omissÆo da programa
+* tem o metodo Main com o c¢digo do programa
+** cria uma string com "Hello World"
+** chama o writeline da biblioteca para "imprimir" a string
+
+--------------------------------------------------------------------------------
+2.
+csc /t:library /addmodule:RUT.netmodule FUT.cs
+->Manifest
+* inclui modulo externo RUT.netmodule
+* inclui modulo externo mscorlib (.NET library) versÆo 4.0  
+...
+->FUT
+* class private chamada beforefieldinit
+* tem o construtor por omissÆo da programa
+* Tem uma fun‡Æo: public void m()
+** chama uma fun‡Æo int32 do modulo RUT
+** imprime na consola
+* tem o metodo Main com o c¢digo do programa
+** cria uma string com "Hello World"
+** chama o writeline da biblioteca para "imprimir" a string
+** chama a fun‡Æo readline, e guarda o resultado na "string"
+** chama o metodo m()
+--------------------------------------------------------------------------------
+3.
+* f2.dll tem  o assembly
+* tem:
+* .file f1.dll (e hash)
+* .file f3.dll (e hash)
+* referencia dua classes externas (C1 e C3)
+ 
+C1:
+- float64 f
++ float64 M1();
++ void M2(float64);
+
+C2:
++ void Main();
+
+C3:
+- int32 i;
++ int32 M1();
++ void M2(int32);
+
+c)
+C1.M1: devolve o conteudo de f
+C1.M2: guarda o valor do parametro f na vari vel de instancia f
+C3.M1: devolve o conteudo de i
+C3.M2: guarda o valor do parametro i na vari vel de instancia i
+C2
+cria uma instancia do objecto C1
+cria uma instancia do objecto C3
+chama a função C1.M2 com o valor 20.5
+chama a função C3.M2 com o valor 3
+chama a função C1.M1 e guarda o valor numa vari vel
+chama a função C3.M1 e guarda o valor numa vari vel
+Adiciona-os os valores em float e imprime o resultado no encra com a chamada a Writeline
+guarda o valor 10 e a adiciona os valores inteiros e chama o writeline
+
+
+
+d)

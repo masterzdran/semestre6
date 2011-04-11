@@ -22,18 +22,18 @@ namespace CollectionClasses1
                 Console.WriteLine(item);
             }
 
-            IEnumerator i = f.GetEnumerator();
+           /*IEnumerator i = f.GetEnumerator();
             i.Reset();
             Console.WriteLine(i.MoveNext());
-            Console.WriteLine(i.Current);
+            Console.WriteLine(i.Current);*/
 
       
-            IEnumerator ii=ff.GetEnumerator();
+           /* IEnumerator ii=ff.GetEnumerator();
             ii.Reset();
             Console.WriteLine(ii.MoveNext());
             Console.WriteLine(ii.Current);
             Console.WriteLine(ii.MoveNext());
-            Console.WriteLine(ii.Current);
+            Console.WriteLine(ii.Current);*/     
         }
 
 
