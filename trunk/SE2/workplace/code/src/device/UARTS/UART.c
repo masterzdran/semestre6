@@ -105,7 +105,7 @@ U32 UART_write(pUart uart, const U8 *block, U32 size){
   if(!uart->started){ return UART_NOT_INITIATED;}
   
   for (;size;size--,block++){
-    while(!(ULSR_TRANSMITTER_EMPTY(uart)));
+    while((ULSR_TRANSMITTER_EMPTY(uart)) == 0);
     uart->uartAddr->U1.THR = *block;
   }
   return UART_SUCCESS;
