@@ -27,7 +27,7 @@
 static Uart conUart;
 
 #define LINE_BUFFER_SIZE 74
-#define BUFFER_SIZE     256
+#define BUFFER_SIZE     1024
 #define READ_BUFFER     10
 
 void console_dump_hex (U8 * buffer, size_t size) {
@@ -64,11 +64,11 @@ int console_printf(const char * fmt, ...) {
 	va_list vlp;
 	size_t r;
 	va_start(vlp, fmt);
-	if( (r = vsprintf(buf, fmt, vlp)) >= sizeof(BUFFER_SIZE) ){
+	if( (r = vsprintf(buf, fmt, vlp)) >= BUFFER_SIZE ){
 		console_write_block("ERROR: vsprintf - insufficient buffer size!\r\n", 46);
     }
 
-    console_write_block(buf,r);
+    console_write_block(buf,r+1);
 	return r;
 }
 
@@ -77,7 +77,7 @@ int console_vprintf(const char * fmt, va_list vlp) {
 	size_t r;
 	if( (r = vsprintf(buf, fmt, vlp)) >= BUFFER_SIZE )
 		console_write_block("ERROR: vsprintf - insufficient buffer size!\r\n", 46);
-	console_write_block(buf, r);
+	console_write_block(buf, r+1);
 	return r;
 }
 
@@ -106,12 +106,13 @@ int console_scanf(const char *fmt, ...) {
 
 U32 console_write_block(const char* data, U32 size) {
 	UART_write(&conUart, (U8*)data, size);
+	UART_write(&conUart, 0, 1);
 	return size;
 }
 
 void console_write_str(const char * str) {
 	U32 size =(U32) strlen(str);
-  	UART_write(&conUart, (U8*)str, size);
+	UART_write(&conUart, (U8*)str, size);
 }
 
 void console_write_char(const char c) {
