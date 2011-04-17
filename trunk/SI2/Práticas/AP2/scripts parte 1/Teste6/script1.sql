@@ -28,3 +28,5 @@ commit
 declare @m3 real
 select @m3 = avg(saldo) from conta where saldo > 500
 print @m3
+
+select * from conta
