@@ -4,8 +4,18 @@ use db_si_ap
 GO
 ALTER DATABASE db_si_ap
     SET ALLOW_SNAPSHOT_ISOLATION OFF
+/*
+the instance of the Microsoft SQL Server Database
+Engine does generate row versions for
+modified data until all active transactions
+that have modified data in the database complete
+*/
 ALTER DATABASE db_si_ap
     SET READ_COMMITTED_SNAPSHOT OFF
+/* when READ_COMMITTED_SNAPSHOT is on:
+only the connection executing the ALTER DATABASE command is allowed in the database
+when is off, it means that alter database is possible from any transaction
+*/
 GO
 set transaction isolation level read committed
 begin tran
