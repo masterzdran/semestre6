@@ -1,8 +1,10 @@
 --Este código assume a existência da BD
 -- db_si_ap.
 --No ambiente de laboratório, esta BD está associada ao utilizador si_ap
+if object_id('db_si_ap') is null
+	create database db_si_ap;
 
-CREATE DATABASE db_si_ap;
+
 GO
 
 use db_si_ap;
