@@ -1,0 +1,10 @@
+---------------------------------------------------------
+In future, to establish the correct environment for eCos,
+run one of the following commands:
+   . /home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/ecos/ecosenv.sh 		(for sh/bash users); or
+   source /home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/ecos/ecosenv.csh 	(for csh/tcsh users)
+
+It is recommended you append these commands to the end of your
+shell startup files such as $HOME/.profile or $HOME/.login
+---------------------------------------------------------
+

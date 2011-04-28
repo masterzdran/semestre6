@@ -15,6 +15,6 @@ U8 buffer_get(pBUFFER ringBuffer);
 void buffer_put(pBUFFER ringBuffer,U8 c);
 U8 buffer_isEmpty(pBUFFER ringBuffer);
 U8 buffer_isFull(pBUFFER ringBuffer);
-
+U32 buffer_size(pBUFFER ringBuffer);
 
 #endif

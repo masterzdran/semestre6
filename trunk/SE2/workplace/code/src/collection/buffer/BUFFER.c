@@ -1,12 +1,5 @@
 #include "BUFFER.h"
 #include <stdio.h>
-
-/*
-static BUFFER ringBuffer;
-static U8 buffer[BUFFER_SIZE];
-*/
-
-
 #define IS_EMPTY(A)                ((A)->readIdx == (A)->writeIdx)
 #define IS_FULL(A)                 (((((A)->w + 1) >= (A)->buffersize)?0:(A)->readIdx + 1) == (A)->writeIdx)
 #define SET_THE_RECORD(A,B)           {(*(A))++;if((*(A)) >= (B)){*(A) = 0;}}
@@ -52,6 +45,9 @@ U8 buffer_isFull(pBUFFER ringBuffer){
   if (aux  >= ringBuffer->buffersize){aux=0;}
   return (aux == ringBuffer->readIdx);
 }
+
+
+/*
 #define IN_SIZE   16
 #define OUT_SIZE  16
 int main (){
@@ -85,4 +81,4 @@ int main (){
 
   return 0;
 }
-  
+  */
