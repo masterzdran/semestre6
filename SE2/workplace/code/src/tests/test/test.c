@@ -35,6 +35,10 @@ void console_test(){
   }
 }
 
+void spi_test(){}
+
+void enc_test(){}
+
 void main(){
 
   TIMER_init(pTIMER1,58982400/MICRO);
