@@ -1,0 +1,23 @@
+ENC28J60
+
+
+	  	  		 -------------
+[1 - GREEN	: SCLOCK	]|	     |-[3.3v]
+[2 - YELLOW	: MOSI		]|	     |-[GND]
+[3 - WHITE	: MISO		]|	     |-[8 - BLUE	 : RESET	]
+[4 - RED	: WOL		]|	     |-[7 - ORANGE 	 : CHIPSELECT	]
+[5 - WHITE	: INTERRUPT 	]|	     |
+[6 - WHITE	: CLOCKOUT	]|	     |
+	  	  	  	 -------------
+
+
+LPC2106
+
+				[Connect To		]
+P0.04: SPI SCLOCK		[ENC28J60 SCLOCK	]
+P0.05: SPI MISO			[ENC28J60 MISO		]
+P0.06: SPI MOSI			[ENC28J60 MOSI 		]
+P0.07: SPI SSEL			[3.3v 			]
+P0.08: ENC28J60 Reset		[ENC28J60 Reset		]
+p0.09: ENC28J60 ChipSelect	[ENC28J60 ChipSelect	]
+P0.15: ENC28J60 Interrupt	[ENC28J60 Interrupt	]
