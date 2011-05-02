@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Session Name="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/SE2.workspace">
-  <int Value="2" Name="m_selectedTab"/>
+  <int Value="6" Name="m_selectedTab"/>
   <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/SE2.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
       <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/ENC28J60.c" Name="FileName"/>
-      <int Value="6" Name="FirstVisibleLine"/>
+      <int Value="0" Name="FirstVisibleLine"/>
       <int Value="0" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/Ethernet.c" Name="FileName"/>
-      <int Value="16" Name="FirstVisibleLine"/>
-      <int Value="121" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/collection/buffer/BUFFER.c" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="37" Name="CurrentLine"/>
+      <int Value="30" Name="FirstVisibleLine"/>
+      <int Value="173" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/Ethernet.h" Name="FileName"/>
-      <int Value="8" Name="FirstVisibleLine"/>
-      <int Value="40" Name="CurrentLine"/>
+      <int Value="14" Name="FirstVisibleLine"/>
+      <int Value="27" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
     <TabInfo>
@@ -37,6 +31,18 @@
       <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/collection/buffer/BUFFER.h" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
       <int Value="17" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/tests/test/test.c" Name="FileName"/>
+      <int Value="61" Name="FirstVisibleLine"/>
+      <int Value="142" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/peripherical/Makefile" Name="FileName"/>
+      <int Value="42" Name="FirstVisibleLine"/>
+      <int Value="59" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
   </TabInfoArray>
@@ -60,7 +66,7 @@
     </SerializedObject>
     <SerializedObject Name="Breakpoint1">
       <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/tests/test/test.c" Name="file"/>
-      <int Value="49" Name="lineno"/>
+      <int Value="125" Name="lineno"/>
       <wxString Value="" Name="function_name"/>
       <wxString Value="" Name="memory_address"/>
       <int Value="1" Name="bp_type"/>

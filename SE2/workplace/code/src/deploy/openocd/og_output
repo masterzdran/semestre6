@@ -1,0 +1,15 @@
+1000 kHz
+trst_and_srst srst_pulls_trst srst_gates_jtag trst_push_pull srst_open_drain
+jtag_nsrst_delay: 300
+jtag_ntrst_delay: 300
+Info : clock speed 1000 kHz
+Error: JTAG scan chain interrogation failed: all ones
+Error: Check JTAG interface, timings, target power, etc.
+Error: JTAG scan chain interrogation failed: all ones
+Error: Check JTAG interface, timings, target power, etc.
+Command handler execution failed
+Warn : jtag initialization failed; try 'jtag init' again.
+Error: JTAG scan chain interrogation failed: all ones
+Error: Check JTAG interface, timings, target power, etc.
+error: -100
+Command handler execution failed

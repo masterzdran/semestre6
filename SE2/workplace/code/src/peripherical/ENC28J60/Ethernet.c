@@ -19,9 +19,9 @@
 #define __BUFFER_RX_SIZE__		512
 #define __BUFFER_TX_SIZE__		512
 
-static BUFFER tx_Buffer[__BUFFER_TX_SIZE__];
-static BUFFER rx_Buffer[__BUFFER_RX_SIZE__];
-
+static BUFFER tx_Buffer;
+static BUFFER rx_Buffer;
+static pETHERNET_Device ethDevice;
 
 /**
  * @brief 
@@ -43,6 +43,7 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
         return ETHERNET_SPI_INIT_ERROR;
     } 
     
+	ENC_init(&ethDevice->ethernetDevice);
     /*Reset Enc28j60 to default values*/
     ENC_system_reset_command();
     
@@ -170,6 +171,7 @@ U8 Ethernet_send(U8* packet, U16 packet_size){
 	}while((aux & EIR_TXERIF) && TRANSMITE_LATE_COLLITION_BUG(tsv) && (retry++ < MAX_TX_RETRIES) )	;
 	return ETHERNET_OK;
 }
+
 U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size){
 	U8 rsv[RSV_SIZE];
 	U32 packet_size = 0;

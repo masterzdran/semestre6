@@ -1,7 +1,7 @@
 #ifndef ENC28J60_H
 #define ENC28J60_H
 #include "TYPES.h"
-
+#include "SPI.h"
 #define ADDR_MASK	0x1F
 #define BANK_MASK	0x60
 #define SPRD_MASK	0x80
@@ -394,9 +394,8 @@ void ENC_write_buffer_memory(U8* data, U32 size);
 void ENC_bit_field_set(U8 address, U8 data);
 void ENC_bit_field_clear(U8 address, U8 data);
 void ENC_system_reset_command();
-
-
-
+void ENC_init(pSPI_Device pspi);
+ 
 #define ENC_WRITE_REG16(A, B, C)  	ENC_write_reg((A), (B),(C),true)
 #define ENC_WRITE_REG8(A, B, C)  	ENC_write_reg((A), (B),(C),false)
 #define ENC_READ_REG8(A, B) 		ENC_read_reg((A), (B),false)
