@@ -15,7 +15,7 @@
 # DEETC - Dep. de Eng. Electrónica e Telecomunicações e Computadores
 # ISEL  - Instituto Superior de Engenharia de Lisboa
 #=======================================================================
-#															GPIO
+#				BUFFER
 #=======================================================================
 #Shell Path
 SHELL			= /bin/sh
@@ -31,18 +31,19 @@ include $(PROJECT_PATH)/common.mk
 .PHONY					= clear
 #=======================================================================
 
-all: GPIO.o
+all: BUFFER.o
 
-GPIO.o: GPIO.c GPIO.h
+BUFFER.o: BUFFER.c BUFFER.h
 	@echo "----------------------------------------------------------------------"
 	$(CC) $(COPTIONS) $(SEARCHLIB) $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $< 
 	cp $@ $(MYLIB)/$@
-	cp GPIO.h $(INCLUDE)/
+	cp BUFFER.h $(INCLUDE)/
 	
 clean:
 	@echo "----------------------------------------------------------------------"
-	rm  GPIO.o
-	rm  $(INCLUDE)/GPIO.h
+	rm  BUFFER.o
+	rm  $(MYLIB)/BUFFER.o
+	rm  $(INCLUDE)/BUFFER.h
 	
 clear:
 	clear

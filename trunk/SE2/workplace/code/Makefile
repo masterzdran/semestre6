@@ -31,6 +31,7 @@ PROJECT_PATH	= $(SVN_PATH)/code
 .PHONY				= device
 .PHONY				= program
 .PHONY				= deploy
+.PHONY				= collection
 #=======================================================================
 include $(PROJECT_PATH)/common.mk
 #=======================================================================
@@ -51,8 +52,9 @@ VPATH 			= $(MYLIB):$(CLIB):$(libdir)
 #VPATH 			= $(MYLIB)
 #=======================================================================
 #LIBOBJECT =		libc.a libgcc.a  libLPC2106.a libPeripherical.a libDebugger.a
-LYBRARIES = 	-lPeripherical -lLPC2106 -lc -lgcc
-OBJECT =		$(MYLIB)/start.o $(PROGRAM)/test.o $(MYLIB)/console.o
+LYBRARIES = 	 -lc -lgcc -lLPC2106  -lPeripherical
+OBJECT =		$(MYLIB)/start.o $(PROGRAM)/test.o $(MYLIB)/console.o  $(MYLIB)/BUFFER.o
+#$(MYLIB)/BUFFER.o
 #=======================================================================
 all: $(END_EXEC) 
 
@@ -63,7 +65,7 @@ $(END_EXEC): program
 #	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(MYLIB)/start.o $(PROGRAM)/tacografo.o -L$(MYLIB) -lPeripherical -lLPC2106 -lc -lgcc
 	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(OBJECT) -L$(MYLIB) $(LYBRARIES)
 
-peripherical: device
+peripherical: collection
 	@echo "----------------------------------------------------------------------"
 	$(MAKE) -C $(PERIPHERICAL)
 
@@ -74,8 +76,13 @@ debugger: peripherical
 device:
 	@echo "----------------------------------------------------------------------"
 	$(MAKE) -C $(DEVICE)
+
+collection: device 
+	@echo "----------------------------------------------------------------------"
+	@echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+	$(MAKE) -C $(COLLECTION)
 	
-program:  device peripherical debugger
+program:  device  collection peripherical debugger  
 	@echo "----------------------------------------------------------------------"
 	$(MAKE) -C $(PCOMPILE)
 
@@ -92,6 +99,7 @@ clean:
 	$(MAKE) -C $(PERIPHERICAL) clean
 	$(MAKE) -C $(DEBUGGER) clean	
 	$(MAKE) -C $(PCOMPILE) clean
+	$(MAKE) -C $(COLLECTION) clean
 
 deploy: $(END_EXEC)
 	$(OPENOCD) -f $(OPENOCD_FILE) -c "flash write_image erase $^" -c "sleep 100" -c "reset run" -c "shutdown"

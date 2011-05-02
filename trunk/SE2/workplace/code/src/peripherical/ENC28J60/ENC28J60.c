@@ -3,12 +3,15 @@
 
 
 
-extern SPI_Device spi;
+static pSPI_Device spi;
+ void ENC_init(pSPI_Device pspi){
+	 spi=pspi;
+ }
 
 static inline void do_single_transaction(U32 size, const U8 *tx_data, U8 *rx_buffer){
-    SPI_start_device(&spi);
-    SPI_transfer(&spi, size, tx_data, rx_buffer);
-    SPI_stop_device(&spi);   
+    SPI_start_device(spi);
+    SPI_transfer(spi, size, tx_data, rx_buffer);
+    SPI_stop_device(spi);   
 }
 
 static inline void do_double_transaction(U8* command, U8 commandSize, U32 dataSize, const U8 *tx_data, U8 *rx_buffer){

@@ -1,5 +1,4 @@
 #include "BUFFER.h"
-#include <stdio.h>
 #define IS_EMPTY(A)                ((A)->readIdx == (A)->writeIdx)
 #define IS_FULL(A)                 (((((A)->w + 1) >= (A)->buffersize)?0:(A)->readIdx + 1) == (A)->writeIdx)
 #define SET_THE_RECORD(A,B)           {(*(A))++;if((*(A)) >= (B)){*(A) = 0;}}
@@ -12,7 +11,7 @@ void buffer_init(pBUFFER ringBuffer, U32 buffersize){
 
 U8 buffer_get(pBUFFER ringBuffer){
   U8 c;
-  if(buffer_isEmpty(ringBuffer)){printf ("is empty;");return 0;}
+  if(buffer_isEmpty(ringBuffer)){return 0;}
   c=ringBuffer->bufferbase[ringBuffer->readIdx];
   ringBuffer->bufferbase[ringBuffer->readIdx] = '-';
   ringBuffer->readIdx++;
@@ -24,7 +23,7 @@ U8 buffer_get(pBUFFER ringBuffer){
 }
 
 void buffer_put(pBUFFER ringBuffer,U8 c){
-  if (buffer_isFull(ringBuffer)) {printf ("is full;");return;}
+  if (buffer_isFull(ringBuffer)) {return;}
   ringBuffer->bufferbase[ringBuffer->writeIdx] = c;
   ringBuffer->writeIdx++;
   /*SET_THE_RECORD(&(ringBuffer->writeIdx),ringBuffer->buffersize);*/
