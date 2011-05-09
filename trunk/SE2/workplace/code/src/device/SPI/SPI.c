@@ -98,7 +98,12 @@ U8 SPI_init( pSPI_Device devices, U32 nbrDevices){
   }
   /* Config chip select port */  
   gpio_init_PINSEL0(chipSelect);
-  gpio_set_direction(chipSelect,GPIO_OUT);
+	gpio_set(chipSelect);
+  /* *****TODO***** 
+	 * configure SPI to be able to config chip select
+	 * active low or active high
+	 * */
+	/*gpio_set_direction(chipSelect,GPIO_OUT);*/
 
   /* init */
   POWER_Off_Peripherical(PW_SSP);     		/* Ensure SSP is disable */
@@ -159,7 +164,8 @@ U8 SPI_start_device(pSPI_Device device){
   pSPI->CONTROL |= (device->role << __SPCR_MSTR_SHIFT__ | device->nbrbits << __SPCR_BITS_SHIFT__ | device->mode  << __SPCR_CPHA_SHIFT__);
   
   /*enable chipselect*/
-  gpio_set(device->chipSelect);
+	gpio_set_direction(device->chipSelect,GPIO_OUT);
+  gpio_clear(device->chipSelect);
 	return SPI_SUCESS;
   
 }
@@ -168,7 +174,7 @@ U8 SPI_start_device(pSPI_Device device){
  * @param device: pointer to the device to be stopped
  * */
 void SPI_stop_device(pSPI_Device device){
-  gpio_clear(device->chipSelect);
+  gpio_set(device->chipSelect);
   pSPI->CONTROL &= ~__SPCR_MSTR__;	
 }
 

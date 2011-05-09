@@ -56,7 +56,7 @@ void spi_test(){
 SPI_Device spis[]={ 
 	 {
       0,									/*função de tratamento de interrupções*/
-      10,               					/*ritmo do sinal de relógio*/  
+      64,               					/*ritmo do sinal de relógio*/  
       1<<8,             					/*define a identificação do periférico: BITMAP*/
       8,                					/*número de bits de uma palavra*/
       SPI_PRIOR_TO_FIRST_SCK_RISING_EDGE,   /*modo SPI (CPHA, CPOL). do tipo SPI_MODE*/
@@ -67,15 +67,20 @@ SPI_Device spis[]={
 };
 	
 	SPI_init(spis, 1);
+	U8 out_buffer[] = {0x35, 0x7a};
+	U8 out_buffer2[] = {0x1E , 0xFF}; /*enviar 0x1E ncomo primeiro byte e depois dummy para receber o 0x80*/
+	U8 in_buffer[] = {0x00, 0x00};
+		
 	while(1){
-		U8 out_buffer[] = {0x35, 0x7a};
-        U8 out_buffer2[] = {0x1E , 0xFF}; /*enviar 0x1E ncomo primeiro byte e depois dummy para receber o 0x80*/
-		U8 in_buffer[sizeof(out_buffer)];
+		gpio_clear(1<<9);      /*activar RST do ENC*/    
+		gpio_set(1<<9);      /*desactivar RST do ENC*/
+
+	
 		SPI_start_device(&spis[0]);
-		SPI_transfer(&spis[0], sizeof(out_buffer), out_buffer, in_buffer);
-        gpio_clear(0x100);      /*activar RST do ENC*/
-        SPI_transfer(&spis[0], sizeof(out_buffer2), out_buffer2, in_buffer);
+/*		SPI_transfer(&spis[0], sizeof(out_buffer), out_buffer, in_buffer);*/
+		SPI_transfer(&spis[0], sizeof(out_buffer2), out_buffer2, in_buffer);
 		SPI_stop_device(&spis[0]);
+		break;
   }
 }
 
@@ -84,7 +89,7 @@ void enc_test()
 	ETHERNET_Device eth ={
 	 {
       0,									
-      10,               					  
+      16,               					  
       1<<8,             					
       8,                					
       SPI_PRIOR_TO_FIRST_SCK_RISING_EDGE,   
@@ -101,9 +106,9 @@ void enc_test()
 	Ethernet_init(&eth);
 	
 	while (1) {
-		Ethernet_receive(packet, PACKET_SIZE,&size);
-		while (size ) {
-			Ethernet_receive(packet, PACKET_SIZE,&size);
+		/*Ethernet_receive(packet, PACKET_SIZE,&size);*/
+		while ((size=Ethernet_receive(packet, PACKET_SIZE,&size))) {
+			/*Ethernet_receive(packet, PACKET_SIZE,&size);*/
 			console_write_str("Packet received\r\n\0");
 			console_dump_hex(packet, size);
 		}
@@ -112,13 +117,13 @@ void enc_test()
 
 int main(){
 
-  TIMER_init(pTIMER1,58982400/MICRO);
+	TIMER_init(pTIMER1,58982400/MICRO);
   TIMER_init(pTIMER0,58982400/MICRO);
-  rtc_init();
+	rtc_init();
   VIC_init();
 
   /* console_test();  */
-  /* spi_test(); */
+  spi_test();
 	enc_test();
 	return 0;
 }

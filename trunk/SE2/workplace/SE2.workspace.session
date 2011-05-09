@@ -1,48 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Session Name="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/SE2.workspace">
-  <int Value="6" Name="m_selectedTab"/>
-  <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/SE2.workspace" Name="m_workspaceName"/>
+<Session Name="/media/DATA/ISEL/Semestre6/SE2/workplace/SE2.workspace">
+  <int Value="3" Name="m_selectedTab"/>
+  <wxString Value="/media/DATA/ISEL/Semestre6/SE2/workplace/SE2.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/ENC28J60.c" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
+      <wxString Value="/media/DATA/ISEL/Semestre6/SE2/workplace/code/src/tests/test/test.c" Name="FileName"/>
+      <int Value="88" Name="FirstVisibleLine"/>
+      <int Value="98" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/Ethernet.c" Name="FileName"/>
-      <int Value="30" Name="FirstVisibleLine"/>
-      <int Value="173" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/Ethernet.h" Name="FileName"/>
-      <int Value="14" Name="FirstVisibleLine"/>
-      <int Value="27" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/peripherical/ENC28J60/ENC28J60.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/collection/buffer/BUFFER.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="17" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/tests/test/test.c" Name="FileName"/>
-      <int Value="61" Name="FirstVisibleLine"/>
-      <int Value="142" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/peripherical/Makefile" Name="FileName"/>
-      <int Value="42" Name="FirstVisibleLine"/>
+      <wxString Value="/media/DATA/ISEL/Semestre6/SE2/workplace/code/src/peripherical/ENC28J60/ENC28J60.c" Name="FileName"/>
+      <int Value="35" Name="FirstVisibleLine"/>
       <int Value="59" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/media/DATA/ISEL/Semestre6/SE2/workplace/code/src/peripherical/ENC28J60/ENC28J60.h" Name="FileName"/>
+      <int Value="46" Name="FirstVisibleLine"/>
+      <int Value="47" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/media/DATA/ISEL/Semestre6/SE2/workplace/code/src/peripherical/ENC28J60/Ethernet.c" Name="FileName"/>
+      <int Value="180" Name="FirstVisibleLine"/>
+      <int Value="203" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/media/DATA/ISEL/Semestre6/SE2/workplace/code/src/device/SPI/SPI.c" Name="FileName"/>
+      <int Value="149" Name="FirstVisibleLine"/>
+      <int Value="166" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/media/DATA/ISEL/Semestre6/SE2/workplace/code/src/peripherical/ENC28J60/Ethernet.h" Name="FileName"/>
+      <int Value="1" Name="FirstVisibleLine"/>
+      <int Value="23" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/media/DATA/ISEL/Semestre6/SE2/workplace/code/src/device/GPIO/GPIO.h" Name="FileName"/>
+      <int Value="27" Name="FirstVisibleLine"/>
+      <int Value="28" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/media/DATA/ISEL/Semestre6/SE2/workplace/code/src/device/GPIO/GPIO.c" Name="FileName"/>
+      <int Value="52" Name="FirstVisibleLine"/>
+      <int Value="57" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/media/DATA/ISEL/Semestre6/SE2/workplace/code/src/device/SPI/SPI.h" Name="FileName"/>
+      <int Value="31" Name="FirstVisibleLine"/>
+      <int Value="46" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/media/DATA/ISEL/Semestre6/SE2/workplace/code/src/device/SPI/SPI_Public.h" Name="FileName"/>
+      <int Value="18" Name="FirstVisibleLine"/>
+      <int Value="30" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
   </TabInfoArray>
