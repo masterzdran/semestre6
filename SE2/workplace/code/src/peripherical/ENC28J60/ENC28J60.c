@@ -15,10 +15,10 @@ static inline void do_single_transaction(U32 size, const U8 *tx_data, U8 *rx_buf
 }
 
 static inline void do_double_transaction(U8* command, U8 commandSize, U32 dataSize, const U8 *tx_data, U8 *rx_buffer){
-    SPI_start_device(&spi);
-    SPI_transfer(&spi, commandSize, command, command);
-    SPI_transfer(&spi, dataSize, tx_data, rx_buffer);
-    SPI_stop_device(&spi);   
+    SPI_start_device(spi);
+    SPI_transfer(spi, commandSize, command, command);
+    SPI_transfer(spi, dataSize, tx_data, rx_buffer);
+    SPI_stop_device(spi);   
 }
 
 /* TABLE 4-1: SPI INSTRUCTION SET FOR THE ENC28J60 */

@@ -200,5 +200,6 @@ U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size){
 	}else{
 		*read_size = 0;
 	}
-	return ETHERNET_OK;
+	/*return ETHERNET_OK;*/
+	return (*read_size);
 }
