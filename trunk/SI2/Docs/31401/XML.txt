@@ -1,0 +1,207 @@
+XML
+* Constituido
+	+ Elementos
+		- Pode conter elementos
+		- Pode conter atributos 
+		- Não pode:
+			» ter sinais de pontuação
+			» ter a palavra XML (seja como estiver escrita)
+			» ter espaços
+			» no conteudo o caracter menor (<)
+		- Evitar o uso de :
+			» sinal de subtracção (-) e ponto (.)
+			» dois pontos(:) 
+	+ Atributos
+		- Pertence sempre a um e só um elemento
+		- Não pode conter outros elementos ou atributos
+		
+* Regras
+	+ As Tags:
+		- São case Sensitive
+		- Não aceitam espaços
+		- Andam aos pares. Tem tag de inicio e de fim
+		- Valor dos atributos são escritos entre plicas(') ou aspas (")
+		- Adequadamente aninhados
+		
+* Declaração
+	+ Deve iniciar com uma declaração XML (é opcional)
+		- Tem que ser a primeira linha, não pode conter qualquer caracter antes
+	+ Declaração tem o formato <?xml atributos>
+		- Atributos:
+			» version		(obrigatório)
+			» encoding		(opcional)
+				> ISO-8859-1
+				> UTF8
+			» standalone	(opcional)
+				> Não precisa de analisar informação externa = yes
+				> É analisada informação externa (DTD)= no
+	+ Comentários:
+		- <!-- Comentário -->
+	+ O operador &, designa-se por referência a entidade. 
+		- o parser substitui o &tag, pelo texto representado por tag
+	+ 5 referências a entidades
+		- &lt (obrigatório no conteudo de um elemento)
+			» <
+		- &amp	(obrigatório no conteudo de um elemento)
+			» &
+		- &gt
+			» >
+		- &quot
+			» "
+		- &apos
+			» '
+* Espaço de Nomes (Nome qualificado)
+	+ Distingue elementos e atributos de diferentes vocabulários
+	+ Agrupar elementos e atributos que se relacionam
+	+ Todos os elementos e atributos com o mesmo URI tem o mesmo namespace
+		- URI = <schemeName>: <hierarchicalPart> [?<query>] [#<fragment>] 
+		- URN =  urn:namespaceID:namespaceSpecificString
+	+ Atributo XNLS
+		- Evita-se conflitos entre nomes
+		- Usa-se para associor um previxo a um URI
+			» formato: xmlns:prefixo=“URI”
+		- nome ficam na forma prefixo:nome
+	+ Quando o namespace é definido num elemento, contextualiza todos os seus descendentes
+	+ Processamento sobre um Namespace
+		- URI fornece nome único ao namespace
+		- não é utilizado pelos parsers
+		- valida se os nomes foram associados a um URI
+* Tratamento de Texto
+	+ Dentro da secção CDATA tudo é ignorado
+		- <![CDATA[ ... ]]>
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+DTD
+* Linguagem para especificar a gramática
+* Especifica
+	+ elementos, atributos e entidades
+	+ contexto em cada componente
+	+ atributos com valor unico e referencias para esses atributos
+* Convenção
+	+ ?	= zero ou uma ocorrência
+	+ * = zero ou mais ocorrências
+	+ + = uma ou mais ocorrências
+* Declaração
+	+ Inclusão
+		- Inline: 	<!DOCTYPE elemento-raiz [declarações-de-elementos]>
+		- externo: 	<!DOCTYPE elemento-raiz SYSTEM "nome-ficheiro">
+		
+	+ Elementos
+		- <!ELEMENT nome categoria>
+		- <!ELEMENT nome (tipo-de-conteudo-do-elemento)>
+		- Diferentes declarações
+			» Vazio: <!ELEMENT nome EMPTY>
+			» Qualquer conteudo: <!ELEMENT nome ANY>
+			» Não contem elementos , só texto: <!ELEMENT nome (#PCDATA)>
+			» Contem elementos descendentes: <!ELEMENT nome (nome-desc-1, nome-desc-2, ...)>
+			» Contem conteudo misto: <!ELEMENT nome (nome-elem-a | nome-elem-b | ...)>
+	+ Atributos
+		- <!ATTLIST nome-elem nome-atr tipo-atr valor-omissao>
+		- tipo-atr
+			» texto que não será analisado		: CDATA
+			» e.g. nome XML válido				: NMTOKEN
+			» lista de NMTOKEN					: NMTOKENS
+			» uma entidade						: ENTITY
+			» lista de entidades				: ENTITIES
+			» valor (deste atributo) é único	: ID
+			» valor de outro ID					: IDREF
+			» lista de outros IDs				: IDREFS
+			» um de vários TOKENs (ei)			: (e1 | e2 | ...)
+			» nome de uma anotação				: NOTATION
+			» valor XML predefinido				: xml:
+		- valor-omissao
+			» valor omissão do atributo	: "valor"
+			» atributo obrigatório		: #REQUIRED
+			» atributo opcional			: #IMPLIED
+			» atributo de valor fixo	: #FIXED "valor"
+	+ Entidade
+		- Usada para conter texto
+		- Refencia a Entidade, refere uma Entidade (&ENTIDADE)
+		- Declara-se:
+			» Interna: <!ENTITY nome-entidade “valor-entidade”>
+			» Externa: <!ENTITY nome-entidade SYSTEM “URI”>
+* DTD: subconjunto interno
+	+ Definições que estão no ficheiro xml
+	+ Boa abordagem para construir um bom DTD
+	+ Subconjunto
+		- Interno
+			» está contido, entre os parêntesis rectos: <!DOCTYPE r [ subconjunto interno ]>
+		- Externo
+			» está num ficheiro  <!DOCTYPE r SYSTEM "ficheiro.dtd">
+			» na declaração XML tem-se: standalone="no"
+		- Ambos os subconjuntos têm que ser compativeis
+			» Não pode redefinir elementos e atributos
+			» As ENTITY podem ser redefinidas
+* Entidade Parametro
+	+ Entidade Geral
+	+ Define Elementos ou Atributos
+	+ Declaração
+		- <!ENTITY % nome-entidade "valor-entidade">
+	+ Diferenças entre Entidade
+		- entidade (geral): referida com & ; entidade parâmetro: referida com %
+		- Só pode ser utilizada em subconjunto externo
+	+ Redefinição
+		- Analisa primeiro o subconjunto interno e depois o externo
+		- Quando uma entidade têm mais de uma definição, é considerada a primeira
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------		
+XPATH
+* 7 tipos de nós
+	+	raiz						:	/
+	+	elemento					:	nome
+	+	atributo					:	@oNome
+	+	texto						:	text()
+	+	comentario					:	comment()
+	+	instrução de processamento	:	processing-instruction()
+	+	espaço de nomes				:	namespace-uri(), local-name(), name()
+* Localização
+	+	procurar a partir deste ponto			:	// expressão
+	+	selecciona o nó corrente				:	.
+	+	selecciona o nó ascentente				: 	..
+	+	selecciona todos os nós do tipo elemento:	*
+	+	selecciona todos os nós do tipo atributo:	@*
+	+	selecciona todos os nós					:	node()
+	+	selecciona os nós que verificam as diversas expressões:	expr1 | expr2 | expr3
+* Predicado
+	+ É um passo de localização sobre o qual se define uma condição 
+	+ A condição é escrita entre parêntesis  rectos
+	+ Os operadores disponiveis são: =, !=, < , <=, >, >= , and , or
+	+ Os valores podem ser escritos entre plicas ou com aspas
+	+ Os parênteses curvos explicitam as precedencias
+	
+* Eixo
+	+ self: 		o nó corrente
+	+ child: 		nós filho (eixo de omissão)
+	+ descendant: 	toda a descendência; nós filho, nós filho do filho, etc
+	+ descendant-or-self: o nó corrente e toda a sua descendência
+	+ parent: 		o nó que contém o corrente; o nó raiz não tem parent
+	+ ancestor: 	todos os antepassados; o nó raiz não tem ancestor
+	+ ancestor-or-self: o nó corrente e todos os seus antepassados
+	+ following: 	nós irmãos escritos depois do nó corrente
+	+ preceding: 	nós irmãos escritos antes do nó corrente
+	+ following-sibling: todos os descendentes dos nós irmãos escritos depois do nó corrente	
+	+ preceding-sibling: todos os antepassados dos nós irmãos escritos antes do nó corrente
+	+ attribute: 	todos os atributos do nó corrente
+	+ namespace: 	todos os “namespace” no âmbito do nó corrente
+* xmlDoc.setProperty “SelectionLanguage”, "XPath"
+	+ indexação começa em 1
+* Tipos
+	+ node-set
+	+ string
+	+ boolean
+	+ number
+* Funções (Algumas)
+	+ position()
+	+ last()
+	+ count(expr)
+	+ string(expr)
+	+ starts-with(s1,s2)
+	+ contains(s1, s2)
+	+ translate(s1, s2 , s3)
+	+ boolean(expr)
+	+ not(expr)
+	+ number(expr)
+	+ sum(expr)
+	+ round(n)
+	+
+	+
