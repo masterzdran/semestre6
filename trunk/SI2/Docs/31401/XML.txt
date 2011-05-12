@@ -59,7 +59,7 @@ XML
 	+ Atributo XNLS
 		- Evita-se conflitos entre nomes
 		- Usa-se para associor um previxo a um URI
-			» formato: xmlns:prefixo=“URI”
+			» formato: xmlns:prefixo="URI"
 		- nome ficam na forma prefixo:nome
 	+ Quando o namespace é definido num elemento, contextualiza todos os seus descendentes
 	+ Processamento sobre um Namespace
@@ -118,8 +118,8 @@ DTD
 		- Usada para conter texto
 		- Refencia a Entidade, refere uma Entidade (&ENTIDADE)
 		- Declara-se:
-			» Interna: <!ENTITY nome-entidade “valor-entidade”>
-			» Externa: <!ENTITY nome-entidade SYSTEM “URI”>
+			» Interna: <!ENTITY nome-entidade "valor-entidade">
+			» Externa: <!ENTITY nome-entidade SYSTEM "URI">
 * DTD: subconjunto interno
 	+ Definições que estão no ficheiro xml
 	+ Boa abordagem para construir um bom DTD
@@ -182,8 +182,8 @@ XPATH
 	+ following-sibling: todos os descendentes dos nós irmãos escritos depois do nó corrente	
 	+ preceding-sibling: todos os antepassados dos nós irmãos escritos antes do nó corrente
 	+ attribute: 	todos os atributos do nó corrente
-	+ namespace: 	todos os “namespace” no âmbito do nó corrente
-* xmlDoc.setProperty “SelectionLanguage”, "XPath"
+	+ namespace: 	todos os "namespace" no âmbito do nó corrente
+* xmlDoc.setProperty "SelectionLanguage", "XPath"
 	+ indexação começa em 1
 * Tipos
 	+ node-set
@@ -203,5 +203,101 @@ XPATH
 	+ number(expr)
 	+ sum(expr)
 	+ round(n)
-	+
-	+
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+XSLT
+* Cada Regra especifica a transformação de um molde ("template") num padrão ("match")
+* Elemento raiz: stylesheet ou transform
+	+ Estão no namespace: http://www.w3.org/1999/XSL/Transform
+* Regra de transformação
+	+ <xsl:template match="padrão">molde</xsl:template>
+		- padrão: expressão XPath
+		- molde: Transformação a aplicar
+	+ Valores dos Nós 
+		- <xsl:value-of select="padrão"/>
+* Percorrer todos os nós
+	+ <xsl:for-each select="padrão"/>
+* Testar alternativas
+	+ <xsl:if test="padrão">molde</xsl:if>
+* Definir relação de ordem
+	+ <xsl:sort
+		select     = "expressãoXPath"
+		data-type  = "text" | "number" | "PrefixedName"
+		lang       = "langcode"
+		order      = "ascending" | "descending"
+		case-order = "upper-first" | "lower-first" 
+	/>
+* Avaliação especifica
+	+ <xsl:apply-templates select="padrão"/>
+* Atributo modo
+	+ Quando um nós tem que ser transportado multiplas vezes
+		- No <xsl:template> o valor de mode indica o modo em que a regra deve ser activada
+		- No <xsl:apply-template> o valor de mode indica em que modo serão activadas as correspondentes regras
+	+ Atributo mode
+* Padrão do valor Atributo
+	+ construir um atributo com base no valor de um outro qualquer elemento
+	+ escreve-se como uma expressão XPath entre chavetas
+	+ colocada como valor de atributo de um elemento (no documento XSLT)
+* Indicar o documento resultante
+	+ <xsl:output 
+		method=“xml | html | text | name”
+		version=“string” encoding=“string”
+		omit-xml-declaration="yes | no"
+		standalone=“yes | no”
+		doctype-public=“string”
+		doctype-system=“string”
+		indent=“yes | no”
+	/> 
+* Noção de Variavel
+		+ <xsl:variable>
+			- representar uma variável global ou local
+				» global se for declarado como elemento de topo
+				» local se for declarado no contexto de um elemento <xsl:template>
+			- apenas permite que lhe seja atribuído valor uma única vez
+			- está mais próximo de uma constante do que de uma variável
+* pagina(36)
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+XSD
+* Formato geral de um esquema
+	+ tem um elemento raiz e pode ter uma declaração XML ( <schema>) 
+	+ entre outros, tem o atributo targetNamespace
+	+  Diz-se que um elemento é global quando
+		– é descendente imediato do elemento schema
+	+ Diz-se que um elemento é local quando
+		– é descendente imediato de um elemento diferente de schema
+* Estruturas
+	+ Tipo Simples
+		- elemento, atributo ou restrição
+		- um elemento só pode conter texto
+		- <xs:element name=“xxx” type=“yyy” />
+		- Um atributo é sempre do tipo simples
+		- <xs:atribute
+			name = “XMLname”
+			type = “QName”>  
+			default = “string”
+			fixed = “string”
+			use = “(optional | prohibited | required)”
+			ref = “QName”
+		</xs:attribute>
+	+ Tipo Complexo
+		- elementos que contem
+			» outros elementos
+			» contendo atributos
+		- indicadores
+			» indicador de relação de ordem (all, choice, sequence)
+			» indicador de ocorrência (maxOccurs, minOccurs)
+			» indicador de agrupamento (group name, attributeGroup name)
+		- dar nome ao tipo complexo
+			- <xs:element name=“receita” type=“tReceita”/>
+			- <xs:complexType name=“tReceita”>
+	+ Restrição
+		- É sempre do tipo simples
+		- <xs:simpleType>
+		- <xs:restriction base=“xs:integer”>
+			
+			
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+XQuery
+	
