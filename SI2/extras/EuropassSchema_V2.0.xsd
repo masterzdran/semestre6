@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:europass="http://europass.cedefop.europa.eu/Europass/V2.0" targetNamespace="http://europass.cedefop.europa.eu/Europass/V2.0">
+	<xsd:include schemaLocation="included_schemas/CVLPSchema_V2.0.xsd"/>
+	<xsd:element name="binder" type="europass:binder"/>
+	<xsd:complexType name="binder">
+		<xsd:sequence>
+			<xsd:element name="docinfo" type="europass:docinfo"/>
+			<xsd:element name="CV" type="europass:learnerinformation" minOccurs="0"/>
+			<xsd:element name="LP" type="europass:learnerinformation" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="locale" type="europass:locale" use="required"/>
+	</xsd:complexType>
+</xsd:schema>
