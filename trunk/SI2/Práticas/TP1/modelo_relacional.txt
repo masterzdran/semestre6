@@ -1,0 +1,67 @@
+Modelo Relacional:
+
+Reuniao(Data[AK], Conclusao)
+Restricoes:
+Data - datetime > actual
+Conclusao - varchar(256)
+
+Comentario(IDComentario[AK], Nota, Observacoes)
+IDComentario - int @@IDENTITY
+Nota - int de 0 a 5
+Observacoes - varchar(256)
+
+R_Com(DataReuniao[AK], IDComentario[AK])
+DataReuniao - datetime 
+IDComentario - int
+
+ClienteNormal(ContactoFM[AK], Nome[AK])
+ContactoFM - 
+
+CLienteRegistado(ContactoFM[AK], Nome[AK], Endereço_Postal, Nacionalidade)
+Amigos(ContactoFM_Cliente[AK], ContactoFM_Amigo[AK], Nome_Amigo[AK])
+
+//Não importa se é cliente normal ou registado
+Cli_Com(ContactoFM_Cliente[AK], Nome[AK], IDComentario[AK])
+
+ReservaNormal(Data[AK], QtdPessoas)
+ReservaEvento(Data[AK], QtdPessoas, Organizador, Designacao, Descricao)
+//Organizador - ContactoFM do Cliente
+
+Cli_R(DataReserva[AK], ContactoFM_Cliente[AK], Nome[AK])
+
+Cardapio(IDCardapio, Descricao, Categoria)
+
+
+R_Car(Data[AK], IDCardapio)
+
+Pratos(IDPrato[AK], Preco, Qtd, Activo)
+
+Car_P(IDCardapio, IDPrato)
+
+Ingredientes(IDIngrediente, Nome, Descricao, Qtd_Reserva, Qtd_Actual)
+Ingredientes(IDIngrediente, Nome, Descricao, Qtd_Reserva, Qtd_Actual)
+
+P_I(IDPrato, IDIngrediente)
+
+Fornecedores(IDFornecedor, Nome, Morada, Codigo_Postal, Pais)
+
+Enc(IDEncomendas[AK], IDFornecedor[AK], IDIngrediente[AK], Qtd, Data, Data_Entrega)
+
+Compras(Num_Factura[AK], IDFornecedor[AK], IDIngrediente[AK], Data, Qtd, Qtd_Actual, Data_Validade)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
