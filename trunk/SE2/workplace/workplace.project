@@ -5,8 +5,126 @@
       <![CDATA[00010001N0005Debug000000000000]]>
     </Plugin>
   </Plugins>
+  <VirtualDirectory Name="doc">
+    <VirtualDirectory Name="documentation">
+      <VirtualDirectory Name="html">
+        <File Name="doc/documentation/html/installdox"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+  </VirtualDirectory>
   <VirtualDirectory Name="code">
     <VirtualDirectory Name="src">
+      <VirtualDirectory Name="uip-1.0">
+        <VirtualDirectory Name="apps">
+          <VirtualDirectory Name="resolv">
+            <File Name="code/src/uip-1.0/apps/resolv/resolv.c"/>
+            <File Name="code/src/uip-1.0/apps/resolv/resolv.h"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="webclient">
+            <File Name="code/src/uip-1.0/apps/webclient/webclient.c"/>
+            <File Name="code/src/uip-1.0/apps/webclient/webclient-strings.c"/>
+            <File Name="code/src/uip-1.0/apps/webclient/webclient-strings"/>
+            <File Name="code/src/uip-1.0/apps/webclient/webclient-strings.h"/>
+            <File Name="code/src/uip-1.0/apps/webclient/webclient.h"/>
+            <File Name="code/src/uip-1.0/apps/webclient/makestrings"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="hello-world">
+            <File Name="code/src/uip-1.0/apps/hello-world/hello-world.h"/>
+            <File Name="code/src/uip-1.0/apps/hello-world/hello-world.c"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="telnetd">
+            <File Name="code/src/uip-1.0/apps/telnetd/telnetd.c"/>
+            <File Name="code/src/uip-1.0/apps/telnetd/shell.h"/>
+            <File Name="code/src/uip-1.0/apps/telnetd/telnetd.h"/>
+            <File Name="code/src/uip-1.0/apps/telnetd/shell.c"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="smtp">
+            <File Name="code/src/uip-1.0/apps/smtp/smtp-strings.c"/>
+            <File Name="code/src/uip-1.0/apps/smtp/smtp.c"/>
+            <File Name="code/src/uip-1.0/apps/smtp/smtp.h"/>
+            <File Name="code/src/uip-1.0/apps/smtp/smtp-strings"/>
+            <File Name="code/src/uip-1.0/apps/smtp/makestrings"/>
+            <File Name="code/src/uip-1.0/apps/smtp/smtp-strings.h"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="dhcpc">
+            <File Name="code/src/uip-1.0/apps/dhcpc/dhcpc.h"/>
+            <File Name="code/src/uip-1.0/apps/dhcpc/dhcpc.c"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="webserver">
+            <File Name="code/src/uip-1.0/apps/webserver/webserver.h"/>
+            <File Name="code/src/uip-1.0/apps/webserver/httpd-cgi.c"/>
+            <File Name="code/src/uip-1.0/apps/webserver/httpd-fs.c"/>
+            <File Name="code/src/uip-1.0/apps/webserver/httpd-fsdata.h"/>
+            <File Name="code/src/uip-1.0/apps/webserver/http-strings.h"/>
+            <File Name="code/src/uip-1.0/apps/webserver/httpd-fs.h"/>
+            <File Name="code/src/uip-1.0/apps/webserver/httpd.c"/>
+            <File Name="code/src/uip-1.0/apps/webserver/httpd-fsdata.c"/>
+            <File Name="code/src/uip-1.0/apps/webserver/httpd-cgi.h"/>
+            <File Name="code/src/uip-1.0/apps/webserver/http-strings.c"/>
+            <File Name="code/src/uip-1.0/apps/webserver/makestrings"/>
+            <File Name="code/src/uip-1.0/apps/webserver/httpd.h"/>
+            <File Name="code/src/uip-1.0/apps/webserver/makefsdata"/>
+            <File Name="code/src/uip-1.0/apps/webserver/http-strings"/>
+          </VirtualDirectory>
+          <File Name="code/src/uip-1.0/apps/README"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="unix">
+          <File Name="code/src/uip-1.0/unix/clock-arch.h"/>
+          <File Name="code/src/uip-1.0/unix/main.c"/>
+          <File Name="code/src/uip-1.0/unix/clock-arch.c"/>
+          <File Name="code/src/uip-1.0/unix/uip-conf.h"/>
+          <File Name="code/src/uip-1.0/unix/tapdev.h"/>
+          <File Name="code/src/uip-1.0/unix/Makefile"/>
+          <File Name="code/src/uip-1.0/unix/tapdev.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="doc">
+          <File Name="code/src/uip-1.0/doc/uip-code-style.c"/>
+          <File Name="code/src/uip-1.0/doc/Doxyfile"/>
+          <File Name="code/src/uip-1.0/doc/example-mainloop-with-arp.c"/>
+          <File Name="code/src/uip-1.0/doc/example-mainloop-without-arp.c"/>
+          <File Name="code/src/uip-1.0/doc/README"/>
+          <File Name="code/src/uip-1.0/doc/Makefile"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="uip">
+          <File Name="code/src/uip-1.0/uip/uip-neighbor.h"/>
+          <File Name="code/src/uip-1.0/uip/uip-split.h"/>
+          <File Name="code/src/uip-1.0/uip/lc-switch.h"/>
+          <File Name="code/src/uip-1.0/uip/psock.c"/>
+          <File Name="code/src/uip-1.0/uip/uiplib.c"/>
+          <File Name="code/src/uip-1.0/uip/lc.h"/>
+          <File Name="code/src/uip-1.0/uip/uip_arch.h"/>
+          <File Name="code/src/uip-1.0/uip/uip-fw.c"/>
+          <File Name="code/src/uip-1.0/uip/timer.c"/>
+          <File Name="code/src/uip-1.0/uip/timer.h"/>
+          <File Name="code/src/uip-1.0/uip/uip-split.c"/>
+          <File Name="code/src/uip-1.0/uip/uip.h"/>
+          <File Name="code/src/uip-1.0/uip/clock.h"/>
+          <File Name="code/src/uip-1.0/uip/lc-addrlabels.h"/>
+          <File Name="code/src/uip-1.0/uip/uipopt.h"/>
+          <File Name="code/src/uip-1.0/uip/uip_arp.h"/>
+          <File Name="code/src/uip-1.0/uip/uip_arp.c"/>
+          <File Name="code/src/uip-1.0/uip/uip.c"/>
+          <File Name="code/src/uip-1.0/uip/pt.h"/>
+          <File Name="code/src/uip-1.0/uip/uip-neighbor.c"/>
+          <File Name="code/src/uip-1.0/uip/uip-fw.h"/>
+          <File Name="code/src/uip-1.0/uip/uiplib.h"/>
+          <File Name="code/src/uip-1.0/uip/psock.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="lib">
+          <File Name="code/src/uip-1.0/lib/memb.h"/>
+          <File Name="code/src/uip-1.0/lib/memb.c"/>
+        </VirtualDirectory>
+        <File Name="code/src/uip-1.0/README"/>
+        <VirtualDirectory Name="lpc-2106">
+          <File Name="code/src/uip-1.0/lpc-2106/clock-arch.h"/>
+          <File Name="code/src/uip-1.0/lpc-2106/clock-arch.c"/>
+          <File Name="code/src/uip-1.0/lpc-2106/uip-conf.h"/>
+          <File Name="code/src/uip-1.0/lpc-2106/Makefile"/>
+          <File Name="code/src/uip-1.0/lpc-2106/tapdev.h"/>
+          <File Name="code/src/uip-1.0/lpc-2106/tapdev.c"/>
+          <File Name="code/src/uip-1.0/lpc-2106/main_uip.c"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
       <VirtualDirectory Name="debugger">
         <VirtualDirectory Name="console">
           <File Name="code/src/debugger/console/console.c"/>
@@ -21,7 +139,9 @@
           <File Name="code/src/collection/buffer/BUFFER.h"/>
           <File Name="code/src/collection/buffer/BUFFER"/>
           <File Name="code/src/collection/buffer/Makefile"/>
+          <File Name="code/src/collection/buffer/TYPES.h"/>
         </VirtualDirectory>
+        <File Name="code/src/collection/Makefile"/>
       </VirtualDirectory>
       <VirtualDirectory Name="peripherical">
         <VirtualDirectory Name="KEYBOARD">
@@ -151,12 +271,16 @@
         <VirtualDirectory Name="test">
           <File Name="code/src/tests/test/Makefile"/>
           <File Name="code/src/tests/test/test.c"/>
+          <File Name="code/src/tests/test/test.h"/>
         </VirtualDirectory>
       </VirtualDirectory>
       <VirtualDirectory Name="deploy">
         <VirtualDirectory Name="ldscript">
           <File Name="code/src/deploy/ldscript/ldscript_ram"/>
           <File Name="code/src/deploy/ldscript/ldscript_rom"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="openocd">
+          <File Name="code/src/deploy/openocd/og_output"/>
         </VirtualDirectory>
       </VirtualDirectory>
       <VirtualDirectory Name="lib">
@@ -206,8 +330,13 @@
         <File Name="code/src/include/string.h"/>
         <File Name="code/src/include/limits.h"/>
         <File Name="code/src/include/BUFFER.h"/>
+        <File Name="code/src/include/test.h"/>
+        <File Name="code/src/include/console.h"/>
+        <File Name="code/src/include/Ethernet.h"/>
+        <File Name="code/src/include/ENC28J60.h"/>
       </VirtualDirectory>
       <File Name="code/src/Makefile"/>
+      <File Name="code/src/---Makefile"/>
     </VirtualDirectory>
     <File Name="code/Makefile"/>
     <File Name="code/Makefile - tacografo"/>
@@ -283,4 +412,8 @@
       </AdditionalRules>
     </Configuration>
   </Settings>
+  <VirtualDirectory Name="workplace">
+    <File Name="SistemasEmbebidos2"/>
+    <File Name="SistemasEmbebidos2 (copy)"/>
+  </VirtualDirectory>
 </CodeLite_Project>

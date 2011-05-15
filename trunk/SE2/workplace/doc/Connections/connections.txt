@@ -1,23 +1,20 @@
-ENC28J60
-
-
-	  	  		 -------------
-[1 - GREEN	: SCLOCK	]|	     |-[3.3v]
-[2 - YELLOW	: MOSI		]|	     |-[GND]
-[3 - WHITE	: MISO		]|	     |-[8 - BLUE	 : RESET	]
-[4 - RED	: WOL		]|	     |-[7 - ORANGE 	 : CHIPSELECT	]
-[5 - WHITE	: INTERRUPT 	]|	     |
-[6 - WHITE	: CLOCKOUT	]|	     |
-	  	  	  	 -------------
-
-
-LPC2106
-
-				[Connect To		]
-P0.04: SPI SCLOCK		[ENC28J60 SCLOCK	]
-P0.05: SPI MISO			[ENC28J60 MISO		]
-P0.06: SPI MOSI			[ENC28J60 MOSI 		]
-P0.07: SPI SSEL			[3.3v 			]
-P0.08: ENC28J60 Reset		[ENC28J60 Reset		]
-p0.09: ENC28J60 ChipSelect	[ENC28J60 ChipSelect	]
-P0.15: ENC28J60 Interrupt	[ENC28J60 Interrupt	]
+P0.00    = 1<<00        [LPC2106:    TxD (UART 0)]
+P0.01    = 1<<01        [LPC2106:    RxD (UART 0)]
+P0.02    = 1<<02
+P0.03    = 1<<03
+--------------------------------------------------------
+P0.04    = 1<<04        [LPC2106:    SCK (SPI)     ]::ENC28J60
+P0.05    = 1<<05        [LPC2106:    MISO (SPI)    ]::ENC28J60
+P0.06    = 1<<06        [LPC2106:    MOSI (SPI)    ]::ENC28J60
+P0.07    = 1<<07        [LPC2106:    SSEL (SPI)    ]::ENC28J60
+---------------------------------------------------------
+P0.08    = 1<<08        [ENC28J60:    CS]::ENC28J60
+P0.09    = 1<<09        [ENC28J60:    RESET]::ENC28J60
+P0.10    = 1<<10
+P0.11    = 1<<11
+--------------------------------------------------------
+P0.12    = 1<<12
+P0.13    = 1<<13
+P0.14    = 1<<14
+P0.15    = 1<<15        [ENC28J60:    INTERRUPT]::ENC28J60
+--------------------------------------------------------
