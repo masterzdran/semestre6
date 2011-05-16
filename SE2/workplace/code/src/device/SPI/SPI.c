@@ -98,7 +98,7 @@ U8 SPI_init( pSPI_Device devices, U32 nbrDevices){
   }
   /* Config chip select port */  
   gpio_init_PINSEL0(chipSelect);
-	gpio_set(chipSelect);
+	/*gpio_set(chipSelect);*/
   /* *****TODO***** 
 	 * configure SPI to be able to config chip select
 	 * active low or active high
@@ -147,12 +147,12 @@ U8 SPI_start_device(pSPI_Device device){
   }
   pSPI->CONTROL = 0;
   /*Setting the IRQ handler in VIC*/
-  /*
+  
   if (device->irqHandler){
     pSPI->CONTROL |= __SPINT_INTERRUPT__ << __SPCR_SPIE_SHIFT__;
     VIC_ConfigIRQ(IRQ_SPI_SSP,IRQ_PRIORITY_05,spiIRQ);
   }
-  */
+  
   if(device->nbrbits >7 || device->nbrbits == 0 ){
     pSPI->CONTROL |= __SPCR_BIT_ENABLE__;
   }else{
@@ -164,10 +164,14 @@ U8 SPI_start_device(pSPI_Device device){
   pSPI->CONTROL |= (device->role << __SPCR_MSTR_SHIFT__ | device->nbrbits << __SPCR_BITS_SHIFT__ | device->mode  << __SPCR_CPHA_SHIFT__);
   
   /*enable chipselect*/
-	gpio_set_direction(device->chipSelect,GPIO_OUT);
-  gpio_clear(device->chipSelect);
-	return SPI_SUCESS;
   
+  if (device->activeHigh){
+	gpio_set(device->chipSelect);
+  }else{
+	gpio_clear(device->chipSelect);
+  }
+  gpio_set_direction(device->chipSelect,GPIO_OUT);
+  return SPI_SUCESS;  
 }
 /**
  * @brief stop the device
