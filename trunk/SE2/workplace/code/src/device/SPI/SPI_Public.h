@@ -68,6 +68,7 @@ typedef struct _SPI_DEVICE{
   U32   role:1;			    		/*qual o papel do periferico: 1- Master; 0- Slave SPI_ROLE*/
   U32   started:1;      			/*indicação se o periférico foi préviamente iniciada. Por omissão o mesmo deve estar a 0. Não se garante o comportamento caso na construção se coloque a 1.*/
   U32   byteShift:1;    			/*SPI_BYTE_SHIFT*/
+  U32	activeHigh;					/*Mode como o device é activado*/
 }SPI_Device,*pSPI_Device;
 
 
