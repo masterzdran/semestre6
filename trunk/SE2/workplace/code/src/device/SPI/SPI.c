@@ -178,7 +178,11 @@ U8 SPI_start_device(pSPI_Device device){
  * @param device: pointer to the device to be stopped
  * */
 void SPI_stop_device(pSPI_Device device){
-  gpio_set(device->chipSelect);
+  if (device->activeHigh){
+	gpio_clear(device->chipSelect);
+  }else{
+	gpio_set(device->chipSelect);
+  }
   pSPI->CONTROL &= ~__SPCR_MSTR__;	
 }
 
