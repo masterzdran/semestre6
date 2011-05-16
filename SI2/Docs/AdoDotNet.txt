@@ -1,0 +1,235 @@
+ADO .NET
+
+*Connected Object
+	+ Connection
+		- Transaction
+		- Command
+			»» Parameter
+			»» DatReader
+	+ DataAdapter
+
+*Disconnected Objects
+	+ DataSet
+	+ DataTable
+		- DataView
+		- DataRow
+		- DataColumn
+		- Constraint
+	+ DataRelation
+
+*Connection Objects:
+	+ Connection 
+		http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnection.aspx
+		- public SqlTransaction BeginTransaction() ou public
+				SqlTransaction BeginTransaction(IsolationLevel);
+			»» Inicia uma transacção sobre a ligação.
+			»» O Objecto SqlTransaction só pode ser criado a partir de
+				um objecto SqlConnection e a propriedade Connection
+				é para leitura apenas.
+
+		- public override void ChangeDatabase(string database)
+			»» Altera a base de dados corrente por outra SqlConnection
+				aberta.
+				
+		- public override void Close()
+			»» Fecha a ligação à base de dados.
+				Este método é invocado por omissão aquando do termino
+				de qualquer SqlConnection.
+			»» Pending transactions started using Transact-SQL or
+				BeginTransaction are automatically rolled back when	the
+				connection is reset if connection pooling is enabled.
+				If connection pooling is off, the transaction is
+				rolled back after SqlConnection.Close is called.
+				Transactions started through System.Transactions
+				are controlled through the System.Transactions
+				infrastructure, and are not affected by SqlConnection.Close.
+			»»If the SqlConnection goes out of scope, it won't be closed.
+				Therefore, you must explicitly close the connection by
+				calling Close or Dispose. Close and Dispose are
+				functionally equivalent. If the connection pooling
+				value Pooling is set to true or yes, the underlying
+				connection is returned back to the connection pool.
+				On the other hand, if Pooling is set to false or no,
+				the underlying connection to the server is closed.
+			»» Caution:
+					- Do not call Close or Dispose on a Connection,
+				a DataReader, or any other managed object in the
+				Finalize method of your class. In a finalizer, you
+				should only release unmanaged resources that your class
+				owns directly. If your class does not own any unmanaged
+				resources, do not include a Finalize method in your
+				class definition.
+				
+		- public SqlCommand CreateCommand()
+			»» Cria e retorna um objecto SqlCommand associado à ligação
+				corrente.
+				
+		- public override DataTable GetSchema() ou
+			public override DataTable GetSchema(string collectionName)
+			»» Retorna informação acerca do esquema da fonte de dados
+				da ligação.
+				
+		- public override void Open()
+			»» Abre uma ligação ou reutiliza uma do pool de ligações
+			»» Exceptions:
+				- InvalidOperationException:
+					Cannot open a connection without specifying a data
+					source or server or The connection is already open.
+				- SqlException:
+					A connection-level error occurred while opening the
+					connection. If the Number property contains the
+					value 18487 or 18488, this indicates that the
+					specified password has expired or must be reset.
+					See the ChangePassword method for more information.
+
+		- public static void ClearPool(SqlConnection connection) ou
+			public static void ClearAllPools()
+			»» Elimina as conecções existentes no pool de uma
+				específica ligação.
+			
+		- public override void EnlistTransaction(Transaction transaction)
+			»» Alista a conecção na transacção especificada.
+			
+	+ Connection Events (http://msdn.microsoft.com/en-us/library/a0hee08w.aspx)
+		- Event InfoMessage:
+			»» The InfoMessage event is called whenever a warning occurs
+				during a ConnectionEvent operation.
+			»» You can retrieve warnings and informational messages from
+				a SQL Server data source using the InfoMessage event of
+				the SqlConnection object. Errors returned from the data
+				source with a severity level of 11 through 16 cause an
+				exception to be thrown. However, the InfoMessage event
+				can be used to obtain messages from the data source that
+				are not associated with an error. In the case of
+				Microsoft SQL Server, any error with a severity of 10 or
+				less is considered to be an informational message, and
+				can be captured by using the InfoMessage event.
+			»» The InfoMessage event receives an SqlInfoMessageEventArgs
+				object containing, in its Errors property, a collection
+				of the messages from the data source. You can query the
+				Error objects in this collection for the error number
+				and message text, as well as the source of the error.
+				The .NET Framework Data Provider for SQL Server also
+				includes detail about the database, stored procedure,
+				and line number that the message came from.
+			»» Example:
+			static void handler_InfoMessage(Object sender,
+									SqlInfoMessageEventArgs e) {
+				Console.WriteLine("Evento InfoMessage: " + 
+						e.Message +". Source: " + e.Source); 
+			}
+			static void Main(string[] args){
+				SqlConnection cn = new SqlConnection(strConn);
+				cn.InfoMessage += new
+						SqlInfoMessageEventHandler(handler_InfoMessage);
+				cn.Open();
+				SqlCommand cmd = cn.CreateCommand();
+				cmd.CommandText("PRINT 'Salta'; raiserror('Um erro 10',10,1)";
+				cmd.ExecuteNonQuery();
+				cn.Close();
+			}
+		- Event StateChange
+			»» Occurs when the state of the Connection changes.
+			»» The InfoMessage event will normally fire only for informational
+				and warning messages that are sent from the server. However,
+				when an actual error occurs, the execution of the ExecuteNonQuery
+				or ExecuteReader method that initiated the server operation
+				is halted and an exception is thrown.
+			»» If you want to continue processing the rest of the statements
+				in a command regardless of any errors produced by the server,
+				set the FireInfoMessageEventOnUserErrors property of the
+				SqlConnection to true. Doing this causes the connection to
+				fire the InfoMessage event for errors instead of throwing an
+				exception and interrupting processing. The client application
+				can then handle this event and respond to error conditions.
+			»» Example:
+				static void handler_StateChange(object sender,
+										StateChangeEventArgs e) { 
+					Console.WriteLine("Evento StateChange. Mudou de "+
+					e.OriginalState.ToString() + 
+					" para "+
+					e.CurrentState.ToString());
+				}
+				static void Main(string[] args){
+					string strConn = ...;
+					SqlConnection cn = new SqlConnection(strConn);
+					cn.StateChange +=
+					new StateChangeEventHandler(handler_StateChange);
+					cn.Open();
+					cn.Close();
+				}
+	+ Connection Pooling 	
+		- Abrir e fechar ligações para seervidores de bases de dados
+			são operações onerosas.
+		- Se, em vez de se fechar fisicamente uma ligação com Close ela
+			for mantida num pool de ligações, ela poderá ser reutilizada
+			quando de uma operação Open que use as mesmas credenciais
+			(database location, user name, …), quer na mesma aplicação,
+			quer noutra aplicação.
+		- As ligações no pool têm um tempo de vida limitado; se não forem 
+			reutilizadas durante esse tempo, são destruidas.
+		- Quando não pretendemos o mecanismo de pooling, podemos incluir 
+			“Pooling=‘false’;” (“OLE DB Services=-4;” para OleDBConnection)
+			na ConnectionString.
+		- Para mais informção ver:
+			»» http://msdn.microsoft.com/en-us/library/8xx3tyca.aspx
+
+	+ SqlCommand 
+		http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlcommand.aspx
+		- Represents a Transact-SQL statement or stored procedure to
+			execute against a SQL Server database. This class cannot be
+			inherited.
+		- public override int ExecuteNonQuery()
+			»» Executes a Transact-SQL statement against the connection
+				and returns the number of rows affected.
+			»» You can use the ExecuteNonQuery to perform catalog operations
+				(for example, querying the structure of a database or
+				creating database objects such as tables), or to change
+				the data in a database without using a DataSet by
+				executing UPDATE, INSERT, or DELETE statements.
+			»» Although the ExecuteNonQuery returns no rows, any output
+				parameters or return values mapped to parameters are
+				populated with data.
+			»» For UPDATE, INSERT, and DELETE statements, the return value
+				is the number of rows affected by the command. When a trigger
+				exists on a table being inserted or updated, the return value
+				includes the number of rows affected by both the insert or
+				update operation and the number of rows affected by the
+				trigger or triggers. For all other types of statements, the
+				return value is -1. If a rollback occurs, the return value
+				is also -1.
+			
+		- public override Object ExecuteScalar()
+			»» Executes the query, and returns the first column of the
+				first row in the result set returned by the query.
+				Additional columns or rows are ignored.
+			»» Use the ExecuteScalar method to retrieve a single value
+				(for example, an aggregate value) from a database. This
+				requires less code than using the ExecuteReader method,
+				and then performing the operations that you need to
+				generate the single value using the data returned by a
+				SqlDataReader.
+			»» Example:
+				string strSQL = "SELECT COUNT(*) FROM Alunos";
+				SqlConnection cn = new SqlConnection(strConn);
+				cn.Open();
+				SqlCommand cmd = new SqlCommand(strSQL,cn);
+				Int32 count = (Int32) cmd.ExecuteScalar();
+				Console.WriteLine("There are "+count+" rows in table " +
+					"Alunos");
+				cn.Close();
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------	
+---------------------------------SLIDE 22-------------------------------
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+		- public SqlDataReader ExecuteReader()
+			»» Sends the CommandText to the Connection and builds a
+				SqlDataReader.
+			
+
+
+		- public override void Cancel()
+			»» 
+
