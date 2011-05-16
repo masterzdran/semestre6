@@ -37,6 +37,6 @@ typedef struct{
 
 U8 Ethernet_init(pETHERNET_Device ethernetDevice);
 U8 Ethernet_send(U8* packet, U16 packet_size);
-U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size);
-
+/*U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size);*/
+U32 Ethernet_receive(U8* buffer, U32 buffer_size);
 #endif

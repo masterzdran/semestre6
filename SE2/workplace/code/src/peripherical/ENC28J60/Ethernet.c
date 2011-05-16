@@ -171,7 +171,7 @@ U8 Ethernet_send(U8* packet, U16 packet_size){
 	}while((aux & EIR_TXERIF) && TRANSMITE_LATE_COLLITION_BUG(tsv) && (retry++ < MAX_TX_RETRIES) )	;
 	return ETHERNET_OK;
 }
-//U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size){
+/*U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size){*/
 U32 Ethernet_receive(U8* buffer, U32 buffer_size){
 	U32 read_size=0;
 	U8 rsv[RSV_SIZE];
