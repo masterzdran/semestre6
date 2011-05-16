@@ -171,8 +171,9 @@ U8 Ethernet_send(U8* packet, U16 packet_size){
 	}while((aux & EIR_TXERIF) && TRANSMITE_LATE_COLLITION_BUG(tsv) && (retry++ < MAX_TX_RETRIES) )	;
 	return ETHERNET_OK;
 }
-
-U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size){
+//U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size){
+U32 Ethernet_receive(U8* buffer, U32 buffer_size){
+	U32 read_size=0;
 	U8 rsv[RSV_SIZE];
 	U32 packet_size = 0;
 	U16 rx_next_packet = __ETHERNET_RX_START_PTR__;
@@ -192,14 +193,14 @@ U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size){
 		ENC_read_buffer_memory((U8*)&rx_next_packet,DOUBLE_BYTE);
 		ENC_read_buffer_memory(rsv,RSV_SIZE);
 		packet_size = ((U16)rsv[1] << 8) + rsv[0];
-		*read_size = ((buffer_size<packet_size)?buffer_size:packet_size);
-		ENC_read_buffer_memory(buffer,*read_size);
+		read_size = ((buffer_size<packet_size)?buffer_size:packet_size);
+		ENC_read_buffer_memory(buffer,read_size);
 		ENC_write_reg(B0_ERXRDPTL,BANK00,rx_next_packet,true);
 		ENC_bit_field_set(ECON2,ECON2_PKTDEC);
 		
 	}else{
-		*read_size = 0;
+		read_size = 0;
 	}
 	/*return ETHERNET_OK;*/
-	return (*read_size);
+	return (read_size);
 }

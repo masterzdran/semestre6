@@ -25,11 +25,11 @@ static inline void do_double_transaction(U8* command, U8 commandSize, U32 dataSi
 
 U8 ENC_read_control_register(U8 address){
     U8 dummytx[__ENC_READ_BUFFER_SIZE__] ;	
-    U8 dummyrx[__ENC_READ_BUFFER_SIZE__];
+    U8 dummyrx[__ENC_WRITE_BUFFER_SIZE__];
 	dummytx[0] =  __ENC_SPI_READ_CONTROL_REGISTER_OP_CODE__ | (address & __ENC_ADDRESS_MASK__);
 	
     do_single_transaction(ENC_BUFFER_LEN(address),dummytx,dummyrx);
-    return dummyrx[__ENC_READ_BUFFER_SIZE__ - 1];
+    return dummyrx[ENC_BUFFER_LEN(address) - 1];
 }
 void ENC_read_buffer_memory(U8* buffer, U32 size){
   U8 command[] = { __ENC_READ_BUFFER_MEMORY__ };
