@@ -14,54 +14,90 @@ R_Com(DataReuniao[AK], IDComentario[AK])
 DataReuniao - datetime 
 IDComentario - int
 
-ClienteNormal(ContactoFM[AK], Nome[AK])
-ContactoFM - 
+Cliente(IDCliente[AK], Contacto, Nome)
+IDCliente - int @@IDENTITY
+Contacto - short
+Nome - varchar(128)
 
-CLienteRegistado(ContactoFM[AK], Nome[AK], Endereço_Postal, Nacionalidade)
-Amigos(ContactoFM_Cliente[AK], ContactoFM_Amigo[AK], Nome_Amigo[AK])
+CLienteRegistado(IDCliente[AK], Endereco_Postal, Nacionalidade)
+IDCliente - int
+Endereco_Postal - varchar(56)
+Nacionalidade - varchar(56)
+
+Amigos(IDCliente[AK], IDAmigo[AK])
+IDCliente - int
+IDAmigo - int
 
 //Não importa se é cliente normal ou registado
-Cli_Com(ContactoFM_Cliente[AK], Nome[AK], IDComentario[AK])
+Cli_Com(IDCliente[AK], IDComentario[AK])
+IDCliente - int
+IDComentario - int
 
-ReservaNormal(Data[AK], QtdPessoas)
-ReservaEvento(Data[AK], QtdPessoas, Organizador, Designacao, Descricao)
-//Organizador - ContactoFM do Cliente
+ReservaNormal(IDReserva[AK], Data, QtdPessoas)
+IDReserva - int @@IDENTITY
+Data - datetime
+QtdPessoas - int
 
-Cli_R(DataReserva[AK], ContactoFM_Cliente[AK], Nome[AK])
+ReservaEvento(IDReserva[AK][FK], Organizador[FK], Designacao, Descricao)
+IDReserva - int
+Organizador - int //Organizador - ID do Cliente
+Designacao - varchar(128)
+Descricao - varchar(256)
 
-Cardapio(IDCardapio, Descricao, Categoria)
+Cli_R(IDReserva[AK], IDCliente[AK])
+IDReserva - int
+IDCliente - int
 
+Cardapio(IDCardapio[AK], Descricao, Categoria)
+IDCardapio - int @@IDENTITY
+Descricao - varchar(256)
+Categoria - varchar(256)
 
-R_Car(Data[AK], IDCardapio)
+R_Car(IDReserva[AK], IDCardapio)
+IDReserva - int
+IDCardapio - int
 
 Pratos(IDPrato[AK], Preco, Qtd, Activo)
+IDPrato- int @@IDENTITY
+Preco - decimal(12,5)
+Qtd - smallint
+activo - bit
 
-Car_P(IDCardapio, IDPrato)
+Car_P(IDCardapio[AK], IDPrato[AK])
+IDCardapio - int
+IDPrato - int
 
-Ingredientes(IDIngrediente, Nome, Descricao, Qtd_Reserva, Qtd_Actual)
-Ingredientes(IDIngrediente, Nome, Descricao, Qtd_Reserva, Qtd_Actual)
+Ingredientes(IDIngrediente[AK], Nome, Descricao, Qtd_Reserva, Qtd_Actual)
+IDIngrediente - int @@IDENTITY
+Nome - varchar(128)
+Descricao - varchar(256)
+Qtd_Reserva - int
+Qtd_Actual - int
 
-P_I(IDPrato, IDIngrediente)
+P_I(IDPrato[AK], IDIngrediente[AK])
+IDPrato - int
+IDIngrediente - int
 
-Fornecedores(IDFornecedor, Nome, Morada, Codigo_Postal, Pais)
-
+Fornecedores(IDFornecedor[AK], Nome, Morada, Codigo_Postal, Pais)
+IDFornecedor - int @@IDENTITY
+Nome - varchar(128)
+Morada - varchar(256)
+Codigo_Postal - varchar(56)
+Pais - varchar(56)
+ 
 Enc(IDEncomendas[AK], IDFornecedor[AK], IDIngrediente[AK], Qtd, Data, Data_Entrega)
+IDEncomendas - int @@IDENTITY
+IDFornecedor - int
+IDIngrediente - int
+Qtd - int
+Data - datetime
+Data_Entrega - datetime
 
 Compras(Num_Factura[AK], IDFornecedor[AK], IDIngrediente[AK], Data, Qtd, Qtd_Actual, Data_Validade)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Num_Factura - int
+IDFornecedor - int
+IDIngrediente - int
+Data - datetime
+Qtd - int
+Qtd_Actual - int
+Data_Validade - datetime
