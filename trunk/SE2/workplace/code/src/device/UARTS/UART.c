@@ -102,7 +102,8 @@ U32 UART_init(pUart uart){
 }
 
 U32 UART_write(pUart uart, const U8 *block, U32 size){
-  if(!uart->started){ return UART_NOT_INITIATED;}
+  U8 i;
+	if(!uart->started){ return UART_NOT_INITIATED;}
   
   for (;size;size--,block++){
     while((ULSR_TRANSMITTER_EMPTY(uart)) == 0);

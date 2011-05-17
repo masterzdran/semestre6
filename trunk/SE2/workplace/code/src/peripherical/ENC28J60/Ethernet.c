@@ -147,6 +147,7 @@ static pETHERNET_Device ethDevice;
 U8 Ethernet_send(U8* packet, U16 packet_size){
 	U8 tsv[TSV_SIZE],aux;
 	U8 retry = 0;
+	U8 i;
 	if (packet == 0)
 		return ETHERNET_NULL_POINTER;
 	if(packet_size == 0 )
@@ -160,6 +161,7 @@ U8 Ethernet_send(U8* packet, U16 packet_size){
 		Ethernet_start_tx();
 		do{
 			/*aux = ENC_read_reg(EIR,BANK00,false);*/
+			
             aux = ENC_READ_REG8(EIR,BANK00);
 		}while((aux & EIR_TXIF) == 0);
         
@@ -185,7 +187,7 @@ U32 Ethernet_receive(U8* buffer, U32 buffer_size){
 		return ETHERNET_NULL_POINTER;
 	if (buffer_size > MAX_FRAME_LEN)
 		return ETHERNET_PACKET_TOO_LONG;	
-	/*Evaluate parameters. Then spent time*/	
+	/*Evaluate parameters. Then spent time*/
 	nbr_packets = ENC_read_reg(B1_EPKTCNT,BANK01,false);
 	
 	if (nbr_packets > 0){
