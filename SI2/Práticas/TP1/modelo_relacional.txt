@@ -1,39 +1,36 @@
 Modelo Relacional:
 
-Reuniao(Data[AK], Conclusao)
-Restricoes:
-Data - datetime > actual
-Conclusao - varchar(256)
-
-Comentario(IDComentario[AK], Nota, Observacoes)
-IDComentario - int @@IDENTITY
-Nota - int de 0 a 5
-Observacoes - varchar(256)
-
-R_Com(DataReuniao[AK], IDComentario[AK])
-DataReuniao - datetime 
-IDComentario - int
-
 Cliente(IDCliente[AK], Contacto, Nome)
 IDCliente - int @@IDENTITY
 Contacto - short
 Nome - varchar(128)
 
-CLienteRegistado(IDCliente[AK], Endereco_Postal, Nacionalidade)
+Comentario(IDComentario[AK], IDCliente[FK], Nota, Observacoes)
+IDComentario - int @@IDENTITY
+Nota - int de 0 a 5
+Observacoes - varchar(256)
+
+Reuniao(Data[AK], Conclusao, IDComentario[FK])
+Restricoes:
+Data - datetime > actual
+Conclusao - varchar(256)
+IDComentario - int
+
+CLienteRegistado(IDCliente[AK][FK], Endereco_Postal, Nacionalidade)
 IDCliente - int
 Endereco_Postal - varchar(56)
 Nacionalidade - varchar(56)
 
-Amigos(IDCliente[AK], IDAmigo[AK])
+Amigos(IDCliente[AK][FK], IDAmigo[AK][FK])
 IDCliente - int
 IDAmigo - int
 
-//Não importa se é cliente normal ou registado
-Cli_Com(IDCliente[AK], IDComentario[AK])
-IDCliente - int
-IDComentario - int
+Cardapio(IDCardapio[AK], Descricao, Categoria)
+IDCardapio - int @@IDENTITY
+Descricao - varchar(256)
+Categoria - varchar(256)
 
-ReservaNormal(IDReserva[AK], Data, QtdPessoas)
+ReservaNormal(IDReserva[AK], IDCardapio[FK], Data, QtdPessoas)
 IDReserva - int @@IDENTITY
 Data - datetime
 QtdPessoas - int
@@ -44,18 +41,9 @@ Organizador - int //Organizador - ID do Cliente
 Designacao - varchar(128)
 Descricao - varchar(256)
 
-Cli_R(IDReserva[AK], IDCliente[AK])
-IDReserva - int
+Cli_R(IDCliente[AK][FK],IDReserva[AK][FK])
 IDCliente - int
-
-Cardapio(IDCardapio[AK], Descricao, Categoria)
-IDCardapio - int @@IDENTITY
-Descricao - varchar(256)
-Categoria - varchar(256)
-
-R_Car(IDReserva[AK], IDCardapio)
 IDReserva - int
-IDCardapio - int
 
 Pratos(IDPrato[AK], Preco, Qtd, Activo)
 IDPrato- int @@IDENTITY
@@ -63,7 +51,7 @@ Preco - decimal(12,5)
 Qtd - smallint
 activo - bit
 
-Car_P(IDCardapio[AK], IDPrato[AK])
+Car_P(IDCardapio[AK][FK], IDPrato[AK][FK])
 IDCardapio - int
 IDPrato - int
 
@@ -74,7 +62,7 @@ Descricao - varchar(256)
 Qtd_Reserva - int
 Qtd_Actual - int
 
-P_I(IDPrato[AK], IDIngrediente[AK])
+P_I(IDPrato[AK][FK], IDIngrediente[AK][FK])
 IDPrato - int
 IDIngrediente - int
 
@@ -85,7 +73,7 @@ Morada - varchar(256)
 Codigo_Postal - varchar(56)
 Pais - varchar(56)
  
-Enc(IDEncomendas[AK], IDFornecedor[AK], IDIngrediente[AK], Qtd, Data, Data_Entrega)
+Enc(IDEncomendas[AK][FK], IDFornecedor[AK][FK], IDIngrediente[AK][FK], Qtd, Data, Data_Entrega)
 IDEncomendas - int @@IDENTITY
 IDFornecedor - int
 IDIngrediente - int
@@ -93,7 +81,7 @@ Qtd - int
 Data - datetime
 Data_Entrega - datetime
 
-Compras(Num_Factura[AK], IDFornecedor[AK], IDIngrediente[AK], Data, Qtd, Qtd_Actual, Data_Validade)
+Compras(Num_Factura[AK][FK], IDFornecedor[AK][FK], IDIngrediente[AK][FK], Data, Qtd, Qtd_Actual, Data_Validade)
 Num_Factura - int
 IDFornecedor - int
 IDIngrediente - int
