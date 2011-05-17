@@ -2,7 +2,7 @@
 -- ************* Teste 3 ************
 --tempo t2:
 use db_si_ap
-set transaction isolation level repeatable read
+set transaction isolation level read uncommitted
 /* uma transacção de 3ª grau não exibe as anomalias 
 “overwriting uncommited data” e “non repeatable reads” 
 (consequentemente, não exibe a anomalia “dirty reads”) */

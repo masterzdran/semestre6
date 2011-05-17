@@ -15,7 +15,7 @@
 #define PACKET_SIZE 1516
 
 
-static U8 ether_addr[] = {0x02, 0x65, 0x7A, 0x65, 0x71, 00};
+static U8 ether_addr[] = {0x02, 0x6E, 0x75, 0x6E, 0x6F, 00};
 static U8 packet[PACKET_SIZE];
 
 
@@ -66,11 +66,11 @@ SPI_Device spis[]={
 	}
 };
 	
-	SPI_init(spis, 1);
 	U8 out_buffer[] = {0x35, 0x7a};
 	U8 out_buffer2[] = {0x1E , 0xFF}; /*enviar 0x1E ncomo primeiro byte e depois dummy para receber o 0x80*/
 	U8 in_buffer[] = {0x00, 0x00};
-		
+	SPI_init(spis, 1);
+	
 	while(1){
 		gpio_clear(1<<9);      /*activar RST do ENC*/    
 		gpio_set(1<<9);      /*desactivar RST do ENC*/
@@ -84,7 +84,7 @@ SPI_Device spis[]={
   }
 }
 
-void enc_test()
+void enc_test(U8 receiveTest, U8 sendTest)
 {
 	ETHERNET_Device eth ={
 	 {
@@ -104,15 +104,33 @@ void enc_test()
 	console_init();
 	console_write_str("LPC2106: ENC28J60-H Ethernet\r\n\0");
 	Ethernet_init(&eth);
-	
-	while (1) {
+
+	while (receiveTest) {
 		/*Ethernet_receive(packet, PACKET_SIZE,&size);*/
-		while ((size=Ethernet_receive(packet, PACKET_SIZE,&size))) {
+		while ((size=Ethernet_receive(packet, PACKET_SIZE))) {
 			/*Ethernet_receive(packet, PACKET_SIZE,&size);*/
 			console_write_str("Packet received\r\n\0");
 			console_dump_hex(packet, size);
 		}
 	}
+	
+	while (sendTest) {
+		if (console_size() >= 0) {
+			char c = console_read_char();
+			console_printf("tx\n\r");
+			U8 frame[78];
+			memcpy(&frame[0], "\xff\xff\xff\xff\xff\xff", 6);
+			memcpy(&frame[6], ether_addr, 6);
+			frame[12] = (sizeof(frame) - 14) >> 8;
+			frame[13] = (sizeof(frame) - 14);
+			memset(&frame[14], '2', sizeof(frame) - 14);
+			Ethernet_send(frame, sizeof(frame));
+		}
+	}
+
+	
+	
+	
 }
 
 int main(){
@@ -122,9 +140,9 @@ int main(){
 	rtc_init();
   VIC_init();
 
-  /* console_test();  */
+/*  console_test();*/
   spi_test();
-	enc_test();
+	enc_test(1,1);
 	return 0;
 }
 
