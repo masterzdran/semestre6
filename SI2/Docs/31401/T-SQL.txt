@@ -1,0 +1,182 @@
+T-SQL
+Flow Control:
+-------------
+BEGIN...END
+	BEGIN
+		{sql_statement | statement_block}
+	END
+
+BREAK
+	Stop a WHILE loop.
+
+CONTINUE
+	Restart a WHILE loop.
+
+GOTO label
+	Alter the  flow of execution to a label.
+	Note: 
+	definig the label:
+	label :
+
+IF...ELSE
+	IF boolean expression
+		{sql_statement | statement_block}
+	[
+	ELSE
+		{sql_statement | statement_block}
+	]
+
+RETURN 
+	Exits uncondicionally from a query or procedure
+	RETURN [ integer expression ]
+
+TRY...CATCH
+	BEGIN TRY 
+		{sql_statement | statement_block}
+	END TRY
+	BEGIN CATCH
+		{sql_statement | statement_block}
+	END CATCH
+	;
+
+WAITFOR
+	Block the execution of a batch, stored procedure or transaction  until:
+		- specified time or a time interval is reached
+		- specified statement modifies or returns at least one row
+	WAITFOR 
+	{
+		DELAY 'time_to_pass' 
+		| TIME 'time_to_execute' 
+		| [ ( receive_statement ) | ( get_conversation_group_statement ) ] 
+		[ , TIMEOUT timeout ]
+	}
+
+WHILE
+	WHILE Boolean_expression 
+     { sql_statement | statement_block | BREAK | CONTINUE }
+
+	 
+BATCHES
+-------------
+The following rules apply to using batches:
+    CREATE DEFAULT, CREATE FUNCTION, CREATE PROCEDURE, CREATE RULE, CREATE SCHEMA, CREATE TRIGGER, and CREATE VIEW statements cannot be combined with other statements in a batch. The CREATE statement must start the batch. All other statements that follow in that batch will be interpreted as part of the definition of the first CREATE statement.
+    A table cannot be changed and then the new columns referenced in the same batch.
+    If an EXECUTE statement is the first statement in a batch, the EXECUTE keyword is not required. The EXECUTE keyword is required if the EXECUTE statement is not the first statement in the batch.
+-----------
+
+Reference
+
+/*...*/ (Comment) (Transact-SQL)
+-- (Comment) (Transact-SQL)
+CASE (Transact-SQL)
+	Evaluates a list of conditions and returns one of multiple possible result expressions.
+	The CASE expression has two formats:
+		The simple CASE expression compares an expression to a set of simple expressions to determine the result.
+		The searched CASE expression evaluates a set of Boolean expressions to determine the result.
+	Both formats support an optional ELSE argument.
+	Simple CASE expression: 
+	CASE input_expression 
+		 WHEN when_expression THEN result_expression [ ...n ] 
+		 [ ELSE else_result_expression ] 
+	END 
+	Searched CASE expression:
+	CASE
+		 WHEN Boolean_expression THEN result_expression [ ...n ] 
+		 [ ELSE else_result_expression ] 
+	END
+
+DECLARE @local_variable (Transact-SQL)
+	Variables are declared in the body of a batch or procedure with the DECLARE statement and are assigned values by using either a SET or SELECT statement. Cursor variables can be declared with this statement and used with other cursor-related statements. After declaration, all variables are initialized as NULL, unless a value is provided as part of the declaration.
+	DECLARE 
+     { 
+	{{ @local_variable [AS] data_type } | [ = value ] }
+		| { @cursor_variable_name CURSOR }
+	} [,...n] 
+		| { @table_variable_name [AS] <table_type_definition> | <user-defined table type> } 
+
+	<table_type_definition> ::= 
+		 TABLE ( { <column_definition> | <table_constraint> } [ ,... ] 
+	   ) 
+
+	<column_definition> ::= 
+		 column_name { scalar_data_type | AS computed_column_expression }
+		 [ COLLATE collation_name ] 
+		 [ [ DEFAULT constant_expression ] | IDENTITY [ (seed ,increment ) ] ] 
+		 [ ROWGUIDCOL ] 
+		 [ <column_constraint> ] 
+
+	<column_constraint> ::= 
+		 { [ NULL | NOT NULL ] 
+		 | [ PRIMARY KEY | UNIQUE ] 
+		 | CHECK ( logical_expression ) 
+		 } 
+
+	<table_constraint> ::= 
+		 { { PRIMARY KEY | UNIQUE } ( column_name [ ,... ] ) 
+		 | CHECK ( search_condition ) 
+		 } 
+
+EXECUTE (Transact-SQL)
+	Executes a command string or character string within a Transact-SQL batch, or one of the following modules: system stored procedure, user-defined stored procedure, scalar-valued user-defined function, or extended stored procedure.
+	Execute a stored procedure or function
+	[ { EXEC | EXECUTE } ]
+		{ 
+		  [ @return_status = ]
+		  { module_name [ ;number ] | @module_name_var } 
+			[ [ @parameter = ] { value 
+							   | @variable [ OUTPUT ] 
+							   | [ DEFAULT ] 
+							   }
+			]
+		  [ ,...n ]
+		  [ WITH RECOMPILE ]
+		}
+	[;]
+
+	Execute a character string
+	{ EXEC | EXECUTE } 
+		( { @string_variable | [ N ]'tsql_string' } [ + ...n ] )
+		[ AS { LOGIN | USER } = ' name ' ]
+	[;]
+
+	Execute a pass-through command against a linked server
+	{ EXEC | EXECUTE }
+		( { @string_variable | [ N ] 'command_string [ ? ]' } [ + ...n ]
+			[ { , { value | @variable [ OUTPUT ] } } [ ...n ] ]
+		) 
+		[ AS { LOGIN | USER } = ' name ' ]
+		[ AT linked_server_name ]
+	[;]
+
+PRINT (Transact-SQL)
+	PRINT msg_str | @local_variable | string_expr
+	
+RAISERROR (Transact-SQL)
+	RAISERROR ( { msg_id | msg_str | @local_variable }
+    { ,severity ,state }
+    [ ,argument [ ,...n ] ] )
+    [ WITH option [ ,...n ] ]
+	
+	
+AVANÇANDO
+----------
+CURSORES:
+ISO Syntax
+DECLARE cursor_name [ INSENSITIVE ] [ SCROLL ] CURSOR 
+     FOR select_statement 
+     [ FOR { READ ONLY | UPDATE [ OF column_name [ ,...n ] ] } ]
+;
+Transact-SQL Extended Syntax
+DECLARE cursor_name CURSOR [ LOCAL | GLOBAL ] 
+     [ FORWARD_ONLY | SCROLL ] 
+     [ STATIC | KEYSET | DYNAMIC | FAST_FORWARD ] 
+     [ READ_ONLY | SCROLL_LOCKS | OPTIMISTIC ] 
+     [ TYPE_WARNING ] 
+     FOR select_statement 
+     [ FOR UPDATE [ OF column_name [ ,...n ] ] ]
+;
+
+
+STORED PROCEDURES
+
+
