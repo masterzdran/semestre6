@@ -1,0 +1,66 @@
+Transacções
+Objectivos
+* Fornecer mecanismos de recuperação em caso de falhas do sistema
+* Facilitar o tratamento de erros ao nivel das aplicações
+* Fornecer mecanismos que permitam controlar de forma eficiente as interferências entre aplicações que concorrem no acesso aos mesmos recursos
+
+Propriedades(ACID)
+* Atomicidade (Atomicity)
+Uma transacção é indivisível no seu processamento
+
+* Consistência (Consistency preservation)
+Uma transacção conduz a BD de um estado consistente para outro estado consistente
+
+* Isolamento (Isolation)
+As transacções concorrentes não devem interferir umas com as outras durante a sua execução
+
+* Durabilidade (Durability)
+O resultado de uma transacção válida deve ser tornado persistente (mesmo na presença de falhas, após commit)
+
+Estados
+Activa: é o estado após início da transação e mantém-se enquanto se forem realizando operações de leitura e escrita sobre os dados.
+
+Parcialmente commited: quando se indica que a transacção deve terminar com sucesso, entra-se neste estado. Nele é garantido que todos os dados são transferidos para disco (force-writing) e só se isso acontecer é que a transacção atinge o commit point
+
+Commited: a transaccão entra neste estado quando atinge o commit point
+
+Falhada: a transacção vem para este estado se for abortada no seu estado activa ou se os testes realizados no estado parcialmente commited falharem
+
+Terminada: a transação deixa de existir no sistema
+
+SET TRANSACTION ISOLATION LEVEL (Transact-SQL)
+SET TRANSACTION ISOLATION LEVEL 
+{    READ COMMITTED     (por omissão)
+| READ UNCOMMITTED
+| REPEATABLE READ
+| SERIALIZABLE
+| SNAPSHOT
+}
+BEGIN TRANSACTION (Transact-SQL)
+BEGIN { TRAN | TRANSACTION } 
+    [ { transaction_name | @tran_name_variable }
+      [ WITH MARK [ 'description' ] ]
+    ]
+[ ; ]
+COMMIT TRANSACTION (Transact-SQL)
+COMMIT { TRAN | TRANSACTION } [ transaction_name | @tran_name_variable ] ]
+[ ; ]
+
+COMMIT WORK (Transact-SQL)
+COMMIT [ WORK ]
+[ ; ]
+
+ROLLBACK WORK (Transact-SQL)
+ROLLBACK [ WORK ]
+[ ; ]
+
+ROLLBACK TRANSACTION (Transact-SQL)
+ROLLBACK { TRAN | TRANSACTION } 
+     [ transaction_name | @tran_name_variable
+     | savepoint_name | @savepoint_variable ] 
+[ ; ]
+
+SAVE TRANSACTION (Transact-SQL)
+SAVE { TRAN | TRANSACTION } { savepoint_name | @savepoint_variable }
+[ ; ]
+
