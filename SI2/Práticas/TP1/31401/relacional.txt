@@ -42,23 +42,59 @@ REUNIAO_COMENTARIO(ID_REUNIAO[FK],DATA_REUNIAO[FK]);	// SIMPLIFICAÇÃO: REUNIAO(I
 ===========================// ===========================//===========================//===========================//===========================//
 AMIGOS(ID_REGISTADO1[FK],ID_REGISTADO2[FK]) ;
   ID_REGISTADO1[FK]
+    INT
+    FOREING KEY Table AMIGOS
+    NOT NULL
   ID_REGISTADO2[FK]
+    INT
+    FOREING KEY Table AMIGOS
+    NOT NULL
 
 CARDAPIO(ID[PK], DESCRICAO, CATEGORIA);
   ID[PK]
+    PRIMARY KEY
+    INT
+    NOT NULL
+    > 0
+
   DESCRICAO
+    CHAR[255]
+    NOT NULL
+
   CATEGORIA
+    CHAR[50]
+    NOT NULL
 
 CARDAPIO_PRATOS(ID_PRATO[FK],ID_CARDAPIO[FK]);
   ID_PRATO[FK]
+    INT
+    FOREING KEY Table PRATO
+    NOT NULL
+
   ID_CARDAPIO[FK]
-  
+    INT
+    FOREING KEY Table CARDAPIO
+    NOT NULL  
+
 CLIENTE(ID[PK],NOME,CONTACTO,TIPO);
   ID[PK]
+    PRIMARY KEY
+    INT
+    NOT NULL
+    > 0
+    
   NOME
+    CHAR[100]
+    NOT NULL
+    
   CONTACTO
+    INT
+    
   TIPO
-  
+    CHAR[20]
+    //NOME DA TABELA VÁLIDA
+    NOT NULL
+
 CLIENTE_RESERVA(ID_RESERVA[FK], ID_CLIENTE[FK]);
   ID_RESERVA[FK]
   ID_CLIENTE[FK]
