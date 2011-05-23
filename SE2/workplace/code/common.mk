@@ -19,11 +19,14 @@
 SOURCE				= $(PROJECT_PATH)/src
 COLLECTION			= $(SOURCE)/collection
 DEVICE				= $(SOURCE)/device
-PERIPHERICAL			= $(SOURCE)/peripherical
+PERIPHERICAL		= $(SOURCE)/peripherical
 DEBUGGER			= $(SOURCE)/debugger
 TODEPLOY			= $(SOURCE)/deploy
 PROGRAM				= $(SOURCE)/program
 PCOMPILE			= $(SOURCE)/tests
+#=======================================================================
+PECOS				= $(SOURCE)/eCos/untitled_install
+#=======================================================================
 TARGET				= $(PROJECT_PATH)/target
 TEST				= $(PROJECT_PATH)/test
 #=======================================================================
@@ -31,12 +34,19 @@ MYLIB			= $(SOURCE)/lib
 INCLUDE			= $(SOURCE)/include
 CLIB			= $(SOURCE)/clib/lib
 CINCLUDE		= $(SOURCE)/clib/inc
+ECOS_INCLUDE		= $(PECOS)/include
+ECOS_LIBRARY    	= $(PECOS)/lib
+ECOS_TESTS		= $(PCOMPILE)/ecos
 HEADER			= 
-SEARCHLIB		= -I$(MYLIB) -I$(INCLUDE)
+SEARCHINCLUDE	= -I$(ECOS_INCLUDE) -I$(INCLUDE)
+SEARCHLIB		= -L$(ECOS_LIBRARY)
+VPATH 			= $(MYLIB):$(ECOS_LIBRARY)
 #Executables
 CC 				= arm-eabi-gcc
-AS				= arm-eabi-as
-LD				= arm-eabi-ld
+LD 				= arm-eabi-gcc
+#AS				= arm-eabi-as
+AS				= arm-eabi-gcc
+#LD				= arm-eabi-ld
 AR				= arm-eabi-ar rcs
 OPENOCD			= openocd
 #Debugger
@@ -46,6 +56,12 @@ OUTPUT 				= -o
 LDSCRIPT			= -T  
 DEBUGSTABS			= --gstabs
 DEBUGSYMBOLS		= -g
-COPTIONS 			= -Wall -pedantic
+COPTIONS 			= -Wall  -ffunction-sections -fdata-sections  -Wa,-a=$*.lst $(SEARCHINCLUDE)
+LDFLAGS 			= $(SEARCHLIB) -Wl,--gc-sections -Wl,--Map -Wl,basic.map
 COMPILE_ONLY 		= -c 
+
+
+
+
+
 
