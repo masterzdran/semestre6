@@ -15,7 +15,7 @@
 # DEETC - Dep. de Eng. Electrónica e Telecomunicações e Computadores
 # ISEL  - Instituto Superior de Engenharia de Lisboa
 #=======================================================================
-#											Base Dir MakeFile
+#						Base Dir MakeFile
 #=======================================================================
 #Shell Path
 SHELL			= /bin/sh
@@ -26,12 +26,6 @@ PROJECT_PATH	= $(SVN_PATH)/code
 #Phony Target
 .PHONY 				= clean
 .PHONY				= clear
-.PHONY				= debugger
-.PHONY				= peripherical
-.PHONY				= device
-.PHONY				= program
-.PHONY				= deploy
-.PHONY				= collection
 #=======================================================================
 include $(PROJECT_PATH)/common.mk
 #=======================================================================
@@ -47,44 +41,26 @@ LDSCRIPT_FILE	= $(LDS_PATH)/ldscript_ram
 EXEC				= ram.elf
 END_EXEC		= $(TARGET)/ram.elf
 endif
-
-VPATH 			= $(MYLIB):$(CLIB):$(libdir)
-#VPATH 			= $(MYLIB)
 #=======================================================================
 #LIBOBJECT =		libc.a libgcc.a  libLPC2106.a libPeripherical.a libDebugger.a
 LYBRARIES = 	 -lc -lgcc -lLPC2106  -lPeripherical
 OBJECT =		$(MYLIB)/start.o $(PROGRAM)/test.o $(MYLIB)/console.o  $(MYLIB)/BUFFER.o
+LD_OPTIONS=		-Ttarget.ld -nostdlib
 #$(MYLIB)/BUFFER.o
 #=======================================================================
 all: $(END_EXEC) 
 
 #Generate the executable
 #$(OBJECT)
-$(END_EXEC): program 
-	cp src/device/STARTUP/start.o src/lib/start.o
-#	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(MYLIB)/start.o $(PROGRAM)/tacografo.o -L$(MYLIB) -lPeripherical -lLPC2106 -lc -lgcc
-	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(OBJECT) -L$(MYLIB) $(LYBRARIES)
 
-peripherical: collection
-	@echo "----------------------------------------------------------------------"
-	$(MAKE) -C $(PERIPHERICAL)
+%.o: %.c
+	$(CC) $(COMPILE_ONLY) $(OUTPUT) $*.o $(COPTIONS) $<
 
-debugger: peripherical
-	@echo "----------------------------------------------------------------------"
-	$(MAKE) -C $(DEBUGGER)
+OBJECTS = hello.o
 
-device:
-	@echo "----------------------------------------------------------------------"
-	$(MAKE) -C $(DEVICE)
-
-collection: device 
-	@echo "----------------------------------------------------------------------"
-	@echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-	$(MAKE) -C $(COLLECTION)
-	
-program:  device  collection peripherical debugger  
-	@echo "----------------------------------------------------------------------"
-	$(MAKE) -C $(PCOMPILE)
+$(END_EXEC):  $(OBJECTS)
+#	cp src/device/STARTUP/start.o src/lib/start.o
+	$(LD) $(OUTPUT) $@ $(LDFLAGS) $(LD_OPTIONS) $(OBJECTS)
 
 #Start the Debugger	
 #debug: 
@@ -95,11 +71,7 @@ program:  device  collection peripherical debugger
 #clean files
 clean:
 	@echo "----------------------------------------------------------------------"
-	$(MAKE) -C $(DEVICE) clean
-	$(MAKE) -C $(PERIPHERICAL) clean
-	$(MAKE) -C $(DEBUGGER) clean	
-	$(MAKE) -C $(PCOMPILE) clean
-	$(MAKE) -C $(COLLECTION) clean
+
 
 deploy: $(END_EXEC)
 	$(OPENOCD) -f $(OPENOCD_FILE) -c "flash write_image erase $^" -c "sleep 100" -c "reset run" -c "shutdown"
