@@ -13,11 +13,12 @@ create table COUNTRY(
 )
 create table ADDRESS(
 	ID			int identity(1,1),
-	STREET		varchar(50),
-	STREET2		varchar(50),
+	STREET		varchar(80),
 	ZIP_CODE	char(15),
 	CITY		char(30),
-	constraint pk_ADDRESS primary key (ID)
+	COUNTRY_ID	int not null,
+	constraint pk_ADDRESS primary key (ID),
+	constraint fk_ADDRESS foreign key (COUNTRY_ID) references COUNTRY(ID)
 )
 
 --CUSTOMER(ID[PK],NAME,CONTACT,ADDRESS,TYPE);
@@ -46,7 +47,7 @@ create table COMMENTS(
 	CUSTOMER_ID	int not null,
 	COURSES_ID	int not null,
 	GRADE		tinyint check (GRADE >0 AND GRADE <6),
-	COMMENT		varchar(200) not null,
+	COMMENT		varchar(200),
 	constraint  pk_COMMENTS primary key (ID),
 	constraint	fk_COMMENTS1 foreign key(CUSTOMER_ID) references CUSTOMER(ID),
 	constraint	fk_COMMENTS2 foreign key(COURSES_ID) references COURSES(ID)
@@ -56,20 +57,18 @@ create table MEETING(
 	ID			int identity(1,1),
 	COMMENT_ID	int not null,
 	DATE		datetime not null,
-	DETAILS		varchar(800) not null,
+	DETAILS		varchar(800),
 	constraint  pk_MEETING primary key (ID),
 	constraint	fk_MEETING foreign key(COMMENT_ID) references COMMENTS(ID) 
 )
 
---REGISTERED(CUSTOMER_ID[FK], ADDRESS_ID[FK],COUNTRY_ID);
+--REGISTERED(CUSTOMER_ID[FK], ADDRESS_ID[FK]);
 create table REGISTERED(
 	CUSTOMER_ID	int not null,
 	ADDRESS_ID	int not null,
-	COUNTRY_ID	int not null,
 	constraint	pk_REGISTERED primary key (CUSTOMER_ID),
 	constraint	fk_REGISTERED1 foreign key (CUSTOMER_ID) references CUSTOMER(ID),
-	constraint	fk_REGISTERED2 foreign key(ADDRESS_ID) references ADDRESS(ID),
-	constraint	fk_REGISTERED3 foreign key(COUNTRY_ID) references COUNTRY(ID)
+	constraint	fk_REGISTERED2 foreign key(ADDRESS_ID) references ADDRESS(ID)
 )
 
 --BOOKING(ID[PK], CUSTOMER_ID[FK], DATE, QTY,TYPE);			//VALIDAR/INCREMENTAR/DECREMENTAR CONFORME SÃO FEITAS AS RESPOSTAS. // FALTA A RELAÇÃO ENTRE EVENTO E OS SEU CONVIDADOS.
@@ -98,30 +97,28 @@ create table EVENT(
 	MENU_ID		int not null,
 	NAME		char(30) not null,
 	DESCRIPTION varchar(200) not null,
+	constraint  pk_EVENT primary key(BOOKING_ID),
 	constraint	fk_EVENT1 foreign key(BOOKING_ID) references BOOKING(ID),
-	constraint	fk_EVENT2 foreign key(MENU_ID) references MENU(ID),
+	constraint	fk_EVENT2 foreign key(MENU_ID) references MENU(ID)
 )
 
---INGREDIENTS(ID[PK], NAME, DESCRIPTION, QTY_RESERVED, STOCK);
+--INGREDIENTS(ID[PK], NAME, DESCRIPTION, QTY, QTY_RESERVED, STOCK);
 create table INGREDIENTS(
 	ID			int identity(1,1),
 	NAME		char(30) not null,
 	DESCRIPTION	varchar(50),
+	QTY			smallint default(0) not null,
 	QTY_RESERVED smallint default(0) not null,
 	VALUE		smallmoney default(0) not null,
-	constraint  pk_INGREDIENTS primary key (ID),
+	constraint  pk_INGREDIENTS primary key (ID)
 )
---SUPPLIERS(ID[PK], NAME, ADDRESS_ID[FK], COUNTRY_ID[FK], DELIVERY_DAYS, PAYMENT_TERMS);
+--SUPPLIERS(ID[PK], NAME, ADDRESS_ID[FK], DELIVERY_DAYS, PAYMENT_TERMS);
 create table SUPPLIERS(
 	ID			int identity(1,1),
 	NAME		char(30) not null,
 	ADDRESS_ID	int not null,
-	COUNTRY_ID  int default(0) not null,
-	DELIVERY_DAYS tinyint default(0) not null,
-	PAYMENT_TERMS tinyint default(0) not null,
 	constraint pk_SUPPLIERS primary key (ID),
-	constraint fk_SUPPLIERS1 foreign key(ADDRESS_ID) references ADDRESS(ID),
-	constraint fk_SUPPLIERS2 foreign key(COUNTRY_ID) references COUNTRY(ID)
+	constraint fk_SUPPLIERS foreign key(ADDRESS_ID) references ADDRESS(ID),
 )
 
 --PURCHASES(ID[PK], INVOICE, DATE, SUPPLIER_ID[FK], INGREDIENTS_ID[FK], QTY, VALIDITY, PRICE);
@@ -171,7 +168,7 @@ create table ORDERS_LOG(
 create table COURSES_INGREDIENTS(
 	COURSES_ID		int not null,
 	INGREDIENTS_ID	int not null,
-	QTY				tinyint not null,
+	QTY				float default(0) not null,
 	constraint pk_COURSES_INGREDIENTS primary key (COURSES_ID, INGREDIENTS_ID),
 	constraint fk_COURSES_INGREDIENTS1 foreign key(COURSES_ID) references COURSES(ID),
 	constraint fk_COURSES_INGREDIENTS2 foreign key(INGREDIENTS_ID) references INGREDIENTS(ID)
