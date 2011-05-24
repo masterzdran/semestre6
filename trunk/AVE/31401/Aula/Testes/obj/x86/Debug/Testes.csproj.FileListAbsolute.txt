@@ -1,0 +1,5 @@
+D:\visual studio 2010\Projects\Aula\Testes\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\visual studio 2010\Projects\Aula\Testes\bin\Debug\Testes.exe
+D:\visual studio 2010\Projects\Aula\Testes\bin\Debug\Testes.pdb
+D:\visual studio 2010\Projects\Aula\Testes\obj\x86\Debug\Testes.exe
+D:\visual studio 2010\Projects\Aula\Testes\obj\x86\Debug\Testes.pdb
