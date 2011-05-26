@@ -1,0 +1,9 @@
+
+- INGREDIENTES:
+	criar campo Unidade (unidade, Kg, L)
+	
+	para guardar a qtd de ingredientes comprados a um determinado preço, e com uma determinada data de validade podemos criar a noção de lote, em que items do mesmo lote partilham estes dois campos. cada ingrediente tem uma ligação à tabela de lotes onde está verdadeiramente o stock existente de cada um dos lotes. ao consumir ingredientes, desconta-se no Lote do produto com a data de validade mais recente. A soma das quantidades de cada Ingrediente nessa tabela dá o stock actual. a lista da tabela de lotes com qtd >0 serve para analisar as datas de validade
+	LOTE(ID[PK], INGREDIENT_ID[FK], PURCHASE_ID[FK], QTD, VALIDITY, PRICE) 
+	-- a data de validade saía da factura de compra. a tabelas de purchases fica com o "cabeçalho" da factura e a tabela de lotes ficaria com o detalhe da mesma factura :)
+
+

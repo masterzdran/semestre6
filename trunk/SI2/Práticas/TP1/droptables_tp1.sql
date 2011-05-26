@@ -2,6 +2,16 @@ use SI2_TP1;
 
 if exists(select * 
 		from INFORMATION_SCHEMA.TABLES
+		where TABLE_NAME = 'PREFERENCES')
+drop table PREFERENCES;
+
+if exists(select * 
+		from INFORMATION_SCHEMA.TABLES
+		where TABLE_NAME = 'EVENT_FRIENDS')
+drop table EVENT_FRIENDS;
+
+if exists(select * 
+		from INFORMATION_SCHEMA.TABLES
 		where TABLE_NAME = 'FRIENDS')
 drop table FRIENDS;
 
