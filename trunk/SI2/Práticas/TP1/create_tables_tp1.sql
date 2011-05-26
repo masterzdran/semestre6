@@ -26,10 +26,8 @@ create table CUSTOMER(
 	ID			int identity(1,1),
 	NAME		char(50) not null,
 	CONTACT		int not null,
-	ADDRESS_ID	int not null,		
 	CUSTOMER_TYPE tinyint check (CUSTOMER_TYPE >=0 AND CUSTOMER_TYPE <2),
 	constraint pk_CUSTOMER primary key (ID),
-	constraint fk_CUSTOMER foreign key (ADDRESS_ID) references ADDRESS(ID)
 )
 
 --COURSES(ID[PK], NAME, ACTIVE, VALUE);
