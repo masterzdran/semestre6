@@ -9,7 +9,7 @@ set dateformat dmy;
 if OBJECT_ID('CreateCourses') IS NOT NULL
 	drop procedure CreateCourses;
 go
-create procedure CreateCourses(@Name int, @active bit, @price smallmoney)
+create procedure CreateCourses(@Name varchar(50), @active bit, @price smallmoney)
 as
 	begin transaction
 		insert into dbo.COURSES values(@Name, @active, @price);
@@ -23,7 +23,7 @@ create procedure CreateIngredients(@Name char(30), @Description char(50),
 									@Qty int, @Qty_reserved int, @price smallmoney)
 as
 	begin transaction
-		insert into dbo.MENU_COURSES values(@Name, @Description, @Qty, @Qty_reserved,
+		insert into dbo.INGREDIENTS values(@Name, @Description, @Qty, @Qty_reserved,
 										@price);
 	commit
 go
@@ -65,6 +65,6 @@ as
 		declare @MenuID int
 		select @MenuID = ID from Menu where (Menu.Name = @MenuName)
 	--insert a new menu_courses
-		exec JoinMenuToCourse @bookingID, @coursesID
+		exec JoinMenuToCourse @MenuID, @coursesID
 	commit
 go

@@ -26,6 +26,7 @@ create table CUSTOMER(
 	ID			int identity(1,1),
 	NAME		char(50) not null,
 	CONTACT		int not null,
+	-- CUSTOMER TYPE: 0 - registered, 1 - normal
 	CUSTOMER_TYPE tinyint check (CUSTOMER_TYPE >=0 AND CUSTOMER_TYPE <2),
 	constraint pk_CUSTOMER primary key (ID),
 )
@@ -35,7 +36,7 @@ create table COURSES(
 	ID			int identity(1,1),
 	NAME		varchar(30) not null,
 	ACTIVE		bit not null,
-	VALUE		smallmoney not null,
+	VALUE		smallmoney not null,	-- Preço de venda da porção
 	constraint  pk_COURSES primary key (ID),
 )
 
@@ -95,6 +96,8 @@ create table EVENT(
 	MENU_ID		int not null,
 	NAME		char(30) not null,
 	DESCRIPTION varchar(200) not null,
+	-- Status: 0 - PENDING; 1 - CONFIRMED; 2 - CANCELED
+	STATUS		tinyint default(0) check (STATUS>=0 AND STATUS <=2) not null,
 	constraint  pk_EVENT primary key(BOOKING_ID),
 	constraint	fk_EVENT1 foreign key(BOOKING_ID) references BOOKING(ID),
 	constraint	fk_EVENT2 foreign key(MENU_ID) references MENU(ID)
@@ -188,6 +191,21 @@ create table FRIENDS(
 	constraint pk_FRIENDS primary key (REGISTERED_ID1, REGISTERED_ID2),
 	constraint fk_FRIENDS1 foreign key(REGISTERED_ID1) references REGISTERED(CUSTOMER_ID),
 	constraint fk_FRIENDS2 foreign key(REGISTERED_ID2) references REGISTERED(CUSTOMER_ID)
+)
+
+--EVENT_FRIENDS(BOOKING_ID[FK], CUSTOMER_ID[FK], STATUS);
+create table EVENT_FRIENDS(
+	BOOKING_ID	int not null,
+	CUSTOMER_ID int not null,
+	--0: not confirmed; 1: confirmed
+	STATUS		bit default(0) not null,  
+	constraint pk_EVENT_FRIENDS primary key (BOOKING_ID, CUSTOMER_ID),
+	constraint fk_EVENT_FRIENDS foreign key(BOOKING_ID) references BOOKING(ID),
+	constraint fk_EVENT_FRIENDS1 foreign key(CUSTOMER_ID) references CUSTOMER(ID)
+)
+
+create table PREFERENCES(
+	MIN_EVENT_CUSTOMER int default(0) not null
 )
 
 --////BOOKING_MENU(BOOKING_ID[FK]); // SIMPLIFICAÇÃO: RESERVA(ID[PK],CARDAPIO_ID[FK], DATA, NUMERO_PESSOAS, CONFIRMACOES,TIPO);
