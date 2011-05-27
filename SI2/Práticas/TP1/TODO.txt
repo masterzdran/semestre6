@@ -7,3 +7,11 @@
 	-- a data de validade saía da factura de compra. a tabelas de purchases fica com o "cabeçalho" da factura e a tabela de lotes ficaria com o detalhe da mesma factura :)
 
 
+Nos atributos em EVENT:
+	CostPrice - o custo dos ingredientes qur gastamos para esse evento.
+	publicPrice - preço de venda ao consumidor
+	percentagem de lucro e calculada no proc
+	
+	
+	
+	
