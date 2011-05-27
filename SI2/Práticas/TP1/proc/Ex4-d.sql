@@ -14,6 +14,5 @@ as
 		set @qtdd = 0
 		select @qtdd = Booking.Qty from dbo.Booking where  ID = @MenuID
 		set @qtdd += @Qtd
-		--verify if statement of update is right!!!!!!!!!!!!!!!!!
 		update dbo.Booking set Booking.Qty = @qtdd where ID = @MenuID
 	commit
