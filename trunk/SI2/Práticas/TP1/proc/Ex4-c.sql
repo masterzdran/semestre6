@@ -8,7 +8,7 @@ Aceitar reservas individuais ou para um evento gastronómico.
 if OBJECT_ID('TakeIndividualReservationAndEvent') IS NOT NULL
 	drop procedure TakeIndividualReservationAndEvent;
 go	
-create procedure TakeIndividualReservationAndEvent(@MenuID int, @Qtd int)
+create procedure TakeIndividualReservationAndEvent(@MenuID int, @Qtd int, )
 as
 	begin transaction
 		--verify if there is a Booking with @MenuID

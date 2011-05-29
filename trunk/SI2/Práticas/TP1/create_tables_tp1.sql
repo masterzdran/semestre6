@@ -55,7 +55,7 @@ create table COMMENTS(
 create table MEETING(
 	ID			int identity(1,1),
 	COMMENT_ID	int not null,
-	DATE		datetime not null,
+	DATE		date not null,
 	DETAILS		varchar(800),
 	constraint  pk_MEETING primary key (ID),
 	constraint	fk_MEETING foreign key(COMMENT_ID) references COMMENTS(ID) 
@@ -74,7 +74,7 @@ create table REGISTERED(
 create table BOOKING(
 	ID			int identity(1,1),
 	CUSTOMER_ID	int not null,
-	DATE		int not null,
+	DATE		date not null,
 	QTY			tinyint not null,
 	BOOKING_TYPE tinyint check (BOOKING_TYPE >=0 AND BOOKING_TYPE <2),
 	constraint  pk_BOOKING primary key (ID),
@@ -102,17 +102,23 @@ create table EVENT(
 	constraint	fk_EVENT1 foreign key(BOOKING_ID) references BOOKING(ID),
 	constraint	fk_EVENT2 foreign key(MENU_ID) references MENU(ID)
 )
+-- UNIT(ID[PK], UNIT)
+create table UNIT(
+	ID			int identity(1,1),
+	UNIT		char(3) not null,
+	constraint	pk_UNIT primary key(ID)
+)
 
---INGREDIENTS(ID[PK], NAME, DESCRIPTION, QTY, QTY_RESERVED, STOCK);
+--INGREDIENTS(ID[PK], NAME, QTY_RESERVED, UNIT_ID[FK]);
 create table INGREDIENTS(
 	ID			int identity(1,1),
 	NAME		char(30) not null,
-	DESCRIPTION	varchar(50),
-	QTY			smallint default(0) not null,
-	QTY_RESERVED smallint default(0) not null,
-	VALUE		smallmoney default(0) not null,
-	constraint  pk_INGREDIENTS primary key (ID)
+	QTY_RESERVED float default(0) not null,
+	UNIT_ID		int not null,
+	constraint  pk_INGREDIENTS primary key (ID),
+	constraint  fk_INGREDIENTS foreign key(UNIT_ID) references UNIT(ID)
 )
+
 --SUPPLIERS(ID[PK], NAME, ADDRESS_ID[FK], DELIVERY_DAYS, PAYMENT_TERMS);
 create table SUPPLIERS(
 	ID			int identity(1,1),
@@ -121,20 +127,22 @@ create table SUPPLIERS(
 	constraint pk_SUPPLIERS primary key (ID),
 	constraint fk_SUPPLIERS foreign key(ADDRESS_ID) references ADDRESS(ID),
 )
-
+-- LOT(ID[PK], INGREDIENTS_ID[FK], SUPPLIER_ID[FK], INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
+-- LOT replaces purchases: has info on buys, atual stock and validity date
 --PURCHASES(ID[PK], INVOICE, DATE, SUPPLIER_ID[FK], INGREDIENTS_ID[FK], QTY, VALIDITY, PRICE);
-create table PURCHASES(
-	ID			int identity(1,1),
-	INVOICE		int not null,
-	DATE		datetime not null,
-	SUPPLIER_ID int not null,
-	INGREDIENTS_ID int not null,
-	QTY			tinyint default(0) not null,
-	VALIDITY	datetime not null,
-	PRICE		smallmoney default(0) not null,
-	constraint pk_PURCHASES primary key (ID),
-	constraint fk_PURCHASES1 foreign key(SUPPLIER_ID) references SUPPLIERS(ID),
-	constraint fk_PURCHASES2 foreign key(INGREDIENTS_ID) references INGREDIENTS(ID)
+create table LOT(
+	ID				int identity(1,1),
+	INGREDIENTS_ID	int not null,
+	SUPPLIER_ID		int not null,
+	INVOICE			int not null,
+	DATE			date not null,
+	QTY				float default(0) not null,
+	PRICE			smallmoney default(0) not null,
+	VALIDITY		date not null,
+	STOCK			float default(0) not null,
+	constraint pk_LOT primary key (ID),
+	constraint fk_LOT foreign key(SUPPLIER_ID) references SUPPLIERS(ID),
+	constraint fk_LOT1 foreign key(INGREDIENTS_ID) references INGREDIENTS(ID)
 )
 
 --ORDERS(ID[PK],SUPPLIER_ID[FK], INGREDIENT_ID[FK], DATE, QTY_ORDERED, EXPECTED_DATE);			//e as entregas parciais?? //falta tabela _LOG
@@ -142,9 +150,9 @@ create table ORDERS(
 	ID			int identity(1,1),
 	SUPPLIER_ID int not null,
 	INGREDIENT_ID int not null,
-	DATE		datetime not null,
+	DATE		date not null,
 	QTY_ORDERED tinyint not null,
-	EXPECTED_DATE datetime not null,
+	EXPECTED_DATE date not null,
 	constraint pk_ORDERS primary key (ID),
 	constraint fk_ORDERS1 foreign key(SUPPLIER_ID) references SUPPLIERS(ID),
 	constraint fk_ORDERS2 foreign key(INGREDIENT_ID) references INGREDIENTS(ID)
@@ -155,14 +163,14 @@ create table ORDERS_LOG(
 	ID			int identity(1,1),
 	SUPPLIER_ID int not null,
 	INGREDIENTS_ID int not null,
-	DATE		datetime not null,
+	DATE		date not null,
 	QTY_ORDERED tinyint not null,
-	EXPECTED_DATE datetime not null,
-	PURCHASE_ID	int not null,
+	EXPECTED_DATE date not null,
+	LOT_ID		int not null,
 	constraint pk_ORDERS_LOG primary key (ID),
 	constraint fk_ORDERS_LOG1 foreign key(SUPPLIER_ID) references SUPPLIERS(ID),
 	constraint fk_ORDERS_LOG2 foreign key(INGREDIENTS_ID) references INGREDIENTS(ID),
-	constraint fk_ORDERS_LOG3 foreign key(PURCHASE_ID) references PURCHASES(ID)
+	constraint fk_ORDERS_LOG3 foreign key(LOT_ID) references LOT(ID)
 )
 
 --COURSES_INGREDIENTS(COURSES_ID[FK], INGREDIENTS_ID[FK], QTY);	//VERIFICAR PREÇO QUANDO HÁ ALTERAÇÕES DE PREÇO NA COMPRA DE INGREDIENTES.
@@ -177,11 +185,11 @@ create table COURSES_INGREDIENTS(
 
 --MENU_COURSES(COURSES_ID[FK],MENU_ID[FK]);
 create table MENU_COURSES(
-	COURSES_ID	int not null,
 	MENU_ID		int not null,
+	COURSES_ID	int not null,
 	constraint pk_MENU_COURSES primary key (COURSES_ID, MENU_ID),
-	constraint fk_MENU_COURSES1 foreign key(COURSES_ID) references COURSES(ID),
-	constraint fk_MENU_COURSES2 foreign key(MENU_ID) references MENU(ID)
+	constraint fk_MENU_COURSES1 foreign key(MENU_ID) references MENU(ID),
+	constraint fk_MENU_COURSES2 foreign key(COURSES_ID) references COURSES(ID)
 )
 
 --FRIENDS(REGISTERED_ID1[FK],REGISTERED_ID2[FK]) ;
