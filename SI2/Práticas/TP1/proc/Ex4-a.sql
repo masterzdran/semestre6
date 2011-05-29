@@ -19,12 +19,10 @@ go
 if OBJECT_ID('CreateIngredients') IS NOT NULL
 	drop procedure CreateIngredients;
 go
-create procedure CreateIngredients(@Name char(30), @Description char(50),
-									@Qty int, @Qty_reserved int, @price smallmoney)
+create procedure CreateIngredients(@Name char(30), @Qty_reserved int, @Unit int)
 as
 	begin transaction
-		insert into dbo.INGREDIENTS values(@Name, @Description, @Qty, @Qty_reserved,
-										@price);
+		insert into dbo.INGREDIENTS values(@Name, @Qty_reserved, @Unit);
 	commit
 go
 
@@ -55,13 +53,14 @@ go
 --we need to insert price of courses, i think that price should be
 --in table Menu_Course because price of each courses can be different
 create procedure CreateMenu(@MenuName char(20), @MenuType char(20),
-							@bookingID int, @coursesID int)
+							@coursesID int)
 as
 	begin transaction
-	--insert a new menu
-		insert into dbo.MENU values(@MenuName, @MenuType);
-		--see if there is a function that gives the last identity of
-		--a specify table 
+	-- check if menu already exists, if not creates a new one
+		if not exists (select ID from Menu where (Menu.NAME = @MenuName))
+			insert into dbo.MENU values(@MenuName, @MenuType)
+		
+		-- get the MenuID from table
 		declare @MenuID int
 		select @MenuID = ID from Menu where (Menu.Name = @MenuName)
 	--insert a new menu_courses

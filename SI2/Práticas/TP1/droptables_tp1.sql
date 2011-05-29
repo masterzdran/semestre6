@@ -1,5 +1,29 @@
 use SI2_TP1;
 
+delete from PREFERENCES;
+delete from EVENT_FRIENDS;
+delete from FRIENDS;
+delete from MENU_COURSES;
+delete from COURSES_INGREDIENTS;
+delete from ORDERS_LOG;
+delete from ORDERS;
+delete from LOT;
+delete from SUPPLIERS;
+delete from INGREDIENTS;
+delete from UNIT;
+delete from EVENT;
+delete from MENU;
+delete from BOOKING;
+delete from REGISTERED;
+delete from MEETING;
+delete from COMMENTS;
+delete from COURSES;	
+delete from CUSTOMER;
+delete from ADDRESS;
+delete from COUNTRY;
+
+
+
 if exists(select * 
 		from INFORMATION_SCHEMA.TABLES
 		where TABLE_NAME = 'PREFERENCES')
@@ -37,8 +61,8 @@ drop table ORDERS;
 
 if exists(select * 
 		from INFORMATION_SCHEMA.TABLES
-		where TABLE_NAME = 'PURCHASES')
-drop table PURCHASES;
+		where TABLE_NAME = 'LOT')
+drop table LOT;
 if exists(select * 
 		from INFORMATION_SCHEMA.TABLES
 		where TABLE_NAME = 'SUPPLIERS')
@@ -48,6 +72,11 @@ if exists(select *
 		from INFORMATION_SCHEMA.TABLES
 		where TABLE_NAME = 'INGREDIENTS')
 drop table INGREDIENTS;
+
+if exists(select * 
+		from INFORMATION_SCHEMA.TABLES
+		where TABLE_NAME = 'UNIT')
+drop table UNIT;
 
 if exists(select * 
 		from INFORMATION_SCHEMA.TABLES
