@@ -76,7 +76,10 @@ create table BOOKING(
 	CUSTOMER_ID	int not null,
 	DATE		date not null,
 	QTY			tinyint not null,
+	-- Booking_Type: 0 - Normal Booking; 1 - Event
 	BOOKING_TYPE tinyint check (BOOKING_TYPE >=0 AND BOOKING_TYPE <2),
+	-- Status: 0 - PENDING; 1 - CONFIRMED; 2 - CANCELED
+	STATUS		tinyint default(0) check (STATUS>=0 AND STATUS <=2) not null,	
 	constraint  pk_BOOKING primary key (ID),
 	constraint	fk_BOOKING foreign key(CUSTOMER_ID) references CUSTOMER(ID),
 )
@@ -90,18 +93,25 @@ create table MENU(
 )
 
 --EVENT(BOOKING_ID[FK], MENU_ID[FK], NAME, DESCRIPTION);
---//NORMAL_BOOKING(BOOKING_ID[FK], MENU_ID[FK]); //SE TYPE=NORMAL NÃO TEM ESCOLHA DE MENU ?
+
 create table EVENT(
 	BOOKING_ID	int not null,
 	MENU_ID		int not null,
 	NAME		char(30) not null,
 	DESCRIPTION varchar(200) not null,
-	-- Status: 0 - PENDING; 1 - CONFIRMED; 2 - CANCELED
-	STATUS		tinyint default(0) check (STATUS>=0 AND STATUS <=2) not null,
 	constraint  pk_EVENT primary key(BOOKING_ID),
 	constraint	fk_EVENT1 foreign key(BOOKING_ID) references BOOKING(ID),
 	constraint	fk_EVENT2 foreign key(MENU_ID) references MENU(ID)
 )
+--//NORMAL_BOOKING(BOOKING_ID[FK], MENU_ID[FK]); //pode ter ou não menu escolhido à partida
+create table NORMAL_BOOKING(
+	BOOKING_ID	int not null,
+	MENU_ID		int,
+	constraint  pk_NORMAL_BOOKING primary key(BOOKING_ID),
+	constraint	fk_NORMAL_BOOKING1 foreign key(BOOKING_ID) references BOOKING(ID),
+	constraint	fk_NORMAL_BOOKING2 foreign key(MENU_ID) references MENU(ID)	
+)
+
 -- UNIT(ID[PK], UNIT)
 create table UNIT(
 	ID			int identity(1,1),
@@ -213,7 +223,17 @@ create table EVENT_FRIENDS(
 )
 
 create table PREFERENCES(
-	MIN_EVENT_CUSTOMER int default(0) not null
+	ID						int not null,
+	MIN_EVENT_CUSTOMER 		int default(0) not null,
+	MAX_NUMBER_CUSTOMERS 	int default(100) not null,
+	constraint pk_PREFERENCES primary key (ID)
+)
+
+create table EVENT_DISCOUNTS(
+	ID						int not null,
+	CUSTOMER_QTY			int check (CUSTOMER_QTY>=0) default(0) not null,
+	DISCOUNT				float check (CUSTOMER_QTY>=0) default(0) not null,
+	constraint pk_EVENT_DISCOUNTS primary key (ID)
 )
 
 --////BOOKING_MENU(BOOKING_ID[FK]); // SIMPLIFICAÇÃO: RESERVA(ID[PK],CARDAPIO_ID[FK], DATA, NUMERO_PESSOAS, CONFIRMACOES,TIPO);

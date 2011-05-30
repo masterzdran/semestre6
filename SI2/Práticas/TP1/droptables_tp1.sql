@@ -11,6 +11,7 @@ delete from LOT;
 delete from SUPPLIERS;
 delete from INGREDIENTS;
 delete from UNIT;
+delete from NORMAL_BOOKING;
 delete from EVENT;
 delete from MENU;
 delete from BOOKING;
@@ -28,6 +29,11 @@ if exists(select *
 		from INFORMATION_SCHEMA.TABLES
 		where TABLE_NAME = 'PREFERENCES')
 drop table PREFERENCES;
+
+if exists(select * 
+		from INFORMATION_SCHEMA.TABLES
+		where TABLE_NAME = 'EVENT_DISCOUNTS')
+drop table EVENT_DISCOUNTS;
 
 if exists(select * 
 		from INFORMATION_SCHEMA.TABLES
@@ -77,6 +83,11 @@ if exists(select *
 		from INFORMATION_SCHEMA.TABLES
 		where TABLE_NAME = 'UNIT')
 drop table UNIT;
+
+if exists(select * 
+		from INFORMATION_SCHEMA.TABLES
+		where TABLE_NAME = 'NORMAL_BOOKING')
+drop table NORMAL_BOOKING;
 
 if exists(select * 
 		from INFORMATION_SCHEMA.TABLES

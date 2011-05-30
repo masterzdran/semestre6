@@ -6,8 +6,11 @@ go
 
 begin transaction populateTables
 
---dbo.PREFERENCES(MIN_EVENT_CUSTOMER)
-insert into dbo.PREFERENCES(MIN_EVENT_CUSTOMER) values(10);
+--dbo.PREFERENCES(MIN_EVENT_CUSTOMER, MAX_NUMBER_COSTUMERS)
+insert into dbo.PREFERENCES(MIN_EVENT_CUSTOMER, MAX_NUMBER_COSTUMERS) values(10, 50);
+
+--dbo.EVENT_DISCOUNTS(CUSTOMER_QTY, DISCOUNT)
+insert into dbo.EVENT_DISCOUNTS(CUSTOMER_QTY, DISCOUNT) values()
 go
 --dbo.COUNTRY
 insert into dbo.COUNTRY(NAME) values ('Portugal');
