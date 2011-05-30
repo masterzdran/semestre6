@@ -1,6 +1,3 @@
-cpatrao@moredata.pt,fernandez@moredata.pt,sergio.ferreira@moredata.eu
-cjpneves@gmail.com
-
 A1.
 Sim, bastando implementar explicitamente o metodo da respectiva interface. Interface:metodo
 
