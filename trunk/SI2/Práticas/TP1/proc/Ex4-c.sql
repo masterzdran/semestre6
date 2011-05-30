@@ -4,11 +4,11 @@ use SI2_TP1;
 c.
 Aceitar reservas individuais ou para um evento gastronómico.
 */
-
+/*
 if OBJECT_ID('TakeIndividualReservationAndEvent') IS NOT NULL
 	drop procedure TakeIndividualReservationAndEvent;
 go	
-create procedure TakeIndividualReservationAndEvent(@MenuID int, @Qtd int, )
+create procedure TakeIndividualReservationAndEvent(@MenuID int, @Qtd int)
 as
 	begin transaction
 		--verify if there is a Booking with @MenuID
@@ -18,4 +18,56 @@ as
 		set @qtdd += @Qtd
 		--verify if statement of update is right!!!!!!!!!!!!!!!!!
 		update dbo.Booking set Booking.Qty = @qtdd where ID = @MenuID
+	commit
+	*/
+if OBJECT_ID('TakeIndividualReservation') IS NOT NULL
+	drop procedure TakeIndividualReservation;
+go	
+create procedure TakeIndividualReservation(@CustomerID int, @Date datetime, @MenuID int, @Qtd int)
+as
+	begin transaction
+		insert into dbo.Booking(CUSTOMER_ID, DATE, QTY, BOOKING_TYPE, 2)
+			values (@CustomerID, @Date, @Qtd, 0)
+
+		declare @BookingID int
+		set @BookingID = @@IDENTITY
+		/*select @BookingID = ID from BOOKING where
+			(BOOKING.Customer_ID = @CustomerID AND BOOKING.Date = @date AND
+				BOOKING.Qty = @Qtd)*/
+
+		insert into dbo.Normal_Booking(BOOKING_ID, MENU_ID)
+			values (@BookingID, @MenuID, 2)
+		
+		-- falta reservar ingredientes para este booking apenas se Menu for !=0
+
+	commit
+	
+if OBJECT_ID('TakeEventReservation') IS NOT NULL
+	drop procedure TakeEventReservation;
+go	
+create procedure TakeEventReservation(@CustomerID int, @BookingID int)
+as
+	begin transaction
+	
+		--if event booking status was Confirmed prior to this individual confirmation then
+		--we need to add ingredients to reserved after confirming reservation
+		declare @BookingStatus int
+		set @BookingStatus = select (STATUS from BOOKING where ID= @BookingID)
+
+		if exists (select CUSTOMER_ID from EVENT_FRIENDS 
+					where (BOOKING_ID = @BookingID and CUSTOMER_ID = @CustomerID and STATUS=0)
+		begin
+			update Event_Friends 
+				set STATUS=1 
+				where((BOOKING_ID = @BookingID and CUSTOMER_ID = @CustomerID)
+		-- criar triger para sempre que é adicionada confirmação de reserva individual para verificar se atigiu
+		-- valor mínimo da mesma e se sim para validar evento
+		-- criar triger para que quando estado da reserva seja alterado de pendente para confirmado para 
+		-- reservar ingeredientes
+		
+		-- se evento já estava confirmado tem de se reservar ingredientes
+			if (@BookingStatus = 2)
+			-- reservar ingredientes para mais uma porção
+			-- chamar procedure para reserva de ingredientes
+		end
 	commit

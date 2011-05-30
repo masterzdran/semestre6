@@ -9,18 +9,18 @@ if OBJECT_ID('CreateEvent') IS NOT NULL
 go
 
 create procedure CreateEvent(@CustomerID int, @MenuID int,@NameEvent char(20), 
-				@Description char(20) , @date date, @Qtd int, @EventType tinyint)
+				@Description char(20) , @date date, @Qtd int)
 as
 	begin transaction
 	--create a new event with the owner(customer)
-		insert into dbo.BOOKING(CUSTOMER_ID, DATE,QTY,BOOKING_TYPE)
-			values(@CustomerID, @date, @Qtd, @EventType);
+		insert into dbo.BOOKING(CUSTOMER_ID, DATE,QTY,BOOKING_TYPE, STATUS)
+			values(@CustomerID, @date, @Qtd, 1, 0);
 		declare @BookingID int
-		set @BookingID = 0
-		select @BookingID = ID from BOOKING where
+		set @BookingID = @@IDENTITY
+		/*select @BookingID = ID from BOOKING where
 			(BOOKING.Customer_ID = @CustomerID AND BOOKING.Date = @date AND
-				BOOKING.Qty = @Qtd)
-		insert into event values(@BookingID, @MenuID, @NameEvent, @Description, @EventType);		
+				BOOKING.Qty = @Qtd)*/
+		insert into event values(@BookingID, @MenuID, @NameEvent, @Description);		
 
 	--insert friends into guest table
 	declare c cursor for select REGISTERED_ID2 from dbo.Friends where REGISTERED_ID1=@CustomerID
