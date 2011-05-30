@@ -103,7 +103,7 @@ namespace Aula07
 
         public static IEnumerable<KeyValuePair<string, int>> CountWords(IEnumerable<string> lines)
         {
-            return Mapper(lines,
+            return lines.Mapper(
                 delegate(String input)
                 {
                     Dictionary<String, int> d = new Dictionary<String, int>();
