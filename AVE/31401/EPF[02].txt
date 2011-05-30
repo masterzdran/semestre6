@@ -38,7 +38,7 @@ A chamada é efectuada ante de executar o metodo estático main e antes da utiliza
 
 A5.
 ????????????????????
-
+//----------------------------------------------------------------------------------------------------------------------------------
 B1.
 public delegate void SomeEventHandler(object o, EventArgs e);
 B1.a.
@@ -106,7 +106,7 @@ Que tipo de interface se vai implementar???
 B5.
 O problema está que DoAction tem como argumento uma delegate diferente, apesar de terem a mesma assinatura.
 
-
+//----------------------------------------------------------------------------------------------------------------------------------
 C1.
 11, porque são criadas duas instancias diferentes (int e char) para o campo afield.
 
