@@ -1,0 +1,126 @@
+cpatrao@moredata.pt,fernandez@moredata.pt,sergio.ferreira@moredata.eu
+cjpneves@gmail.com
+
+A1.
+Sim, bastando implementar explicitamente o metodo da respectiva interface. Interface:metodo
+
+A2.a.
+	A a = new A(); a.incN(1); a.print();    //1		
+	a.visit(new R1()); a.print();           //2, box para Visitor
+	I i = a; ((A)i).incN(1); i.print();     //2, box para I, unbox para A
+	i.visit(new R1()); i.print();           //3, box para Visitor
+	i.visit(new R2()); i.print();           //4,???, box para Visitor			<------ Esclarecer
+	i.visit(new R3()); i.print();           //36, box para Visitor
+
+A2.b.
+ O método visit terá que ser alterado para passar um objecto do tipo I. 
+ Altera a implementação de todas as class, para fazer unbox para o tipo A
+
+A2.c.
+ Como todos os objectos estão em stack, desaparecem assim que os métodos deixam de ser chamados.
+ 
+A3.
+public static IEnumerable<T> BiggerThan<T>(IEnumerable<T> enumator, T element) where T: IComparable<T>
+{
+	foreach (T t in enumator)
+		if (t.CompareTo(element) > 0) yield return t;
+	
+	yield break;;
+}
+public static IEnumerable<T> BiggerThanExt<T>(this IEnumerable<T> enumator, T element) where T : IComparable<T>
+{
+
+	return BiggerThan(enumator, element);
+}
+A4.
+É utilizado para estabelecer o estado inicial de um tipo, e o CLR garante a chamada ao constructor de tipo antes de qualquer acesso.
+A chamada é efectuada ante de executar o metodo estático main e antes da utilização da variável de tipo.
+
+A5.
+????????????????????
+
+B1.
+public delegate void SomeEventHandler(object o, EventArgs e);
+B1.a.
+.class auto ansi sealed nested public SomeEventHandler extends [mscorlib]System.MulticastDelegate
+{
+	.method public hidebysig specialname rtspecialname instance void  .ctor(object 'object',native int 'method') runtime managed
+    {
+    } // end of method SomeEventHandler::.ctor
+
+    .method public hidebysig newslot virtual 
+            instance void  Invoke(object o,
+                                  class [mscorlib]System.EventArgs e) runtime managed
+    {
+    } // end of method SomeEventHandler::Invoke
+
+    .method public hidebysig newslot virtual 
+            instance class [mscorlib]System.IAsyncResult 
+            BeginInvoke(object o,
+                        class [mscorlib]System.EventArgs e,
+                        class [mscorlib]System.AsyncCallback callback,
+                        object 'object') runtime managed
+    {
+    } // end of method SomeEventHandler::BeginInvoke
+
+    .method public hidebysig newslot virtual 
+            instance void  EndInvoke(class [mscorlib]System.IAsyncResult result) runtime managed
+    {
+    } // end of method SomeEventHandler::EndInvoke
+
+  } // end of class SomeEventHandler
+
+B1.b
+O modelo de eventos na framework .Net é baseado na existência de um delegate que conecta um evento com o seu handler. 
+? O tipo delegate define o conjunto de argumentos que são passados ao método que manipula o evento 
+? Todos os que recebem a notificação do evento têm de fornecer um método callback que esteja de acordo com o delegate definido
+B1.c
+
+B2.
+B2.a.
+Uma vez que na classe base Sensor1 a implementação dos métodos da interface não é declarada "virtual", a implementação do método é declarada por omissão como final.
+
+B2.b.
+	Sensor2 s2 = new Sensor2(); 
+    ITemperatureAlarm si = s2; 
+    Sensor1 s1 = (Sensor1)si; 
+    si.TooHot += tooHot; 	//(SI && S2) Sensor2 + in hot 1!
+    s1.TooHot += tooHot; 	//Sensor1 + in hot 1!
+    s2.TooHot += tooHot2; 	//(SI && S2) Sensor2 + in hot 1!+ in hot 2!
+    si.triggerHot(); 
+    s1.triggerHot(); 
+    s2.triggerHot(); 
+
+	Porque SI referencia o mesmo objecto S2
+
+B3.
+	Como existe a combinação de Actions (M1 e M2), o output é 5 e depois 10.
+	A alteração da Action b não produz alteração porque a lista de delegates já havia sido actualizada.
+B4.
+B4.a.
+B4.b.
+B4.c.
+Se pretendemos "calcular" todos os resultados à partida ou ir calculando à medida que se avança.
+Que tipo de interface se vai implementar???
+
+B5.
+O problema está que DoAction tem como argumento uma delegate diferente, apesar de terem a mesma assinatura.
+
+
+C1.
+11, porque são criadas duas instancias diferentes (int e char) para o campo afield.
+
+C2.
+C2.a.
+C2.b.
+
+C3.
+C3.a.
+
+C3.b.
+C3.c.
+
+
+C4.
+Por omissão o CLR obtem imprime o this.GetType.FullName() como forma de "imprimir" o nome da classe.
+
