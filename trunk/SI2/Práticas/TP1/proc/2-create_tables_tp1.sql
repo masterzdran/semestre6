@@ -216,21 +216,21 @@ create table EVENT_FRIENDS(
 	BOOKING_ID	int not null,
 	CUSTOMER_ID int not null,
 	--0: not confirmed; 1: confirmed
-	STATUS		bit default(0) not null,  
+	STATUS		tinyint default(0) not null,  
 	constraint pk_EVENT_FRIENDS primary key (BOOKING_ID, CUSTOMER_ID),
 	constraint fk_EVENT_FRIENDS foreign key(BOOKING_ID) references BOOKING(ID),
 	constraint fk_EVENT_FRIENDS1 foreign key(CUSTOMER_ID) references CUSTOMER(ID)
 )
 
 create table PREFERENCES(
-	ID						int not null,
+	ID						int identity(1,1),
 	MIN_EVENT_CUSTOMER 		int default(0) not null,
 	MAX_NUMBER_CUSTOMERS 	int default(100) not null,
 	constraint pk_PREFERENCES primary key (ID)
 )
 
 create table EVENT_DISCOUNTS(
-	ID						int not null,
+	ID						int identity(1,1),
 	CUSTOMER_QTY			int check (CUSTOMER_QTY>=0) default(0) not null,
 	DISCOUNT				float check (DISCOUNT>=0) default(0) not null,
 	constraint pk_EVENT_DISCOUNTS primary key (ID)

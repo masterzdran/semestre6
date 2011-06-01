@@ -1,5 +1,5 @@
 use SI2_TP1;
-
+/*
 delete from PREFERENCES;
 delete from EVENT_FRIENDS;
 delete from FRIENDS;
@@ -22,7 +22,7 @@ delete from COURSES;
 delete from CUSTOMER;
 delete from ADDRESS;
 delete from COUNTRY;
-
+*/
 
 
 if exists(select * 

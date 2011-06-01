@@ -1,0 +1,17 @@
+Processing scripts...  2:10:23,51  
+Droping tables... 
+Changed database context to 'SI2_TP1'.
+Done! 
+Creating tables... 
+Changed database context to 'SI2_TP1'.
+Done! 
+Creating triggers... 
+Changed database context to 'SI2_TP1'.
+Done! 
+Creating Procedures... 
+Changed database context to 'SI2_TP1'.
+Changed database context to 'SI2_TP1'.
+Changed database context to 'SI2_TP1'.
+Data feed... 
+Done! 
+Done processing! 
