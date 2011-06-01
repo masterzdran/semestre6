@@ -8,3 +8,5 @@ C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjConectados\TesteObjConectados\obj\Debu
 C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjConectados\TesteObjConectados\bin\Debug\TesteObjConectados.exe
 C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjConectados\TesteObjConectados\bin\Debug\TesteObjConectados.pdb
 C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjConectados\TesteObjConectados\obj\Debug\ResolveAssemblyReference.cache
+D:\ESCOLA\ISEL\semestre6\SI2\Docs\ADOdotNET\TesteObjConectados\TesteObjConectados\obj\Debug\TesteObjConectados.exe
+D:\ESCOLA\ISEL\semestre6\SI2\Docs\ADOdotNET\TesteObjConectados\TesteObjConectados\obj\Debug\TesteObjConectados.pdb
