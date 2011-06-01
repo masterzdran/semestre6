@@ -13,17 +13,18 @@ as
 		declare @idMenu int, @BookingType int
 		
 		--check type of booking
-		select @BookingType from BOOKING where ID=@BookingID
+		select @BookingType=BOOKING_TYPE from BOOKING where ID=@BookingID
 		
 		--get menu from booking	
-		if @BookingID=0
-			select @idMenu from NORMAL_BOOKING where BOOKING_ID=@BookingID
+		if @BookingType=0
+			select @idMenu=MENU_ID from NORMAL_BOOKING where BOOKING_ID=@BookingID
 		else
-			select @idMenu from EVENT where BOOKING_ID=@BookingID
+			select @idMenu=MENU_ID from EVENT where BOOKING_ID=@BookingID
 		
 		if @idMenu!=NULL
 		begin
 			--declare cursor to see courses of a menu
+			declare @mycourses int
 			declare mycourses cursor
 			for select COURSES_ID from MENU_COURSES where MENU_ID = @idMenu;
 			open mycourses
@@ -53,54 +54,8 @@ as
 	commit
 	
 	
--- TRIGGERS ON TABLES
-
--- sempre que uma reserva indvidual para evento é confirmada verifica se evento está confirmado:
--- se estiver confirmado: reserva ingredientes para essa reserva
--- se não estiver confirmado: verifica se nº reservas individuais é suficiente para reservar evento
 
 
 
 
--- se for marcada reserva no estado confirmado reserva ingredientes se existir Menu (reservas normais)
--- se for alterado estado de reserva para confirmado reserva ingredientes
--- se for alterado estado de reserva para cancelado, cancela reserva de ingredientes
 
-create trigger trigger_Event
-	on dbo.BOOKING
-	for insert, update
-	as
-		declare @old_status tinyint, @new_status tinyint, @n int, @n1 int, @bookingID int, @Qty int
-		set transaction isolation level serializable
-		
-		begin transaction
-		
-		select @bookingID = BOOKING_ID from inserted
-		select @Qty = QTY from inserted
-		select @n = count(*) from inserted
-		select @n1 = count(*) from deleted
-		
-		-- inserted new line
-		if @n>0 and @n1=0
-			begin
-			select @new_status = status from inserted
-			-- only execute if confirmed: normal booking
-			if @new_status = 1
-				exec CaptivateIngredients @bookingID, @Qty
-			end
-		-- status updated! booking gets confirmed or cancelled
-		if (Update(STATUS))
-			begin
-			select @new_status = status from inserted
-			select @old_status = status from deleted
-			-- if confirmed from pending
-			if @new_status = 1 and @old_status = 0
-				exec CaptivateIngredients @bookingID, @Qty			
-				--if cancelled from confirmed
-			else if @new_status = 2 and @old_status = 1
-				begin
-				set @Qty = @Qty * -1
-				exec CaptivateIngredients @bookingID, @Qty	
-				end
-			end
-		commit

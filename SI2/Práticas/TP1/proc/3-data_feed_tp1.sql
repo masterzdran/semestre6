@@ -7,10 +7,16 @@ go
 begin transaction populateTables
 
 --dbo.PREFERENCES(MIN_EVENT_CUSTOMER, MAX_NUMBER_COSTUMERS)
-insert into dbo.PREFERENCES(MIN_EVENT_CUSTOMER, MAX_NUMBER_COSTUMERS) values(10, 50);
+insert into dbo.PREFERENCES(MIN_EVENT_CUSTOMER, MAX_NUMBER_CUSTOMERS) values(2, 50);
 
 --dbo.EVENT_DISCOUNTS(CUSTOMER_QTY, DISCOUNT)
-insert into dbo.EVENT_DISCOUNTS(CUSTOMER_QTY, DISCOUNT) values()
+insert into dbo.EVENT_DISCOUNTS(CUSTOMER_QTY, DISCOUNT) values(2, 2);
+insert into dbo.EVENT_DISCOUNTS(CUSTOMER_QTY, DISCOUNT) values(5, 5);
+insert into dbo.EVENT_DISCOUNTS(CUSTOMER_QTY, DISCOUNT) values(10, 10);
+insert into dbo.EVENT_DISCOUNTS(CUSTOMER_QTY, DISCOUNT) values(15, 15);
+insert into dbo.EVENT_DISCOUNTS(CUSTOMER_QTY, DISCOUNT) values(20, 20);
+
+
 go
 --dbo.COUNTRY
 insert into dbo.COUNTRY(NAME) values ('Portugal');
@@ -140,12 +146,12 @@ insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(1,2);
 insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(1,3);
 insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(2,3);
 insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(3,1);
+go
+--CreateEvent(@CustomerID int, @MenuID int, @NameEvent char(20), @Description char(20) , @date date, 
+		--@Qtd int)
 
---CreateEvent(@CustomerID int, @MenuID int, @NameEvent char(20), @Description char(20) , @date datetime, @Qtd int, @BookingType tinyint)
-
-CreateEvent 2,1,'Festa Aniversário','','28-05-2011',1,0
-
-
+CreateEvent 2,1,'Festa Aniversário','My Birthday Party!','28-05-2011',1;
+go
 commit
 
 select * from BOOKING
