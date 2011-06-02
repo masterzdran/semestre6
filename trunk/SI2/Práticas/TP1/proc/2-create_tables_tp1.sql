@@ -55,7 +55,7 @@ create table COMMENTS(
 create table MEETING(
 	ID			int identity(1,1),
 	COMMENT_ID	int not null,
-	DATE		date not null,
+	DATE		datetime not null,
 	DETAILS		varchar(800),
 	constraint  pk_MEETING primary key (ID),
 	constraint	fk_MEETING foreign key(COMMENT_ID) references COMMENTS(ID) 
@@ -74,7 +74,7 @@ create table REGISTERED(
 create table BOOKING(
 	ID			int identity(1,1),
 	CUSTOMER_ID	int not null,
-	DATE		date not null,
+	DATE		datetime not null,
 	QTY			tinyint not null,
 	-- Booking_Type: 0 - Normal Booking; 1 - Event
 	BOOKING_TYPE tinyint check (BOOKING_TYPE >=0 AND BOOKING_TYPE <2),
@@ -145,11 +145,11 @@ create table LOT(
 	INGREDIENTS_ID	int not null,
 	SUPPLIER_ID		int not null,
 	INVOICE			int not null,
-	DATE			date not null,
-	QTY				float default(0) not null,
+	DATE			datetime not null,
+	QTY				decimal(10,3) default(0) not null,
 	PRICE			smallmoney default(0) not null,
-	VALIDITY		date not null,
-	STOCK			float default(0) not null,
+	VALIDITY		datetime not null,
+	STOCK			decimal(10,3) default(0) not null,
 	constraint pk_LOT primary key (ID),
 	constraint fk_LOT foreign key(SUPPLIER_ID) references SUPPLIERS(ID),
 	constraint fk_LOT1 foreign key(INGREDIENTS_ID) references INGREDIENTS(ID)
@@ -160,7 +160,7 @@ create table ORDERS(
 	ID			int identity(1,1),
 	SUPPLIER_ID int not null,
 	INGREDIENT_ID int not null,
-	DATE		date not null,
+	DATE		datetime not null,
 	QTY_ORDERED tinyint not null,
 	EXPECTED_DATE date not null,
 	constraint pk_ORDERS primary key (ID),
@@ -173,9 +173,9 @@ create table ORDERS_LOG(
 	ID			int identity(1,1),
 	SUPPLIER_ID int not null,
 	INGREDIENTS_ID int not null,
-	DATE		date not null,
+	DATE		datetime not null,
 	QTY_ORDERED tinyint not null,
-	EXPECTED_DATE date not null,
+	EXPECTED_DATE datetime not null,
 	LOT_ID		int not null,
 	constraint pk_ORDERS_LOG primary key (ID),
 	constraint fk_ORDERS_LOG1 foreign key(SUPPLIER_ID) references SUPPLIERS(ID),
@@ -187,7 +187,7 @@ create table ORDERS_LOG(
 create table COURSES_INGREDIENTS(
 	COURSES_ID		int not null,
 	INGREDIENTS_ID	int not null,
-	QTY				float default(0) not null,
+	QTY				decimal(10,3) default(0.0) not null,
 	constraint pk_COURSES_INGREDIENTS primary key (COURSES_ID, INGREDIENTS_ID),
 	constraint fk_COURSES_INGREDIENTS1 foreign key(COURSES_ID) references COURSES(ID),
 	constraint fk_COURSES_INGREDIENTS2 foreign key(INGREDIENTS_ID) references INGREDIENTS(ID)

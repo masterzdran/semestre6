@@ -9,7 +9,7 @@ if OBJECT_ID('CreateEvent') IS NOT NULL
 go
 
 create procedure CreateEvent(@CustomerID int, @MenuID int,@NameEvent char(20), 
-				@Description char(20) , @date date, @Qtd int)
+				@Description char(20) , @date datetime, @Qtd int)
 as
 	begin transaction
 	--create a new event with the owner(customer)
