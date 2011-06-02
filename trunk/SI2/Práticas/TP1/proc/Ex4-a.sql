@@ -53,17 +53,25 @@ go
 --we need to insert price of courses, i think that price should be
 --in table Menu_Course because price of each courses can be different
 create procedure CreateMenu(@MenuName char(20), @MenuType char(20),
-							@coursesID int)
+							@coursesID int, @price smallmoney)
 as
 	begin transaction
 	-- check if menu already exists, if not creates a new one
 		if not exists (select ID from Menu where (Menu.NAME = @MenuName))
-			insert into dbo.MENU values(@MenuName, @MenuType)
-		
+			insert into dbo.MENU values(@MenuName, @MenuType, @price)
+	
+	-- if menu price is 0 then gets the courses price and add it
+		if @price = 0
+			select @price = PRICE from COURSES where (COURSES.ID = @coursesID)
 		-- get the MenuID from table
-		declare @MenuID int
+		declare @MenuID int, @MenuPrice smallmoney
 		select @MenuID = ID from Menu where (Menu.Name = @MenuName)
-	--insert a new menu_courses
+		select @MenuPrice = PRICE from MENU where (ID = @MenuID)
+		set @MenuPrice +=@price
+
+		update MENU set PRICE = @MenuPrice
+			where (ID = @MenuID)
+		--insert a new menu_courses
 		exec JoinMenuToCourse @MenuID, @coursesID
 	commit
 go
