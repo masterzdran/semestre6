@@ -50,86 +50,53 @@ insert into dbo.UNIT(UNIT) values('uni');
 go
 --dbo.INGREDIENTS
 -- CreateIngredients(@Name char(30), @Qty_reserved int, @Unit int)
-CreateIngredients 'Bifes Vazia',0, 5;		--1
-go
-CreateIngredients 'Azeite',0, 3;			--2
-go
-CreateIngredients 'Alho', 0, 1;				--3	
-go
-CreateIngredients 'Batatas',0, 1;			--4
-go
-CreateIngredients 'Sal', 0, 2;				--5
-go
-CreateIngredients 'Pimenta', 0, 2;			--6
-go
-CreateIngredients 'Bacalhau', 0, 1;			--7
-go
-CreateIngredients 'Leite', 0, 3;			--8
-go
-CreateIngredients 'Cebola', 0, 1;			--9
-go
-CreateIngredients 'Natas', 0, 3;			--10
-go
-CreateIngredients 'Peitos Frango', 0, 5;	--11
-go
-CreateIngredients 'Cogumelos', 0, 1;		--12
-go
-CreateIngredients 'Salsa', 0, 2;			--13
-go
-CreateIngredients 'Ovos', 0, 5;				--14
-go
+exec CreateIngredients 'Bifes Vazia',0, 5;		--1
+exec CreateIngredients 'Azeite',0, 3;			--2
+exec CreateIngredients 'Alho', 0, 1;			--3	
+exec CreateIngredients 'Batatas',0, 1;			--4
+exec CreateIngredients 'Sal', 0, 2;				--5
+exec CreateIngredients 'Pimenta', 0, 2;			--6
+exec CreateIngredients 'Bacalhau', 0, 1;		--7
+exec CreateIngredients 'Leite', 0, 3;			--8
+exec CreateIngredients 'Cebola', 0, 1;			--9
+exec CreateIngredients 'Natas', 0, 3;			--10
+exec CreateIngredients 'Peitos Frango', 0, 5;	--11
+exec CreateIngredients 'Cogumelos', 0, 1;		--12
+exec CreateIngredients 'Salsa', 0, 2;			--13
+exec CreateIngredients 'Ovos', 0, 5;			--14
 
 --dbo.COURSES
 --CreateCourses(@Name varchar(50), @active bit, @price smallmoney)
-CreateCourses 'Peitos Frango com Cogumelos', 1, 10;
-go
-CreateCourses 'Bacalhau com Natas', 1, 14;
-go
-CreateCourses 'Bife à Portuguesa', 1, 12;
-go
+exec CreateCourses 'Peitos Frango com Cogumelos', 1, 10;
+exec CreateCourses 'Bacalhau com Natas', 1, 14;
+exec CreateCourses 'Bife à Portuguesa', 1, 12;
+
 
 --dbo.COURSES_INGREDIENTS
 --JoinCoursesToIngredients(@CoursesID int, @IngredientsID int,@Qtd int)
-JoinCoursesToIngredients 1,11,1;
-go
-JoinCoursesToIngredients 1,12,0.125;
-go
-JoinCoursesToIngredients 1,13,10;
-go
-JoinCoursesToIngredients 1,9,0.100;
-go
-JoinCoursesToIngredients 1,3,0.02;
-go
-JoinCoursesToIngredients 1,2,0.05;
-go
-JoinCoursesToIngredients 2,2,0.2;
-go
-JoinCoursesToIngredients 2,8,0.100;
-go
-JoinCoursesToIngredients 2,9,0.100;
-go
-JoinCoursesToIngredients 2,4,0.200;
-go
-JoinCoursesToIngredients 2,10,0.50;
-go
-JoinCoursesToIngredients 3,1,0.200;
-go
-JoinCoursesToIngredients 3,2,0.100;
-go
-JoinCoursesToIngredients 3,3,0.50;
-go
-JoinCoursesToIngredients 3,7,0.200;
-go
+exec JoinCoursesToIngredients 1,11,1;
+exec JoinCoursesToIngredients 1,12,0.125;
+exec JoinCoursesToIngredients 1,13,10;
+exec JoinCoursesToIngredients 1,9,0.100;
+exec JoinCoursesToIngredients 1,3,0.02;
+exec JoinCoursesToIngredients 1,2,0.05;
+exec JoinCoursesToIngredients 2,2,0.2;
+exec JoinCoursesToIngredients 2,8,0.100;
+exec JoinCoursesToIngredients 2,9,0.100;
+exec JoinCoursesToIngredients 2,4,0.200;
+exec JoinCoursesToIngredients 2,10,0.50;
+exec JoinCoursesToIngredients 3,1,0.200;
+exec JoinCoursesToIngredients 3,2,0.100;
+exec JoinCoursesToIngredients 3,3,0.50;
+exec JoinCoursesToIngredients 3,7,0.200;
+
 
 --CreateMenu(@MenuName char(20), @MenuType char(20),@coursesID int)
-CreateMenu 'Menu Carne','Carne',3;
-go
-CreateMenu 'Menu Peixe','Peixe',1;
-go
-CreateMenu 'Menu Festa','2 Pratos',1;
-go
-CreateMenu 'Menu Festa','',2;
-go
+exec CreateMenu 'Menu Carne','Carne',3;
+exec CreateMenu 'Menu Peixe','Peixe',1;
+exec CreateMenu 'Menu Festa','2 Pratos',1;
+exec CreateMenu 'Menu Festa','',2;
+
 
 --dbo.CUSTOMER
 insert into dbo.CUSTOMER(NAME, CONTACT, CUSTOMER_TYPE) values('Nuno Sousa', '919876543', 0);
@@ -146,13 +113,22 @@ insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(1,2);
 insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(1,3);
 insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(2,3);
 insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(3,1);
-go
---CreateEvent(@CustomerID int, @MenuID int, @NameEvent char(20), @Description char(20) , @date date, 
-		--@Qtd int)
 
-CreateEvent 2,1,'Festa Aniversário','My Birthday Party!','28-05-2011',1;
-go
+--create procedure CreateEvent(@CustomerID int, @MenuID int,@NameEvent char(20), 
+				--@Description char(20) , @date datetime, @Qtd int)
+
 commit
+
+set dateformat dmy
+exec CreateEvent 2,1,'Festa Aniversário','My Birthday Party!','28/05/2011',1;
+
+--TakeIndividualReservation(@CustomerID int, @Date datetime, @MenuID int, @Qtd int)
+exec TakeIndividualReservation 1,'01/06/2011',2,2;
+
+--TakeEventReservation(@CustomerID int, @BookingID int)
+exec TakeEventReservation 3,1;
+exec TakeEventReservation 1,1;
+exec TakeEventReservation 3,2;
 
 select * from BOOKING
 select * from EVENT
@@ -161,3 +137,7 @@ select * from FRIENDS
 select * from CUSTOMER
 select * from REGISTERED
 select * from MENU
+select * from MENU_COURSES
+select * from COURSES
+select * from COURSES_INGREDIENTS
+select * from INGREDIENTS inner join UNIT on (INGREDIENTS.UNIT_ID=UNIT.ID)

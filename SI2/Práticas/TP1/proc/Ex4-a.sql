@@ -30,7 +30,7 @@ if OBJECT_ID('JoinCoursesToIngredients') IS NOT NULL
 	drop procedure JoinCoursesToIngredients;
 go
 create procedure JoinCoursesToIngredients(@CoursesID int, @IngredientsID int,
-											@Qtd int)
+											@Qtd decimal(10,3))
 as
 	begin transaction
 		insert into dbo.COURSES_INGREDIENTS values(@CoursesID, @IngredientsID, @Qtd);
