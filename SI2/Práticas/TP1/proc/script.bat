@@ -21,7 +21,7 @@ sqlcmd.exe  -S %server% -E -d %db% -i %CD%\Ex4-b.sql >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\Ex4-c.sql >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\Ex4-d.sql >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\Ex4-e.sql >>output.txt
-
+sqlcmd.exe  -S %server% -E -d %db% -i %CD%\Ex4-f.sql >>output.txt
 
 ECHO Data feed... >>output.txt
 REM sqlcmd.exe  -S %server% -E -d %db% -i %CD%\3-data_feed_tp1.sql >>output.txt

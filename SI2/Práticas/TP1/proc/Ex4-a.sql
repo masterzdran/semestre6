@@ -19,10 +19,11 @@ go
 if OBJECT_ID('CreateIngredients') IS NOT NULL
 	drop procedure CreateIngredients;
 go
-create procedure CreateIngredients(@Name char(30), @Qty_reserved int, @Unit int)
+create procedure CreateIngredients(@Name char(30), @Qty_reserved decimal(10,3), @Unit int, 
+										@QtyMin decimal(10,3), @QtyMax decimal(10,3))
 as
 	begin transaction
-		insert into dbo.INGREDIENTS values(@Name, @Qty_reserved, @Unit);
+		insert into dbo.INGREDIENTS values(@Name, @Qty_reserved, @Unit, @QtyMin, @QtyMax);
 	commit
 go
 
@@ -42,8 +43,13 @@ if OBJECT_ID('JoinMenuToCourse') IS NOT NULL
 go
 create procedure JoinMenuToCourse(@MenuID int, @coursesID int)
 as
+	set transaction isolation level serializable
 	begin transaction
-		insert into dbo.MENU_COURSES values(@MenuID, @coursesID);
+		declare @price smallmoney
+		select @price=price from MENU where ID=@MenuID
+		set @price += (select price from COURSES where ID=@coursesID)
+		update MENU set PRICE=@price where ID=@MenuID
+		insert into dbo.MENU_COURSES values(@MenuID, @coursesID)
 	commit
 go
 
@@ -53,25 +59,33 @@ go
 --we need to insert price of courses, i think that price should be
 --in table Menu_Course because price of each courses can be different
 create procedure CreateMenu(@MenuName char(20), @MenuType char(20),
-							@coursesID int, @price smallmoney)
+							@coursesID int)
 as
+	set transaction isolation level serializable
 	begin transaction
 	-- check if menu already exists, if not creates a new one
 		if not exists (select ID from Menu where (Menu.NAME = @MenuName))
-			insert into dbo.MENU values(@MenuName, @MenuType, @price)
-	
-	-- if menu price is 0 then gets the courses price and add it
-		if @price = 0
-			select @price = PRICE from COURSES where (COURSES.ID = @coursesID)
+			insert into dbo.MENU 
+				values(@MenuName, @MenuType, (select PRICE from COURSES where ID=@coursesID))
+		
 		-- get the MenuID from table
-		declare @MenuID int, @MenuPrice smallmoney
+		declare @MenuID int
 		select @MenuID = ID from Menu where (Menu.Name = @MenuName)
-		select @MenuPrice = PRICE from MENU where (ID = @MenuID)
-		set @MenuPrice +=@price
-
-		update MENU set PRICE = @MenuPrice
-			where (ID = @MenuID)
-		--insert a new menu_courses
+	--insert a new menu_courses
 		exec JoinMenuToCourse @MenuID, @coursesID
+	commit
+go
+
+
+if OBJECT_ID('SetMenuPrice') IS NOT NULL
+	drop procedure SetMenuPrice;
+go
+--we need to insert price of courses, i think that price should be
+--in table Menu_Course because price of each courses can be different
+create procedure SetMenuPrice(@MenuID int,@price smallmoney)
+as
+	set transaction isolation level serializable
+	begin transaction
+		update MENU set PRICE=@price where ID=@MenuID
 	commit
 go
