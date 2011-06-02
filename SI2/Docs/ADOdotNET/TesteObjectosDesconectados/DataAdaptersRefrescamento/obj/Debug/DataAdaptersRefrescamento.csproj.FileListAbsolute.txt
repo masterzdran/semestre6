@@ -8,3 +8,5 @@ C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRe
 C:\Partilha\ISEL\SI2\ADO.NET\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\DataAdaptersRefrescamento.pdb
 C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\DataAdaptersRefrescamento.exe
 C:\Users\ElvisP\Desktop\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\DataAdaptersRefrescamento.pdb
+C:\WorkingArea\ISEL\semestre6\SI2\Docs\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\DataAdaptersRefrescamento.exe
+C:\WorkingArea\ISEL\semestre6\SI2\Docs\ADOdotNET\TesteObjectosDesconectados\DataAdaptersRefrescamento\obj\Debug\DataAdaptersRefrescamento.pdb
