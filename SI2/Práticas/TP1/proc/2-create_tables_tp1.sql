@@ -36,7 +36,7 @@ create table COURSES(
 	ID			int identity(1,1),
 	NAME		varchar(30) not null,
 	ACTIVE		bit not null,
-	VALUE		smallmoney not null,	-- Preço de venda da porção
+	PRICE		smallmoney not null,	-- Preço de venda da porção
 	constraint  pk_COURSES primary key (ID),
 )
 
@@ -88,6 +88,7 @@ create table BOOKING(
 create table MENU(
 	ID			int identity(1,1),
 	NAME		char(30) not null,
+	PRICE		smallmoney default(0) not null, 
 	TYPE		char(30) not null,
 	constraint  pk_MENU primary key (ID),
 )
