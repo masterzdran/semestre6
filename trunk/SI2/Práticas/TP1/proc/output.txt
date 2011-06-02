@@ -1,4 +1,4 @@
-Processing scripts...  1:10:29,29  
+Processing scripts... 22:20:33,97  
 Droping tables... 
 Changed database context to 'SI2_TP1'.
 Done! 
@@ -9,6 +9,7 @@ Creating triggers...
 Changed database context to 'SI2_TP1'.
 Done! 
 Creating Procedures... 
+Changed database context to 'SI2_TP1'.
 Changed database context to 'SI2_TP1'.
 Changed database context to 'SI2_TP1'.
 Changed database context to 'SI2_TP1'.

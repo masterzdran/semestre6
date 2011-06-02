@@ -49,21 +49,21 @@ insert into dbo.UNIT(UNIT) values('ml');
 insert into dbo.UNIT(UNIT) values('uni');
 go
 --dbo.INGREDIENTS
--- CreateIngredients(@Name char(30), @Qty_reserved int, @Unit int)
-exec CreateIngredients 'Bifes Vazia',0, 5;		--1
-exec CreateIngredients 'Azeite',0, 3;			--2
-exec CreateIngredients 'Alho', 0, 1;			--3	
-exec CreateIngredients 'Batatas',0, 1;			--4
-exec CreateIngredients 'Sal', 0, 2;				--5
-exec CreateIngredients 'Pimenta', 0, 2;			--6
-exec CreateIngredients 'Bacalhau', 0, 1;		--7
-exec CreateIngredients 'Leite', 0, 3;			--8
-exec CreateIngredients 'Cebola', 0, 1;			--9
-exec CreateIngredients 'Natas', 0, 3;			--10
-exec CreateIngredients 'Peitos Frango', 0, 5;	--11
-exec CreateIngredients 'Cogumelos', 0, 1;		--12
-exec CreateIngredients 'Salsa', 0, 2;			--13
-exec CreateIngredients 'Ovos', 0, 5;			--14
+-- CreateIngredients(@Name char(30), @Qty_reserved int, @Unit int, @Min_Qty, @ORDER_QTY)
+exec CreateIngredients 'Bifes Vazia',0, 5, 5, 10;		--1
+exec CreateIngredients 'Azeite',0, 3, 1, 10;			--2
+exec CreateIngredients 'Alho', 0, 1, 0.100, 1;			--3	
+exec CreateIngredients 'Batatas',0, 1, 5, 20;			--4
+exec CreateIngredients 'Sal', 0, 2, 100, 1000;			--5
+exec CreateIngredients 'Pimenta', 0, 2, 50, 200;		--6
+exec CreateIngredients 'Bacalhau', 0, 1, 3, 10;			--7
+exec CreateIngredients 'Leite', 0, 3, 3, 12;			--8
+exec CreateIngredients 'Cebola', 0, 1, 3, 5;			--9
+exec CreateIngredients 'Natas', 0, 3, 2, 4;				--10
+exec CreateIngredients 'Peitos Frango', 0, 5, 10, 20;	--11
+exec CreateIngredients 'Cogumelos', 0, 1, 0.500, 1;		--12
+exec CreateIngredients 'Salsa', 0, 2, 100, 300;			--13
+exec CreateIngredients 'Ovos', 0, 5, 12, 36;			--14
 
 --dbo.COURSES
 --CreateCourses(@Name varchar(50), @active bit, @price smallmoney)
@@ -130,6 +130,32 @@ exec TakeEventReservation 3,1;
 exec TakeEventReservation 1,1;
 exec TakeEventReservation 3,2;
 
+
+set dateformat dmy
+insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
+		values(1, 1, 1, '02/06/2011', 5, 10, '15/06/2011', 0);
+insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
+		values(1, 1, 1, '02/06/2011', 5, 8, '15/06/2011', 0);
+insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
+		values(1, 1, 1, '02/06/2011', 5, 12,'15/06/2011', 0);
+insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
+		values(1, 2, 1, '02/06/2011', 5, 15,'15/06/2011', 0);
+insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
+		values(1, 3, 1, '02/06/2011', 5, 5,'15/06/2011', 0);
+insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
+		values(2, 3, 1, '02/06/2011', 5, 5,'15/06/2011', 0);
+
+
+declare @suggestion table(
+				ID			int,
+				SUPPLIER_ID int,
+				QTY			decimal(10,3));
+insert into @suggestion select * from dbo.SuggestOrder();		
+
+select * from @suggestion;
+
+
+
 select * from BOOKING
 select * from EVENT
 select * from EVENT_FRIENDS
@@ -141,3 +167,4 @@ select * from MENU_COURSES
 select * from COURSES
 select * from COURSES_INGREDIENTS
 select * from INGREDIENTS inner join UNIT on (INGREDIENTS.UNIT_ID=UNIT.ID)
+

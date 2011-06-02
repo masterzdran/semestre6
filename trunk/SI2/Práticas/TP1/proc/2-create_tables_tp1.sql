@@ -47,6 +47,7 @@ create table COMMENTS(
 	COURSES_ID	int not null,
 	GRADE		tinyint check (GRADE >0 AND GRADE <6),
 	COMMENT		varchar(200),
+	STATUS		tinyint default(0) not null,
 	constraint  pk_COMMENTS primary key (ID),
 	constraint	fk_COMMENTS1 foreign key(CUSTOMER_ID) references CUSTOMER(ID),
 	constraint	fk_COMMENTS2 foreign key(COURSES_ID) references COURSES(ID)
@@ -80,6 +81,8 @@ create table BOOKING(
 	BOOKING_TYPE tinyint check (BOOKING_TYPE >=0 AND BOOKING_TYPE <2),
 	-- Status: 0 - PENDING; 1 - CONFIRMED; 2 - CANCELED
 	STATUS		tinyint default(0) check (STATUS>=0 AND STATUS <=2) not null,	
+	COST_PRICE	smallmoney default(0) not null,
+	SALE_PRICE	smallmoney default(0) not null,
 	constraint  pk_BOOKING primary key (ID),
 	constraint	fk_BOOKING foreign key(CUSTOMER_ID) references CUSTOMER(ID),
 )
@@ -90,6 +93,7 @@ create table MENU(
 	NAME		char(30) not null,
 	PRICE		smallmoney default(0) not null, 
 	TYPE		char(30) not null,
+	PRICE		smallmoney default(0) not null,
 	constraint  pk_MENU primary key (ID),
 )
 
@@ -124,8 +128,10 @@ create table UNIT(
 create table INGREDIENTS(
 	ID			int identity(1,1),
 	NAME		char(30) not null,
-	QTY_RESERVED float default(0) not null,
+	QTY_RESERVED decimal(10,3) default(0) not null,
 	UNIT_ID		int not null,
+	MIN_QTY		decimal(10,3) default(0) not null,
+	ORDER_QTY	decimal(10,3) default(0) not null,
 	constraint  pk_INGREDIENTS primary key (ID),
 	constraint  fk_INGREDIENTS foreign key(UNIT_ID) references UNIT(ID)
 )
