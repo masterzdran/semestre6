@@ -27,8 +27,12 @@ as
 		fetch next from stock into @ingredientID, @validity, @stock	
 		while(@@FETCH_STATUS=0)
 			begin
-			
-			
+			if @validity > @currentDate
+			begin
+				insert into @validityTemp values(@ingredientID, @validity, @stock)
+				
+			end
+									
 			fetch next from stock into @ingredientID, @validity, @stock
 			end
 			
@@ -37,9 +41,12 @@ as
 	return
 	end
 	
-	
-
-
+/*	
+select LOT.INGREDIENTS_ID, VALIDITY, STOCK
+				from LOT 
+				where (LOT.STOCK>0)
+				order by LOT.VALIDITY
+*/
 
 
 
