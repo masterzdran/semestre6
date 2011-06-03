@@ -4,7 +4,7 @@ set xact_abort on;
 set dateformat dmy
 go
 
-begin transaction populateTables
+--begin transaction populateTables
 
 --dbo.PREFERENCES(MIN_EVENT_CUSTOMER, MAX_NUMBER_COSTUMERS)
 insert into dbo.PREFERENCES(MIN_EVENT_CUSTOMER, MAX_NUMBER_CUSTOMERS) values(2, 50);
@@ -23,6 +23,9 @@ insert into dbo.COUNTRY(NAME) values ('Portugal');
 insert into dbo.COUNTRY(NAME) values ('Espanha');
 insert into dbo.COUNTRY(NAME) values ('França');
 go
+
+select * from COUNTRY
+
 --dbo.ADDRESS
 insert into dbo.ADDRESS(STREET,ZIP_CODE,CITY,COUNTRY_ID) values('Rua A', 1000, 'Lisboa', 1);
 insert into dbo.ADDRESS(STREET,ZIP_CODE,CITY,COUNTRY_ID) values('Rua B', 1100, 'Lisboa', 1);
@@ -48,6 +51,8 @@ insert into dbo.UNIT(UNIT) values('l');
 insert into dbo.UNIT(UNIT) values('ml');
 insert into dbo.UNIT(UNIT) values('uni');
 go
+
+
 --dbo.INGREDIENTS
 -- CreateIngredients(@Name char(30), @Qty_reserved int, @Unit int, @Min_Qty, @ORDER_QTY)
 exec CreateIngredients 'Bifes Vazia',0, 5, 5, 10;		--1
@@ -117,7 +122,7 @@ insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(3,1);
 --create procedure CreateEvent(@CustomerID int, @MenuID int,@NameEvent char(20), 
 				--@Description char(20) , @date datetime, @Qtd int)
 
-commit
+--commit
 
 set dateformat dmy
 exec CreateEvent 2,1,'Festa Aniversário','My Birthday Party!','28/05/2011',1;
@@ -144,7 +149,15 @@ insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALI
 		values(1, 3, 1, '02/06/2011', 5, 5,'15/06/2011', 0);
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
 		values(2, 3, 1, '02/06/2011', 5, 5,'15/06/2011', 0);
+insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
+	values(2, 3, 1, '02/06/2011', 5, 5,'01/06/2011', 0);
+insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
+	values(2, 3, 1, '02/06/2011', 5, 5,'01/06/2011', 0);
+insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
+	values(2, 3, 1, '02/06/2011', 5, 5,'01/06/2011', 0);
 
+select * from LOT
+select * from SUPPLIER
 
 declare @suggestion table(
 				ID			int,
