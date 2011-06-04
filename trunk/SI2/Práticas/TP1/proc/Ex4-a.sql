@@ -19,11 +19,11 @@ go
 if OBJECT_ID('CreateIngredients') IS NOT NULL
 	drop procedure CreateIngredients;
 go
-create procedure CreateIngredients(@Name char(30), @Qty_reserved decimal(10,3), @Unit int, 
-										@QtyMin decimal(10,3), @QtyMax decimal(10,3))
+create procedure CreateIngredients(@Name char(30), @current decimal(10,3), @Qty_reserved decimal(10,3), @Unit int, 
+										 @QtyMin decimal(10,3), @QtyMax decimal(10,3))
 as
 	begin transaction
-		insert into dbo.INGREDIENTS values(@Name, @Qty_reserved, @Unit, @QtyMin, @QtyMax);
+		insert into dbo.INGREDIENTS values(@Name, @current, @Qty_reserved, @Unit, @QtyMin, @QtyMax);
 	commit
 go
 

@@ -9,7 +9,8 @@ go
 
 create function OutOfValidity()
 returns @validityTemp table(
-			ID			int,
+			ID_ING			int,
+			ID_LOT			int,
 			VALIDITY	datetime,
 			QTY			decimal(10,3))
 as
@@ -21,45 +22,49 @@ as
 		set @currentDate = GetDate()
 		set @numberOfUnits = 0
 		
+		
 		--see all ingredients that had unit's
 		--know number of units of this ingredient
 		declare ingredients cursor
-		for select ID, UNIT_ID from INGREDIENTS where UNIT_ID > 0
+		for select ID, QTY_CURRENT from INGREDIENTS where QTY_CURRENT > 0
 		open ingredients
-		fetch next from stock into @ID_ingredient, @numberOfUnits
+		fetch next from ingredients into @ID_ingredient, @numberOfUnits
 		while(@@FETCH_STATUS=0)
-		
+			begin
 			--get cursor with lot that have stock
-			declare stock cursor
-			for select LOT.INGREDIENTS_ID, VALIDITY, STOCK
+			declare stockcursor cursor
+			for select LOT.INGREDIENTS_ID, VALIDITY, QTY
 					from LOT 
 					where (LOT.INGREDIENTS_ID = @ID_ingredient)
 					order by LOT.VALIDITY
-			open stock
-			fetch next from stock into @ingredientID_stock, @validity, @stock	
+			open stockcursor
+			fetch next from stockcursor into @ingredientID_stock, @validity, @stock	
 			while(@@FETCH_STATUS=0)
 				begin
 				--verify if date isn't valid, if is true we save a tuple in temporary table
 				--and break the cicle because we already verify that this ingredient isn't valid
 				if @validity < @currentDate AND @numberOfUnits > 0
 					begin
-						insert into @validityTemp values(@ingredientID_stock, @validity, @stock)
+						insert into @validityTemp values(@ID_ingredient, @ingredientID_stock, @validity, @stock)
 						BREAK
 					end
 				else -- subtract value of unit the number of stock this specify lot
 						set @numberOfUnits = @numberOfUnits - @stock
 				-- if @numberOfUnits is negative it means that already verify this ingredient
 				if @numberOfUnits <= 0
+				begin
 					BREAK
-				fetch next from stock into @ingredientID_stock, @validity, @stock
 				end
-				
-			close stock
+				fetch next from stockcursor into @ingredientID_stock, @validity, @stock
+			end
+			close stockcursor
+			deallocate stockcursor	
+		fetch next from ingredients into @ID_ingredient, @numberOfUnits
+		end
 		
-		fetch next from stock into @ID_ingredient, @numberOfUnits
+		close ingredients
+		deallocate ingredients
 		
-		
-		deallocate stock
 	return
 	end
 	

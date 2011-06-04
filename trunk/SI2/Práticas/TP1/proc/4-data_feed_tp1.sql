@@ -16,7 +16,6 @@ insert into dbo.EVENT_DISCOUNTS(CUSTOMER_QTY, DISCOUNT) values(10, 10);
 insert into dbo.EVENT_DISCOUNTS(CUSTOMER_QTY, DISCOUNT) values(15, 15);
 insert into dbo.EVENT_DISCOUNTS(CUSTOMER_QTY, DISCOUNT) values(20, 20);
 
-
 go
 --dbo.COUNTRY
 insert into dbo.COUNTRY(NAME) values ('Portugal');
@@ -50,23 +49,22 @@ insert into dbo.UNIT(UNIT) values('ml');
 insert into dbo.UNIT(UNIT) values('uni');
 go
 
-
 --dbo.INGREDIENTS
--- CreateIngredients(@Name char(30), @Qty_reserved int, @Unit int, @Min_Qty, @ORDER_QTY)
-exec CreateIngredients 'Bifes Vazia',0, 5, 5, 10;		--1
-exec CreateIngredients 'Azeite',0, 3, 1, 10;			--2
-exec CreateIngredients 'Alho', 0, 1, 0.100, 1;			--3	
-exec CreateIngredients 'Batatas',0, 1, 5, 20;			--4
-exec CreateIngredients 'Sal', 0, 2, 100, 1000;			--5
-exec CreateIngredients 'Pimenta', 0, 2, 50, 200;		--6
-exec CreateIngredients 'Bacalhau', 0, 1, 3, 10;			--7
-exec CreateIngredients 'Leite', 0, 3, 3, 12;			--8
-exec CreateIngredients 'Cebola', 0, 1, 3, 5;			--9
-exec CreateIngredients 'Natas', 0, 3, 2, 4;				--10
-exec CreateIngredients 'Peitos Frango', 0, 5, 10, 20;	--11
-exec CreateIngredients 'Cogumelos', 0, 1, 0.500, 1;		--12
-exec CreateIngredients 'Salsa', 0, 2, 100, 300;			--13
-exec CreateIngredients 'Ovos', 0, 5, 12, 36;			--14
+-- CreateIngredients(@Name char(30), @current decimal,  @Qty_reserved int, @Unit int, @Min_Qty, @ORDER_QTY)
+exec CreateIngredients 	'Bifes Vazia',		 10,				0, 					5, 			5, 		10;		--1
+exec CreateIngredients 'Azeite',			3,				0,					3,			1,		10;			--2
+exec CreateIngredients 'Alho',			0.300,				0,					1,		0.100,		1;			--3	
+exec CreateIngredients 'Batatas',			15 ,			0,					1,			5,		20;			--4
+exec CreateIngredients 'Sal',			5000,				0,					2,			100,	1000;			--5
+exec CreateIngredients 'Pimenta',		100 ,				0,					2,			50,		200;		--6
+exec CreateIngredients 'Bacalhau',		7 ,					0,					1,			3,		10;			--7
+exec CreateIngredients 'Leite',			7 ,					0,					3,			3,		12;			--8
+exec CreateIngredients 'Cebola',		4 ,					0,					1,			3,		5;			--9
+exec CreateIngredients 'Natas',3,  0, 3, 2, 4;				--10
+exec CreateIngredients 'Peitos Frango', 10, 0, 5, 10, 20;	--11
+exec CreateIngredients 'Cogumelos', 0.700, 0, 1, 0.500, 1;		--12
+exec CreateIngredients 'Salsa', 200, 0, 2, 100, 300;			--13
+exec CreateIngredients 'Ovos', 30, 0, 5, 12, 36;			--14
 
 --dbo.COURSES
 --CreateCourses(@Name varchar(50), @active bit, @price smallmoney)
@@ -140,9 +138,9 @@ insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALI
 	values(2, 3, 1, '27/05/2011', 5, 5,'01/06/2011', 1);
 	
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
-	values(11, 3, 1, '1/06/2011', 5, 5,'18/06/2011', 3);
+	values(11, 3, 1, '1/06/2011', 5, 5,'30/06/2011', 3);
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
-	values(11, 3, 1, '27/05/2011', 5, 5,'01/06/2011', 2);
+	values(11, 3, 1, '27/05/2011', 5, 5,'30/06/2011', 2);
 
 commit
 
