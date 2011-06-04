@@ -1,3 +1,5 @@
+use master
+
 IF db_id('SI2_TP1') is null
 	CREATE DATABASE SI2_TP1;
 GO
@@ -25,7 +27,7 @@ create table ADDRESS(
 create table CUSTOMER(
 	ID			int identity(1,1),
 	NAME		char(50) not null,
-	CONTACT		int not null,
+	CONTACT		char(20) not null,
 	-- CUSTOMER TYPE: 0 - registered, 1 - normal
 	CUSTOMER_TYPE tinyint check (CUSTOMER_TYPE >=0 AND CUSTOMER_TYPE <2),
 	constraint pk_CUSTOMER primary key (ID),
@@ -93,8 +95,7 @@ create table MENU(
 	NAME		char(30) not null,
 	PRICE		smallmoney default(0) not null, 
 	TYPE		char(30) not null,
-	PRICE		smallmoney default(0) not null,
-	constraint  pk_MENU primary key (ID),
+	constraint  pk_MENU primary key (ID)
 )
 
 --EVENT(BOOKING_ID[FK], MENU_ID[FK], NAME, DESCRIPTION);

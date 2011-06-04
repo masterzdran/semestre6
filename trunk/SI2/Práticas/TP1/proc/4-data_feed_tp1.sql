@@ -4,7 +4,7 @@ set xact_abort on;
 set dateformat dmy
 go
 
---begin transaction populateTables
+begin transaction populateTables
 
 --dbo.PREFERENCES(MIN_EVENT_CUSTOMER, MAX_NUMBER_COSTUMERS)
 insert into dbo.PREFERENCES(MIN_EVENT_CUSTOMER, MAX_NUMBER_CUSTOMERS) values(2, 50);
@@ -23,8 +23,6 @@ insert into dbo.COUNTRY(NAME) values ('Portugal');
 insert into dbo.COUNTRY(NAME) values ('Espanha');
 insert into dbo.COUNTRY(NAME) values ('França');
 go
-
-select * from COUNTRY
 
 --dbo.ADDRESS
 insert into dbo.ADDRESS(STREET,ZIP_CODE,CITY,COUNTRY_ID) values('Rua A', 1000, 'Lisboa', 1);
@@ -119,56 +117,37 @@ insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(1,3);
 insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(2,3);
 insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(3,1);
 
---create procedure CreateEvent(@CustomerID int, @MenuID int,@NameEvent char(20), 
-				--@Description char(20) , @date datetime, @Qtd int)
+--dbo.SUPPLIERS
+insert into SUPPLIERS (NAME, ADDRESS_ID) values ('Didden BVBA - SPRL', 1)
+insert into SUPPLIERS (NAME, ADDRESS_ID) values ('VICENZI Biscotti SpA', 2)
+insert into SUPPLIERS (NAME, ADDRESS_ID) values ('Atlanta AG', 3)
 
---commit
-
-set dateformat dmy
-exec CreateEvent 2,1,'Festa Aniversário','My Birthday Party!','28/05/2011',1;
-
---TakeIndividualReservation(@CustomerID int, @Date datetime, @MenuID int, @Qtd int)
-exec TakeIndividualReservation 1,'01/06/2011',2,2;
-
---TakeEventReservation(@CustomerID int, @BookingID int)
-exec TakeEventReservation 3,1;
-exec TakeEventReservation 1,1;
-exec TakeEventReservation 3,2;
-
-
-set dateformat dmy
+--dbo.LOT
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
-		values(1, 1, 1, '02/06/2011', 5, 10, '15/06/2011', 0);
+		values(1, 1, 1, '02/06/2011', 5, 10, '15/06/2011', 3);
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
-		values(1, 1, 1, '02/06/2011', 5, 8, '15/06/2011', 0);
+		values(1, 1, 1, '02/06/2011', 5, 8, '10/06/2011', 2);
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
-		values(1, 1, 1, '02/06/2011', 5, 12,'15/06/2011', 0);
+		values(1, 1, 1, '26/05/2011', 5, 12,'1/06/2011', 1);
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
-		values(1, 2, 1, '02/06/2011', 5, 15,'15/06/2011', 0);
+		values(1, 2, 1, '02/05/2011', 5, 15,'15/05/2011', 2);
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
-		values(1, 3, 1, '02/06/2011', 5, 5,'15/06/2011', 0);
+		values(1, 3, 1, '02/05/2011', 5, 5,'15/05/2011', 2);
+		
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
-		values(2, 3, 1, '02/06/2011', 5, 5,'15/06/2011', 0);
+		values(2, 3, 1, '02/06/2011', 5, 5,'15/06/2011', 2);
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
-	values(2, 3, 1, '02/06/2011', 5, 5,'01/06/2011', 0);
+	values(2, 3, 1, '27/05/2011', 5, 5,'01/06/2011', 1);
+	
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
-	values(2, 3, 1, '02/06/2011', 5, 5,'01/06/2011', 0);
+	values(11, 3, 1, '1/06/2011', 5, 5,'18/06/2011', 3);
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
-	values(2, 3, 1, '02/06/2011', 5, 5,'01/06/2011', 0);
+	values(11, 3, 1, '27/05/2011', 5, 5,'01/06/2011', 2);
 
-select * from LOT
-select * from SUPPLIER
+commit
 
-declare @suggestion table(
-				ID			int,
-				SUPPLIER_ID int,
-				QTY			decimal(10,3));
-insert into @suggestion select * from dbo.SuggestOrder();		
-
-select * from @suggestion;
-
-
-
+/*
+select * from COUNTRY
 select * from BOOKING
 select * from EVENT
 select * from EVENT_FRIENDS
@@ -180,4 +159,4 @@ select * from MENU_COURSES
 select * from COURSES
 select * from COURSES_INGREDIENTS
 select * from INGREDIENTS inner join UNIT on (INGREDIENTS.UNIT_ID=UNIT.ID)
-
+*/

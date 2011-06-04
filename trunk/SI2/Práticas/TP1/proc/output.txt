@@ -1,20 +1,30 @@
-Processing scripts... 22:20:33,97  
-Droping tables... 
+Processing scripts...  1:41:26,60  
+Droping tables and data base SI2_TP1... 
 Changed database context to 'SI2_TP1'.
+Changed database context to 'master'.
+Done! 
+Creating data base SI2_TP1... 
+Changed database context to 'master'.
 Done! 
 Creating tables... 
+Changed database context to 'master'.
 Changed database context to 'SI2_TP1'.
 Done! 
 Creating triggers... 
+Changed database context to 'SI2_TP1'.
+The module 'trigger_Booking' depends on the missing object 'CaptivateIngredients'. The module will still be created; however, it cannot run successfully until the object exists.
+The module 'trigger_Booking' depends on the missing object 'CaptivateIngredients'. The module will still be created; however, it cannot run successfully until the object exists.
 Changed database context to 'SI2_TP1'.
 Done! 
 Creating Procedures... 
 Changed database context to 'SI2_TP1'.
 Changed database context to 'SI2_TP1'.
 Changed database context to 'SI2_TP1'.
+The module 'TakeIndividualReservation' depends on the missing object 'CaptivateIngredients'. The module will still be created; however, it cannot run successfully until the object exists.
 Changed database context to 'SI2_TP1'.
 Changed database context to 'SI2_TP1'.
 Changed database context to 'SI2_TP1'.
 Data feed... 
+Changed database context to 'SI2_TP1'.
 Done! 
 Done processing! 

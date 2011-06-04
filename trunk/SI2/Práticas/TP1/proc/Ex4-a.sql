@@ -58,7 +58,7 @@ if OBJECT_ID('CreateMenu') IS NOT NULL
 go
 --we need to insert price of courses, i think that price should be
 --in table Menu_Course because price of each courses can be different
-create procedure CreateMenu(@MenuName char(20), @MenuType char(20),
+create procedure CreateMenu(@MenuName char(30), @MenuType char(30),
 							@coursesID int)
 as
 	set transaction isolation level serializable
@@ -66,7 +66,7 @@ as
 	-- check if menu already exists, if not creates a new one
 		if not exists (select ID from Menu where (Menu.NAME = @MenuName))
 			insert into dbo.MENU 
-				values(@MenuName, @MenuType, (select PRICE from COURSES where ID=@coursesID))
+				values(@MenuName, (select PRICE from COURSES where ID=@coursesID), @MenuType)
 		
 		-- get the MenuID from table
 		declare @MenuID int

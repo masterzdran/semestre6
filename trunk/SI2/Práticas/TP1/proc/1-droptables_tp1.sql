@@ -23,7 +23,13 @@ delete from CUSTOMER;
 delete from ADDRESS;
 delete from COUNTRY;
 */
+IF EXISTS(SELECT * FROM sys.objects WHERE type = 'TR' AND name = 'trigger_Event_Friends')
+	DROP TRIGGER trigger_Event_Friends
+go
 
+IF EXISTS(SELECT * FROM sys.objects WHERE type = 'TR' AND name = 'trigger_Booking')
+	DROP TRIGGER trigger_Booking
+go
 
 if exists(select * 
 		from INFORMATION_SCHEMA.TABLES
@@ -139,10 +145,10 @@ if exists(select *
 		where TABLE_NAME = 'COUNTRY')
 drop table COUNTRY;
 
---USE [master]
---GO
+USE [master]
+GO
 
---/****** Object:  Database [SI2_TP1]    Script Date: 05/21/2011 22:09:11 ******/
---IF  EXISTS (SELECT name FROM sys.databases WHERE name = N'SI2_TP1')
---DROP DATABASE [SI2_TP1]
+/****** Object:  Database [SI2_TP1]    Script Date: 05/21/2011 22:09:11 ******/
+IF  EXISTS (SELECT name FROM sys.databases WHERE name = N'SI2_TP1')
+	DROP DATABASE [SI2_TP1]
 --GO
