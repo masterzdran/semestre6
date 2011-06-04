@@ -23,9 +23,13 @@ insert into @suggestion select * from dbo.SuggestOrder();
 select * from @suggestion;
 */
 
+
+
 declare @validityTemp_T table(
-			ID			int,
+			ID_INGREDIENT int,
+			ID_LOT int,
 			VALIDITY	datetime,
 			QTY			decimal(10,3))
 insert into @validityTemp_T select * from dbo.OutOfValidity();		
+select * from @validityTemp_T
 
