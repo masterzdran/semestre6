@@ -1,4 +1,4 @@
-		
+use SI2_TP1;	
 -- sempre que uma reserva indvidual para evento é confirmada verifica se evento está confirmado:
 -- se estiver confirmado: reserva ingredientes para essa reserva
 -- se não estiver confirmado: verifica se nº reservas individuais é suficiente para reservar evento
