@@ -23,7 +23,7 @@ insert into @suggestion select * from dbo.SuggestOrder();
 select * from @suggestion;
 */
 
-
+/*h)
 
 declare @validityTemp_T table(
 			ID_INGREDIENT int,
@@ -32,4 +32,16 @@ declare @validityTemp_T table(
 			QTY			decimal(10,3))
 insert into @validityTemp_T select * from dbo.OutOfValidity();		
 select * from @validityTemp_T
+*/
 
+/*g) falta testar*/
+
+/*i)*/
+
+declare @suggestionTemp_I table(
+			NAME			varchar(30),
+			CITY			char(50),
+			CONTACT			char(20))
+insert into @suggestionTemp_I select * from dbo.SelectClientOnSpecifyCity('Lisboa');
+insert into @suggestionTemp_I select * from dbo.SelectClientOnSpecifyCity('Porto');	
+select * from @suggestionTemp_I
