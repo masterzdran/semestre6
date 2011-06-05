@@ -1,17 +1,4 @@
-
-falta fazer:
-
-j)
-k)
-
-Concluido:
-h) a funcionar...
-Ainda nao percebi a diferença entre QTY e STOCK da tabela LOT.. Na aliena h) assumi que a quantidade encomendada é o atributo: QTY e adicionei o atributo QTY_CURRENT na tabela INGREDIENTS para guardar o quantidade actual desse ingrediente.
-
-i) funcao que recebe o nome da cidade retorna uma tabela temporaria com os enumeros clientes dessa cidade...
-
-
-a fazer:
+Possível de ser alterado:
 g)
 Verifiquei a seguinte situaçao:
 O que fiz: Inseri um novo tuplo em ORDER atraves de um determinado ingrediente e um fornecedor indicados por parametro...
@@ -21,3 +8,16 @@ Acho que o que fará mais sentido é quando adicionarmos a encomenda (ORDER) e tam
 
 
 Além disso, se a tabela ORDERS_LOG mantem historico de encomendas entao tem de ser possível que LOG_ID seja null, pois pode ocorrer o fornecedor não respeitar a data de entrega da encomenda ou até mesmo não entregar...
+
+Concluido:
+h) 	Ainda nao percebi a diferença entre QTY e STOCK da tabela LOT.. Na aliena h) assumi que a quantidade encomendada é o atributo: QTY e adicionei o atributo QTY_CURRENT na tabela INGREDIENTS para guardar o quantidade actual desse ingrediente.
+
+i) 	Funcao que recebe o nome da cidade retorna uma tabela temporaria com os enumeros clientes dessa cidade...
+
+j) 	Retorna uma tabela ordenado por tipo de porçao e dentro destes está ordenado descrescentemente por porçoes mais vendidas
+	Adicionei um atributo à tabela COURSES, TYPE que define se este é PRATO, SOBREMESA, SOPA, ENTRADA...
+	Alterei o store procedure "CreateMenu" pois este já estava a inserir um tuplo em MENU_COURSES, o que é incoenrente para a inserçao de dados correctos, mesmo com interface grafica...
+	Usei apenas um select para efectuar o objectivo da alínea.
+	
+k)	Retorna uma tabela com o Nome dos menus mais lucrativos ordenados descrescentemente...
+	Usei apenas um select para efectuar o objectivo da alínea.

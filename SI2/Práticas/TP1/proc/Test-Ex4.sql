@@ -45,3 +45,21 @@ declare @suggestionTemp_I table(
 insert into @suggestionTemp_I select * from dbo.SelectClientOnSpecifyCity('Lisboa');
 insert into @suggestionTemp_I select * from dbo.SelectClientOnSpecifyCity('Porto');	
 select * from @suggestionTemp_I
+
+/*j*/
+
+declare @MostSales_T table(
+			ID				int,
+			NAME			varchar(30),
+			NUMBER			int,
+			TYPE		char(20))
+insert into @MostSales_T select * from dbo.MostSaleCourses();
+select * from @MostSales_T
+
+/*k*/
+
+declare @MostSales_T1 table(
+			NAME_MENU			varchar(30),
+			PROFIT			smallmoney)
+insert into @MostSales_T1 select * from dbo.MostProfitMenu();
+select * from @MostSales_T1

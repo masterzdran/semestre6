@@ -68,10 +68,12 @@ exec CreateIngredients 'Ovos', 30, 0, 5, 12, 36;			--14
 
 --dbo.COURSES
 --CreateCourses(@Name varchar(50), @active bit, @price smallmoney)
-exec CreateCourses 'Peitos Frango com Cogumelos', 1, 10;
-exec CreateCourses 'Bacalhau com Natas', 1, 14;
-exec CreateCourses 'Bife à Portuguesa', 1, 12;
-
+exec CreateCourses 'Peitos Frango com Cogumelos', 1, 10, 'Prato';
+exec CreateCourses 'Bacalhau com Natas', 1, 14, 'Prato';
+exec CreateCourses 'Bife à Portuguesa', 1, 12, 'Prato';
+exec CreateCourses 'Mousse de Chocolate', 1, 15, 'Sobremesa';
+exec CreateCourses 'Baba de Camelo', 1, 15, 'Sobremesa';
+exec CreateCourses 'Doce da Casa', 1, 15, 'Sobremesa';
 
 --dbo.COURSES_INGREDIENTS
 --JoinCoursesToIngredients(@CoursesID int, @IngredientsID int,@Qtd int)
@@ -93,11 +95,19 @@ exec JoinCoursesToIngredients 3,7,0.200;
 
 
 --CreateMenu(@MenuName char(20), @MenuType char(20),@coursesID int)
-exec CreateMenu 'Menu Carne','Carne',3;
-exec CreateMenu 'Menu Peixe','Peixe',1;
-exec CreateMenu 'Menu Festa','2 Pratos',1;
-exec CreateMenu 'Menu Festa','',2;
+exec CreateMenu 'Menu Carne','Carne'; --1
+exec CreateMenu 'Menu Peixe','Peixe'; --2
+exec CreateMenu 'Menu Festa','2 Pratos'; --3
+exec CreateMenu 'Menu Festa','Kids'; --4
 
+--JoinMenuToCourse(@MenuID int, @coursesID int)
+exec JoinMenuToCourse 1, 1
+exec JoinMenuToCourse 1, 6
+exec JoinMenuToCourse 2, 2
+exec JoinMenuToCourse 2, 5
+exec JoinMenuToCourse 3, 1
+exec JoinMenuToCourse 3, 2
+exec JoinMenuToCourse 3, 4
 
 --dbo.CUSTOMER
 insert into dbo.CUSTOMER(NAME, CONTACT, CUSTOMER_TYPE) values('Nuno Sousa', '919876543', 0);
@@ -106,7 +116,7 @@ insert into dbo.CUSTOMER(NAME, CONTACT, CUSTOMER_TYPE) values('Cláudia Crisóstom
 
 --dbo.REGISTERED
 insert into dbo.REGISTERED(CUSTOMER_ID,ADDRESS_ID) values(1,6);
-insert into dbo.REGISTERED(CUSTOMER_ID,ADDRESS_ID) values(2,7);
+insert into dbo.REGISTERED(CUSTOMER_ID,ADDRESS_ID) values(2,2);
 insert into dbo.REGISTERED(CUSTOMER_ID,ADDRESS_ID) values(3,3);
 
 --dbo.FRIENDS
@@ -142,6 +152,21 @@ insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALI
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
 	values(11, 3, 1, '27/05/2011', 5, 5,'30/06/2011', 2);
 
+--dbo.BOOKING (1-3 customer id)
+insert into dbo.BOOKING(CUSTOMER_ID, DATE, 		QTY, BOOKING_TYPE, STATUS, COST_PRICE, SALE_PRICE)
+	values(				1, 			1-06-2011, 	3, 		0, 			1, 		100, 			200);
+insert into dbo.BOOKING(CUSTOMER_ID, DATE, 		QTY, BOOKING_TYPE, STATUS, COST_PRICE, SALE_PRICE)
+	values(				2, 			3-06-2011, 	5, 		0, 			1, 		250, 			400);
+insert into dbo.BOOKING(CUSTOMER_ID, DATE, 		QTY, BOOKING_TYPE, STATUS, COST_PRICE, SALE_PRICE)
+	values(				3, 			4-06-2011, 	10, 		0, 			1, 		400, 			450);
+	
+--	dbo.NORMAL_BOOKING
+insert into dbo.NORMAL_BOOKING(BOOKING_ID, MENU_ID)
+	values(1,2); -- Peixe
+insert into dbo.NORMAL_BOOKING(BOOKING_ID, MENU_ID)
+	values(2,2); -- Peixe
+insert into dbo.NORMAL_BOOKING(BOOKING_ID, MENU_ID)
+	values(3,3); -- 2 Pratos
 commit
 
 /*

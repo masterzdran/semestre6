@@ -39,6 +39,7 @@ create table COURSES(
 	NAME		varchar(30) not null,
 	ACTIVE		bit not null,
 	PRICE		smallmoney not null,	-- Preço de venda da porção
+	TYPE		char(20) not null, 		-- Tipo de prato: Entrada, Prato principal, Sobremesa, Sopa ...
 	constraint  pk_COURSES primary key (ID),
 )
 
