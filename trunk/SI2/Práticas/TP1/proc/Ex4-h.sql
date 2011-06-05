@@ -68,14 +68,3 @@ as
 	return
 	end
 	
-/*	
-select * from LOT
-
-select LOT.INGREDIENTS_ID, VALIDITY, STOCK
-				from LOT 
-				where (LOT.STOCK>0)
-				order by LOT.VALIDITY
-
-
-
-*/

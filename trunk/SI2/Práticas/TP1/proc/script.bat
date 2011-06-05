@@ -36,6 +36,11 @@ ECHO f)... >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\Ex4-f.sql >>output.txt
 ECHO h)... >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\Ex4-h.sql >>output.txt
+ECHO i)... >>output.txt
+sqlcmd.exe  -S %server% -E -d %db% -i %CD%\Ex4-i.sql >>output.txt
+ECHO j)... >>output.txt
+sqlcmd.exe  -S %server% -E -d %db% -i %CD%\Ex4-j.sql >>output.txt
+
 
 ECHO Data feed... >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\4-data_feed_tp1.sql >>output.txt
