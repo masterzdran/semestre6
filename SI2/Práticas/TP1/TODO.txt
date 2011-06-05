@@ -1,10 +1,23 @@
 
 falta fazer:
-g)
-i)
+
 j)
 k)
 
-
-alinea h) a funcionar...
+Concluido:
+h) a funcionar...
 Ainda nao percebi a diferença entre QTY e STOCK da tabela LOT.. Na aliena h) assumi que a quantidade encomendada é o atributo: QTY e adicionei o atributo QTY_CURRENT na tabela INGREDIENTS para guardar o quantidade actual desse ingrediente.
+
+i) funcao que recebe o nome da cidade retorna uma tabela temporaria com os enumeros clientes dessa cidade...
+
+
+a fazer:
+g)
+Verifiquei a seguinte situaçao:
+O que fiz: Inseri um novo tuplo em ORDER atraves de um determinado ingrediente e um fornecedor indicados por parametro...
+
+Pensei que talvez devesse colocar uma encomenda como comprada, mas para efectuar a selecçao à tabel ORDER é necessário demasiados atributos, quando muitos, são todos... nao faz muito sentido...
+Acho que o que fará mais sentido é quando adicionarmos a encomenda (ORDER) e também as compras (ORDER_LOG e LOT).
+
+
+Além disso, se a tabela ORDERS_LOG mantem historico de encomendas entao tem de ser possível que LOG_ID seja null, pois pode ocorrer o fornecedor não respeitar a data de entrega da encomenda ou até mesmo não entregar...
