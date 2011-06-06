@@ -4,50 +4,40 @@
 #define SET_THE_RECORD(A,B)           {(*(A))++;if((*(A)) >= (B)){*(A) = 0;}}
 
 
-void buffer_init(pBUFFER ringBuffer, PU8 bufferspace, U32 buffersize){
-		ringBuffer->readIdx = ringBuffer->writeIdx = 0;
-		ringBuffer->bufferbase = bufferspace;
+void buffer_init(pBUFFER ringBuffer, U32 buffersize){
+    ringBuffer->readIdx = ringBuffer->writeIdx = 0;
     ringBuffer->buffersize = buffersize;
 }
 
-void buffer_get(pBUFFER ringBuffer, PU8 outdata){
-  U16 size, i=0;
-	if(buffer_isEmpty(ringBuffer)){return;}
-  size = ringBuffer->bufferbase[ringBuffer->readIdx++];
-	if (ringBuffer->readIdx >= ringBuffer->buffersize) {ringBuffer->readIdx=0;}
-	size &= (ringBuffer->bufferbase[ringBuffer->readIdx++]<<8 & 0xF0);
-	for (i=0; i<size; i++){
-		if (ringBuffer->readIdx >= ringBuffer->buffersize) {ringBuffer->readIdx=0;}
-		outdata[i++]=ringBuffer->bufferbase[ringBuffer->readIdx];
-		ringBuffer->bufferbase[ringBuffer->readIdx++]='-';
-	}
-	/*memcpy(outdata,ringBuffer->readIdx,size);*/
+U8 buffer_get(pBUFFER ringBuffer){
+  U8 c;
+  if(buffer_isEmpty(ringBuffer)){return 0;}
+  c=ringBuffer->bufferbase[ringBuffer->readIdx];
+  ringBuffer->bufferbase[ringBuffer->readIdx] = '-';
+  ringBuffer->readIdx++;
   /*SET_THE_RECORD(&(ringBuffer->readIdx),ringBuffer->buffersize);
   */
+  if (ringBuffer->readIdx >= ringBuffer->buffersize) {ringBuffer->readIdx=0;}
+  
+  return c;
 }
 
-U8 buffer_put(pBUFFER ringBuffer,U8* data, U16 size){
-  int i=0;
-	if (buffer_isFull(ringBuffer)) {return 0;}
-	if (buffer_size(ringBuffer)<size) {return 0;}
-	ringBuffer->bufferbase[ringBuffer->writeIdx++] = (size & 0xF);
-	if (ringBuffer->writeIdx >= ringBuffer->buffersize) {ringBuffer->writeIdx=0;}
-	ringBuffer->bufferbase[ringBuffer->writeIdx++] = (size>>8 & 0xF);
-	for (i=0; i<size; i++){
-		if (ringBuffer->writeIdx >= ringBuffer->buffersize) {ringBuffer->writeIdx=0;}
-		ringBuffer->bufferbase[ringBuffer->writeIdx++]=data[i];
-  }
-	return i;
-	/*SET_THE_RECORD(&(ringBuffer->writeIdx),ringBuffer->buffersize);*/
+void buffer_put(pBUFFER ringBuffer,U8 c){
+  if (buffer_isFull(ringBuffer)) {return;}
+  ringBuffer->bufferbase[ringBuffer->writeIdx] = c;
+  ringBuffer->writeIdx++;
+  /*SET_THE_RECORD(&(ringBuffer->writeIdx),ringBuffer->buffersize);*/
+  if (ringBuffer->writeIdx >= ringBuffer->buffersize) {ringBuffer->writeIdx=0;}
 }
 
-U16 buffer_nextSize(pBUFFER ringBuffer) {	return (ringBuffer->bufferbase[ringBuffer->readIdx] & (ringBuffer->bufferbase[ringBuffer->readIdx+1]<<8));}
 
 U8 buffer_isEmpty(pBUFFER ringBuffer){ return ringBuffer->readIdx == ringBuffer->writeIdx;}
+
   
 U32 buffer_size(pBUFFER ringBuffer){
   return (ringBuffer->readIdx > ringBuffer->writeIdx)?(ringBuffer->buffersize - ( ringBuffer->readIdx - ringBuffer->writeIdx) + 1 ):(ringBuffer->writeIdx - ringBuffer->readIdx + 1);
 }
+  
   
 U8 buffer_isFull(pBUFFER ringBuffer){
   int aux = ringBuffer->writeIdx + 1;
