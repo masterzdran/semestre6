@@ -140,6 +140,8 @@
           <File Name="code/src/collection/buffer/BUFFER"/>
           <File Name="code/src/collection/buffer/Makefile"/>
           <File Name="code/src/collection/buffer/TYPES.h"/>
+          <File Name="code/src/collection/buffer/BUFFER_old.h"/>
+          <File Name="code/src/collection/buffer/BUFFER_old.c"/>
         </VirtualDirectory>
         <File Name="code/src/collection/Makefile"/>
       </VirtualDirectory>
@@ -169,6 +171,8 @@
           <File Name="code/src/peripherical/ENC28J60/Ethernet.c"/>
           <File Name="code/src/peripherical/ENC28J60/Ethernet.h"/>
           <File Name="code/src/peripherical/ENC28J60/Makefile"/>
+          <File Name="code/src/peripherical/ENC28J60/Ethernet_buffer.h"/>
+          <File Name="code/src/peripherical/ENC28J60/Ethernet_buffer.c"/>
         </VirtualDirectory>
       </VirtualDirectory>
       <VirtualDirectory Name="device">

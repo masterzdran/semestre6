@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cckEZAMG.s 			page 1
+ARM GAS  /tmp/cc1Ju2tX.s 			page 1
 
 
    1              		.cpu arm7tdmi
@@ -44,14 +44,14 @@ ARM GAS  /tmp/cckEZAMG.s 			page 1
   37 0028 00000000 		.word	.LC0
   38              		.size	main, .-main
   39              		.ident	"GCC: (eCosCentric GNU tools 4.3.2-sw) 4.3.2"
-ARM GAS  /tmp/cckEZAMG.s 			page 2
+ARM GAS  /tmp/cc1Ju2tX.s 			page 2
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 hello.c
-     /tmp/cckEZAMG.s:20     .text.main:00000000 main
-     /tmp/cckEZAMG.s:24     .text.main:00000000 $a
-     /tmp/cckEZAMG.s:37     .text.main:00000028 $d
+     /tmp/cc1Ju2tX.s:20     .text.main:00000000 main
+     /tmp/cc1Ju2tX.s:24     .text.main:00000000 $a
+     /tmp/cc1Ju2tX.s:37     .text.main:00000028 $d
 
 UNDEFINED SYMBOLS
 puts
