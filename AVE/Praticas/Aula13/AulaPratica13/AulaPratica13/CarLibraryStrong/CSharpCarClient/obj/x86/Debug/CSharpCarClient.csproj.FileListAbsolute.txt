@@ -1,8 +1,0 @@
-D:\work\AVE2011\ExerciciosCSharp\Deployment\CSharpCarClient\bin\Debug\CSharpCarClient.exe
-D:\work\AVE2011\ExerciciosCSharp\Deployment\CSharpCarClient\bin\Debug\CSharpCarClient.pdb
-D:\work\AVE2011\ExerciciosCSharp\Deployment\CSharpCarClient\bin\Debug\CarLibrary.dll
-D:\work\AVE2011\ExerciciosCSharp\Deployment\CSharpCarClient\bin\Debug\CarLibrary.pdb
-D:\work\AVE2011\ExerciciosCSharp\Deployment\CSharpCarClient\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\work\AVE2011\ExerciciosCSharp\Deployment\CSharpCarClient\obj\x86\Debug\CSharpCarClient.exe
-D:\work\AVE2011\ExerciciosCSharp\Deployment\CSharpCarClient\obj\x86\Debug\CSharpCarClient.pdb
-D:\work\AVE2011\ExerciciosCSharp\CarLibraryStrong\CSharpCarClient\obj\x86\Debug\ResolveAssemblyReference.cache
