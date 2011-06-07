@@ -395,7 +395,9 @@ void ENC_bit_field_set(U8 address, U8 data);
 void ENC_bit_field_clear(U8 address, U8 data);
 void ENC_system_reset_command();
 void ENC_init(pSPI_Device pspi);
- 
+
+void encIsr(void) __attribute__ ((interrupt));
+
 #define ENC_WRITE_REG16(A, B, C)  	ENC_write_reg((A), (B),(C),true)
 #define ENC_WRITE_REG8(A, B, C)  	ENC_write_reg((A), (B),(C),false)
 #define ENC_READ_REG8(A, B) 		ENC_read_reg((A), (B),false)

@@ -126,3 +126,81 @@ U16 read_physical_register(U8 address) {
   
   return ENC_read_reg(B2_MIRDL,BANK02,true);
 }
+
+/*
+static inline void Ethernet_prepare(U8* packet, U16 packet_size){
+	U8 control = 0x0;
+	ENC_write_reg(B0_ETXSTL,BANK00,__ETHERNET_TX_START_PTR__,true);
+	ENC_write_reg(B0_ETXNDL,BANK00,__ETHERNET_TX_START_PTR__+ packet_size,true);
+	ENC_write_reg(B0_EWRPTL,BANK00,__ETHERNET_TX_START_PTR__,true);
+	ENC_write_buffer_memory(&control,SINGLE_BYTE);
+	ENC_write_buffer_memory(packet,packet_size);	
+}
+static inline void Ethernet_start_tx(){
+	ENC_bit_field_set(ECON1,ECON1_TXRST);
+	ENC_bit_field_clear(ECON1,ECON1_TXRST);
+	ENC_bit_field_clear(EIR,EIR_TXERIF|EIR_TXIF);
+	ENC_bit_field_set(ECON1,ECON1_TXRTS);	
+}
+*/
+/*
+U8 Ethernet_send_buffer(U8* packet, U16 packet_size){
+	U8 tsv[TSV_SIZE],aux;
+	U8 retry = 0;
+	U8 i;
+		
+	Ethernet_prepare(packet,packet_size);
+	
+	do{
+		Ethernet_start_tx();
+		do{
+			
+            aux = ENC_READ_REG8(EIR,BANK00);
+		}while((aux & EIR_TXIF) == 0);
+        
+		ENC_WRITE_REG16(B0_ERDPTL,BANK00,__ETHERNET_TX_START_PTR__ + packet_size + 1);
+		ENC_read_buffer_memory(tsv,TSV_SIZE);
+        aux =  ENC_READ_REG8(EIR,BANK00);
+	}while((aux & EIR_TXERIF) && TRANSMITE_LATE_COLLITION_BUG(tsv) && (retry++ < MAX_TX_RETRIES) )	;
+	return ETHERNET_OK;
+}
+
+U32 Ethernet_receive_buffer(U8* buffer, U32 buffer_size){
+	U32 read_size=0;
+	U8 rsv[RSV_SIZE];
+	U32 packet_size = 0;
+	U16 rx_next_packet = __ETHERNET_RX_START_PTR__;
+	U32 nbr_packets = 0;
+	
+	/*Evaluate parameters. Then spent time*/
+/*	nbr_packets = ENC_read_reg(B1_EPKTCNT,BANK01,false);
+	
+	if (nbr_packets > 0){
+		ENC_write_reg(B0_ERDPTL,BANK00,rx_next_packet,true);
+		ENC_read_buffer_memory((U8*)&rx_next_packet,DOUBLE_BYTE);
+		ENC_read_buffer_memory(rsv,RSV_SIZE);
+		packet_size = ((U16)rsv[1] << 8) + rsv[0];
+		read_size = ((buffer_size<packet_size)?buffer_size:packet_size);
+		ENC_read_buffer_memory(buffer,read_size);
+		ENC_write_reg(B0_ERXRDPTL,BANK00,rx_next_packet,true);
+		ENC_bit_field_set(ECON2,ECON2_PKTDEC);
+		
+	}else{
+		read_size = 0;
+	}
+	/*return ETHERNET_OK;*/
+/*	return (read_size);
+}
+*/
+
+
+void encIsr(void){
+	U32 irq_status = pVIC->IRQStatus;
+	if (irq_status & __INTERRUPT_TIMER0_MASK__){
+
+		
+		enableIRQ( __INTERRUPT_TIMER0__ );
+	}
+}
+
+

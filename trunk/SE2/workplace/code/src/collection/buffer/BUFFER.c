@@ -4,13 +4,13 @@
 #define SET_THE_RECORD(A,B)           {(*(A))++;if((*(A)) >= (B)){*(A) = 0;}}
 
 
-void buffer_init(pBUFFER ringBuffer, PU8 bufferspace, U32 buffersize){
+void buffer_init(pBUFFER ringBuffer, U8* bufferspace, U32 buffersize){
 		ringBuffer->readIdx = ringBuffer->writeIdx = 0;
 		ringBuffer->bufferbase = bufferspace;
     ringBuffer->buffersize = buffersize;
 }
 
-void buffer_get(pBUFFER ringBuffer, PU8 outdata){
+void buffer_get(pBUFFER ringBuffer, U8* outdata, U16 outdata_size){
   U16 size, i=0;
 	if(buffer_isEmpty(ringBuffer)){return;}
   size = ringBuffer->bufferbase[ringBuffer->readIdx++];
@@ -29,7 +29,7 @@ void buffer_get(pBUFFER ringBuffer, PU8 outdata){
 U8 buffer_put(pBUFFER ringBuffer,U8* data, U16 size){
   int i=0;
 	if (buffer_isFull(ringBuffer)) {return 0;}
-	if (buffer_size(ringBuffer)<size) {return 0;}
+	if (buffer_size(ringBuffer)<(size+2)) {return 0;}
 	ringBuffer->bufferbase[ringBuffer->writeIdx++] = (size & 0xF);
 	if (ringBuffer->writeIdx >= ringBuffer->buffersize) {ringBuffer->writeIdx=0;}
 	ringBuffer->bufferbase[ringBuffer->writeIdx++] = (size>>8 & 0xF);
