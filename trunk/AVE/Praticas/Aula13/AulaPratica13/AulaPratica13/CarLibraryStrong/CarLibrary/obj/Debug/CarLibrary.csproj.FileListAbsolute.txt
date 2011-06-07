@@ -1,5 +1,0 @@
-D:\work\AVE2011\ExerciciosCSharp\CarLibraryStrong\CarLibrary\bin\Debug\CarLibrary.dll
-D:\work\AVE2011\ExerciciosCSharp\CarLibraryStrong\CarLibrary\bin\Debug\CarLibrary.pdb
-D:\work\AVE2011\ExerciciosCSharp\CarLibraryStrong\CarLibrary\obj\Debug\ResolveAssemblyReference.cache
-D:\work\AVE2011\ExerciciosCSharp\CarLibraryStrong\CarLibrary\obj\Debug\CarLibrary.dll
-D:\work\AVE2011\ExerciciosCSharp\CarLibraryStrong\CarLibrary\obj\Debug\CarLibrary.pdb
