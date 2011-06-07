@@ -1,5 +1,16 @@
 Possível de ser alterado:
 g)
+
+Soluçao:
+	- Já existe a encomenda, por isso, deve ser dada por parametro o id da mesma
+	
+	- Inserir em Lote um novo tuplo com o valor pago e quantidade em causa...
+	- Inserir em ORDER_LOG um novo tuplo com a encomenda concretizada tendo em conta a quantidade recebida...
+	- Verificar se a quantidade encomendada é igual à recebida, se assim for basta apagar o tuplo com este id..
+		- Caso é necessário criar nova encomenda com quantidade restante, aproveitando mesmo fornecedor...
+
+-----------------------------------------------------//--------------------------------------------------------------------------------
+
 Verifiquei a seguinte situaçao:
 O que fiz: Inseri um novo tuplo em ORDER atraves de um determinado ingrediente e um fornecedor indicados por parametro...
 
@@ -9,9 +20,19 @@ Acho que o que fará mais sentido é quando adicionarmos a encomenda (ORDER) e tam
 
 Além disso, se a tabela ORDERS_LOG mantem historico de encomendas entao tem de ser possível que LOG_ID seja null, pois pode ocorrer o fornecedor não respeitar a data de entrega da encomenda ou até mesmo não entregar...
 
-Concluido:
-h) 	Ainda nao percebi a diferença entre QTY e STOCK da tabela LOT.. Na aliena h) assumi que a quantidade encomendada é o atributo: QTY e adicionei o atributo QTY_CURRENT na tabela INGREDIENTS para guardar o quantidade actual desse ingrediente.
+-----------------------------------------------------//--------------------------------------------------------------------------------
+h) 	
 
+Soluçao:
+	- Contar a quantidade gasta em todas as reservas (Booking) e reduzir ao valor de comprar efectuadas...
+	- apagar atributo "QTY_CURRENT" da tabela Ingredients...
+	- Aproveitar algoritmo que decrementa valor para obter datas de validade... 
+
+-----------------------------------------------------//--------------------------------------------------------------------------------
+Ainda nao percebi a diferença entre QTY e STOCK da tabela LOT.. Na aliena h) assumi que a quantidade encomendada é o atributo: QTY e adicionei o atributo QTY_CURRENT na tabela INGREDIENTS para guardar o quantidade actual desse ingrediente.
+
+-----------------------------------------------------//--------------------------------------------------------------------------------
+Concluido:
 i) 	Funcao que recebe o nome da cidade retorna uma tabela temporaria com os enumeros clientes dessa cidade...
 
 j) 	Retorna uma tabela ordenado por tipo de porçao e dentro destes está ordenado descrescentemente por porçoes mais vendidas
