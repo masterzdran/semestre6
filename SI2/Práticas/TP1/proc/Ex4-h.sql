@@ -26,11 +26,20 @@ as
 		--see all ingredients that had unit's
 		--know number of units of this ingredient
 		declare ingredients cursor
-		for select ID, QTY_CURRENT from INGREDIENTS where QTY_CURRENT > 0
+		for select ID from INGREDIENTS
 		open ingredients
-		fetch next from ingredients into @ID_ingredient, @numberOfUnits
+		fetch next from ingredients into @ID_ingredient
 		while(@@FETCH_STATUS=0)
 			begin
+			
+			select @numberOfUnits = COURSES_INGREDIENTS.QTY from BOOKING
+					  inner join NORMAL_BOOKING on BOOKING.ID = NORMAL_BOOKING.BOOKING_ID
+					  inner join MENU on MENU.ID = NORMAL_BOOKING.MENU_ID
+					  inner join MENU_COURSES on MENU_COURSES.MENU_ID = NORMAL_BOOKING.MENU_ID
+					  inner join COURSES on MENU_COURSES.COURSES_ID = COURSES.ID
+					  inner join COURSES_INGREDIENTS on COURSES.ID = COURSES_INGREDIENTS.COURSES_ID
+					  where COURSES_INGREDIENTS.INGREDIENTS_ID = 10
+			
 			--get cursor with lot that have stock
 			declare stockcursor cursor
 			for select LOT.INGREDIENTS_ID, VALIDITY, QTY
@@ -59,7 +68,7 @@ as
 			end
 			close stockcursor
 			deallocate stockcursor	
-		fetch next from ingredients into @ID_ingredient, @numberOfUnits
+		fetch next from ingredients into @ID_ingredient
 		end
 		
 		close ingredients

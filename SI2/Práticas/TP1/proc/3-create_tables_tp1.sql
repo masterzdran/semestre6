@@ -130,7 +130,6 @@ create table UNIT(
 create table INGREDIENTS(
 	ID			int identity(1,1),
 	NAME		char(30) not null,
-	QTY_CURRENT decimal(10,3) default (0) not null,
 	QTY_RESERVED decimal(10,3) default(0) not null, --quantidade a reservar, eventos ja confirmados
 	UNIT_ID		int not null, -- unidade da quantidade actual
 	MIN_QTY		decimal(10,3) default(0) not null, -- quantidade minina 

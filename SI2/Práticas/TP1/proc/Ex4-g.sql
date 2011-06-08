@@ -5,42 +5,43 @@ use SI2_TP1
 if OBJECT_ID('UpdateStockWithSupplier') IS NOT NULL
 	drop procedure UpdateStockWithSupplier;
 go
-create procedure UpdateStockWithSupplier(@ID_Supplier int, @ID_Ingredient int, @expectedDate datetime)
+create procedure UpdateStockWithSupplier(@idEncomenda int, @invoice int, @quantityreceive int,
+										@validity datetime, @price smallmoney, @orderQuantityLeft bit, @dateExpectedOfNewOrder datetime)
 as
 	begin transaction
 	
-	declare @current decimal(10,3), @reserved decimal(10,3), @min decimal(10,3), @max decimal(10,3)
+	declare @idsupplier int, @idingredient int, @qty_ordered int,
+			@dateorder datetime, @dateexpectedorder datetime, @idlot int
 	
-	select @reserved = QTY_RESERVED, @current = QTY_CURRENT, @min = MIN_QTY, @max = ORDER_QTY
-			from INGREDIENTS where ID = @ID_Ingredient
-	set @current = @current + @reserved
+	select @idsupplier=ORDERS.SUPPLIER_ID, @idingredient = ORDERS.INGREDIENT_ID,
+				@qty_ordered = ORDERS.QTY_ORDERED, @dateorder = ORDERS.DATE,
+				@dateexpectedorder = ORDERS.EXPECTED_DATE from ORDERS
 	
-	--if quantity is lower than minimum number of order
-	--we request to supplier the minimum
-	if @current < @min
+	--insert in lot the order because we alredy pay it
+	insert into LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK)
+		values(@idingredient, @idsupplier, @invoice, GETDATE(), @quantityreceive ,@price,
+				@validity, @quantityreceive);
+				
+	select @idlot = LOT.ID from LOT
+			where LOT.INGREDIENTS_ID = @idingredient AND LOT.SUPPLIER_ID = @idsupplier AND
+				LOT.INVOICE = @invoice AND LOT.VALIDITY = @validity AND LOT.QTY = @quantityreceive
+				AND LOT.PRICE = @price
+				
+	--insert this buy in history order
+	insert into ORDERS_LOG(SUPPLIER_ID, INGREDIENTS_ID, DATE, QTY_ORDERED, EXPECTED_DATE, LOT_ID)
+		values(@idsupplier, @idingredient, @dateorder, @qty_ordered - @quantityreceive, @dateexpectedorder,
+							@idlot);
+		
+	--if bit of @orderQuantityLeft is 1 that means that we should order the rest of quantity
+	if @orderQuantityLeft = 1
 	begin
-		declare @dif1 decimal(10,3)
-		set @dif1 = @min - @current
-		set @current = @current + @dif1
-	end
-	else --if quantity is higher then number of order, we reduce this one
-	begin
-		declare @dif2 decimal(10,3)
-		set @dif2 = @current - @max
-		set @current = @current + @dif2
+		if @quantityreceive < @qty_ordered
+		begin
+			insert into ORDERS (SUPPLIER_ID, INGREDIENT_ID, DATE, QTY_ORDERED, EXPECTED_DATE)
+				values(@idsupplier, @idingredient, GETDATE(), (@qty_ordered - @quantityreceive), @dateExpectedOfNewOrder);
+		end
 	end
 	
-	--insert information about an order
-	insert into ORDERS (SUPPLIER_ID, INGREDIENT_ID, DATE, QTY_ORDERED, EXPECTED_DATE)
-						values(@ID_Supplier, @ID_Ingredient, GETDATE(), @current, @expectedDate);
-	
-	--know what is reserved quantity that remains after order
-	set @reserved = @reserved - @current
-	if @reserved < 0
-		set @reserved = 0
-	
-	--update table INGREDIENTS
-	update INGREDIENTS set QTY_RESERVED = @reserved from INGREDIENTS where ID = @ID_Ingredient
-	
+	--remove of table order this order that its already 
+	delete from ORDERS where ORDERS.ID = @idEncomenda
 	commit
-go

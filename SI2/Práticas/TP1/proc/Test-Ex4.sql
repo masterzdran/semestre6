@@ -63,3 +63,11 @@ declare @MostSales_T1 table(
 			PROFIT			smallmoney)
 insert into @MostSales_T1 select * from dbo.MostProfitMenu();
 select * from @MostSales_T1
+
+
+select distinct COURSES_INGREDIENTS.QTY from BOOKING inner join NORMAL_BOOKING on BOOKING.ID = NORMAL_BOOKING.BOOKING_ID
+					  inner join MENU on MENU.ID = NORMAL_BOOKING.MENU_ID
+					  inner join MENU_COURSES on MENU_COURSES.MENU_ID = NORMAL_BOOKING.MENU_ID
+					  inner join COURSES on MENU_COURSES.COURSES_ID = COURSES.ID
+					  inner join COURSES_INGREDIENTS on COURSES.ID = COURSES_INGREDIENTS.COURSES_ID
+					  where COURSES_INGREDIENTS.INGREDIENTS_ID = 10
