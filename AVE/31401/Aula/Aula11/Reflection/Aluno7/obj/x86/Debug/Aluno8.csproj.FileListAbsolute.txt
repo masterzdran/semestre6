@@ -1,0 +1,10 @@
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Aluno7\bin\Debug\Aluno7.exe
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Aluno7\bin\Debug\Aluno7.pdb
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Aluno7\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Aluno7\obj\x86\Debug\Aluno7.exe
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Aluno7\obj\x86\Debug\Aluno7.pdb
+D:\visual studio 2010\Projects\Aula\Aula11\Reflection\Aluno7\obj\x86\Debug\Aluno7.exe
+D:\visual studio 2010\Projects\Aula\Aula11\Reflection\Aluno7\obj\x86\Debug\Aluno7.pdb
+D:\visual studio 2010\Projects\Aula\Aula11\Reflection\Aluno7\bin\Debug\Aluno7.exe
+D:\visual studio 2010\Projects\Aula\Aula11\Reflection\Aluno7\bin\Debug\Aluno7.pdb
+D:\visual studio 2010\Projects\Aula\Aula11\Reflection\Aluno7\obj\x86\Debug\ResolveAssemblyReference.cache

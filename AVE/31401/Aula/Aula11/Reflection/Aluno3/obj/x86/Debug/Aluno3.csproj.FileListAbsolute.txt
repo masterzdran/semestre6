@@ -1,0 +1,5 @@
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Aluno3\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Aluno3\bin\Debug\Aluno3.exe
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Aluno3\bin\Debug\Aluno3.pdb
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Aluno3\obj\x86\Debug\Aluno3.exe
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Aluno3\obj\x86\Debug\Aluno3.pdb

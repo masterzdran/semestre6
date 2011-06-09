@@ -1,0 +1,9 @@
+D:\work\AVE2011\ExerciciosCSharp\NewSharedLibraryCode\NewCarClient\bin\Debug\NewCarClient.exe
+D:\work\AVE2011\ExerciciosCSharp\NewSharedLibraryCode\NewCarClient\bin\Debug\NewCarClient.pdb
+D:\work\AVE2011\ExerciciosCSharp\NewSharedLibraryCode\NewCarClient\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\work\AVE2011\ExerciciosCSharp\NewSharedLibraryCode\NewCarClient\obj\x86\Debug\NewCarClient.exe
+D:\work\AVE2011\ExerciciosCSharp\NewSharedLibraryCode\NewCarClient\obj\x86\Debug\NewCarClient.pdb
+D:\work\AVE2011\ExerciciosCSharp\NewSharedLibraryCode\NewCarClient\bin\Debug\NewCarClient.exe.config
+D:\visual studio 2010\Projects\Aula\Aula13\NewSharedLibraryCode\NewCarClient\bin\Debug\NewCarClient.exe.config
+D:\visual studio 2010\Projects\Aula\Aula13\NewSharedLibraryCode\NewCarClient\obj\x86\Debug\NewCarClient.exe
+D:\visual studio 2010\Projects\Aula\Aula13\NewSharedLibraryCode\NewCarClient\obj\x86\Debug\NewCarClient.pdb

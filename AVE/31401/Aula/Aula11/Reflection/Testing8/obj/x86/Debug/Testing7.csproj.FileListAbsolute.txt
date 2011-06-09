@@ -1,0 +1,5 @@
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Testing8\bin\Debug\Testing8.exe
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Testing8\bin\Debug\Testing8.pdb
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Testing8\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Testing8\obj\x86\Debug\Testing8.exe
+D:\work\AVE2011\ExerciciosCSharp\Reflection\Testing8\obj\x86\Debug\Testing8.pdb

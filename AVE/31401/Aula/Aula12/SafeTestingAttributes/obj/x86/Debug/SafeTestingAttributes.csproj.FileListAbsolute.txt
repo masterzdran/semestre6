@@ -1,0 +1,5 @@
+D:\work\AVE2011\ExerciciosCSharp\Reflection\SafeTestingAttributes\bin\Debug\SafeTestingAttributes.exe
+D:\work\AVE2011\ExerciciosCSharp\Reflection\SafeTestingAttributes\bin\Debug\SafeTestingAttributes.pdb
+D:\work\AVE2011\ExerciciosCSharp\Reflection\SafeTestingAttributes\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\work\AVE2011\ExerciciosCSharp\Reflection\SafeTestingAttributes\obj\x86\Debug\SafeTestingAttributes.exe
+D:\work\AVE2011\ExerciciosCSharp\Reflection\SafeTestingAttributes\obj\x86\Debug\SafeTestingAttributes.pdb

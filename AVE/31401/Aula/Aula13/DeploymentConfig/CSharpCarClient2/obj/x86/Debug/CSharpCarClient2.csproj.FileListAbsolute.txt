@@ -1,0 +1,20 @@
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CSharpCarClient2\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CSharpCarClient2\bin\Debug\CSharpCarClient2.exe.config
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CSharpCarClient2\bin\Debug\CSharpCarClient2.exe
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CSharpCarClient2\bin\Debug\CSharpCarClient2.pdb
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CSharpCarClient2\bin\Debug\CarLibrary2.exe
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CSharpCarClient2\bin\Debug\CarLibrary2.pdb
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CSharpCarClient2\obj\x86\Debug\CSharpCarClient2.exe
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CSharpCarClient2\obj\x86\Debug\CSharpCarClient2.pdb
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Debug\CSharpCarClient2.exe.config
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Debug\CSharpCarClient2.exe
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Debug\CSharpCarClient2.pdb
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Debug\CSharpCarClient2.exe
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Debug\CSharpCarClient2.pdb
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Debug\CarLibrary2.exe
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Debug\CarLibrary2.pdb
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Debug\CSharpCarClient2.exe.manifest
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Debug\CSharpCarClient2.application
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Debug\CSharpCarClient2.exe.manifest
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Debug\CSharpCarClient2.application

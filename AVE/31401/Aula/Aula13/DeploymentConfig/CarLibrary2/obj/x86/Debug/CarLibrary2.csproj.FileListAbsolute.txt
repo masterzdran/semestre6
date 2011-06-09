@@ -1,0 +1,5 @@
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CarLibrary2\bin\Debug\CarLibrary2.exe
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CarLibrary2\bin\Debug\CarLibrary2.pdb
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CarLibrary2\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CarLibrary2\obj\x86\Debug\CarLibrary2.exe
+D:\work\AVE2011\ExerciciosCSharp\DeploymentConfig\CarLibrary2\obj\x86\Debug\CarLibrary2.pdb
