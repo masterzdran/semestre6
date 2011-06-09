@@ -1,0 +1,31 @@
+								Requisitos para o 2º trabalho:
+
+Gerir uma cadeia de restaurantes.
+Gestão integrada de stocks dos vários restaurantes.
+Criaçao de um catálogo único de receitas culinárias.
+Transferências de stocks de um restaurante para outro.
+Mobilidade entre restaurantes de funcionários com determinadas competências.
+
+----------------------------------------------//-----------------------------------
+1º Modificar EA:
+
+-> Inserir tabela Restaurantes
+
+-> Associar a cada compra (ORDERS) em que restaurante se encontra
+-> Permitir alterar o stock de um determinado ingrediente para outro restaurante, e colocar esta quantidade em encomenda para que posteriormente possa ser reposta...
+
+-> Generalizaçao de CUSTOMER passar ter também funcionário (employee), com indicação do restaurante em que está no momento em trabalho.
+-> Algo como:
+					PERSON
+					  |
+____________________________________________
+CUSTOMER 		  EMPLOYEE			REGISTERED
+
+
+----------------------------------------------//-----------------------------------
+XML:
+
+-> Catálogo == Cardápio? - Nao, o catálogo é um conjunto de receitas que sao servidas em todos os restaurantes (ex: No  mcdonalds a forma como é confeccionado o hamburger é igual para todos os franchising), basta faze-lo em XML para que todos os restaurantes possam verifica-lo em XHTML. (dúvida retirada com eng.)
+-> O Cardápio deve estar baseado no Catálogo...
+
+A resoluçao das alíneas 1, 2, 3, 4, 5, 6 são efectuadas em XML.
