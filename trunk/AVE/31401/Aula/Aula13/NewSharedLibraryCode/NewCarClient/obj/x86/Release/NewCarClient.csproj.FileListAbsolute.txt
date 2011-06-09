@@ -1,0 +1,6 @@
+D:\visual studio 2010\Projects\Aula\Aula13\NewSharedLibraryCode\NewCarClient\bin\Release\NewCarClient.exe.config
+D:\visual studio 2010\Projects\Aula\Aula13\NewSharedLibraryCode\NewCarClient\bin\Release\NewCarClient.exe
+D:\visual studio 2010\Projects\Aula\Aula13\NewSharedLibraryCode\NewCarClient\bin\Release\NewCarClient.pdb
+D:\visual studio 2010\Projects\Aula\Aula13\NewSharedLibraryCode\NewCarClient\obj\x86\Release\ResolveAssemblyReference.cache
+D:\visual studio 2010\Projects\Aula\Aula13\NewSharedLibraryCode\NewCarClient\obj\x86\Release\NewCarClient.exe
+D:\visual studio 2010\Projects\Aula\Aula13\NewSharedLibraryCode\NewCarClient\obj\x86\Release\NewCarClient.pdb

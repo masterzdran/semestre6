@@ -1,0 +1,12 @@
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Release\CSharpCarClient2.exe.config
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Release\CSharpCarClient2.exe
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Release\CSharpCarClient2.pdb
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Release\CarLibrary2.exe
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Release\CarLibrary2.pdb
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Release\ResolveAssemblyReference.cache
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Release\CSharpCarClient2.exe
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Release\CSharpCarClient2.pdb
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Release\CSharpCarClient2.exe.manifest
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Release\CSharpCarClient2.application
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Release\CSharpCarClient2.exe.manifest
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Release\CSharpCarClient2.application

@@ -1,0 +1,5 @@
+D:\visual studio 2010\Projects\Aula\Aula12\bin\Debug\Aula12.exe
+D:\visual studio 2010\Projects\Aula\Aula12\bin\Debug\Aula12.pdb
+D:\visual studio 2010\Projects\Aula\Aula12\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\visual studio 2010\Projects\Aula\Aula12\obj\x86\Debug\Aula12.exe
+D:\visual studio 2010\Projects\Aula\Aula12\obj\x86\Debug\Aula12.pdb

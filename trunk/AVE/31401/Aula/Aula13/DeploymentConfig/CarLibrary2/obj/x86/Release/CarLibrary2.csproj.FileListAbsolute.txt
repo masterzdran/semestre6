@@ -1,0 +1,5 @@
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CarLibrary2\bin\Release\CarLibrary2.exe
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CarLibrary2\bin\Release\CarLibrary2.pdb
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CarLibrary2\obj\x86\Release\ResolveAssemblyReference.cache
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CarLibrary2\obj\x86\Release\CarLibrary2.exe
+D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CarLibrary2\obj\x86\Release\CarLibrary2.pdb

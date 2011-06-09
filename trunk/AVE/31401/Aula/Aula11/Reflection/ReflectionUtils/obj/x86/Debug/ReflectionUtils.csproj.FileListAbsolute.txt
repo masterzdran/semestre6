@@ -1,0 +1,10 @@
+D:\work\AVE2011\ExerciciosCSharp\Reflection\ReflectionUtils\bin\Debug\ReflectionUtils.exe
+D:\work\AVE2011\ExerciciosCSharp\Reflection\ReflectionUtils\bin\Debug\ReflectionUtils.pdb
+D:\work\AVE2011\ExerciciosCSharp\Reflection\ReflectionUtils\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\work\AVE2011\ExerciciosCSharp\Reflection\ReflectionUtils\obj\x86\Debug\ReflectionUtils.exe
+D:\work\AVE2011\ExerciciosCSharp\Reflection\ReflectionUtils\obj\x86\Debug\ReflectionUtils.pdb
+D:\visual studio 2010\Projects\Aula\Aula11\Reflection\ReflectionUtils\obj\x86\Debug\ReflectionUtils.exe
+D:\visual studio 2010\Projects\Aula\Aula11\Reflection\ReflectionUtils\obj\x86\Debug\ReflectionUtils.pdb
+D:\visual studio 2010\Projects\Aula\Aula11\Reflection\ReflectionUtils\bin\Debug\ReflectionUtils.exe
+D:\visual studio 2010\Projects\Aula\Aula11\Reflection\ReflectionUtils\bin\Debug\ReflectionUtils.pdb
+D:\visual studio 2010\Projects\Aula\Aula11\Reflection\ReflectionUtils\obj\x86\Debug\ResolveAssemblyReference.cache
