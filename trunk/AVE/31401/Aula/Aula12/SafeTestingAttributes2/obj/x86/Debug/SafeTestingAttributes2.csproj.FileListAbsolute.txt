@@ -3,3 +3,5 @@ D:\work\AVE2011\ExerciciosCSharp\Reflection\SafeTestingAttributes2\bin\Debug\Saf
 D:\work\AVE2011\ExerciciosCSharp\Reflection\SafeTestingAttributes2\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\work\AVE2011\ExerciciosCSharp\Reflection\SafeTestingAttributes2\obj\x86\Debug\SafeTestingAttributes2.exe
 D:\work\AVE2011\ExerciciosCSharp\Reflection\SafeTestingAttributes2\obj\x86\Debug\SafeTestingAttributes2.pdb
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula12\SafeTestingAttributes2\obj\x86\Debug\SafeTestingAttributes2.exe
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula12\SafeTestingAttributes2\obj\x86\Debug\SafeTestingAttributes2.pdb

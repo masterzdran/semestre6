@@ -3,3 +3,5 @@ D:\visual studio 2010\Projects\Aula\Aula13\CarLibraryStrong\CSharpCarClient\bin\
 D:\visual studio 2010\Projects\Aula\Aula13\CarLibraryStrong\CSharpCarClient\obj\x86\Release\ResolveAssemblyReference.cache
 D:\visual studio 2010\Projects\Aula\Aula13\CarLibraryStrong\CSharpCarClient\obj\x86\Release\CSharpCarClient.exe
 D:\visual studio 2010\Projects\Aula\Aula13\CarLibraryStrong\CSharpCarClient\obj\x86\Release\CSharpCarClient.pdb
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula13\CarLibraryStrong\CSharpCarClient\obj\x86\Release\CSharpCarClient.exe
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula13\CarLibraryStrong\CSharpCarClient\obj\x86\Release\CSharpCarClient.pdb
