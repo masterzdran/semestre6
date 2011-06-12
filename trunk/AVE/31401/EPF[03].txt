@@ -1,0 +1,146 @@
+A
+A.01
+Em tempo de execução o JIT fornece estruturas de dados (Grafos) e mecanismos para percorrer as mesmas, de forma a identificar quais são as referências que ainda estão a ser utilizadas. Estas estruturas de dados contém informação sobre os campos dos objectos com referências e enumeração de referências no registo de activição, isto  é,  para cada metodo é criada uma tabela de regiões de endereços que especifica quais as referências que ainda estão alcançaveis (vivas).
+
+A.02
+O que pode estar a acontecer é o GC ainda não estar a processar a geração onde está contida os objectos.
+
+A.03
+A.03a
+scan0001.png
+
+A.03b
+Sim, porque como A implementa a interface IDisposable o que evita que um objecto seja colocado na Finalization Reachable Queue, para antes de ser eliminado.
+
+A.04
+scan0002.png
+
+B
+B.01
+Typeof, usa-se quando se pretende criar uma nova instancia de um objecto de um determindado tipo, passado no argumento.
+GetType, usa-se para inquirir o tipo do objecto.
+
+B.02
+????
+
+B.03
+    class TypeUtils
+    {
+        public static bool IsSubclassOf(Type t1, Type t2)
+        {
+            return t1.IsSubclassOf(t2);
+        }
+        public static bool IsAssignableFrom(Type tvar, Type tval)
+        {
+            return tvar.Equals(tval);
+        }
+    }
+    
+B.04
+[BugFixedAttribute]
+B.04a
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+    public class BugFixedAttribute : Attribute
+    {
+        private int _errorCode;
+        private String _errorDescription;
+        public BugFixedAttribute(int errorCode, String errorDescription)
+        {
+            _errorCode = errorCode;
+            _errorDescription = errorDescription;
+        }
+        public BugFixedAttribute(String errorDescription)
+        {
+            _errorCode = -1;
+            _errorDescription = errorDescription;
+        }
+        public int Code
+        {
+            get { return _errorCode; }
+        }
+        public String Description
+        {
+            get { return _errorDescription; }
+        }
+        public override string ToString()
+        {
+            return String.Format(((_errorCode >= 0) ? " {0} " : "") + "-> {1}", _errorCode, _errorDescription);
+        }
+    }
+B.04b
+        public static void ListAllFixedBugs(Type type)
+        {
+
+            Object[] objAtributes = type.GetCustomAttributes(true);
+            foreach (Attribute a in objAtributes)
+            {
+                Console.WriteLine(a.ToString());
+            }
+        }
+B.05
+    class ReflectionInvoker
+    {
+        public static void Invoker(String commandToInvoke)
+        {
+            if (commandToInvoke == null || commandToInvoke.Trim().Equals("")) return;
+            String[] args = commandToInvoke.Split(' ');
+            if (args.Length < 2) return;
+
+            Object typeName = Activator.CreateInstance(Type.GetType(args[0]));
+            Type tnType = typeName.GetType();
+            MethodInfo methodName = tnType.GetMethod(args[1]);
+            
+            //Parameters;
+            args = commandToInvoke.Split('-');
+            if (args.Length <=0) return;
+
+            IDictionary<String, String> myParameters = new Dictionary<String, String>();
+            String[] myParams;
+            foreach (String par in args)
+            {
+                myParams = par.Split('=');
+                if (myParams.Length == 2)
+                {
+                    myParameters.Add(myParams[0], myParams[1]);
+                    
+                }
+            }
+            methodName.Invoke(typeName, null); //parameters não estão preparados. Tem que se colocar um array de object pela ordem que devem ser colocados
+
+
+
+        }
+    }
+
+C
+C.01
+Tem controlo de Versões e ainda uma chave publica que permite que certifica a entidade que o criou.
+
+C.02
+C.02a
+Sim, porque precisa de saber a chave criptográfica de B para poder utilizar o objecto. Desta forma poderá efectua um deploy global.
+
+C.02b
+Não, porque B pode utilizar o objecto A. No entanto só pode efectuar um deployment privado.
+
+C.03
+A informação é guardada no manifesto.
+
+C.04
+????
+* Utilizar o utilitário ildasm para obter a versão IL da aplicação.
+* Alterar a versão do módulo que se pretende
+* Utilizar o utilitario ilasm para obter a nova versão da aplicação
+
+C.05
+C.05a
+Dá excepção porque não consegue carregar o modulo math.dll 1.0, pois não o encontra. A versão do math.dll existente é a versão 2.0 (pode-se verificar através do ildasm)
+
+C.05b
+* utiliza-se o ildasm para obter a versão IL do Client.exe
+* Alteração da versão do math.dll
+* utilização do ilasm para obter o executavel com as novas alterações.
+* executar sem erros.
+
+C.05c
+????
