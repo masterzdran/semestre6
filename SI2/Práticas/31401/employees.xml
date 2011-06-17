@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE employees SYSTEM "C:\WorkingArea\ISEL\semestre6\SI2\Práticas\31401\employees.dtd">
+<employees>
+	<restaurant id="ID_RESTAURANT" name="NAME_RESTAURANT">
+		<employee id="EMPLOYEE_ID" name="EMPLOYEE_NAME">
+			<competence name="Função"/>
+			<competence name="Função"/>
+		</employee>
+	</restaurant>
+</employees>
