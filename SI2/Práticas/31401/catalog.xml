@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <category cat_name="Nome da Categoria">
+    <course course_name="Nome do Prato">
+    <ingredient id="ID" nome="NOME" qtd="Quantidade"  >
+    </ingredient>    
+    </course>
+  </category>
+</catalog>
