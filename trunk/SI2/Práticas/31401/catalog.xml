@@ -1,9 +1,19 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog SYSTEM "C:\WorkingArea\ISEL\semestre6\SI2\Práticas\31401\catalog.dtd">
 <catalog>
-  <category cat_name="Nome da Categoria">
-    <course course_name="Nome do Prato">
-    <ingredient id="ID" nome="NOME" qtd="Quantidade"  >
-    </ingredient>    
-    </course>
-  </category>
+	<category cat_name="Nome da Categoria">
+		<course course_id="0" course_name="Nome do Prato" course_price="0.0">
+			<ingredient>
+				<ingredientRecord id="ID" nome="NOME" qtd="Quantidade" unidade="Kg"/>
+				<ingredientRecord id="ID" nome="NOME" qtd="Quantidade" unidade="Kg"/>
+				<ingredientRecord id="ID" nome="NOME" qtd="Quantidade" unidade="Kg"/>
+				<ingredientRecord id="ID" nome="NOME" qtd="Quantidade" unidade="Kg"/>
+				<ingredientRecord id="ID" nome="NOME" qtd="Quantidade" unidade="Kg"/>
+				<ingredientRecord id="ID" nome="NOME" qtd="Quantidade" unidade="Kg"/>
+			</ingredient>
+			<confection>
+        Bla Bla Bla
+      </confection>
+		</course>
+	</category>
 </catalog>
