@@ -29,3 +29,57 @@ XML:
 -> O Cardápio deve estar baseado no Catálogo...
 
 A resoluçao das alíneas 1, 2, 3, 4, 5, 6 são efectuadas em XML.
+
+Solução:
+Criaçao de ficheiros XML com a seguinte configuração:
+
+-Catalogo [catalog - is the header]
+	-Categoria [category - is a element]
+		-Receita [course - is a element]
+			-id [id_course - is a attribute]
+			-nome [name_course]
+			-preco [price_source is a attribute]
+			-ingrediente [IngredientRecord - is an element]
+				-id	[ID - is an attriibute]
+				-nome [Name - is an attribute]
+				-quantidade [quantity - is an attribute]
+				-unidade [unit - is an attribute]
+			-confecçao [confection - is a attribute]
+
+-Empregados[employees - is the header]
+	-Restaurante[restaurant - is an element]
+		-id [ID_Restaurant - is an attribute]
+		-nome restaurante [Name_Restaurant - is an attribute]
+		-Empregado [employee -  is an element]
+			-ID [Employee_ID - is an attribute]
+			-Nome [Employee_Name - is an attribute]
+			-Funcoes [competence - is an element]
+
+-Mobilidade [mobility - is the header]
+	-Empregado [employee - is an element]
+		-ID [Employee_ID - is an attribute]
+		-Nome [Employee_Name - is an attribute]
+		-Funcoes [competence - is an element]
+	-Do Restaurante[RestaurantFrom -  is an element]
+		- Id Restaurante [RestaurantID - is an attribute]
+		- Nome Restaurante [RestaurantName - is an attribute]
+	-Para Restaurante[RestaurantTo -  is an element]
+		- Id Restaurante [RestaurantID - is an attribute]
+		- Nome Restaurante [RestaurantName - is an attribute]
+
+-Transferência de stock [stockTransfer - is the header]
+	-Transacção [transaction - is an element]
+		-ID [IDTransaction is an attribute]
+		-ingrediente [ingredient - is an element]
+			-id	[ID - is an attriibute]
+			-nome [Name - is an attribute]
+			-quantidade [quantity - is an attribute]
+			-unidade [unit - is an attribute]
+		-Do Restaurante[RestaurantFrom -  is an element]
+			- Id Restaurante [RestaurantID - is an attribute]
+			- Nome Restaurante [RestaurantName - is an attribute]
+		-Para Restaurante[RestaurantTo -  is an element]
+			- Id Restaurante [RestaurantID - is an attribute]
+			- Nome Restaurante [RestaurantName - is an attribute]
+
+Estas configurações serão usadas para expor no browser conteúdos da base de dados.
