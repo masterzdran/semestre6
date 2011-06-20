@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE stockTransfer SYSTEM "C:\WorkingArea\ISEL\semestre6\SI2\Práticas\31401\stockTransfer.dtd">
-<stockTransfer>
+<!DOCTYPE tanenaStockTransfer:stockTransfer SYSTEM "stockTransfer.dtd">
+<tanenaStockTransfer:stockTransfer xmlns:tanenaStockTransfer="http://TantrasEnamour/stockTransfer">
 	<transaction id="Id da transacção">
 		<restaurantFrom id="Restaurant Id" name="Restaurant Name">
 			<ingredient id="Ingredient ID" name="Ingredient Name" quantity="Quantidade" unit="Unidade"/>
@@ -10,4 +10,4 @@
 		</restaurantFrom>
 		<restaurantTo id="Restaurant Id" name="Restaurant Name"/>
 	</transaction>
-</stockTransfer>
+</tanenaStockTransfer:stockTransfer>
