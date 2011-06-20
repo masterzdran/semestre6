@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mobility SYSTEM "C:\WorkingArea\ISEL\semestre6\SI2\Práticas\31401\mobility.dtd">
-<mobility>
+<!DOCTYPE tanenaMobility:mobility SYSTEM "mobility.dtd">
+<tanenaMobility:mobility xmlns:tanenaMobility="http://TantrasEnamour/Mobility">
 	<employee id="Employee_ID" name="Employee_Name">
 		<competence name="Função"/>
 		<restaurantFrom id="RestaurantID" name="RestauranteName"/>
 		<restaurantTo id="RestaurantID" name="RestauranteName"/>
 	</employee>
-</mobility>
+</tanenaMobility:mobility>

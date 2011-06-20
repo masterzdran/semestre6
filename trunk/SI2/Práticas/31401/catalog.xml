@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE catalog SYSTEM "C:\WorkingArea\ISEL\semestre6\SI2\Práticas\31401\catalog.dtd">
-<catalog>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE tanenaCatalog:catalog SYSTEM "catalog.dtd">
+<tanenaCatalog:catalog xmlns:tanenaCatalog="http://TantrasEnamour/Catalog">
 	<category cat_name="Nome da Categoria">
 		<course course_id="0" course_name="Nome do Prato" course_price="0.0">
 			<ingredient>
@@ -16,4 +16,4 @@
       </confection>
 		</course>
 	</category>
-</catalog>
+</tanenaCatalog:catalog>
