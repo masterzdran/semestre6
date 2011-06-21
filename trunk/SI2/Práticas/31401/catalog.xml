@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!DOCTYPE tanenaCatalog:catalog SYSTEM "catalog.dtd">
-<tanenaCatalog:catalog xmlns:tanenaCatalog="http://TantrasEnamour/Catalog">
-	<category cat_name="Nome da Categoria">
+<tanenaCatalog:catalog xmlns:tanenaCatalog="http://TantrasEnamour/Catalog"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://TantrasEnamour/Catalog catalog.xsd">
+	<category category_name="Nome da Categoria">
 		<course course_id="0" course_name="Nome do Prato" course_price="0.0">
 			<ingredient>
-				<ingredientRecord id="ID" nome="NOME" qtd="Quantidade" unidade="Kg"/>
-				<ingredientRecord id="ID" nome="NOME" qtd="Quantidade" unidade="Kg"/>
-				<ingredientRecord id="ID" nome="NOME" qtd="Quantidade" unidade="Kg"/>
-				<ingredientRecord id="ID" nome="NOME" qtd="Quantidade" unidade="Kg"/>
-				<ingredientRecord id="ID" nome="NOME" qtd="Quantidade" unidade="Kg"/>
-				<ingredientRecord id="ID" nome="NOME" qtd="Quantidade" unidade="Kg"/>
-			</ingredient>
+					<ingredientRecord id="0" nome="NOME" qtd="1" unidade="Kg"/>
+					<ingredientRecord id="1" nome="NOME" qtd="1" unidade="Kg"/>
+					<ingredientRecord id="2" nome="NOME" qtd="1.3" unidade="Kg"/>
+					<ingredientRecord id="3" nome="NOME" qtd="2" unidade="Kg"/>
+					<ingredientRecord id="4" nome="NOME" qtd="6" unidade="Kg"/>
+					<ingredientRecord id="5" nome="NOME" qtd="10" unidade="Kg"/>
+				</ingredient>
 			<confection>
-        Bla Bla Bla
-      </confection>
+				Bla Bla Bla
+			</confection>
 		</course>
 	</category>
 </tanenaCatalog:catalog>
