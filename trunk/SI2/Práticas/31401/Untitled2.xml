@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Temperatura xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Untitled1.xsd">
+<Local nome="Lisboa">
+<Temp Dia="2011-01-01" Max="15" Min="08"/>
+<Temp Dia="2011-01-04" Max="10"/>
+</Local>
+<Local nome="Porto">
+<Temp Dia="2011-01-01" Min="08"/>
+<Temp Dia="2011-01-02" Max="17" Min="12"/>
+</Local>
+
+<Local nome="Coimbra"/>
+
+
+</Temperatura>
