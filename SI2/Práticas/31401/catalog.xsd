@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tanenaCatalog="http://TantrasEnamour/Catalog" targetNamespace="http://TantrasEnamour/Catalog">
+	<xs:element name="catalog" nillable="true">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="category" nillable="true">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="course" nillable="true">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ingredient" nillable="true">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ingredientRecord" nillable="true"  maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:attribute name="id" type="xs:integer" use="required"/>
+															<xs:attribute name="nome" type="xs:string" use="required"/>
+															<xs:attribute name="qtd" type="xs:decimal" use="required"/>
+															<xs:attribute name="unidade" type="xs:string" use="required"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="confection" type="xs:string" nillable="false" minOccurs="1" maxOccurs="1"/>
+									</xs:sequence>
+									<xs:attribute name="course_id" type="xs:int" use="required"/>
+									<xs:attribute name="course_name" type="xs:string" use="required"/>
+									<xs:attribute name="course_price" type="xs:decimal" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="category_name" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
