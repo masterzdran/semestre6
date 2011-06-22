@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Temperatura">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Local" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+<xs:simpleType name="tempMin">
+	<xs:restriction base="xs:byte">
+		<xs:minInclusive value="-60"/>
+		</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="tempMax">
+	<xs:restriction base="xs:byte">
+		<xs:maxInclusive value="60"/>
+	</xs:restriction>
+</xs:simpleType>
+
+
+	<xs:element name="Temp">
+		<xs:complexType>
+			<xs:attribute name="Min" type="tempMin" use="optional"/>
+			<xs:attribute name="Max" type="tempMax"/>
+			<xs:attribute name="Dia" type="xs:date" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Local">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Temp" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="nome" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
