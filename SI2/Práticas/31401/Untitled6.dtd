@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT quinta (agricultor+, (cão* | gato?), porco*, (cabra | vaca)?, (galinha+ | pato*))>

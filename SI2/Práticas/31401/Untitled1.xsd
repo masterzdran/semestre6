@@ -8,8 +8,7 @@
 		</xs:complexType>
 		<xs:unique name="LocalValorUnico">
 			<xs:selector xpath="Local"/>
-			<xs:field xpath="@nome|@Dia"/>
-			
+			<xs:field xpath="@nome"/>
 		</xs:unique>
 	</xs:element>
 	<xs:element name="Temp">
@@ -22,15 +21,18 @@
 	<xs:element name="Local">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Temp" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Temp" minOccurs="0" maxOccurs="unbounded" />
 			</xs:sequence>
 			<xs:attribute name="nome" type="xs:string" use="required"/>
 		</xs:complexType>
-		<!--
 		<xs:unique name="LocalValorUnico2">
 			<xs:selector xpath="Temp"/>
 			<xs:field xpath="@Dia"/>
 		</xs:unique>
--->
 	</xs:element>
-</xs:schema>
+	<xs:simpleType name="minimumTemperature">
+		<xs:restriction xmlns:xs="http://www.w3.org/2001/XMLSchema" base="xs:int">
+			<xs:minInclusive value="-60"/>
+		</xs:restriction>
+	</xs:simpleType>
+	

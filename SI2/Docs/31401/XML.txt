@@ -303,4 +303,20 @@ XQuery
 Estrutura FLWOR (pronuncia-se “flower”), cujo acrónimo significa
 – for, let, where, order by, return
 	
-Expressões
+
+Suporte XML do SQL Server
+  -- Adiciona um esquema à base de dados
+CREATE XML SCHEMA COLLECTION [<relational_schema>.]sql_identifier
+AS 'Schema Componente'
+-- Adiciona um esquema a uma colecção
+ALTER XML SCHEMA COLLECTION [<relational_schema>. ]sql_identifier
+ADD 'Schema Componente'
+-- Remove uma colecção de esquemas
+DROP XML SCHEMA COLLECTION [<relational_schema>. ]sql_identifier
+-- Associa schema e só aceita XML na forma de documento
+DECLARE @Book XML (DOCUMENT BookStoreCollection)
+
+INSERT @xml_tab VALUES('<people><person name="curly"/></people>')
+SELECT xml_col.exist('/people/person[@name="moe"]') FROM @xml_tab
+SELECT the_id FROM @xml_tab WHERE xml_col.exist('/people/person[@name="moe"]')= 1
+O método value(xquery_text, sql_Type), retorna um único valor do tipo de dados sql_Type baseado na expressão xquery_text
