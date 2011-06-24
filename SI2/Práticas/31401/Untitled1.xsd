@@ -7,8 +7,9 @@
 			</xs:sequence>
 		</xs:complexType>
 		<xs:unique name="LocalValorUnico">
-			<xs:selector xpath="Local"></xs:selector>
-			<xs:field xpath="@nome"></xs:field>
+			<xs:selector xpath="Local"/>
+			<xs:field xpath="@nome|@Dia"/>
+			
 		</xs:unique>
 	</xs:element>
 	<xs:element name="Temp">
@@ -25,10 +26,11 @@
 			</xs:sequence>
 			<xs:attribute name="nome" type="xs:string" use="required"/>
 		</xs:complexType>
+		<!--
 		<xs:unique name="LocalValorUnico2">
-			<xs:selector xpath="Temp"></xs:selector>
-			<xs:field xpath="@Dia"></xs:field>
+			<xs:selector xpath="Temp"/>
+			<xs:field xpath="@Dia"/>
 		</xs:unique>
+-->
 	</xs:element>
-
 </xs:schema>

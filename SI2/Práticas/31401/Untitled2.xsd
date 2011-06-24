@@ -7,19 +7,16 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-
-<xs:simpleType name="tempMin">
-	<xs:restriction base="xs:byte">
-		<xs:minInclusive value="-60"/>
+	<xs:simpleType name="tempMin">
+		<xs:restriction base="xs:byte">
+			<xs:minInclusive value="-60"/>
 		</xs:restriction>
-</xs:simpleType>
-<xs:simpleType name="tempMax">
-	<xs:restriction base="xs:byte">
-		<xs:maxInclusive value="60"/>
-	</xs:restriction>
-</xs:simpleType>
-
-
+	</xs:simpleType>
+	<xs:simpleType name="tempMax">
+		<xs:restriction base="xs:byte">
+			<xs:maxInclusive value="60"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:element name="Temp">
 		<xs:complexType>
 			<xs:attribute name="Min" type="tempMin" use="optional"/>

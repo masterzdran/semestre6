@@ -28,13 +28,24 @@ Falhada: a transacção vem para este estado se for abortada no seu estado activa 
 
 Terminada: a transação deixa de existir no sistema
 
+READ UNCOMMITTED: Doesn’t honor or take locks, unless data is modified.
+READ COMMITTED: Takes and honors locks, but releases read locks after data is retrieved. Allows
+phantom rows and nonrepeatable reads.
+REPEATABLE READ: Holds locks for the duration of the transaction to prevent users from
+changing data. Disallows nonrepeatable reads but allows phantom rows.
+SERIALIZABLE: Like REPEATABLE READ, but adds locks on ranges of data to make sure no new
+data is added. Holds these locks until the transaction is completed. Disallows phantom rows
+and nonrepeatable reads.
+SNAPSHOT: Allows the user to look at data as it was when the transaction started (existed as of
+SQL Server 2005).
+
 SET TRANSACTION ISOLATION LEVEL (Transact-SQL)
 SET TRANSACTION ISOLATION LEVEL 
 {    READ COMMITTED     (por omissão)
 | READ UNCOMMITTED
 | REPEATABLE READ
 | SERIALIZABLE
-| SNAPSHOT
+| SNAPSHOT --so no sql server 2005
 }
 BEGIN TRANSACTION (Transact-SQL)
 BEGIN { TRAN | TRANSACTION } 
