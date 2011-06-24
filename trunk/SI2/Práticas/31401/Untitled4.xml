@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<livros>
+	<livro>
+		<título>A Bicicleta Azul</título>
+		<autor>Régine Deforges</autor>
+		<publicado data="2007-10-10"/>
+		<resumo>Naquele princípio de <nome>Outubro</nome> de 1939, <nome>Pierre</nome> e 
+<nome>Isabelle</nome>
+			<nome>Delmas</nome> viviam felizes nas suas terras das vinhas de 
+<nome>Bordeaux</nome>...
+</resumo>
+	</livro>
+	<livro>
+		<título>A Revolução dos Bichos</título>
+		<autor>George Orwell</autor>
+		<resumo>O livro narra a história dos animais do galinheiro <nome>Solar</nome>, que eram oprimidos pelo seu 
+proprietário. Unidos, os bichos planeiam uma espécie de revolução...
+</resumo>
+	</livro>
+	<livro>
+		<título>A Morte e a Morte de Quincas Berro D&apos;Água</título>
+		<autor>Jorge Amado</autor>
+		<publicado ano="1959"/>
+		<resumo>A morte e a morte de <nome>Quincas Berro D&apos;Água</nome> é, antes de tudo, uma crítica azeda 
+aos comportamentos burgueses onde, um homem, <nome>Quincas</nome>, que, mesmo morto, vai ter sua noite de 
+almirante...
+</resumo>
+	</livro>
+</livros>
