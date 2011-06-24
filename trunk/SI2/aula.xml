@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- include to aula1.dtd this code xml -->
+<!DOCTYPE agenda SYSTEM "D:\ISEL\SI2\aula1.dtd">
+<agenda>
+	<pessoa>
+		<nome>Andre</nome>
+		<datanascimento>
+			<dia>10</dia>
+			<mes>1</mes>
+			<ano>1989</ano>
+		</datanascimento>
+		<telefone>
+			<rede>TMN</rede>
+			<numero>921345654</numero>
+		</telefone>
+	</pessoa>
+	<pessoa>
+		<nome>Joao</nome>
+		<datanascimento>
+			<dia>19</dia>
+			<mes>19</mes>
+			<ano>1988</ano>
+		</datanascimento>
+		<telefone>
+			<rede>Vodafone</rede>
+			<numero>910234123</numero>
+		</telefone>
+	</pessoa>
+	<pessoa>
+		<nome>Nuno</nome>
+		<datanascimento>
+			<dia>1</dia>
+			<mes>12</mes>
+			<ano>1970</ano>
+		</datanascimento>
+		<telefone>
+			<rede>Optimus</rede>
+			<numero>930122321</numero>
+		</telefone>
+	</pessoa>
+	<pessoa>
+		<nome>Ines</nome>
+		<datanascimento>
+			<dia>18</dia>
+			<mes>8</mes>
+			<ano>1986</ano>
+		</datanascimento>
+		<telefone>
+			<rede>Phone-ix</rede>
+			<numero>926456234</numero>
+		</telefone>
+	</pessoa>
+</agenda>

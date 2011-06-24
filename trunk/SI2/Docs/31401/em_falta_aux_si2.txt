@@ -1,0 +1,9 @@
+Restriçoes:
+	<xs:simpleType name="FiltroData" >
+		<xs:restriction base="xs:date">
+			<xs:minInclusive value="1000-01-01" />
+		</xs:restriction>
+	</xs:simpleType>
+-mudar nome do T_publico para FiltroData
+
+
