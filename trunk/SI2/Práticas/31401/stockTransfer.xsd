@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://TantrasEnamour/stockTransfer" targetNamespace="http://TantrasEnamour/stockTransfer">
+	<xs:complexType name="t_ingredient">
+		<xs:attribute name="id" type="xs:integer" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="quantity" type="xs:decimal" use="required"/>
+		<xs:attribute name="unit" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:attributeGroup name="t_restaurantID">
+		<xs:attribute name="id" type="xs:integer" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:attributeGroup>
+	<xs:element name="ingredient" type="ns1:t_ingredient"/>
+	<xs:element name="restaurantFrom">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ns1:ingredient" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="ns1:t_restaurantID"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="restaurantTo">
+		<xs:complexType>
+			<xs:attributeGroup ref="ns1:t_restaurantID"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="transaction">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ns1:restaurantFrom" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="ns1:restaurantTo" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="stockTransfer">
+		<xs:complexType>
+			<xs:sequence minOccurs="1" maxOccurs="unbounded">
+				<xs:element ref="ns1:transaction"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
