@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2011 rel. 3 (http://www.altova.com) by Nuno Cancelo (Nuno Cancelo) -->
-<tanenaMobility:mobility xmlns:tanenaMobility="http://TantrasEnamour/Mobility" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://TantrasEnamour/Mobility file:///D:/ESCOLA/ISEL/semestre6/SI2/Pr%c3%a1ticas/31401/catalog.xsd"/>
-<employee id="Employee_ID" name="Employee_Name">
-	<competence name="Função"/>
-	<restaurantFrom id="RestaurantID" name="RestauranteName"/>
-	<restaurantTo id="RestaurantID" name="RestauranteName"/>
-</employee>
+<ns:mobility xmlns:ns="http://TantrasEnamour/Mobility" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://TantrasEnamour/Mobility mobility.xsd">
+<ns:transaction id="1">
+	<ns:employee id="1" name="Employee_Name">
+		<ns:competence name="Função"/>
+		<ns:restaurantFrom id="1" name="RestauranteName"/>
+		<ns:restaurantTo id="2" name="RestauranteName"/>
+	</ns:employee>
+</ns:transaction>
+</ns:mobility>
