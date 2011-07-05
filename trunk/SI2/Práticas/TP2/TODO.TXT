@@ -9,11 +9,12 @@ Mobilidade entre restaurantes de funcionários com determinadas competências.
 ----------------------------------------------//-----------------------------------
 1º Modificar EA:
 
--> Inserir tabela Restaurantes
+-> Inserir tabela Restaurantes || FEITO
 
--> Associar a cada compra (ORDERS) em que restaurante se encontra
--> Permitir alterar o stock de um determinado ingrediente para outro restaurante, e colocar esta quantidade em encomenda para que posteriormente possa ser reposta...
+-> Associar a cada compra (ORDERS) em que restaurante se encontra || FEITO
+-> Permitir alterar o stock de um determinado ingrediente para outro restaurante, e colocar esta quantidade em encomenda para que posteriormente possa ser reposta... || FEITO
 
+			FEITO
 -> Generalizaçao de CUSTOMER passar ter também funcionário (employee), com indicação do restaurante em que está no momento em trabalho.
 -> Algo como:
 					PERSON
@@ -21,6 +22,12 @@ Mobilidade entre restaurantes de funcionários com determinadas competências.
 ____________________________________________
 CUSTOMER 		  EMPLOYEE			REGISTERED
 
+
+-> FALTA COLOCAR TRIGGER PARA ALERTAR QUE INGREDIENTES ESTAO FORA DE PRAZO (1º Parte)!!
+-> Criar um Catálogo único e associá-lo a cada prato!!
+-> Transferência de Stock:
+	-> Mudar o stock para outro restaurante;
+	-> Encomendar o stock que ficou em falta.
 
 ----------------------------------------------//-----------------------------------
 XML:
