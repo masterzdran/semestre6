@@ -1,0 +1,11 @@
+Reflexão
+  array
+  delegate
+  parametros
+  tipos
+Eventos
+Genericos
+Delegates
+Attributes
+GC
+Nullable Type
