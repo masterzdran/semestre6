@@ -1,0 +1,18 @@
+C:\WorkingArea\Sistemas Informacao II\APP\APP\bin\Debug\APP.exe
+C:\WorkingArea\Sistemas Informacao II\APP\APP\bin\Debug\APP.pdb
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\APP.Form1.resources
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\APP.Properties.Resources.resources
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\APP.exe
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\APP.pdb
+D:\ISEL\SI2\code-SI2\Práticas\TP2\APP\APP\obj\x86\Debug\APP.exe
+D:\ISEL\SI2\code-SI2\Práticas\TP2\APP\APP\obj\x86\Debug\APP.pdb
+D:\ISEL\SI2\code-SI2\Práticas\TP2\APP\APP\bin\Debug\APP.exe
+D:\ISEL\SI2\code-SI2\Práticas\TP2\APP\APP\bin\Debug\APP.pdb
+D:\ISEL\SI2\code-SI2\Práticas\TP2\APP\APP\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\ISEL\SI2\code-SI2\Práticas\TP2\APP\APP\obj\x86\Debug\APP.Form1.resources
+D:\ISEL\SI2\code-SI2\Práticas\TP2\APP\APP\obj\x86\Debug\APP.Properties.Resources.resources
+D:\ISEL\SI2\code-SI2\Práticas\TP2\APP\APP\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\ISEL\SI2\code-SI2\Práticas\TP2\APP\APP\obj\x86\Debug\GenerateResource.write.1.tlog
