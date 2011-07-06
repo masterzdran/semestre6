@@ -9,10 +9,10 @@ set dateformat dmy;
 if OBJECT_ID('CreateCourses') IS NOT NULL
 	drop procedure CreateCourses;
 go
-create procedure CreateCourses(@Name varchar(50), @active bit, @price smallmoney, @type char(20))
+create procedure CreateCourses(@Name varchar(50), @active bit, @price smallmoney, @type char(20), @idCatalog int)
 as
 	begin transaction
-		insert into dbo.COURSES values(@Name, @active, @price, @type);
+		insert into dbo.COURSES values(@Name, @active, @price, @type, @idCatalog);
 	commit
 go
 

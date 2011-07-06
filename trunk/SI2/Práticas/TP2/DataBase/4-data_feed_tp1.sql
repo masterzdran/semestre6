@@ -23,15 +23,7 @@ insert into dbo.COUNTRY(NAME) values ('Espanha');
 insert into dbo.COUNTRY(NAME) values ('França');
 go
 
---dbo.PROFICIENCY
-insert into dbo.PROFICIENCY(NAME) values ('Manager');
-insert into dbo.PROFICIENCY(NAME) values ('Assistant Manager');
-insert into dbo.PROFICIENCY(NAME) values ('Waiter');
-insert into dbo.PROFICIENCY(NAME) values ('Cook');
-insert into dbo.PROFICIENCY(NAME) values ('Kitchen Assistant');
-insert into dbo.PROFICIENCY(NAME) values ('Bartender');
-insert into dbo.PROFICIENCY(NAME) values ('Cleaner');
-go
+
 
 --dbo.ADDRESS
 insert into dbo.ADDRESS(STREET,ZIP_CODE,CITY,COUNTRY_ID) values('Rua A', 1000, 'Lisboa', 1);
@@ -61,11 +53,11 @@ go
 
 --dbo.INGREDIENTS
 -- CreateIngredients(@Name char(30),   @Qty_reserved int, @Unit int, @Min_Qty, @ORDER_QTY)
-exec CreateIngredients 	'Bifes Vazia', 	0, 					5, 			5, 		10;		--1
+exec CreateIngredients 'Bifes Vazia', 	0, 					5, 			5, 		10;		--1
 exec CreateIngredients 'Azeite',		0,					3,			1,		10;			--2
 exec CreateIngredients 'Alho',			0,					1,		0.100,		1;			--3	
 exec CreateIngredients 'Batatas',		0,					1,			5,		20;			--4
-exec CreateIngredients 'Sal',			0,					2,			100,	1000;			--5
+exec CreateIngredients 'Sal',			0,					2,			100,	1000;		--5
 exec CreateIngredients 'Pimenta',		0,					2,			50,		200;		--6
 exec CreateIngredients 'Bacalhau',		0,					1,			3,		10;			--7
 exec CreateIngredients 'Leite',			0,					3,			3,		12;			--8
@@ -76,14 +68,19 @@ exec CreateIngredients 'Cogumelos', 0, 1, 0.500, 1;		--12
 exec CreateIngredients 'Salsa', 0, 2, 100, 300;			--13
 exec CreateIngredients 'Ovos', 0, 5, 12, 36;			--14
 
+
+--dbo.CATALOG
+insert CATALOG(PREPARATION, TEMPERATURE, DURATION)
+	values('...', 150, '00:00:30');
+
 --dbo.COURSES
 --CreateCourses(@Name varchar(50), @active bit, @price smallmoney)
-exec CreateCourses 'Peitos Frango com Cogumelos', 1, 10, 'Prato';
-exec CreateCourses 'Bacalhau com Natas', 1, 14, 'Prato';
-exec CreateCourses 'Bife à Portuguesa', 1, 12, 'Prato';
-exec CreateCourses 'Mousse de Chocolate', 1, 15, 'Sobremesa';
-exec CreateCourses 'Baba de Camelo', 1, 15, 'Sobremesa';
-exec CreateCourses 'Doce da Casa', 1, 15, 'Sobremesa';
+exec CreateCourses 'Peitos Frango com Cogumelos', 1, 10, 'Prato', 1;
+exec CreateCourses 'Bacalhau com Natas', 1, 14, 'Prato', 1;
+exec CreateCourses 'Bife à Portuguesa', 1, 12, 'Prato', 1;
+exec CreateCourses 'Mousse de Chocolate', 1, 15, 'Sobremesa', 1;
+exec CreateCourses 'Baba de Camelo', 1, 15, 'Sobremesa', 1;
+exec CreateCourses 'Doce da Casa', 1, 15, 'Sobremesa', 1;
 
 --dbo.COURSES_INGREDIENTS
 --JoinCoursesToIngredients(@CoursesID int, @IngredientsID int,@Qtd int)
@@ -119,10 +116,35 @@ exec JoinMenuToCourse 3, 1
 exec JoinMenuToCourse 3, 2
 exec JoinMenuToCourse 3, 4
 
+--dbo.RESTAURANTS
+
+insert into RESTAURANTS(NAME, ADDRESS_ID) values ('La Fondue', 3); --lisboa
+insert into RESTAURANTS(NAME, ADDRESS_ID) values ('La Tartine', 10); --paris
+insert into RESTAURANTS(NAME, ADDRESS_ID) values ('LA COCAGNE', 8); --barcelona
+insert into RESTAURANTS(NAME, ADDRESS_ID) values ('Tête à Tête', 9); --madrid
+
 --dbo.PERSON
+--clientes
 insert into dbo.PERSON(NAME, CONTACT) values('Nuno Sousa', '919876543');
 insert into dbo.PERSON(NAME, CONTACT) values('Nuno Cancelo', '911234567');
 insert into dbo.PERSON(NAME, CONTACT) values('Cláudia Crisóstomo', '969876543');
+--EMPLOYYES:
+--restaurante frances em paris
+insert into dbo.PERSON(NAME, CONTACT) values('Aaron CHEVALIER', '06 1200 1900'); --4
+insert into dbo.PERSON(NAME, CONTACT) values('Acace AURILLAC', '06 1200 1900'); --5
+insert into dbo.PERSON(NAME, CONTACT) values('Adele BUFFON', '06 1200 1900'); --6
+--restaunrate frances em lisboa
+insert into dbo.PERSON(NAME, CONTACT) values('César Henriques', '960543987'); --7
+insert into dbo.PERSON(NAME, CONTACT) values('Diamantino Rodrigues', '961234987'); --8
+insert into dbo.PERSON(NAME, CONTACT) values('Deolinda Esteves', '964275946'); --9
+--restaunrate frances em barcelona
+insert into dbo.PERSON(NAME, CONTACT) values('Aimon Chioccola', '969876543'); --10
+insert into dbo.PERSON(NAME, CONTACT) values('Alejandro Corgosinho', '969876543'); --11
+insert into dbo.PERSON(NAME, CONTACT) values('Osírio  Curtarell', '969876543'); --12
+--restaunrate frances em madrid
+insert into dbo.PERSON(NAME, CONTACT) values('Esmeralda  Fantinati', '915345987'); --13
+insert into dbo.PERSON(NAME, CONTACT) values('Fidélis Galluzzi', '931098234'); --14
+insert into dbo.PERSON(NAME, CONTACT) values('Guadalupe  Zottarelli', '919234729'); --15
 
 --dbo.CUSTOMER
 insert into dbo.CUSTOMER(PERSON_ID, CUSTOMER_TYPE) values(1,0);
@@ -140,18 +162,82 @@ insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(1,3);
 insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(2,3);
 insert into dbo.FRIENDS(REGISTERED_ID1, REGISTERED_ID2) values(3,1);
 
+--dbo.PROFICIENCY
+insert into dbo.PROFICIENCY(NAME) values ('Chef'); --1
+insert into dbo.PROFICIENCY(NAME) values ('Sous-Chef'); --2
+insert into dbo.PROFICIENCY(NAME) values ('Commis'); --3
+insert into dbo.PROFICIENCY(NAME) values ('Aboyer'); --4
+insert into dbo.PROFICIENCY(NAME) values ('Saucier'); --5
+insert into dbo.PROFICIENCY(NAME) values ('Garde-manger'); --6
+insert into dbo.PROFICIENCY(NAME) values ('Rotisseur'); --7
+insert into dbo.PROFICIENCY(NAME) values ('Patissier'); --8
+insert into dbo.PROFICIENCY(NAME) values ('Poissonier'); --9
+insert into dbo.PROFICIENCY(NAME) values ('Boucher'); --10
+insert into dbo.PROFICIENCY(NAME) values ('Tournant'); --11
+insert into dbo.PROFICIENCY(NAME) values ('Chef de Gard'); --12
+insert into dbo.PROFICIENCY(NAME) values ('Chefe Steward'); --13
+insert into dbo.PROFICIENCY(NAME) values ('Plongeur'); --14
+go
+
+--dbo.EMPLOYEE
+
+insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
+		values(4, 123654789,10,2);
+insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
+		values(5, 432657987, 10, 2);
+insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
+		values(6, 987234729, 10, 2);		
+insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
+		values(7,145567987,1,1);
+insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
+		values(8, 156823654, 1, 1);
+insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
+		values(9, 257237982,1,1);
+insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
+		values(10,654234987,8,3);
+insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
+		values(11, 156823654, 8, 3);
+insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
+		values(12, 257237982,8,3);
+insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
+		values(13,345861479,9,4);
+insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
+		values(14,179347982, 9, 4);
+insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
+		values(15,250368146,9,4);
+
+--dbo.EMPLOYEE_PROFICIENCY
+insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
+		values(1,4); --restaurante: 2
+insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
+		values(2,5); --restaurante: 2
+insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
+		values(3,6); --restaurante: 2
+insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
+		values(1,7); --restaurante: 1
+insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
+		values(2,8); --restaurante: 1
+insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
+		values(3,9); --restaurante: 1
+insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
+		values(1,10); --restaurante: 3
+insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
+		values(2,11); --restaurante: 3
+insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
+		values(3,12); --restaurante: 3
+insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
+		values(1,13); --restaurante: 4
+insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
+		values(2,14); --restaurante: 4
+insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
+		values(3,15); --restaurante: 4
+
 --dbo.SUPPLIERS
 insert into SUPPLIERS (NAME, ADDRESS_ID) values ('Didden BVBA - SPRL', 1);
 insert into SUPPLIERS (NAME, ADDRESS_ID) values ('VICENZI Biscotti SpA', 2);
 insert into SUPPLIERS (NAME, ADDRESS_ID) values ('Atlanta AG', 3);
 
---dbo.RESTAURANTS
 
-insert into RESTAURANTS(NAME, ADDRESS_ID) values ('XPTO1', 3);
-insert into RESTAURANTS(NAME, ADDRESS_ID) values ('XPTO2', 5);
-insert into RESTAURANTS(NAME, ADDRESS_ID) values ('XPTO3', 8);
-insert into RESTAURANTS(NAME, ADDRESS_ID) values ('XPTO4', 9);
-insert into RESTAURANTS(NAME, ADDRESS_ID) values ('XPTO5', 10);
 
 --dbo.ORDERS
 insert into ORDERS(SUPPLIER_ID, INGREDIENT_ID, DATE, QTY_ORDERED, EXPECTED_DATE, RESTAURANT_ID)
@@ -172,12 +258,12 @@ insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALI
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK, RESTAURANT_ID)
 		values(2, 3, 1, '02/06/2011', 5, 5,'15/06/2011', 2, 4);
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK, RESTAURANT_ID)
-	values(2, 3, 1, '27/05/2011', 5, 5,'01/06/2011', 1, 5);
+	values(2, 3, 1, '27/05/2011', 5, 5,'01/06/2011', 1, 4);
 	
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK, RESTAURANT_ID)
 	values(11, 3, 1, '1/06/2011', 5, 5,'30/06/2011', 3, 3);
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK, RESTAURANT_ID)
-	values(11, 3, 1, '27/05/2011', 5, 5,'30/06/2011', 2, 5);
+	values(11, 3, 1, '27/05/2011', 5, 5,'30/06/2011', 2, 4);
 
 --dbo.BOOKING (1-3 customer id)
 insert into dbo.BOOKING(CUSTOMER_ID, DATE, 		QTY, BOOKING_TYPE, STATUS, COST_PRICE, SALE_PRICE)
