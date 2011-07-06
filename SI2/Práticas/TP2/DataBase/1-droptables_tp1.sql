@@ -133,6 +133,12 @@ drop table COURSES;
 
 if exists(select * 
 		from INFORMATION_SCHEMA.TABLES
+		where TABLE_NAME = 'CATALOG')
+drop table CATALOG;	
+
+
+if exists(select * 
+		from INFORMATION_SCHEMA.TABLES
 		where TABLE_NAME = 'EMPLOYEE_PROFICIENCY')
 drop table EMPLOYEE_PROFICIENCY;
 

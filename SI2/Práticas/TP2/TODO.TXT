@@ -24,14 +24,15 @@ CUSTOMER 		  EMPLOYEE			REGISTERED
 
 
 -> FALTA COLOCAR TRIGGER PARA ALERTAR QUE INGREDIENTES ESTAO FORA DE PRAZO (1º Parte)!!
--> Criar um Catálogo único e associá-lo a cada prato!!
--> Transferência de Stock:
-	-> Mudar o stock para outro restaurante;
-	-> Encomendar o stock que ficou em falta.
+-> Criar um Catálogo único e associá-lo a cada prato!! || FEITO
 
 ----------------------------------------------//-----------------------------------
 XML:
 
+-> Transferência de Stock:
+	-> Mudar o stock para outro restaurante;
+	-> Encomendar o stock que ficou em falta.
+	
 -> Catálogo == Cardápio? - Nao, o catálogo é um conjunto de receitas que sao servidas em todos os restaurantes (ex: No  mcdonalds a forma como é confeccionado o hamburger é igual para todos os franchising), basta faze-lo em XML para que todos os restaurantes possam verifica-lo em XHTML. (dúvida retirada com eng.)
 -> O Cardápio deve estar baseado no Catálogo...
 

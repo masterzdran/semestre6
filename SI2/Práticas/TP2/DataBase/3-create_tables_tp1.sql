@@ -1,9 +1,3 @@
-use master
-
-IF db_id('SI2_TP1') is null
-	CREATE DATABASE SI2_TP1;
-GO
-
 use SI2_TP1
 set dateformat dmy;
 
@@ -72,6 +66,14 @@ create table EMPLOYEE_PROFICIENCY(
 	constraint fk_EMPLOYEE_PROFICIENCY2 foreign key (EMPLOYEE_ID) references EMPLOYEE(PERSON_ID)
 )
 
+create table CATALOG(
+	ID					int identity(1,1),
+	PREPARATION			varchar(500) not null,
+	TEMPERATURE			int not null,
+	DURATION			time not null,
+	constraint pk_CATALOG primary key (ID)
+)
+
 --COURSES(ID[PK], NAME, ACTIVE, VALUE);
 create table COURSES(
 	ID			int identity(1,1),
@@ -79,7 +81,9 @@ create table COURSES(
 	ACTIVE		bit not null,
 	PRICE		smallmoney not null,	-- Preço de venda da porção
 	TYPE		char(20) not null, 		-- Tipo de prato: Entrada, Prato principal, Sobremesa, Sopa ...
-	constraint  pk_COURSES primary key (ID)
+	CATALOG_ID	int not null,
+	constraint  pk_COURSES primary key (ID),
+	constraint	fk_COURSES foreign key(CATALOG_ID) references CATALOG(ID)
 )
 
 --COMMENTS(ID[PK], CUSTOMER_ID[FK], COURSES_ID[FK], GRADE, COMMENT);
