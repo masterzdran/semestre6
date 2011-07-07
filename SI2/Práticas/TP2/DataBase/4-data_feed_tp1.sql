@@ -118,33 +118,33 @@ exec JoinMenuToCourse 3, 4
 
 --dbo.RESTAURANTS
 
-insert into RESTAURANTS(NAME, ADDRESS_ID) values ('La Fondue', 3); --lisboa
+insert into RESTAURANTS(NAME, ADDRESS_ID) values ('TantrasEnamour', 3); --lisboa
 insert into RESTAURANTS(NAME, ADDRESS_ID) values ('La Tartine', 10); --paris
 insert into RESTAURANTS(NAME, ADDRESS_ID) values ('LA COCAGNE', 8); --barcelona
 insert into RESTAURANTS(NAME, ADDRESS_ID) values ('Tête à Tête', 9); --madrid
 
 --dbo.PERSON
 --clientes
-insert into dbo.PERSON(NAME, CONTACT) values('Nuno Sousa', '919876543');
-insert into dbo.PERSON(NAME, CONTACT) values('Nuno Cancelo', '911234567');
-insert into dbo.PERSON(NAME, CONTACT) values('Cláudia Crisóstomo', '969876543');
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Nuno Sousa', '919876543',1);
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Nuno Cancelo', '911234567',2);
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Cláudia Crisóstomo', '969876543',3);
 --EMPLOYYES:
 --restaurante frances em paris
-insert into dbo.PERSON(NAME, CONTACT) values('Aaron CHEVALIER', '06 1200 1900'); --4
-insert into dbo.PERSON(NAME, CONTACT) values('Acace AURILLAC', '06 1200 1900'); --5
-insert into dbo.PERSON(NAME, CONTACT) values('Adele BUFFON', '06 1200 1900'); --6
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Aaron CHEVALIER', '06 1200 1900', 10); --4
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Acace AURILLAC', '06 1200 1900', 10); --5
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Adele BUFFON', '06 1200 1900', 10); --6
 --restaunrate frances em lisboa
-insert into dbo.PERSON(NAME, CONTACT) values('César Henriques', '960543987'); --7
-insert into dbo.PERSON(NAME, CONTACT) values('Diamantino Rodrigues', '961234987'); --8
-insert into dbo.PERSON(NAME, CONTACT) values('Deolinda Esteves', '964275946'); --9
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('César Henriques', '960543987',1); --7
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Diamantino Rodrigues', '961234987', 1); --8
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Deolinda Esteves', '964275946', 1); --9
 --restaunrate frances em barcelona
-insert into dbo.PERSON(NAME, CONTACT) values('Aimon Chioccola', '969876543'); --10
-insert into dbo.PERSON(NAME, CONTACT) values('Alejandro Corgosinho', '969876543'); --11
-insert into dbo.PERSON(NAME, CONTACT) values('Osírio  Curtarell', '969876543'); --12
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Aimon Chioccola', '969876543',8); --10
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Alejandro Corgosinho', '969876543',8); --11
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Osírio  Curtarell', '969876543',8); --12
 --restaunrate frances em madrid
-insert into dbo.PERSON(NAME, CONTACT) values('Esmeralda  Fantinati', '915345987'); --13
-insert into dbo.PERSON(NAME, CONTACT) values('Fidélis Galluzzi', '931098234'); --14
-insert into dbo.PERSON(NAME, CONTACT) values('Guadalupe  Zottarelli', '919234729'); --15
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Esmeralda  Fantinati', '915345987',9); --13
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Fidélis Galluzzi', '931098234',9); --14
+insert into dbo.PERSON(NAME, CONTACT, ADDRESS_ID) values('Guadalupe  Zottarelli', '919234729',9); --15
 
 --dbo.CUSTOMER
 insert into dbo.CUSTOMER(PERSON_ID, CUSTOMER_TYPE) values(1,0);
@@ -181,30 +181,30 @@ go
 
 --dbo.EMPLOYEE
 
-insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
-		values(4, 123654789,10,2);
-insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
-		values(5, 432657987, 10, 2);
-insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
-		values(6, 987234729, 10, 2);		
-insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
-		values(7,145567987,1,1);
-insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
-		values(8, 156823654, 1, 1);
-insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
-		values(9, 257237982,1,1);
-insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
-		values(10,654234987,8,3);
-insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
-		values(11, 156823654, 8, 3);
-insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
-		values(12, 257237982,8,3);
-insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
-		values(13,345861479,9,4);
-insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
-		values(14,179347982, 9, 4);
-insert EMPLOYEE( PERSON_ID, NIF, ADRESS_ID,RESTAUNRANT_ID)
-		values(15,250368146,9,4);
+insert EMPLOYEE( PERSON_ID, NIF, RESTAUNRANT_ID)
+		values(4, 123654789,2);
+insert EMPLOYEE( PERSON_ID, NIF,RESTAUNRANT_ID)
+		values(5, 432657987, 2);
+insert EMPLOYEE( PERSON_ID, NIF, RESTAUNRANT_ID)
+		values(6, 987234729, 2);		
+insert EMPLOYEE( PERSON_ID, NIF, RESTAUNRANT_ID)
+		values(7,145567987,1);
+insert EMPLOYEE( PERSON_ID, NIF, RESTAUNRANT_ID)
+		values(8, 156823654, 1);
+insert EMPLOYEE( PERSON_ID, NIF, RESTAUNRANT_ID)
+		values(9, 257237982,1);
+insert EMPLOYEE( PERSON_ID, NIF, RESTAUNRANT_ID)
+		values(10,654234987,3);
+insert EMPLOYEE( PERSON_ID, NIF, RESTAUNRANT_ID)
+		values(11, 156823654, 3);
+insert EMPLOYEE( PERSON_ID, NIF, RESTAUNRANT_ID)
+		values(12, 257237982, 3);
+insert EMPLOYEE( PERSON_ID, NIF, RESTAUNRANT_ID)
+		values(13,345861479,4);
+insert EMPLOYEE( PERSON_ID, NIF, RESTAUNRANT_ID)
+		values(14,179347982, 4);
+insert EMPLOYEE( PERSON_ID, NIF, RESTAUNRANT_ID)
+		values(15,250368146, 4);
 
 --dbo.EMPLOYEE_PROFICIENCY
 insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
