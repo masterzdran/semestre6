@@ -26,7 +26,7 @@ create table PROFICIENCY(
 create table RESTAURANTS(
 	ID						int identity(1,1),
 	NAME					varchar(50),
-	ADDRESS_ID					int,
+	ADDRESS_ID				int not null,
 	constraint pk_RESTAURANTS1 primary key (ID),
 	constraint pf_RESTAURANTS2 foreign key (ADDRESS_ID) references ADDRESS(ID)
 )
@@ -35,7 +35,9 @@ create table PERSON(
 	ID			int identity(1,1),
 	NAME		char(50) not null,
 	CONTACT		char(20) not null,
-	constraint pk_PERSON primary key (ID)
+	ADDRESS_ID	int,
+	constraint pk_PERSON primary key (ID),
+	constraint fk_PERSON foreign key (ADDRESS_ID) references ADDRESS(ID)
 )
 
 
@@ -51,7 +53,6 @@ create table CUSTOMER(
 create table EMPLOYEE(
 	PERSON_ID			int not null,
 	NIF					int not null,
-	ADRESS_ID			int not null,
 	RESTAUNRANT_ID		int not null,
 	constraint pk_EMPLOYEE primary key (PERSON_ID),
 	constraint fk_EMPLOYEE foreign key (PERSON_ID) references PERSON(ID),
