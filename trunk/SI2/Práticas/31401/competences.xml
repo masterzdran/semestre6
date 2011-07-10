@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<competences xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="competences.xsd">
+	<restaurant id="1" name="Name">
+		<competence name="Nome da Competencia 1" compCount="23"/>
+		<competence name="Nome da Competencia 2" compCount="1"/>
+	</restaurant>
+</competences>
