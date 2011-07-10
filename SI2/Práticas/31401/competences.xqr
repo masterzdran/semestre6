@@ -1,0 +1,26 @@
+xquery version "1.0";
+<!--
+<competences xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="competences.xsd">
+	<restaurant id="1" name="Name">
+		<competence name="Nome da Competencia 1" compCount="23"/>
+		<competence name="Nome da Competencia 2" compCount="1"/>
+	</restaurant>
+</competences>
+-->
+
+select @COMPETENCES.query(
+	element competences{
+		for $restaurant in /competences return(
+			element restaurant {
+				attribute id {/competences/restaurant/@id},
+				attribute name {/competences/restaurant/@name},
+				element competence {
+					for $competence  in /competences/restaurant/competence return (
+						attribute name{/competences/restaurant/competence/@name},
+						attribute compCount {/competences/restaurant/competence/@id}
+					)
+				}
+			}
+		)
+	}
+) as COMPETENCES_XML
