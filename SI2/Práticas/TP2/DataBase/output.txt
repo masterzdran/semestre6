@@ -1,4 +1,4 @@
-Processing scripts... 18:07:09,97  
+Processing scripts... 18:55:25,49  
 ---------------------------------------------------------------------------- 
 Droping tables and data base SI2_TP1... 
 Changed database context to 'SI2_TP1'.
@@ -43,6 +43,10 @@ Changed database context to 'SI2_TP1'.
 j)... 
 Changed database context to 'SI2_TP1'.
 k)... 
+Changed database context to 'SI2_TP1'.
+---------------------------------------------------------------------------- 
+Creating View... 
+XMLCompetenceView 
 Changed database context to 'SI2_TP1'.
 ---------------------------------------------------------------------------- 
 Data feed... 
