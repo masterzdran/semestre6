@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<res>
+	<RESTAURANTS ID="1" NAME="La Fondue" ADDRESS_ID="3"/>
+	<RESTAURANTS ID="2" NAME="La Tartine" ADDRESS_ID="10"/>
+	<RESTAURANTS ID="3" NAME="LA COCAGNE" ADDRESS_ID="8"/>
+	<RESTAURANTS ID="4" NAME="Tete a Tete" ADDRESS_ID="9"/>
+</res>
