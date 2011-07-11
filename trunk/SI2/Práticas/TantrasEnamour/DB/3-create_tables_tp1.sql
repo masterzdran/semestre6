@@ -198,7 +198,7 @@ create table LOT(
 	INGREDIENTS_ID	int not null,
 	SUPPLIER_ID		int not null,
 	INVOICE			int not null,
-	DATE			datetime not null,
+	DATE			datetime not null default(GETDATE()),
 	QTY				decimal(10,3) default(0) not null,
 	PRICE			smallmoney default(0) not null,
 	VALIDITY		datetime not null,
