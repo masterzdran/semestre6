@@ -3,22 +3,28 @@
 	<xsl:output method="text" version="1.0" encoding="UTF-8" indent="yes"/>
 
 	<xsl:template name="LT_Ingrediente" match="/ns:stockTransfer/ns:transaction/ns:restaurantFrom/ns:ingredient">
-			insert into TABLE ( id, name, quantity, unit)
+			insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, QTY, VALIDITY, STOCK, RESTAURANT_ID)
 			values
 			(
 				<xsl:value-of select="./@id"/>,
-				&apos;<xsl:value-of select="./@name"/>&apos;,
+				<xsl:value-of select="../@id"/>,
+				<xsl:value-of select="../../@id"/>,
 				<xsl:value-of select="./@quantity"/>,
-				&apos;<xsl:value-of select="./@unit"/>&apos;
+				&apos;<xsl:value-of select="./@vality"/>&apos;,
+				<xsl:value-of select="./@quantity"/>,
+				<xsl:value-of select="../@id"/>
 			) ;
-			<xsl:apply-templates/>
+			insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, QTY, VALIDITY, STOCK, RESTAURANT_ID)
+			values
+			(
+				<xsl:value-of select="./@id"/>,
+				<xsl:value-of select="../../ns:restaurantTo/@id"/>,
+				<xsl:value-of select="../../@id"/>,
+				-<xsl:value-of select="./@quantity"/>,
+				&apos;<xsl:value-of select="./@vality"/>&apos;,
+				-<xsl:value-of select="./@quantity"/>,
+				<xsl:value-of select="../../ns:restaurantTo/@id"/>
+			) ;			
+		<xsl:apply-templates/>
 	</xsl:template>
-	<xsl:template name="LT_Restaurantes" match="/ns:stockTransfer/ns:transaction">
-			----->Nome do Restaurante de Origem: 
-				<xsl:value-of select="./ns:restaurantFrom/@id"/> <xsl:value-of select="./ns:restaurantFrom/@name"/> 
-			----->Nome do Restaurante de Destino: 
-				<xsl:value-of select="./ns:restaurantTo/@id"/> <xsl:value-of select="./ns:restaurantFrom/@name"/> 
-				<xsl:apply-templates/>
-	</xsl:template>
-
 </xsl:stylesheet>
