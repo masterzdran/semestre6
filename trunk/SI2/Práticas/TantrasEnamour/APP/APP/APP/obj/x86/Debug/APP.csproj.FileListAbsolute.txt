@@ -1,0 +1,9 @@
+C:\WorkingArea\Sistemas Informacao II\APP\APP\bin\Debug\APP.exe
+C:\WorkingArea\Sistemas Informacao II\APP\APP\bin\Debug\APP.pdb
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\APP.Form1.resources
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\APP.Properties.Resources.resources
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\APP.exe
+C:\WorkingArea\Sistemas Informacao II\APP\APP\obj\x86\Debug\APP.pdb
