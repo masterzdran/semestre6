@@ -3,3 +3,6 @@ D:\visual studio 2010\Projects\Aula\Aula07\bin\Debug\Aula07.pdb
 D:\visual studio 2010\Projects\Aula\Aula07\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\visual studio 2010\Projects\Aula\Aula07\obj\x86\Debug\Aula07.exe
 D:\visual studio 2010\Projects\Aula\Aula07\obj\x86\Debug\Aula07.pdb
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula07\obj\x86\Debug\Aula07.exe
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula07\obj\x86\Debug\Aula07.pdb
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula07\obj\x86\Debug\ResolveAssemblyReference.cache

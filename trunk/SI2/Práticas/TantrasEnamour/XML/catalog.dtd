@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT tanenaCatalog:catalog (( category+ )) >
+<!ATTLIST tanenaCatalog:catalog
+	xmlns:tanenaCatalog CDATA #FIXED "http://TantrasEnamour/Catalog"
+>
+<!ATTLIST category
+	cat_name	CDATA	#REQUIRED
+>
+<!ELEMENT category ((course+))>
+<!ELEMENT course ((ingredient,confection))>
+<!ATTLIST course
+	course_id		CDATA	#REQUIRED
+	course_name		CDATA	#REQUIRED
+	course_price	CDATA	#REQUIRED
+>
+<!ELEMENT ingredient ((ingredientRecord+))>
+<!ELEMENT ingredientRecord EMPTY>
+<!ELEMENT confection (#PCDATA)>
+<!ATTLIST ingredientRecord 
+	id			CDATA	#REQUIRED
+	name	CDATA	#REQUIRED
+	quantity		CDATA	#REQUIRED
+	unit	 ( l | dl | cl | ml | kg | g | colher_de_sopa | colher_de_cha | colher_de_cafe | chavena) "l" 
+>

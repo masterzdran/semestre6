@@ -6,21 +6,30 @@ set dbmaster=master
 ECHO Processing scripts... %TIME%  >output.txt
 REM sqlcmd.exe  -S localhost\SQLEXPRESS -E   -d SI2_TP1 -i run_all.sql >>output.txt
 
+REM -----------------------------------------------------------------------------
+REM Drop Tables
+REM -----------------------------------------------------------------------------
 ECHO Droping tables and data base SI2_TP1... >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\1-droptables_tp1.sql >>output.txt
 ECHO Done! >>output.txt
 
+REM -----------------------------------------------------------------------------
+REM Create DB
+REM -----------------------------------------------------------------------------
 ECHO Creating data base SI2_TP1... >>output.txt
 sqlcmd.exe  -S %server% -E -d %dbmaster% -i %CD%\2-createdb-si2-tp1.sql >> output.txt
 ECHO Done! >>output.txt
 
+REM -----------------------------------------------------------------------------
+REM Create Tables
+REM -----------------------------------------------------------------------------
 ECHO Creating tables... >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\3-create_tables_tp1.sql >>output.txt
 ECHO Done! >>output.txt
-ECHO Creating triggers... >>output.txt
-sqlcmd.exe  -S %server% -E -d %db% -i %CD%\trigger1.sql >>output.txt
-sqlcmd.exe  -S %server% -E -d %db% -i %CD%\trigger2.sql >>output.txt
-ECHO Done! >>output.txt
+
+REM -----------------------------------------------------------------------------
+REM Create Procedures
+REM -----------------------------------------------------------------------------
 ECHO Creating Procedures... >>output.txt
 ECHO a)... >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\Ex4-a.sql >>output.txt
@@ -45,10 +54,20 @@ sqlcmd.exe  -S %server% -E -d %db% -i %CD%\Ex4-j.sql >>output.txt
 ECHO k)... >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\Ex4-k.sql >>output.txt
 
+REM -----------------------------------------------------------------------------
+REM Create Triggers
+REM -----------------------------------------------------------------------------
+ECHO Creating triggers... >>output.txt
+sqlcmd.exe  -S %server% -E -d %db% -i %CD%\trigger1.sql >>output.txt
+sqlcmd.exe  -S %server% -E -d %db% -i %CD%\trigger2.sql >>output.txt
+ECHO Done! >>output.txt
+
+REM -----------------------------------------------------------------------------
+REM Data Feed
+REM -----------------------------------------------------------------------------
 ECHO Data feed... >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\4-data_feed_tp1.sql >>output.txt
 ECHO Done! >>output.txt
 
 ECHO Done processing! >>output.txt
-
-type output.txt | more
+ECHO Done processing! 

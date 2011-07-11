@@ -3,3 +3,5 @@ D:\work\AVE2011\ExerciciosCSharp\Reflection\MethodTestingAttributes\bin\Debug\Me
 D:\work\AVE2011\ExerciciosCSharp\Reflection\MethodTestingAttributes\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\work\AVE2011\ExerciciosCSharp\Reflection\MethodTestingAttributes\obj\x86\Debug\MethodTestingAttributes.exe
 D:\work\AVE2011\ExerciciosCSharp\Reflection\MethodTestingAttributes\obj\x86\Debug\MethodTestingAttributes.pdb
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula12\MethodTestingAttributes\obj\x86\Debug\MethodTestingAttributes.exe
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula12\MethodTestingAttributes\obj\x86\Debug\MethodTestingAttributes.pdb

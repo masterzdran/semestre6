@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE tanenaEmployees:employees SYSTEM "employees.dtd">
+<tanenaEmployees:employees xmlns:tanenaEmployees="http://TantrasEnamour/Employees">
+-->
+<tanenaEmployees:employees xmlns:tanenaEmployees="http://TantrasEnamour/Employees"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://TantrasEnamour/Employees employees.xsd">
+	<tanenaEmployees:restaurant id="1" name="NAME_RESTAURANT">
+		<tanenaEmployees:employee id="1" name="EMPLOYEE_NAME">
+			<tanenaEmployees:competence name="Função"/>
+			<tanenaEmployees:competence name="Função"/>
+		</tanenaEmployees:employee>
+	</tanenaEmployees:restaurant>
+</tanenaEmployees:employees>

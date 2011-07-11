@@ -7,15 +7,25 @@ namespace Testes
 {
     class Program
     {
+        struct S
+        {
+            public int x;
+            public S(int y)
+            {
+                x = y;
+            }
 
+            public ~S()
+            {
+                x = 1;
+            }
+        }
         static void Main(string[] args)
         {
-            int[] source = new[] { 3, 8, 4, 6, 1, 7, 9, 2, 4, 8 };
-
-            foreach (int i in source.Where(x => x > 5))
-                Console.WriteLine(i);
-
-            Console.Read();
+            S s = new S();
+            Console.WriteLine(s.x);
+            Console.ReadLine();
+            
         }
     }
 }

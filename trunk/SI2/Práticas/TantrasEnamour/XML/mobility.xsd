@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mobil="http://TantrasEnamour/Mobility" targetNamespace="http://TantrasEnamour/Mobility">
+	<xs:attributeGroup name="t_restaurantID">
+		<xs:attribute name="id" type="xs:integer" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="t_employeeID">
+		<xs:attribute name="id" type="xs:integer" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:attributeGroup>
+
+	<xs:element name="restaurantTo">
+		<xs:complexType>
+			<xs:attributeGroup ref="mobil:t_restaurantID"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="restaurantFrom">
+		<xs:complexType>
+			<xs:attributeGroup ref="mobil:t_restaurantID"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="competence">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="employee">
+	<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="mobil:competence"/>
+				<xs:element ref="mobil:restaurantFrom"/>
+				<xs:element ref="mobil:restaurantTo"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="mobil:t_employeeID"/>
+	</xs:complexType>
+</xs:element>
+
+
+<xs:element name="transaction">	
+	<xs:complexType >
+		<xs:sequence minOccurs="1" maxOccurs="unbounded">
+			<xs:element ref="mobil:employee" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:integer"/>
+	</xs:complexType>
+</xs:element>
+
+
+	<xs:element name="mobility">
+		<xs:complexType>
+			<xs:sequence minOccurs="1" maxOccurs="unbounded">
+				<xs:element ref="mobil:transaction"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

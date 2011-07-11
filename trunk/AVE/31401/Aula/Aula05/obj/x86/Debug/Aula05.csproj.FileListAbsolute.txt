@@ -8,3 +8,8 @@ D:\visual studio 2010\Projects\Aula\Aula05\obj\x86\Debug\Aula05.pdb
 D:\visual studio 2010\Projects\Aula\Aula05\bin\Debug\Aula05.exe
 D:\visual studio 2010\Projects\Aula\Aula05\bin\Debug\Aula05.pdb
 D:\visual studio 2010\Projects\Aula\Aula05\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula05\bin\Debug\Aula05.exe
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula05\bin\Debug\Aula05.pdb
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula05\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula05\obj\x86\Debug\Aula05.exe
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula05\obj\x86\Debug\Aula05.pdb

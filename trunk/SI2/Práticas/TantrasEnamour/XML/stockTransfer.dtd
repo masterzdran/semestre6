@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT tanenaStockTransfer:stockTransfer ((transaction+))>
+<!ELEMENT transaction (restaurantFrom,restaurantTo)>
+<!ELEMENT restaurantFrom ((ingredient+))>
+<!ELEMENT ingredient	EMPTY>
+<!ELEMENT restaurantTo EMPTY>
+
+<!ATTLIST tanenaStockTransfer:stockTransfer
+	xmlns:tanenaStockTransfer CDATA #FIXED "http://TantrasEnamour/stockTransfer"
+>
+<!ATTLIST 	transaction
+	id		CDATA		#REQUIRED
+>
+<!ATTLIST	restaurantFrom
+	id		CDATA		#REQUIRED
+	name	CDATA		#REQUIRED
+>
+<!ATTLIST	ingredient
+	id			CDATA	#REQUIRED
+	name		CDATA	#REQUIRED
+	quantity	CDATA	#REQUIRED
+	unit	 ( l | dl | cl | ml | kg | g | colher_de_sopa | colher_de_cha | colher_de_cafe | chavena) "l"
+>
+<!ATTLIST	restaurantTo
+	id			CDATA	#REQUIRED
+	name		CDATA	#REQUIRED
+>
+	
