@@ -3,3 +3,6 @@ D:\visual studio 2010\Projects\Aula\Testes\bin\Debug\Testes.exe
 D:\visual studio 2010\Projects\Aula\Testes\bin\Debug\Testes.pdb
 D:\visual studio 2010\Projects\Aula\Testes\obj\x86\Debug\Testes.exe
 D:\visual studio 2010\Projects\Aula\Testes\obj\x86\Debug\Testes.pdb
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Testes\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Testes\obj\x86\Debug\Testes.exe
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Testes\obj\x86\Debug\Testes.pdb

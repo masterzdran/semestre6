@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT tanenaMobility:mobility ((employee+))>
+<!ELEMENT employee ((competence+,restaurantFrom,restaurantTo))>
+<!ELEMENT competence EMPTY>
+<!ELEMENT restaurantFrom EMPTY>
+<!ELEMENT restaurantTo EMPTY>
+
+<!ATTLIST	tanenaMobility:mobility
+		xmlns:tanenaMobility CDATA #FIXED "http://TantrasEnamour/Mobility"
+>
+<!ATTLIST employee
+	id		CDATA	#REQUIRED
+	name	CDATA	#REQUIRED
+>
+<!ATTLIST	competence 
+	name	CDATA #REQUIRED
+>
+<!ATTLIST	restaurantFrom
+	id		CDATA	#REQUIRED
+	name	CDATA	#REQUIRED
+>
+<!ATTLIST	restaurantTo
+	id		CDATA	#REQUIRED
+	name	CDATA	#REQUIRED
+>

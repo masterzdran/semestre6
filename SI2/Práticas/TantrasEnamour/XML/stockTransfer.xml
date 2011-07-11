@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE tanenaStockTransfer:stockTransfer SYSTEM "stockTransfer.dtd">-->
+<?xml-stylesheet type="text/xsl" href="stockTransfer.xslt"?>
+<ns:stockTransfer xmlns:ns="http://TantrasEnamour/stockTransfer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://TantrasEnamour/stockTransfer stockTransfer.xsd">
+	<ns:transaction id="1">
+		<ns:restaurantFrom id="1" name="Restaurant Name">
+			<ns:ingredient id="1" name="Ingredient Name" quantity="1" unit="Unidade"/>
+			<ns:ingredient id="1" name="Ingredient Name" quantity="1.2" unit="Unidade"/>
+			<ns:ingredient id="1" name="Ingredient Name" quantity="3.4" unit="Unidade"/>
+			<ns:ingredient id="1" name="Ingredient Name" quantity="6" unit="Unidade"/>
+		</ns:restaurantFrom>
+		<ns:restaurantTo id="2" name="Restaurant Name"/>
+	</ns:transaction>
+		<ns:transaction id="2">
+		<ns:restaurantFrom id="1" name="Restaurant Name">
+			<ns:ingredient id="1" name="Ingredient Name" quantity="1" unit="Unidade"/>
+			<ns:ingredient id="1" name="Ingredient Name" quantity="1.2" unit="Unidade"/>
+			<ns:ingredient id="1" name="Ingredient Name" quantity="3.4" unit="Unidade"/>
+			<ns:ingredient id="1" name="Ingredient Name" quantity="6" unit="Unidade"/>
+		</ns:restaurantFrom>
+		<ns:restaurantTo id="2" name="Restaurant Name"/>
+	</ns:transaction>
+		<ns:transaction id="3">
+		<ns:restaurantFrom id="1" name="Restaurant Name">
+			<ns:ingredient id="1" name="Ingredient Name" quantity="1" unit="Unidade"/>
+			<ns:ingredient id="1" name="Ingredient Name" quantity="1.2" unit="Unidade"/>
+			<ns:ingredient id="1" name="Ingredient Name" quantity="3.4" unit="Unidade"/>
+			<ns:ingredient id="1" name="Ingredient Name" quantity="6" unit="Unidade"/>
+		</ns:restaurantFrom>
+		<ns:restaurantTo id="2" name="Restaurant Name"/>
+	</ns:transaction>
+</ns:stockTransfer>

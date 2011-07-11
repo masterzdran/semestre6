@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://TantrasEnamour/Employees" targetNamespace="http://TantrasEnamour/Employees">
+
+	<xs:element name="competence">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="t_employee">
+		<xs:sequence>
+			<xs:element ref="ns1:competence" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:integer" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+
+	<xs:element name="employee" type="ns1:t_employee"/>
+
+	<xs:element name="restaurant">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ns1:employee" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:integer"/>
+			<xs:attribute name="name" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="employees">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ns1:restaurant" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

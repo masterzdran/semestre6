@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tanenaCatalog:catalog xmlns:tanenaCatalog="http://TantrasEnamour/Catalog"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://TantrasEnamour/Catalog catalog.xsd">
+	<tanenaCatalog:category category_name="Nome da Categoria">
+		<tanenaCatalog:course course_id="0" course_name="Nome do Prato" course_price="0.0">
+			<tanenaCatalog:ingredient>
+					<tanenaCatalog:ingredientRecord id="0" name="NOME" quantity="1" unit="kg"/>
+					<tanenaCatalog:ingredientRecord id="1" name="NOME" quantity="1" unit="kg"/>
+					<tanenaCatalog:ingredientRecord id="2" name="NOME" quantity="1.3" unit="kg"/>
+					<tanenaCatalog:ingredientRecord id="3" name="NOME" quantity="2" unit="kg"/>
+					<tanenaCatalog:ingredientRecord id="4" name="NOME" quantity="6" unit="kg"/>
+					<tanenaCatalog:ingredientRecord id="5" name="NOME" quantity="10" unit="kg"/>
+			</tanenaCatalog:ingredient>
+			<tanenaCatalog:confection>
+				Confecção
+			</tanenaCatalog:confection>
+		</tanenaCatalog:course>
+	</tanenaCatalog:category>
+</tanenaCatalog:catalog>
