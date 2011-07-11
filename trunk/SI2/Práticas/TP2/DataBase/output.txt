@@ -1,4 +1,4 @@
-Processing scripts... 16:08:49,41  
+Processing scripts... 18:07:09,97  
 ---------------------------------------------------------------------------- 
 Droping tables and data base SI2_TP1... 
 Changed database context to 'SI2_TP1'.

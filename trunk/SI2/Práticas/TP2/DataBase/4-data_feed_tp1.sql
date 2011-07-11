@@ -210,9 +210,9 @@ insert EMPLOYEE( PERSON_ID, NIF, RESTAUNRANT_ID)
 insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
 		values(1,4); --restaurante: 2
 insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
-		values(2,5); --restaurante: 2
+		values(1,5); --restaurante: 2
 insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
-		values(3,6); --restaurante: 2
+		values(1,6); --restaurante: 2
 insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
 		values(1,7); --restaurante: 1
 insert EMPLOYEE_PROFICIENCY(PROFICIENCY_ID, EMPLOYEE_ID)
