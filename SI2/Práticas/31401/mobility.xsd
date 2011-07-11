@@ -1,16 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-<ns:mobil xmlns:ns="http://TantrasEnamour/mobil" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://TantrasEnamour/mobil mobil.xsd">
-<ns:transaction id="idTrans">
-	<ns:employee id="Employee_ID" name="Employee_Name">
-		<ns:competence name="Função"/>
-		<ns:restaurantFrom id="RestaurantID" name="RestauranteName"/>
-		<ns:restaurantTo id="RestaurantID" name="RestauranteName"/>
-	</ns:employee>
-</ns:transaction>
-</ns:mobil>
-
--->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mobil="http://TantrasEnamour/Mobility" targetNamespace="http://TantrasEnamour/Mobility">
 	<xs:attributeGroup name="t_restaurantID">
 		<xs:attribute name="id" type="xs:integer" use="required"/>
