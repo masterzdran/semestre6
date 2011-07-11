@@ -13,22 +13,19 @@
 			<xs:enumeration value="colher de café"/>
 			<xs:enumeration value="chavena"/>
 		</xs:restriction>
-	</xs:simpleType>	
-	
+	</xs:simpleType>
 	<xs:complexType name="t_ingredient">
 		<xs:attribute name="id" type="xs:integer" use="required"/>
 		<xs:attribute name="name" type="xs:string" use="required"/>
 		<xs:attribute name="quantity" type="xs:decimal" use="required"/>
 		<xs:attribute name="unit" type="ns1:t_unit" use="required"/>
+		<xs:attribute name="vality" type="xs:date" use="required"/>
 	</xs:complexType>
-	
 	<xs:attributeGroup name="t_restaurantID">
 		<xs:attribute name="id" type="xs:integer" use="required"/>
 		<xs:attribute name="name" type="xs:string" use="required"/>
 	</xs:attributeGroup>
-	
 	<xs:element name="ingredient" type="ns1:t_ingredient"/>
-	
 	<xs:element name="restaurantFrom">
 		<xs:complexType>
 			<xs:sequence>
@@ -37,13 +34,11 @@
 			<xs:attributeGroup ref="ns1:t_restaurantID"/>
 		</xs:complexType>
 	</xs:element>
-	
 	<xs:element name="restaurantTo">
 		<xs:complexType>
 			<xs:attributeGroup ref="ns1:t_restaurantID"/>
 		</xs:complexType>
 	</xs:element>
-	
 	<xs:element name="transaction">
 		<xs:complexType>
 			<xs:sequence>
@@ -53,7 +48,6 @@
 			<xs:attribute name="id" type="xs:integer" use="required"/>
 		</xs:complexType>
 	</xs:element>
-	
 	<xs:element name="stockTransfer">
 		<xs:complexType>
 			<xs:sequence minOccurs="1" maxOccurs="unbounded">
