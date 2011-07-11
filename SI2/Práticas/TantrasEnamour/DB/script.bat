@@ -52,17 +52,11 @@ ECHO k)... >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\MostProfitMenu.sql >>output.txt
 
 ECHO ---------------------------------------------------------------------------- >>output.txt
-ECHO Creating View... >>output.txt
-ECHO XMLCompetenceView >> output.txt
-sqlcmd.exe -S %server% -E -d %db% -i %CD%\XMLCompetenceView.sql >>output.txt
-
-ECHO ---------------------------------------------------------------------------- >>output.txt
 ECHO Data feed... >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\4-data_feed_tp1.sql >>output.txt
 ECHO Data feed... >>output.txt
 sqlcmd.exe  -S %server% -E -d %db% -i %CD%\XMLCompetenceView.sql >>output.txt
 ECHO Done! >>output.txt
-
 
 ECHO Done processing! >>output.txt
 

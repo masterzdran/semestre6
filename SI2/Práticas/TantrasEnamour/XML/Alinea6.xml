@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<competences xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="competences.xsd">
+  <restaurant id="2" name="La Tartine">
+    <competence name="Chef                " compCount="3" />
+  </restaurant>
+  <restaurant id="1" name="TantrasEnamour">
+    <competence name="Chef                " compCount="1" />
+    <competence name="Sous-Chef           " compCount="1" />
+    <competence name="Commis              " compCount="1" />
+  </restaurant>
+  <restaurant id="3" name="LA COCAGNE">
+    <competence name="Chef                " compCount="1" />
+    <competence name="Sous-Chef           " compCount="1" />
+    <competence name="Commis              " compCount="1" />
+  </restaurant>
+  <restaurant id="4" name="Tête à Tête">
+    <competence name="Chef                " compCount="1" />
+    <competence name="Sous-Chef           " compCount="1" />
+    <competence name="Commis              " compCount="1" />
+  </restaurant>
+</competences>
