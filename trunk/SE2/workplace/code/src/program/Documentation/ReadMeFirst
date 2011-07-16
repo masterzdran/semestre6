@@ -1,0 +1,22 @@
+O diagrama demonstra  o esboço da solução.
+
+
+Todo:
+ Mapeamento entre:
+  -- GPIO
+  -- LPCXXXX
+  -- RTC?????!!!!!
+  -- SCB
+  -- SPI
+  -- TIMER
+ Com eCos: 
+  -- /cyg/infra/cyg_type.h
+  -- /cyg/hal/hal_io.h
+  -- /cyg/hal/var_io.h
+  -- /pkconf/hal_ar,_lpc_2xxx
+  -- /cyg/kernel/clock
+  -- /sys/
+
+Desta forma fica virtualizado o acesso por entre a aplicação/uIP e o eCos, reutilizando as funções macros mais elegante.
+A tradução deve ser efectuada ao nivel de macro e não de função. Dai verificar o que faz sentido traduzir.
+
