@@ -1,0 +1,11 @@
+
+all: uip.a
+
+CC     = arm-eabi-gcc
+AR     = arm-eabi-ar
+CFLAGS = -Wall -g -O -I../../ecos/install/ecos2_install/include -I../uip -I. -fpack-struct
+
+-include ../uip/Makefile.include
+
+clean:
+	rm -fr *.o *~ *core uip $(OBJECTDIR) *.a
