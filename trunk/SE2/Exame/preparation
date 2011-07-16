@@ -1,0 +1,122 @@
+* Relativamente aos diferentes barramentos de comunicação estudados – I2C, SPI e série assíncrono, apresente, sucintamente, as principais características de cada um.
+* Qual o âmbito de utilização das interfaces de comunicação I2C e SPI?
+
+* Apresente a justificação para a existência de dois modos de atendimento de interrupção na arquitectura ARM – modo IRQ e modo FIQ
+
+* Qual a justificação para a existência de modo IRQ na arquitectura ARM com replicação do registo LR?
+
+* Apresente a motivação para a introdução do conceito de sistema operativo nos sistemas embebidos de média e pequena dimensão.
+
+* Explique, sucintamente, o modelo de atendimento de interrupções do eCos.
+
+* Apresente a motivação para a existência da função cyg_thread_delay no eCos. Porque não utilizar um timer ou um ciclo de código?
+
+* A opção de fazer o processamento da interrupção na ISR em vez de na DSR contribui para o aumento ou para a diminuição da latência do sistema aos pedidos de interrupção? Justifique.
+
+* O modelo de processamento das interrupções do eCos caracteriza-se por ser dividido em três etapas: ISR, DSR e Thread. Noutros núcleos de multiprogramação, por exemplo FreeRTOS, as interrupções processam-se em duas etapas: ISR e Thread. Apresente justificações para a solução usada no eCos. 
+
+* A não utilização de um sistema operativo como o eCos leva a que o desenho das aplicações seja organizado em maquina de estados. Apresente vantagens de desvantagens deste método.
+
+* Na função void cyg_semaphore_ini( cyg_sem_t *sem, cyg_count32 val);
+O primeiro parametro é um apontador para uma estrutura que vai ser preenchida durante a execução da função. Porque não se inicia estes campo directamente? Justifique.
+
+* Relativamente ao conceito de sistema operativo para sistemas embebidos:
+	a) Apresente a motivação da introdução deste conceito nos sistemas embebidos.
+	b) Enumere vantagens e desvantagens da utilização de um sistema operativo como o estudado nas aulas, o eCos.
+
+* Descreva o mecanismo de sincronização Event Flags, existente no eCos, e dê um exemplo de utilização
+
+* Nas funções de iniciação dos objectos Semaphore e Event Flags do eCos:
+	void cyg_semaphore_init(cyg_sem_t* sem, cyg_count32 val);
+	void cyg_flag_init(cyg_flag_t* flag);
+	a) O que significa o primeiro parâmetro de cada função.
+	b) Sendo o primeiro parâmetro uma apontador para uma struct, que previsivelmente vai ser iniciada na função, porque não se iniciam os campos dessa struct directamente? Justifique.
+
+* Relativamente ao modelo de atendimento de interrupções do eCos:
+	a) Explique sucintamente o conceito de ISR e DSR.
+	b) Comente a seguinte frase: “Se o processamento da interrupção envolver unicamente um e só um acesso a um porto de I/O não é necessário criar uma DSR”.
+	c) Apresente um exemplo de utilização de cada um dos conceitos anteriores.
+	
+* Quais as características principais da memória flash? Em que medida essas características condicionam a sua utilização?
+
+* A não utilização de suporte multi-tarefa conduz à elaboração de um programa organizado em torno de um ciclo principal. Apresente vantagens de desvantagens deste método.
+
+* Descreva o modelo de atendimento de interrupções do eCos
+
+* Caracterize as situações de utilização das funções cyg_thread_delay e HAL_DELAY_US.
+
+* Na API do eCos para manipulação da flash disponível, entre outras funções, existe a função
+      bool flash_code_overlaps(void *start, void *end);
+  Explique qual o objectivo desta função e a necessidade da sua implementação.
+
+* Quais os benefícios do suporte de rede para um sistema embebido? Quais as partes, quer hardware quer software, envolvidas nesse suporte?
+
+* De que depende o tempo de resposta de um sistema baseado no eCos a um acontecimento externo sinalizado através de uma interrupção? Considere os casos em que o processamento se faça, respectivamente, na isr, na dsr ou na thread.
+
+* Quais são as características principais das memórias Flash do tipo NOR?
+
+* Discuta a utilização de um sistema operativo como o eCos face à não utilização de sistema operativo no desenvolvimento de aplicações para sistemas embebidos.
+
+* Qual o papel da ferramenta “eCos configuration tool” no processo de desenvolvimento de software para sistemas embebidos com eCos?
+
+* A aplicação gráfica, estuda nas aulas, compõe a imagem num buffer interno, à medida que evolui. Esta imagem é posteriormente transposta para o LCD através da função lcd_write . Construa a estrutura de programação necessária para que esta função seja executada apenas quando houver alteração da imagem e não mais do que 50 vezes por segundo.
+
+* Escreva na consola, através da função diag_printf, e com base na “eCos FLASH library”, o endereço base da memória Flash, a dimensão dos sectores e o número de sectores.
+
+* Com base na “eCos FLASH library”, programe a função flash_write , que permite escrever um bloco de dados em Flash sem que o utilizador tenha que lidar com as especificidades deste tipo de memórias. 
+	void flash_write(void * address, char * data, int size);
+
+* os gestores de comunicação série estudados nas aulas, indique como está resolvida a exclusão mútua entre as rotinas de serviço à interrupção e as threads de utilização.
+
+* Porque é que no eCos é inadequada a utilização de primitivas do núcleo a partir das rotinas de interrupção ISR?
+
+* Descreva o mecanismo de sincronização Event Flags, existente no eCos, e dê um exemplo de utilização
+
+* Relativamente ao núcleo do eCos, quando se especificam N tiques qual o valor máximo e mínimo para o intervalo de tempo resultante?
+
+* As rotinas de interrupção executam assincronamente em relação às threads. Explique como é que podem ser resolvidos, no eCos, os problemas de concorrência daí resultantes.
+
+* Quais as características principais da memória FLASH? Em que medida essas características condicionam a sua utilização? 
+
+* Descreva o processo de iniciação de um programa eCos, no hardware AT91EB55, segundo o modelo de arranque “ROMRAM”.
+
+* Ocupando a memória do AT91EB55 endereços a partir de 0x2000000, porque é que os programas de aplicação são localizados a partir do endereço 0x2040000?
+
+* Quais são os requisitos de hardware necessários para a utilização do eCos?
+
+* Descreva o modelo de atendimento de interrupções do eCos.
+
+* Escreva o código de uma aplicação para o AT91EB55 que comuta as oito saídas do PIOB ligadas aos LEDS de acordo com comandos recebidos do telecomando de infra-vermelhos. As teclas numéricas de 1 a 8 comutam o estado dos LEDs 1 a 8, respectivamente.
+
+* Descreva o modelo de atendimento de interrupções do eCos.
+
+* A função cyg_thread_create tem entre os seus parâmetros a especificação do endereço base da memória de stack - stack_base. Na criação de threads num sistema operativo convencional isto não acontece. Justifique esta diferença.
+
+* Descreva a estrutura de ficheiros usada no eCos.
+
+* Classifique, justificando, o modo de arranque usado pelos programas realizados na disciplina de MPI. Como poderia tornar ROMable um destes programas se dele possui-se apenas o executável, em formato ELF?
+
+* Caracterize as situações de utilização das funções cyg_thread_delay e HAL_DELAY_US.
+
+* Quando se utiliza o eCos, qual a diferença entre iniciar uma aplicação na função cyg_user_star ou na função main?
+
+* Qual o interesse da utilização de sistemas de ficheiros em sistemas embebidos mesmo quando estes são voláteis (RAMFS) ou apenas de leitura (ROMFS)?
+
+* A localização do sistema de ficheiros ROMFS, na versão actual do sistema operativo eCos, é fixada no código (hard coded). Apresente uma solução que permita a instalação da imagem do sistema de ficheiros em qualquer posição da FLASH, sem que, para a utilizar, seja necessário recompilar o código.
+
+
+
+
+-
+isso porque "nós" é que sabemos onde é que queremos o stack da thread. tambem se pode indicar na criação da thread
+que o stack é para ser "alocado" pelo eCos 
+existe uma zona de memoria que é reservada para o stack das threads 
+pelo eCos 
+por isso temos duas hipoteses: 
+1. dizemos nós onde é o stack - array local da aplicação 
+2. dizemos ao eCos que "arranje" ele espaço para o stack 
+
+
+
+
+
