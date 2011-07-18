@@ -8,8 +8,7 @@
  * may be overwritten.
  */
 
-#define CYGPKG_WALLCLOCK_EMULATE 1
-#undef CYGSEM_WALLCLOCK_SET_GET_MODE
+#define CYGSEM_WALLCLOCK_SET_GET_MODE 1
 #define CYGPKG_IO_WALLCLOCK_OPTIONS 1
 
 #endif

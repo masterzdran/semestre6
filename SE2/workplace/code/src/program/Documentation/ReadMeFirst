@@ -20,3 +20,13 @@ Todo:
 Desta forma fica virtualizado o acesso por entre a aplicação/uIP e o eCos, reutilizando as funções macros mais elegante.
 A tradução deve ser efectuada ao nivel de macro e não de função. Dai verificar o que faz sentido traduzir.
 
+
+uIP:
+  -- Alterar
+    -- tapdev.[h,c]     //criar funções de init, send, receive
+      -- Utilizar o Ethernet, Enc, SPI (spi do ecos?!?)
+    -- clock-arch.[h,c] //Timer do LPC via eCos
+    -- uip-conf.[h]     //Alterar os includes do types
+    -- Configurar o exemplo do webServer
+
+

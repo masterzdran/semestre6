@@ -19,21 +19,22 @@
 */
 #ifndef TYPES_H
 #define TYPES_H
+#include <cyg/infra/cyg_type.h>
 /**
  * Definição de tipos
  * */
-typedef volatile unsigned int       U32;
-typedef unsigned short int          U16;
-typedef unsigned char               U8;
+typedef CYG_WORD32       U32;
+typedef CYG_WORD16       U16;
+typedef CYG_BYTE         U8;
 
-typedef signed int       			      S32;
-typedef signed short int          	S16;
-typedef signed char        			    S8;
+typedef cyg_int32 S32;
+typedef cyg_int16 S16;
+typedef cyg_int8  S8;
 
-typedef volatile unsigned long*    PU32;
-typedef volatile unsigned short*   PU16;
-typedef volatile unsigned char*    PU8;
-typedef volatile void*             PVOID;
+typedef U32*    PU32;
+typedef U16*   PU16;
+typedef U8*    PU8;
+typedef volatile void* PVOID;
 
 
 typedef   U8    byte;
@@ -57,8 +58,6 @@ typedef struct _time{
   U8     minute;
   U8     second;  
 }TIME;
-
-typedef enum boolean {false,true}Bool;
 
 
 /**
