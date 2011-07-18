@@ -30,6 +30,7 @@
 #define GPIO_H
 #include "TYPES.h"
 #include "LPC21XX.h"
+#include <cyg/hal/hal_io.h>
 
 /**
  * @brief Macro definition of the GPIO functions. This definition simplify the function mask of each port, so it could be easy to switch function. @see GPIO Functions
@@ -105,57 +106,6 @@ typedef enum {
 	PINSEL0_UART_1_RI           =	(FUNCTION_1 << (PORT *15)),
 	PINSEL0_EINT_2              =	(FUNCTION_2 << (PORT *15))
 }PINSEL0_FUNCTIONS;
- 
-/* 
-#define     __PINSEL0_GPIO_PORT_0_0__       (FUNCTION_0 << (PORT * 0))
-#define     __PINSEL0_UART_0_TXD__          (FUNCTION_1 << (PORT * 0))
-#define     __PINSEL0_PWM_1__               (FUNCTION_2 << (PORT * 0))
-#define     __PINSEL0_GPIO_PORT_0_1__       (FUNCTION_0 << (PORT * 1))
-#define     __PINSEL0_UART_0_RXD__          (FUNCTION_1 << (PORT * 1))
-#define     __PINSEL0_PWM_3__               (FUNCTION_2 << (PORT * 1))
-#define     __PINSEL0_GPIO_PORT_0_2__       (FUNCTION_0 << (PORT * 2))
-#define     __PINSEL0_I2C_SCL__             (FUNCTION_1 << (PORT * 2))
-#define     __PINSEL0_TIMER_0_CAPTURE_0_0__ (FUNCTION_2 << (PORT * 2))
-#define     __PINSEL0_GPIO_PORT0_3__        (FUNCTION_0 << (PORT * 3))
-#define     __PINSEL0_I2C_SDA__             (FUNCTION_1 << (PORT * 3))
-#define     __PINSEL0_TIMER_0_MATCH_0_0__   (FUNCTION_2 << (PORT * 3))
-#define     __PINSEL0_GPIO_PORT_0_4__       (FUNCTION_0 << (PORT * 4))
-#define     __PINSEL0_SPI_SPP_SCK__         (FUNCTION_1 << (PORT * 4))
-#define     __PINSEL0_TIMER_0_CAPTURE_0_1__ (FUNCTION_2 << (PORT * 4))
-#define     __PINSEL0_GPIO_PORT_0_5__       (FUNCTION_0 << (PORT * 5))
-#define     __PINSEL0_SPI_SPP_MISO__        (FUNCTION_1 << (PORT * 5))
-#define     __PINSEL0_TIMER_0_MATCH_0_1__   (FUNCTION_2 << (PORT * 5))
-#define     __PINSEL0_GPIO_PORT_0_6__       (FUNCTION_0 << (PORT * 6))
-#define     __PINSEL0_SPI_SPP_MOSI__        (FUNCTION_1 << (PORT * 6))
-#define     __PINSEL0_TIMER_0_CAPTURE_0_2__ (FUNCTION_2 << (PORT * 6))
-#define     __PINSEL0_GPIO_PORT_0_7__       (FUNCTION_0 << (PORT * 7))
-#define     __PINSEL0_SPI_SPP_SSEL__        (FUNCTION_1 << (PORT * 7))
-#define     __PINSEL0_PWM_2__               (FUNCTION_2 << (PORT * 7))
-#define     __PINSEL0_GPIO_PORT_0_8__       (FUNCTION_0 << (PORT * 8))
-#define     __PINSEL0_UART_1_TXD__          (FUNCTION_1 << (PORT * 8))
-#define     __PINSEL0_PWM_4__               (FUNCTION_2 << (PORT * 8))
-#define     __PINSEL0_GPIO_PORT_0_9__       (FUNCTION_0 << (PORT * 9))
-#define     __PINSEL0_UART_1_RXD__          (FUNCTION_1 << (PORT * 9))
-#define     __PINSEL0_PWM_6__               (FUNCTION_2 << (PORT * 9))
-#define     __PINSEL0_GPIO_PORT_0_10__      (FUNCTION_0 << (PORT *10))
-#define     __PINSEL0_UART_1_RTS__          (FUNCTION_1 << (PORT *10))
-#define     __PINSEL0_TIMER_1_CAPTURE_1_0__ (FUNCTION_2 << (PORT *10))
-#define     __PINSEL0_GPIO_PORT_0_11__      (FUNCTION_0 << (PORT *11))
-#define     __PINSEL0_UART_1_CTS__          (FUNCTION_1 << (PORT *11))
-#define     __PINSEL0_TIMER_1_CAPTURE_1_1__ (FUNCTION_2 << (PORT *11))
-#define     __PINSEL0_GPIO_PORT_0_12__      (FUNCTION_0 << (PORT *12))
-#define     __PINSEL0_UART_1_DSR__          (FUNCTION_1 << (PORT *12))
-#define     __PINSEL0_TIMER_1_MATCH_1_0__   (FUNCTION_2 << (PORT *12))
-#define     __PINSEL0_GPIO_PORT_0_13__      (FUNCTION_0 << (PORT *13))
-#define     __PINSEL0_UART_1_DTR__          (FUNCTION_1 << (PORT *13))
-#define     __PINSEL0_TIMER_1_MATCH_1_1__    (FUNCTION_2 << (PORT *13))
-#define     __PINSEL0_GPIO_PORT_0_14__      (FUNCTION_0 << (PORT *14))
-#define     __PINSEL0_UART_1_DCD__          (FUNCTION_1 << (PORT *14))
-#define     __PINSEL0_EINT_1__              (FUNCTION_2 << (PORT *14))
-#define     __PINSEL0_GPIO_PORT_0_15__      (FUNCTION_0 << (PORT *15))
-#define     __PINSEL0_UART_1_RI__           (FUNCTION_1 << (PORT *15))
-#define     __PINSEL0_EINT_2__              (FUNCTION_2 << (PORT *15))
-*/
 
 /**
  * @brief GPIO data type structure. This struct has the needed fields name to communicate with the lpc registers.
@@ -177,12 +127,16 @@ typedef struct _GPIO{
 	U32 IOCLR;	
 }LPC_GPIO,*pLPC_GPIO;
 
-U32 gpio_read(U32 mask);
-void gpio_clear(U32 mask);
-void gpio_set(U32 mask);
-void gpio_write(U32 mask, U32 value );
-void gpio_init(U32 pinsel0_mask,U32 pinsel1_mask);
-void gpio_set_direction(U32 mask, U8 direction);
-void gpio_init_PINSEL0(U32 mask);
-void gpio_init_PINSEL1(U32 mask);
+
+#define GPIO_CLEAR(clear_pin) 		(HAL_WRITE_UINT32((pGPIO)->IOCLR, 1 << clear_pin))
+#define GPIO_SET(set_pin) 			(HAL_WRITE_UINT32((pGPIO)->IOSET, 1 << set_pin))
+#define GPIO_WRITE(pin_mask,value)  (HAL_WRITE_UINT32( pin_mask, value ))
+#define GPIO_READ(pin_mask,value)	(HAL_READ_UINT32( pin_mask, value ))
+#define GPIO_SET_DIRECTION(value,direction) {cyg_uint32 iodir;\
+	HAL_READ_UINT32((pGPIO)->IODIR, iodir); \
+	HAL_WRITE_UINT32(pGPIO)->IODIR, (direction)?(iodir |value):(iodir & (~value)))}
+#define  GPIO_INIT_PINSEL0(mask)	{cyg_uint32 pinsel;	\
+	HAL_READ_UINT32(PINSEL0, pinsel);\
+	HAL_WRITE_UINT32(PINSEL0, pinsel & mask);}
+
 #endif

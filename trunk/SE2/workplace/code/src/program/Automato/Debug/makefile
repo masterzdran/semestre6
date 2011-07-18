@@ -43,7 +43,7 @@ all: Automato.elf secondary-outputs
 Automato.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM devkitPro Linux GCC C Linker'
-	arm-eabi-gcc -T"target.ld" -nostdlib -L/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/eCos/lib -L/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/lib_eCos -Wl,-Map,Automato.map -mcpu=arm7tdmi-s -g3 -gdwarf-2 -o"Automato.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-eabi-gcc -T"target.ld" -nostdlib -L/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/eCos/lib -Wl,-Map,Automato.map -mcpu=arm7tdmi-s -g3 -gdwarf-2 -o"Automato.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
