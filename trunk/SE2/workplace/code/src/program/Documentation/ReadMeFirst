@@ -28,5 +28,12 @@ uIP:
     -- clock-arch.[h,c] //Timer do LPC via eCos
     -- uip-conf.[h]     //Alterar os includes do types
     -- Configurar o exemplo do webServer
+    
+criar:
+	-- modulo net
+	-- modulo sockets
+	-- modulo stream
+	-- mais os restantes que estão no moodle
+    
 
 
