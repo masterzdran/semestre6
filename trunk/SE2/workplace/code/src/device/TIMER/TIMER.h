@@ -22,7 +22,6 @@
 #include "TYPES.h"
 #include "LPC21XX.h"
 #include "GPIO.h"
-#include "startosc.h"
 
 /**
  * @defgroup TIMER_CONFIG_MACRO

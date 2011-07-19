@@ -9,6 +9,9 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
+-include web/mylib/subdir.mk
+-include web/subdir.mk
+-include net/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
