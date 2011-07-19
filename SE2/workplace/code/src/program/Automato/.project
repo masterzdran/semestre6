@@ -3,6 +3,10 @@
 	<name>Automato</name>
 	<comment></comment>
 	<projects>
+		<project>ENC28J60</project>
+		<project>RTC</project>
+		<project>TIMER</project>
+		<project>UIP</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

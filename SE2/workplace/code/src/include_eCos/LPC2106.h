@@ -29,6 +29,7 @@
 #ifndef LPC2106_H
 #define LPC2106_H
 #include "TYPES.h"
+#include <cyg/hal/var_io.h>
 /*
  ==============================================================================
  GPIO
@@ -46,6 +47,7 @@
 /**
  * @brief Definition of one pointer to an PINSEL1 structure
  * */
+#define     PINSEL1     (CYGARC_HAL_LPC2XXX_REG_PIN_BASE + CYGARC_HAL_LPC2XXX_REG_PINSEL0)
 #define     __PINSEL1__     (*((PDWord)		CYGARC_HAL_LPC2XXX_REG_PIN_BASE + CYGARC_HAL_LPC2XXX_REG_PINSEL0))
 
 /*

@@ -138,5 +138,7 @@ typedef struct _GPIO{
 #define  GPIO_INIT_PINSEL0(mask)	{cyg_uint32 pinsel;	\
 	HAL_READ_UINT32(PINSEL0, pinsel);\
 	HAL_WRITE_UINT32(PINSEL0, pinsel & mask);}
-
+#define  GPIO_INIT_PINSEL1(mask)	{cyg_uint32 pinsel;	\
+	HAL_READ_UINT32(PINSEL1, pinsel);\
+	HAL_WRITE_UINT32(PINSEL1, pinsel & mask);}
 #endif

@@ -21,6 +21,8 @@
 #define RTC_H
 #include "TYPES.h"
 #include "LPC21XX.h"
+#include "SCB.h"
+#include <pkgconf/hal_arm_lpc2xxx_p2106.h>
 
 
 /**
@@ -124,9 +126,12 @@ typedef struct _RTC{
 #define __CCR_CTCRST_ENABLE__      0x2
 #define __CCR_CTCRST_DISABLE__     0x0
 #define __CCR_CTTEST__             0x3
-
+/*
 #define LPC_PREINT      ((__SYSTEM_CLOCK__ / 32768) - 1)
 #define LPC_PREFRAC     (__SYSTEM_CLOCK__ - (((__SYSTEM_CLOCK__ / 32768) - 1) + 1) * 32768)
+*/
+#define LPC_PREINT      ((CYGNUM_HAL_ARM_LPC2XXX_CLOCK_SPEED / 32768) - 1)
+#define LPC_PREFRAC     (CYGNUM_HAL_ARM_LPC2XXX_CLOCK_SPEED - (((CYGNUM_HAL_ARM_LPC2XXX_CLOCK_SPEED / 32768) - 1) + 1) * 32768)
 
 #define __CIIR_IMSEC__          ((U8) 0x1   )
 #define __CIIR_IMMIN__          ((U8) 0x1<<1)

@@ -33,6 +33,9 @@
 								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level.230252941" name="Optimization level" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level" value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.none" valueType="enumerated"/>
 								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.nostdinc.1220127018" name="Do not search system directories (-nostdinc)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.nostdinc" value="false" valueType="boolean"/>
 								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.include.paths.258700316" name="Include paths (-I)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UIP/lpc-2106}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UIP/apps/webserver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UIP/uip}&quot;"/>
 									<listOptionValue builtIn="false" value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/eCos/include"/>
 									<listOptionValue builtIn="false" value="/home/masterzdran/WorkingArea/Isel/semestre6/SE2/workplace/code/src/include_eCos"/>
 								</option>

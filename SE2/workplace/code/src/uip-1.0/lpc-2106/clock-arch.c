@@ -39,10 +39,16 @@
  */
 
 #include "clock-arch.h"
-#include "TIMER.h"
+#include <sys/time.h>
 /*---------------------------------------------------------------------------*/
-clock_time_t clock_time(void)
+clock_time_t
+clock_time(void)
 {
-  return timer_now(pTIMER0);
+  struct timeval tv;
+  struct timezone tz;
+
+  gettimeofday(&tv, &tz);
+
+  return tv.tv_sec * 1000 + tv.tv_usec / 1000;
 }
 /*---------------------------------------------------------------------------*/

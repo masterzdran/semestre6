@@ -41,7 +41,6 @@
 
 #include "uip.h"
 #include "Ethernet.h"
-#include "console.h"
 ETHERNET_Device ethernetDevice ={
 	 {
       0,									
@@ -75,7 +74,7 @@ unsigned int tapdev_read(void)
 /*---------------------------------------------------------------------------*/
 void tapdev_send(void)
 {
-  int ret=Ethernet_send(uip_buf, U16 uip_len);
+  int ret=Ethernet_send(uip_buf, uip_len);
   if(ret == -1) {
     console_write_str("Ethernet: Ethernet_send: write");
   }
