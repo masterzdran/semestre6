@@ -1,0 +1,119 @@
+Grupo I
+1.  [1] Uma instância que está na freachable queue … 
+[   ] tem a garantia que o finalizador corre pelo menos uma vez. 
+[   ] tem a garantia que os finalizadores das instâncias por si referenciadas correm antes do seu. 
+[ V ] tem a garantia que pode aceder aos objectos por si referenciados, pois estes estão atingíveis. 
+[   ] não tem nenhuma das garantias anteriores. 
+
+2.  [1] Numa interface em C# podem não podem ser declarados delegates, porque…  
+[   ] o delegate teria de ser abstracto, uma vez que a interface também o é. 
+[   ] não seria possível ao runtime implementar o construtor e os métodos de Invoke, uma vez que a interface é abstracta. 
+[ V ] apenas podem ser declarados membros de comportamento numa interface. 
+[   ] apenas podem ser declarados métodos numa interface. 
+
+3.  [1] Uma das razões que  justifiquem a escrita de código específico para controlar a subscrição/revogação de  eventos em C# é…? 
+[   ] …  permitir que um tipo tenha mais que um evento do mesmo tipo.  
+[   ] …  evitar a utilização de MulticastDelegates substituindo-os por Delegates. 
+[ V ] …  optimizar o espaço ocupado em memória das instâncias dos tipos que definem eventos.  
+[   ] ... suportar cenários onde o tipo  a que pertence o evento é genérico e o tipo do evento também é genérico em pelo menos um dos tipos que parametrizam do tipo englobante. 
+
+4.  [1] Sem o suporte da linguagem C# para definir restrições nos tipos que parametrizam tipos e/ou métodos genéricos… 
+[   ]…  seria possível criar instâncias dos argumentos de tipo invocando um construtor com parâmetros. 
+[ X ]…  apenas seria possível aceder à interface de Object dos argumentos de tipo.  
+[   ]… seria possível aceder a toda a interface dos argumentos de tipo. As restrições servem apenas para limitar esse acesso.  
+[   ]...  nenhuma das opções anteriores é válida
+
+Grupo II
+1.  [1]  Qual a necessidade de criar  assemblies multi-módulo? Apresente pelo menos dois  exemplos  onde esta necessidade seja evidente. 
+* O módulo só é carregado para memória quando é necessário (quando for usado algum tipo exportado no módulo) 
+* Torna possível a implementação de um assembly  em mais que uma linguagem 
+* Separar fisicamente resources (imagens, strings) do código 
+
+2.  [2] O código seguinte é a codificação em IL de um método genérico parametrizado pelo tipo T que, recebendo como parâmetro um array a e um elemento elem, retorna o número de ocorrências de elem em v. Descreva o código apresentado e faça a implementação equivalente em C#.  
+
+*         public static Int32 Ocurrences<T>(T[] a, T elem)
+        {
+            Int32 ocurr=0;
+            Array.ForEach<T>(a,((e) => ocurr += (e.Equals(elem))?1:0));
+            return ocurr;
+        }
+        
+3.  [3] O método Zip  junta cada um dos elementos da primeira sequência com o elemento de mesmo índice da segunda sequência, Se as sequências não têm o mesmo número de elementos, o método junta as sequências até uma delas terminar. Este método recebe uma função que define como a junção é realizada. 
+a.  [1,5]  Implemente o método  Zip  como um método de extensão para  IEnumerable<T>. O método tem a 
+seguinte assinatura: 
+IEnumerable<TResult> Zip<TFirst, TSecond, TResult>(this IEnumerable<TFirst> first,IEnumerable<TSecond> second, Func<TFirst, TSecond, TResult> resultSelector);
+
+* public static IEnumerable<TResult> myZip<TFirst, TSecond, TResult>(this IEnumerable<TFirst> first, IEnumerable<TSecond> second, Func<TFirst, TSecond, TResult> resultSelector)
+        {
+            IEnumerator<TFirst> f = first.GetEnumerator();
+            IEnumerator<TSecond> s = second.GetEnumerator();
+
+            while (f.MoveNext() && s.MoveNext())
+            {
+                yield return resultSelector(f.Current, s.Current);
+            }
+
+        }
+b.  [1,5]  Utilizando o  extension method  Zip, desenvolvido na alínea anterior, implemente o método IEnumerable<string> GetFileLines(string fileName) que retorna um enumerado de strings, cada um delas contendo o número de linha e o conteúdo dessa linha do ficheiro de texto cuja path é fileName. 
+        public static IEnumerable<int> InfiniteIntegers(int start)
+        {
+            while (true)
+                yield return start++;
+        }
+
+        public static IEnumerable<string> GetFileLines(string fileName)
+        {
+            var l = System.IO.File.ReadAllLines(fileName);
+            return l.myZip(InfiniteIntegers(0), ((o2, o1) => o1 + o2));
+        }
+ 
+Grupo III 
+1.  [3] Pretende-se desenvolver um sistema de anotação que identifica métodos constantes, isto é, métodos que, quando invocados sobre um objecto, não alteram o seu estado. 
+a.  [0,5] Implemente o custom attribute ReadOnlyAttribute, o qual poderá ser aplicado uma vez a métodos e recebe no construtor uma string, correspondente à descrição do método anotado. O método ToString da classe ReadOnlyAttribute deverá retornar a descrição do método ao qual foi aplicado o atributo.  
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple=false)]
+    class ReadOnlyAttribute : Attribute
+    {
+        String _string;
+        public ReadOnlyAttribute(String s)
+        {
+            _string = s;
+        }
+
+        public String MyString{
+            get { return _string; }
+            set { _string = value; }
+        }
+        public String toString()
+        {
+            return String.Format("Descrição : {0}", _string);
+        }
+    }
+
+b.  [1,5] Implemente o método estático  IEnumerable<MethodInfo>  GetReadOnlyMethods(Type type) que  retorna todos os métodos definidos para o tipo  type  que tenham sido anotados com o atributo  ReadOnlyAttribute. 
+NOTA: Valorizam-se soluções que não impliquem a criação de contentores auxiliares 
+
+        public static IEnumerable<MethodInfo> GetReadOnlyMethods(Type type)
+        {
+
+            Type t = Type.GetType("ReadOnlyAttribute");
+            object[] a = type.GetCustomAttributes(t,false);
+
+            foreach (MethodInfo mi in a.GetType().GetMethods())
+            {
+                yield return mi;
+            }
+        }
+        
+c.  [1] Implemente o método  void Apply(  object  instance  )  como um método de extensão para object, que  invoca sobre instance  todos os métodos de instância definidos para o tipo de instance que sejam constantes e sem parâmetros. 
+
+        public static void Apply(object instance)
+        {
+            Type t = instance.GetType();
+            BindingFlags b = BindingFlags.GetField;
+
+            foreach (MethodInfo mi in t.GetMethods(b).Where(p => p.GetParameters().Length == 0))
+            {
+                mi.Invoke(mi, null);
+            }
+
+        } 
