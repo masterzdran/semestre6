@@ -11,7 +11,7 @@ if OBJECT_ID('CreateCourses') IS NOT NULL
 go
 create procedure CreateCourses(@Name varchar(50), @active bit, @price smallmoney, @type char(20), @idCatalog int)
 as
-	begin transaction
+	begin transaction isolation level serializable
 		insert into dbo.COURSES values(@Name, @active, @price, @type, @idCatalog);
 	commit
 go
@@ -22,7 +22,7 @@ go
 create procedure CreateIngredients(@Name char(30), @Qty_reserved decimal(10,3), @Unit int, 
 										 @QtyMin decimal(10,3), @QtyMax decimal(10,3))
 as
-	begin transaction
+	begin transaction isolation level serializable
 		insert into dbo.INGREDIENTS values(@Name, @Qty_reserved, @Unit, @QtyMin, @QtyMax);
 	commit
 go
@@ -33,7 +33,7 @@ go
 create procedure JoinCoursesToIngredients(@CoursesID int, @IngredientsID int,
 											@Qtd decimal(10,3))
 as
-	begin transaction
+	begin transaction isolation level serializable
 		insert into dbo.COURSES_INGREDIENTS values(@CoursesID, @IngredientsID, @Qtd);
 	commit
 go

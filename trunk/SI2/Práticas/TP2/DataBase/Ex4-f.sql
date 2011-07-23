@@ -15,7 +15,7 @@ returns @suggestionTemp table(
 			SUPPLIER_ID int,
 			QTY			decimal(10,3))
 as
-	begin
+	begin transaction ISOLATION LEVEL SERIALIZABLE
 		declare @stock decimal(10,3), @reserved decimal(10,3), @ingredientID int
 		
 		--get cursor with current stock

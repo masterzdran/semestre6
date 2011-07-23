@@ -14,7 +14,7 @@ returns @validityTemp table(
 			VALIDITY	datetime,
 			QTY			decimal(10,3))
 as
-	begin
+	begin TRANSACTION ISOLATION LEVEL READ COMMITTED
 		declare @stock decimal(10,3), @validity datetime, @ingredientID_stock int, @currentDate datetime
 		
 		declare @ID_ingredient int, @numberOfUnits decimal(10,3)

@@ -8,7 +8,7 @@ go
 create procedure UpdateStockWithSupplier(@idRestaurante int, @idEncomenda int, @invoice int, @quantityreceive int,
 										@validity datetime, @price smallmoney, @orderQuantityLeft bit, @dateExpectedOfNewOrder datetime)
 as
-	begin transaction
+	begin transaction ISOLATION LEVEL SERIALIZABLE
 	
 	declare @idsupplier int, @idingredient int, @qty_ordered int,
 			@dateorder datetime, @dateexpectedorder datetime, @idlot int

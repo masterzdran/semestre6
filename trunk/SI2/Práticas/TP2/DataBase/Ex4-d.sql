@@ -9,7 +9,7 @@ if OBJECT_ID('EventCost') IS NOT NULL
 go	
 create procedure EventCost(@BookingID int)
 as
-	begin transaction
+	begin transaction ISOLATION LEVEL READ COMMITTED
 		--verify if there is a Booking with @@BookingID and get number of customers
 		declare @qty int, @MenuID int, @final_discount int, @price smallmoney
 		select @qty = Booking.QTY from Booking where ID = @BookingID
