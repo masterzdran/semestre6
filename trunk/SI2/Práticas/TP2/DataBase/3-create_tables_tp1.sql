@@ -154,6 +154,7 @@ create table EVENT(
 	constraint	fk_EVENT1 foreign key(BOOKING_ID) references BOOKING(ID),
 	constraint	fk_EVENT2 foreign key(MENU_ID) references MENU(ID)
 )
+
 --//NORMAL_BOOKING(BOOKING_ID[FK], MENU_ID[FK]); //pode ter ou não menu escolhido à partida
 create table NORMAL_BOOKING(
 	BOOKING_ID	int not null,

@@ -1,0 +1,7 @@
+C:\Users\ElvisP\Desktop\APP\APP_trab1\bin\Debug\APP_trab1.exe
+C:\Users\ElvisP\Desktop\APP\APP_trab1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\ElvisP\Desktop\APP\APP_trab1\obj\x86\Debug\APP_trab1.exe
+C:\Users\ElvisP\Desktop\APP\APP_trab1\obj\x86\Debug\APP_trab1.pdb
+C:\Users\ElvisP\Desktop\APP\APP_trab1\bin\Debug\APP_trab1.pdb
+D:\ISEL\SI2\code-SI2\Práticas\TP2\APP-last-version\APP_trab1\obj\x86\Debug\APP_trab1.exe
+D:\ISEL\SI2\code-SI2\Práticas\TP2\APP-last-version\APP_trab1\obj\x86\Debug\APP_trab1.pdb

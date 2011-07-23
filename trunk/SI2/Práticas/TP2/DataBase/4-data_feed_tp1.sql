@@ -282,6 +282,16 @@ insert into dbo.NORMAL_BOOKING(BOOKING_ID, MENU_ID)
 	values(3,3); -- 2 Pratos
 commit
 
+--dbo.EVENT
+insert into EVENT( BOOKING_ID, MENU_ID, NAME, DESCRIPTION) values(1,1,'First Event','Party');
+insert into EVENT( BOOKING_ID, MENU_ID, NAME, DESCRIPTION) values(3,3,'First Event','Party');
+
+--dbo.COMMENTS
+insert into COMMENTS(CUSTOMER_ID, 	COURSES_ID, GRADE, COMMENT, STATUS)
+			  values(1, 1, 1, 'Sabor a detergentes1!',0);
+insert into COMMENTS(CUSTOMER_ID, 	COURSES_ID, GRADE, COMMENT, STATUS)
+			  values(2, 1, 1, 'Sabor a detergentes2!',0);
+
 /*
 select * from COUNTRY
 select * from BOOKING
