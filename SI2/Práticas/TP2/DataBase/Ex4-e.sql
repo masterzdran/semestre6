@@ -20,13 +20,6 @@ as
 			select @idMenu=MENU_ID from NORMAL_BOOKING where BOOKING_ID=@BookingID
 		else
 			select @idMenu=MENU_ID from EVENT where BOOKING_ID=@BookingID
-/*
-	while(@@FETCH_STATUS=0)
-		begin
-		insert into dbo.EVENT_FRIENDS(BOOKING_ID, CUSTOMER_ID, STATUS) values(@BookingID, @FriendID, 0)
-		fetch next from c into @FriendID
-		end
-*/		
 		if @idMenu!=0
 		begin
 			--declare cursor to see courses of a menu
