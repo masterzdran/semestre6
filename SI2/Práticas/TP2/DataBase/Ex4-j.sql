@@ -13,7 +13,7 @@ returns @MostSales table(
 			NUMBER			int,
 			TYPE		char(20))
 as
-	begin
+	begin TRANSACTION ISOLATION LEVEL READ COMMITTED
 		--put all courses in temporary table
 		insert into @MostSales 
 			select MENU_COURSES.COURSES_ID, COURSES.NAME, COUNT(*) as Total, COURSES.TYPE

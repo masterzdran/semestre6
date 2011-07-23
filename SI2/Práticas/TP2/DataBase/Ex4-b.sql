@@ -11,7 +11,7 @@ go
 create procedure CreateEvent(@CustomerID int, @MenuID int,@NameEvent char(20), 
 				@Description char(20) , @date datetime, @Qtd int)
 as
-	begin transaction
+	begin transaction isolation level serializable
 	--create a new event with the owner(customer)
 		insert into dbo.BOOKING(CUSTOMER_ID, DATE,QTY,BOOKING_TYPE, STATUS)
 			values(@CustomerID, @date, @Qtd, 1, 0);

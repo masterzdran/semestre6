@@ -11,7 +11,7 @@ returns @suggestionTemp_C table(
 			CITY			char(50),
 			CONTACT			char(20))
 as
-	begin
+	begin TRANSACTION ISOLATION LEVEL READ COMMITTED
 		insert into @suggestionTemp_C select PERSON.NAME, ADDRESS.CITY, PERSON.CONTACT
 							from REGISTERED inner join CUSTOMER on REGISTERED.CUSTOMER_ID = CUSTOMER.PERSON_ID
 							inner join ADDRESS on REGISTERED.ADDRESS_ID = ADDRESS.ID inner join PERSON on CUSTOMER.PERSON_ID = PERSON.ID

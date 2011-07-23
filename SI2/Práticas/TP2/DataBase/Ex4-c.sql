@@ -11,7 +11,7 @@ go
 create procedure TakeIndividualReservation(@CustomerID int, @Date datetime, @MenuID int, @Qty int)
 as
 
-	begin transaction
+	begin transaction isolation level serializable
 		insert into dbo.BOOKING(CUSTOMER_ID, DATE, QTY, BOOKING_TYPE, STATUS)
 			values (@CustomerID, @Date, @Qty, 0, 1)
 
@@ -32,7 +32,7 @@ go
 
 create procedure TakeEventReservation(@CustomerID int, @BookingID int)
 as
-	begin transaction
+	begin transaction isolation level serializable
 	
 		--if event booking status was Confirmed prior to this individual confirmation then
 		--we need to add ingredients to reserved after confirming reservation
