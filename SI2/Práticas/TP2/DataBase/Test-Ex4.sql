@@ -17,6 +17,21 @@ select * from SUPPLIERS
 */
 /*f*/
 
+update LOT set PRICE=5000 where ID=1;
+
+declare @Analysis table(
+			ID_ING			int,
+			ING_NAME		char(30),
+			ID_SUPP			int,
+			SUP_NAME		char(30),
+			INVOICE			int,
+			DATE			datetime,
+			QTY				decimal(10,3),
+			PRICE			smallmoney,
+			AVERAGE_PRICE	smallmoney);
+insert into @Analysis select * from dbo.PurchaseAnalysis('10-09-2010','12-10-2011',0.5);
+select distinct * from @Analysis;
+
 declare @suggestion table(
 				ID			int,
 				SUPPLIER_ID int,
@@ -24,7 +39,6 @@ declare @suggestion table(
 insert into @suggestion select * from dbo.SuggestOrder();		
 
 select * from @suggestion;
-
 
 /*h)*/
 --OK

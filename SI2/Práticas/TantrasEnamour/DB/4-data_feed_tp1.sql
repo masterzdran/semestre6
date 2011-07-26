@@ -245,7 +245,7 @@ insert into ORDERS(SUPPLIER_ID, INGREDIENT_ID, DATE, QTY_ORDERED, EXPECTED_DATE,
 
 --dbo.LOT
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK, RESTAURANT_ID)
-		values(1, 1, 1, '02/06/2011', 5, 10, '15/06/2011', 3, 1);
+		values(1, 1, 1, '02/06/2011', 500, 10, '15/06/2011', 3, 1);
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK,RESTAURANT_ID)
 		values(1, 1, 1, '02/06/2011', 5, 8, '10/06/2011', 2, 2);
 insert into dbo.LOT(INGREDIENTS_ID, SUPPLIER_ID, INVOICE, DATE, QTY, PRICE, VALIDITY, STOCK, RESTAURANT_ID)
@@ -281,6 +281,16 @@ insert into dbo.NORMAL_BOOKING(BOOKING_ID, MENU_ID)
 insert into dbo.NORMAL_BOOKING(BOOKING_ID, MENU_ID)
 	values(3,3); -- 2 Pratos
 commit
+
+--dbo.EVENT
+insert into EVENT( BOOKING_ID, MENU_ID, NAME, DESCRIPTION) values(1,1,'First Event','Party');
+insert into EVENT( BOOKING_ID, MENU_ID, NAME, DESCRIPTION) values(3,3,'First Event','Party');
+
+--dbo.COMMENTS
+insert into COMMENTS(CUSTOMER_ID, 	COURSES_ID, GRADE, COMMENT, STATUS)
+			  values(1, 1, 1, 'Sabor a detergentes1!',0);
+insert into COMMENTS(CUSTOMER_ID, 	COURSES_ID, GRADE, COMMENT, STATUS)
+			  values(2, 1, 1, 'Sabor a detergentes2!',0);
 
 /*
 select * from COUNTRY
