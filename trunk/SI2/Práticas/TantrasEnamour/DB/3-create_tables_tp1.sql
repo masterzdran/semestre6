@@ -154,6 +154,7 @@ create table EVENT(
 	constraint	fk_EVENT1 foreign key(BOOKING_ID) references BOOKING(ID),
 	constraint	fk_EVENT2 foreign key(MENU_ID) references MENU(ID)
 )
+
 --//NORMAL_BOOKING(BOOKING_ID[FK], MENU_ID[FK]); //pode ter ou não menu escolhido à partida
 create table NORMAL_BOOKING(
 	BOOKING_ID	int not null,
@@ -198,7 +199,7 @@ create table LOT(
 	INGREDIENTS_ID	int not null,
 	SUPPLIER_ID		int not null,
 	INVOICE			int not null,
-	DATE			datetime not null default(GETDATE()),
+	DATE			datetime not null,
 	QTY				decimal(10,3) default(0) not null,
 	PRICE			smallmoney default(0) not null,
 	VALIDITY		datetime not null,
