@@ -15,12 +15,12 @@
 # DEETC - Dep. de Eng. Electrónica e Telecomunicações e Computadores
 # ISEL  - Instituto Superior de Engenharia de Lisboa
 #=======================================================================
-#						Base Make Source
+#								SPI
 #=======================================================================
 #Shell Path
 SHELL			= /bin/sh
 #Environmental Paths
-SVN_PATH		= ./../..
+SVN_PATH		= ./../../../..
 #=======================================================================
 PROJECT_PATH	= $(SVN_PATH)/code
 #=======================================================================
@@ -29,18 +29,20 @@ include $(PROJECT_PATH)/common.mk
 #Phony Target
 .PHONY 					= clean
 .PHONY					= clear
-.PHONY					= all
-MAKE_DEVICE				= device  
-MAKE_PERIPHERICAL		= peripherical 
-MAKE_UIP				= uip-1.0/lpc-2106
+.PHONY					= SPI.o
 #=======================================================================
 
-all: 	
-	@$(foreach MPATH, $(MAKE_DEVICE), $(MAKE) -C $(SOURCE)/$(MPATH);)
-	@$(foreach MPATH, $(MAKE_UIP), $(MAKE) -C $(SOURCE)/$(MPATH);)
+all: SPI.o
+
+
+SPI.o:SPI.h 
+	@echo "----------------------------------------------------------------------"
+	cp SPI.h $(INCLUDE)/
+	
 clean:
-	@$(foreach MPATH, $(MAKE_DEVICE), $(MAKE) -C $(SOURCE)/$(MPATH) clean;)
-	@$(foreach MPATH, $(MAKE_UIP), $(MAKE) -C $(SOURCE)/$(MPATH) clean;)
+	@echo "----------------------------------------------------------------------"
+	rm  $(INCLUDE)/SPI.h
+	
+	
 clear:
 	clear
-

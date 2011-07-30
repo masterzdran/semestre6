@@ -25,7 +25,7 @@ TODEPLOY			= $(SOURCE)/deploy
 PROGRAM				= $(SOURCE)/program
 PCOMPILE			= $(SOURCE)/tests
 #=======================================================================
-PECOS				= $(SOURCE)/eCos/untitled_install
+PECOS				= $(SOURCE)/eCos/
 #=======================================================================
 TARGET				= $(PROJECT_PATH)/target
 TEST				= $(PROJECT_PATH)/test
