@@ -36,7 +36,7 @@
 #define __HTTPD_FSDATA_H__
 
 #include "uip.h"
-
+struct httpd_fsdata_file;
 struct httpd_fsdata_file {
   const struct httpd_fsdata_file *next;
   const char *name;

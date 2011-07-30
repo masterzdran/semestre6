@@ -30,15 +30,37 @@
 # $Id: Makefile,v 1.13 2006/06/11 21:55:03 adam Exp $
 #
 
-all: uip
+all: mymain
 
-CC     = gcc
-AR     = ar
+BASE_DIR	= ../..
+INSTALL_DIR	= $(BASE_DIR)/eCos
+
+MYLIB			= $(BASE_DIR)/lib
+INCLUDE			= $(BASE_DIR)/include
+
+ECOS_INCLUDE		= $(INSTALL_DIR)/include
+ECOS_LIBRARY    	= $(INSTALL_DIR)/lib
+
+
+SEARCHINCLUDE	= -I$(ECOS_INCLUDE) -I$(INCLUDE) 
+SEARCHLIB		= -L$(ECOS_LIBRARY)  -L$(MYLIB)
+VPATH 			= $(MYLIB):$(ECOS_LIBRARY):.:../uip
+CC = arm-eabi-gcc
+GCC = arm-eabi-gcc
+LD = arm-eabi-gcc
+AR     = arm-eabi-ar
+
 APPS   = webserver
-CFLAGS = -Wall -g -I../uip -I. -fpack-struct -Os
+
+EXTRACFLAGS   = -Wall -ffunction-sections -fdata-sections
+
+LDFLAGS	      = -L$(INSTALL_DIR)/lib -Wl,--gc-sections -Wl,--Map -Wl,basic.map
+
+
+CFLAGS = -Wall -g -I../uip -I. -I$(INSTALL_DIR)/include -fpack-struct -Os
 -include ../uip/Makefile.include
 
-uip: $(addprefix $(OBJECTDIR)/, main.o tapdev.o clock-arch.o) apps.a uip.a
+mymain: $(addprefix $(OBJECTDIR)/, main.o tapdev.o clock-arch.o) apps.a uip.a
 
 clean:
 	rm -fr *.o *~ *core uip $(OBJECTDIR) *.a

@@ -1,7 +1,26 @@
-CC     = gcc
-AR     = ar
+BASE_DIR	= ../..
+INSTALL_DIR	= $(BASE_DIR)/eCos/
+
+MYLIB			= $(BASE_DIR)/lib
+INCLUDE			= $(BASE_DIR)/include
+
+ECOS_INCLUDE		= $(INSTALL_DIR)/include
+ECOS_LIBRARY    	= $(INSTALL_DIR)/lib
+
+
+SEARCHINCLUDE	= -I$(ECOS_INCLUDE) -I$(INCLUDE) 
+SEARCHLIB		= -L$(ECOS_LIBRARY)  -L$(MYLIB)
+VPATH 			= $(MYLIB):$(ECOS_LIBRARY):.:../uip
+CC = arm-eabi-gcc
+GCC = arm-eabi-gcc
+LD = arm-eabi-gcc
+AR     = arm-eabi-ar
+
+APPS   = webserver
+
 APPS   = webserver
 CFLAGS = -Wall -g -I../uip -I. -fpack-struct -Os
+
 
 ifdef APPS
   APPDIRS = $(foreach APP, $(APPS), ../apps/$(APP))

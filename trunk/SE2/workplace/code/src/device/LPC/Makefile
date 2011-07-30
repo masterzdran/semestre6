@@ -15,12 +15,12 @@
 # DEETC - Dep. de Eng. Electrónica e Telecomunicações e Computadores
 # ISEL  - Instituto Superior de Engenharia de Lisboa
 #=======================================================================
-#						Base Make Source
+#								LPC MATCHING
 #=======================================================================
 #Shell Path
 SHELL			= /bin/sh
 #Environmental Paths
-SVN_PATH		= ./../..
+SVN_PATH		= ./../../../..
 #=======================================================================
 PROJECT_PATH	= $(SVN_PATH)/code
 #=======================================================================
@@ -29,18 +29,20 @@ include $(PROJECT_PATH)/common.mk
 #Phony Target
 .PHONY 					= clean
 .PHONY					= clear
-.PHONY					= all
-MAKE_DEVICE				= device  
-MAKE_PERIPHERICAL		= peripherical 
-MAKE_UIP				= uip-1.0/lpc-2106
+.PHONY					= LPC.o
 #=======================================================================
 
-all: 	
-	@$(foreach MPATH, $(MAKE_DEVICE), $(MAKE) -C $(SOURCE)/$(MPATH);)
-	@$(foreach MPATH, $(MAKE_UIP), $(MAKE) -C $(SOURCE)/$(MPATH);)
+all: LPC.o
+
+
+LPC.o: LPC21XX.h LPC2106.h SCB.h TYPES.h 
+	@echo "----------------------------------------------------------------------"
+	cp $^ $(INCLUDE)/
+	
 clean:
-	@$(foreach MPATH, $(MAKE_DEVICE), $(MAKE) -C $(SOURCE)/$(MPATH) clean;)
-	@$(foreach MPATH, $(MAKE_UIP), $(MAKE) -C $(SOURCE)/$(MPATH) clean;)
+	@echo "----------------------------------------------------------------------"
+	rm  $(INCLUDE)/LPC21XX.h $(INCLUDE)/LPC2106.h $(INCLUDE)/SCB.h $(INCLUDE)/TYPES.h 
+	
+	
 clear:
 	clear
-

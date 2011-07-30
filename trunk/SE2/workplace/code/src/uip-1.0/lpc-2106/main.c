@@ -74,7 +74,7 @@ main(void)
   while(1) {
     uip_len = tapdev_read();
     if(uip_len > 0) {
-      if(BUF->type == htons(UIP_ETHTYPE_IP)) {
+      if((BUF)->type == htons((UIP_ETHTYPE_IP))) {
 	uip_arp_ipin();
 	uip_input();
 	/* If the above function invocation resulted in data that
@@ -84,7 +84,7 @@ main(void)
 	  uip_arp_out();
 	  tapdev_send();
 	}
-      } else if(BUF->type == htons(UIP_ETHTYPE_ARP)) {
+      } else if((BUF)->type == htons(UIP_ETHTYPE_ARP)) {
 	uip_arp_arpin();
 	/* If the above function invocation resulted in data that
 	   should be sent out on the network, the global variable
