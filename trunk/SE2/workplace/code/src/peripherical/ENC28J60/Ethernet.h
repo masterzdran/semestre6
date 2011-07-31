@@ -1,6 +1,6 @@
 #ifndef __ETHERNET_H_
 #define __ETHERNET_H_
-#include "SPI.h"
+#include "SPI_Public.h"
 #define MAX_FRAME_LEN   1518
 #define MAX_TX_RETRY    10
 
@@ -36,9 +36,9 @@ typedef struct{
 
 
 U8 Ethernet_init(pETHERNET_Device ethernetDevice);
-U8 Ethernet_send_buffer(U8* packet, U16 packetsize);
+/*U8 Ethernet_send_buffer(U8* packet, U16 packetsize);*/
 /*U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size);*/
-U32 Ethernet_receive_buffer(U8* buffer, U32 buffer_size);
+/*U32 Ethernet_receive_buffer(U8* buffer, U32 buffer_size);*/
 
 void ethernetIsr(void) __attribute__ ((interrupt));
 U32 Ethernet_receive(U8* buffer, U32 buffer_size);
