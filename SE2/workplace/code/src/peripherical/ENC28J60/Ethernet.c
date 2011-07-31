@@ -1,7 +1,6 @@
 #include "Ethernet.h"
 #include "ENC28J60.h"
 #include "TYPES.h"
-#include "BUFFER.h"
 
 
 #define SINGLE_BYTE	1
@@ -19,11 +18,12 @@
 #define __BUFFER_RX_SIZE__		8192
 #define __BUFFER_TX_SIZE__		8192
 
-static BUFFER tx_Buffer;
+/*static BUFFER tx_Buffer;
 static BUFFER rx_Buffer;
-static pETHERNET_Device ethDevice;
 static PU8 tx_Buffer_Space[__BUFFER_TX_SIZE__];
-static PU8 rx_Buffer_Space[__BUFFER_RX_SIZE__];
+static PU8 rx_Buffer_Space[__BUFFER_RX_SIZE__];*/
+
+static pETHERNET_Device ethDevice;
 
 /**
  * @brief 
@@ -115,9 +115,10 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
 	/*
 	 * Prepare Software Buffer.
 	 * */
+	 /*
 	 buffer_init(&rx_Buffer,&rx_Buffer_Space,__BUFFER_RX_SIZE__);
 	 buffer_init(&tx_Buffer,&tx_Buffer_Space,__BUFFER_TX_SIZE__);
-	 
+	 */
 	 
 	return ETHERNET_OK;
 }
@@ -146,7 +147,7 @@ static pETHERNET_Device ethDevice;
  * @todo Use of software buffers to add bytes from both buffers.
  * */
 
-U8 Ethernet_send_buffer(U8* packet, U16 packet_size){
+U8 Ethernet_send(U8* packet, U16 packet_size){
 	U8 tsv[TSV_SIZE],aux;
 	U8 retry = 0;
 	U8 i;
@@ -176,7 +177,7 @@ U8 Ethernet_send_buffer(U8* packet, U16 packet_size){
 	return ETHERNET_OK;
 }
 /*U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size){*/
-U32 Ethernet_receive_buffer(U8* buffer, U32 buffer_size){
+U32 Ethernet_receive(U8* buffer, U32 buffer_size){
 	U32 read_size=0;
 	U8 rsv[RSV_SIZE];
 	U32 packet_size = 0;
@@ -218,19 +219,5 @@ void ethernetIsr(void){
 		pTIMER0->IR |= 1<<5;				//clear timer0 CR1 interrupt request
 		enableIRQ( __INTERRUPT_TIMER0__ );
 	}
-}
-
-U32 Ethernet_receive(U8* buffer, U32 buffer_size){
-	
-	
-
-}
-
-
-
-U8	Ethernet_send(U8* packet, U16 packet_size){
-	
-
-	
 }
 
