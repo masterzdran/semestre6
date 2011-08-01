@@ -2,6 +2,7 @@
 #define __ETHERNET_H_
 /*#include "SPI_Public.h"*/
 #include <cyg/io/spi_lpc2xxx.h>
+#include "TYPES.h"
 
 #define MAX_FRAME_LEN   1518
 #define MAX_TX_RETRY    10
@@ -37,11 +38,11 @@ typedef struct{
 }ETHERNET_Device,*pETHERNET_Device;
 
 
-cyg_uint8 Ethernet_init(pETHERNET_Device ethernetDevice);
+U8 Ethernet_init(pETHERNET_Device ethernetDevice);
 /*U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size);*/
 
 void ethernetIsr(void) __attribute__ ((interrupt));
-cyg_uint32 Ethernet_receive(cyg_uint8* buffer, cyg_uint32 buffer_size);
-cyg_uint8	Ethernet_send(cyg_uint8* packet, cyg_uint16 packet_size);
+U32 Ethernet_receive(PU8 buffer, U32 buffer_size);
+U8	Ethernet_send(PU8 packet, U16 packet_size);
 
 #endif
