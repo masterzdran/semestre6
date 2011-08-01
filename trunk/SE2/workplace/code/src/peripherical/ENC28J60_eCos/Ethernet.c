@@ -8,7 +8,6 @@
 
 #include "Ethernet.h"
 #include "ENC28J60.h"
-#include "TYPES.h"
 #include "GPIO.h"
 
 
