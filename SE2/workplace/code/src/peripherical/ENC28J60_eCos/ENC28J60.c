@@ -1,24 +1,34 @@
 #include "ENC28J60.h"
-#include "SPI.h"
+#include "GPIO.h"
 
+/*static pSPI_Device spi;*/
+static cyg_spi_lpc2xxx_bus_t *spi_enc28j60_dev;
 
-
-static pSPI_Device spi;
- void ENC_init(pSPI_Device pspi){
-	 spi=pspi;
+ void ENC_init(cyg_spi_lpc2xxx_bus_t *pspi){
+	 spi_enc28j60_dev=pspi;
  }
 
+#define SPI_DEV	(cyg_spi_device *)&spi_enc28j60_dev
+
 static inline void do_single_transaction(U32 size, const U8 *tx_data, U8 *rx_buffer){
-    SPI_start_device(spi);
-    SPI_transfer(spi, size, tx_data, rx_buffer);
-    SPI_stop_device(spi);   
+  /*SPI_start_device(spi);
+	SPI_transfer(spi, size, tx_data, rx_buffer);
+	SPI_stop_device(spi);*/
+	cyg_spi_transaction_begin(SPI_DEV);
+    cyg_spi_transaction_transfer(SPI_DEV, true, size,tx_data, rx_buffer, true);
+    cyg_spi_transaction_end(SPI_DEV);
 }
 
+
 static inline void do_double_transaction(U8* command, U8 commandSize, U32 dataSize, const U8 *tx_data, U8 *rx_buffer){
-    SPI_start_device(spi);
+  /*SPI_start_device(spi);
     SPI_transfer(spi, commandSize, command, command);
     SPI_transfer(spi, dataSize, tx_data, rx_buffer);
-    SPI_stop_device(spi);   
+    SPI_stop_device(spi);*/
+	cyg_spi_transaction_begin(SPI_DEV);
+    cyg_spi_transaction_transfer(SPI_DEV, true, (U32)(commandSize), tx_data, rx_buffer, false);
+    cyg_spi_transaction_transfer(SPI_DEV, true, dataSize, tx_data, rx_buffer, true);
+    cyg_spi_transaction_end(SPI_DEV);
 }
 
 /* TABLE 4-1: SPI INSTRUCTION SET FOR THE ENC28J60 */
@@ -83,7 +93,7 @@ static U16 ENC_read_reg16(U8 address, U8 bankID){
 }
 */
 
-U16 ENC_read_reg(U8 address, U8 bankID,Bool asShort){
+U16 ENC_read_reg(U8 address, U8 bankID,bool asShort){
     U16 data = 0;
     ENC_bank_select(bankID);
     data = ENC_read_control_register(address);
@@ -102,7 +112,7 @@ static void ENC_write_reg16(U8 address, U8 bankID, U16 data){
 }
 */
 
-void ENC_write_reg(U8 address, U8 bankID,U16 data,Bool asShort){
+void ENC_write_reg(U8 address, U8 bankID,U16 data,bool asShort){
     ENC_bank_select(bankID);
     ENC_write_control_register(address,data);
     if (asShort){
@@ -171,7 +181,7 @@ U32 Ethernet_receive_buffer(U8* buffer, U32 buffer_size){
 	U32 packet_size = 0;
 	U16 rx_next_packet = __ETHERNET_RX_START_PTR__;
 	U32 nbr_packets = 0;
-	
+*/
 	/*Evaluate parameters. Then spent time*/
 /*	nbr_packets = ENC_read_reg(B1_EPKTCNT,BANK01,false);
 	
@@ -188,12 +198,13 @@ U32 Ethernet_receive_buffer(U8* buffer, U32 buffer_size){
 	}else{
 		read_size = 0;
 	}
+*/
 	/*return ETHERNET_OK;*/
 /*	return (read_size);
 }
 */
 
-
+/*
 void encIsr(void){
 	U32 irq_status = pVIC->IRQStatus;
 	if (irq_status & __INTERRUPT_TIMER0_MASK__){
@@ -202,5 +213,5 @@ void encIsr(void){
 		enableIRQ( __INTERRUPT_TIMER0__ );
 	}
 }
-
+*/
 

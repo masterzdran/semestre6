@@ -1,7 +1,11 @@
 #ifndef ENC28J60_H
 #define ENC28J60_H
 #include "TYPES.h"
-#include "SPI.h"
+/*#include "SPI_Public.h"*/
+#include <cyg/io/spi_lpc2xxx.h>
+#include <cyg/infra/cyg_type.h>
+
+
 #define ADDR_MASK	0x1F
 #define BANK_MASK	0x60
 #define SPRD_MASK	0x80
@@ -383,8 +387,8 @@ typedef enum{
 }PHLCON_REGISTER;
 
 
-U16 ENC_read_reg(U8 address, U8 bankID,Bool asShort);
-void ENC_write_reg(U8 address, U8 bankID,U16 data,Bool asShort);
+U16 ENC_read_reg(U8 address, U8 bankID,bool asShort);
+void ENC_write_reg(U8 address, U8 bankID,U16 data,bool asShort);
 void ENC_write_physical_register(U8 address, U16 data);
 U16 read_physical_register(U8 address) ;
 U8 ENC_read_control_register(U8 address);
@@ -394,7 +398,7 @@ void ENC_write_buffer_memory(U8* data, U32 size);
 void ENC_bit_field_set(U8 address, U8 data);
 void ENC_bit_field_clear(U8 address, U8 data);
 void ENC_system_reset_command();
-void ENC_init(pSPI_Device pspi);
+void ENC_init(cyg_spi_lpc2xxx_bus_t *pspi);
 
 void encIsr(void) __attribute__ ((interrupt));
 

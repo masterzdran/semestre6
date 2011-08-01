@@ -1,7 +1,15 @@
+/*
+ * TODO ethernet for eCos
+ * initialize SPI with eCos SPI
+ *
+ *
+ */
+
+
 #include "Ethernet.h"
 #include "ENC28J60.h"
 #include "TYPES.h"
-#include "BUFFER.h"
+#include "GPIO.h"
 
 
 #define SINGLE_BYTE	1
@@ -15,15 +23,24 @@
 #define HALF_DUPLEX  0x12
 #define MAIPGH_HALF_DUPLEX	0x0C12
 #define MAIPGH_FULL_DUPLEX	0x12
+#define CS_PIN 1<<8
 
-#define __BUFFER_RX_SIZE__		8192
-#define __BUFFER_TX_SIZE__		8192
-
-static BUFFER tx_Buffer;
-static BUFFER rx_Buffer;
 static pETHERNET_Device ethDevice;
-static PU8 tx_Buffer_Space[__BUFFER_TX_SIZE__];
-static PU8 rx_Buffer_Space[__BUFFER_RX_SIZE__];
+
+/*
+static PU8 tx_Buffer;
+static PU8 rx_Buffer;
+static PU8 tx_Buffer_Space[__ETHERNET_TX_BUFFER_SIZE__];
+static PU8 rx_Buffer_Space[__ETHERNET_RX_BUFFER_SIZE__];
+*/
+
+static void enc28j60_cs(int select) {
+	if (select)
+		GPIO_CLEAR(CS_PIN);
+	else
+		GPIO_SET(CS_PIN);
+}
+
 
 /**
  * @brief 
@@ -34,18 +51,28 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
 	
     ethDevice = ethernetDevice;
     /* Definition of Enc28j60 spi default values */
+    ethDevice->ethernetDevice.spi_device.spi_bus = &cyg_spi_lpc2xxx_bus0.spi_bus;
+    ethDevice->ethernetDevice.spi_cpha = 0;  // Clock phase (0 or 1)
+    ethDevice->ethernetDevice.spi_cpol = 0;  // Clock polarity (0 or 1)
+    ethDevice->ethernetDevice.spi_lsbf = 0;  // MSBF
+    ethDevice->ethernetDevice.spi_baud = 1000000;  // Clock baud rate
+    ethDevice->ethernetDevice.spi_cs   = enc28j60_cs;
+
+
+/*
     ethDevice->ethernetDevice.mode       = SPI_PRIOR_TO_FIRST_SCK_RISING_EDGE;
     ethDevice->ethernetDevice.role       = SPI_MASTER;
     ethDevice->ethernetDevice.nbrbits    = 8;
     ethDevice->ethernetDevice.byteShift  = SPI_MSB;
     ethDevice->ethernetDevice.started    = 0;
-    
+    */
     /*Intialization of spi device of ethernet*/
+    /*
     if ( SPI_init(&(ethDevice->ethernetDevice),1) != SPI_SUCESS ){
         return ETHERNET_SPI_INIT_ERROR;
-    } 
-    
-	ENC_init(&ethDevice->ethernetDevice);
+    }*/
+    //void ENC_init(cyg_spi_lpc2xxx_bus_t *pspi);
+	ENC_init((cyg_spi_lpc2xxx_bus_t*)(&ethDevice->ethernetDevice));
     /*Reset Enc28j60 to default values*/
     ENC_system_reset_command();
     
@@ -115,9 +142,9 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
 	/*
 	 * Prepare Software Buffer.
 	 * */
-	 buffer_init(&rx_Buffer,&rx_Buffer_Space,__BUFFER_RX_SIZE__);
-	 buffer_init(&tx_Buffer,&tx_Buffer_Space,__BUFFER_TX_SIZE__);
-	 
+   /*buffer_init(&rx_Buffer,&rx_Buffer_Space,__ETHERNET_RX_BUFFER_SIZE__);
+	 buffer_init(&tx_Buffer,&tx_Buffer_Space,__ETHERNET_TX_BUFFER_SIZE__);
+	 */
 	 
 	return ETHERNET_OK;
 }
@@ -146,10 +173,10 @@ static pETHERNET_Device ethDevice;
  * @todo Use of software buffers to add bytes from both buffers.
  * */
 
-U8 Ethernet_send_buffer(U8* packet, U16 packet_size){
+U8 Ethernet_send(U8* packet, U16 packet_size){
 	U8 tsv[TSV_SIZE],aux;
 	U8 retry = 0;
-	U8 i;
+	/*U8 i;*/
 	if (packet == 0)
 		return ETHERNET_NULL_POINTER;
 	if(packet_size == 0 )
@@ -176,7 +203,7 @@ U8 Ethernet_send_buffer(U8* packet, U16 packet_size){
 	return ETHERNET_OK;
 }
 /*U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size){*/
-U32 Ethernet_receive_buffer(U8* buffer, U32 buffer_size){
+U32 Ethernet_receive(U8* buffer, U32 buffer_size){
 	U32 read_size=0;
 	U8 rsv[RSV_SIZE];
 	U32 packet_size = 0;
@@ -209,7 +236,7 @@ U32 Ethernet_receive_buffer(U8* buffer, U32 buffer_size){
 	return (read_size);
 }
 
-
+/*
 void ethernetIsr(void){
 	U32 irq_status = pVIC->IRQStatus;
 	if (irq_status & __INTERRUPT_TIMER0_MASK__){
@@ -219,18 +246,6 @@ void ethernetIsr(void){
 		enableIRQ( __INTERRUPT_TIMER0__ );
 	}
 }
+*/
 
-U32 Ethernet_receive(U8* buffer, U32 buffer_size){
-	
-	
-
-}
-
-
-
-U8	Ethernet_send(U8* packet, U16 packet_size){
-	
-
-	
-}
 
