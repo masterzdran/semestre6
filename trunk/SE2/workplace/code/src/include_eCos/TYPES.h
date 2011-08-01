@@ -20,6 +20,7 @@
 #ifndef TYPES_H
 #define TYPES_H
 #include <cyg/infra/cyg_type.h>
+
 /**
  * Definição de tipos
  * */

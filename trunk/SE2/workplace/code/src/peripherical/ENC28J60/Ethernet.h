@@ -1,6 +1,9 @@
 #ifndef __ETHERNET_H_
 #define __ETHERNET_H_
-#include "SPI_Public.h"
+/*#include "SPI_Public.h"*/
+#include <cyg/io/spi.h>
+#include <cyg/io/spi_lpc2xxx.h>
+
 #define MAX_FRAME_LEN   1518
 #define MAX_TX_RETRY    10
 
@@ -29,7 +32,8 @@ typedef enum{
 }ETHERNET_COM_SYSTEM;
 
 typedef struct{
-    SPI_Device ethernetDevice;
+    /*SPI_Device ethernetDevice;*/
+	cyg_spi_device ethernetDevice;
     ETHERNET_COM_SYSTEM duplex;
     U8 mac[MAC_NBR_BYTES] ;        
 }ETHERNET_Device,*pETHERNET_Device;

@@ -1,6 +1,8 @@
 #ifndef __ETHERNET_H_
 #define __ETHERNET_H_
-#include "SPI.h"
+/*#include "SPI_Public.h"*/
+#include <cyg/io/spi_lpc2xxx.h>
+
 #define MAX_FRAME_LEN   1518
 #define MAX_TX_RETRY    10
 
@@ -29,19 +31,17 @@ typedef enum{
 }ETHERNET_COM_SYSTEM;
 
 typedef struct{
-    SPI_Device ethernetDevice;
+    cyg_spi_lpc2xxx_dev_t ethernetDevice;
     ETHERNET_COM_SYSTEM duplex;
-    U8 mac[MAC_NBR_BYTES] ;        
+    cyg_uint8 mac[MAC_NBR_BYTES];
 }ETHERNET_Device,*pETHERNET_Device;
 
 
-U8 Ethernet_init(pETHERNET_Device ethernetDevice);
-U8 Ethernet_send_buffer(U8* packet, U16 packetsize);
+cyg_uint8 Ethernet_init(pETHERNET_Device ethernetDevice);
 /*U32 Ethernet_receive(U8* buffer, U32 buffer_size,U32* read_size);*/
-U32 Ethernet_receive_buffer(U8* buffer, U32 buffer_size);
 
 void ethernetIsr(void) __attribute__ ((interrupt));
-U32 Ethernet_receive(U8* buffer, U32 buffer_size);
-U8	Ethernet_send(U8* packet, U16 packet_size);
+cyg_uint32 Ethernet_receive(cyg_uint8* buffer, cyg_uint32 buffer_size);
+cyg_uint8	Ethernet_send(cyg_uint8* packet, cyg_uint16 packet_size);
 
 #endif
