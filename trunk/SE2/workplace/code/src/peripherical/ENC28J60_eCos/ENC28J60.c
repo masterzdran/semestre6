@@ -2,9 +2,9 @@
 #include "GPIO.h"
 
 /*static pSPI_Device spi;*/
-static cyg_spi_lpc2xxx_bus_t *spi_enc28j60_dev;
+static cyg_spi_lpc2xxx_dev_t *spi_enc28j60_dev;
 
- void ENC_init(cyg_spi_lpc2xxx_bus_t *pspi){
+ void ENC_init(cyg_spi_lpc2xxx_dev_t *pspi){
 	 spi_enc28j60_dev=pspi;
  }
 
@@ -25,6 +25,7 @@ static inline void do_double_transaction(U8* command, U8 commandSize, U32 dataSi
     SPI_transfer(spi, commandSize, command, command);
     SPI_transfer(spi, dataSize, tx_data, rx_buffer);
     SPI_stop_device(spi);*/
+
 	cyg_spi_transaction_begin(SPI_DEV);
     cyg_spi_transaction_transfer(SPI_DEV, true, (U32)(commandSize), tx_data, rx_buffer, false);
     cyg_spi_transaction_transfer(SPI_DEV, true, dataSize, tx_data, rx_buffer, true);

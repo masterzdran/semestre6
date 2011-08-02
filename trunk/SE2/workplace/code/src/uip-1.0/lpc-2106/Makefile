@@ -57,7 +57,7 @@ EXTRACFLAGS   = -Wall -ffunction-sections -fdata-sections
 LDFLAGS	      = -L$(INSTALL_DIR)/lib -Wl,--gc-sections -Wl,--Map -Wl,basic.map
 
 
-CFLAGS = -Wall -g -I../uip -I. -I$(INSTALL_DIR)/include -fpack-struct -Os
+CFLAGS = -Wall -g -I../uip -I. $(SEARCHINCLUDE) -fpack-struct -Os
 -include ../uip/Makefile.include
 
 mymain: $(addprefix $(OBJECTDIR)/, main.o tapdev.o clock-arch.o) apps.a uip.a
