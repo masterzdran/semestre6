@@ -41,53 +41,46 @@
 #define UIP_DRIPADDR3   1
 
 #include "uip.h"
-/*
+#include <stdio.h>
 #include "Ethernet.h"
+
+
 ETHERNET_Device ethernetDevice ={
-	 {
-      0,									
-      16,               					  
-      1<<8,             					
-      8,                					
-      SPI_PRIOR_TO_FIRST_SCK_RISING_EDGE,   
-      SPI_MASTER,    						
-      0,                					
-      SPI_MSB           					
-	},
+	{},
 	ETHERNET_FULL_DUPLEX,
 	{0x02, 0x65, 0x7A, 0x65, 0x71, 00}
 };
-*/
+
 /*---------------------------------------------------------------------------*/
-void tapdev_init(void){}
-/*
+/*void tapdev_init(void){}*/
+
 void tapdev_init(void)
 {
-	Ethernet_init(ethernetDevice);
+	Ethernet_init(&ethernetDevice);
 
 }
-* */
+
 /*---------------------------------------------------------------------------*/
-unsigned int tapdev_read(void){return 0;}
-/*
+/*unsigned int tapdev_read(void){return 0;}*/
+
 unsigned int tapdev_read(void)
 {
   int ret = Ethernet_receive(uip_buf, UIP_BUFSIZE);
   if(ret == 0) {
-    console_write_str("Ethernet: Ethernet_receive: read");
+    printf("Ethernet: Ethernet_receive: read");
   }
   return ret;
 }
-* */
+
 /*---------------------------------------------------------------------------*/
-void tapdev_send(void){}
-/*
+/*void tapdev_send(void){}*/
+
 void tapdev_send(void)
 {
   int ret=Ethernet_send(uip_buf, uip_len);
   if(ret == -1) {
-    console_write_str("Ethernet: Ethernet_send: write");
+    printf("Ethernet: Ethernet_send: write");
   }
 }
-* */
+
 /*---------------------------------------------------------------------------*/

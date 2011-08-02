@@ -398,7 +398,7 @@ void ENC_write_buffer_memory(U8* data, U32 size);
 void ENC_bit_field_set(U8 address, U8 data);
 void ENC_bit_field_clear(U8 address, U8 data);
 void ENC_system_reset_command();
-void ENC_init(cyg_spi_lpc2xxx_bus_t *pspi);
+void ENC_init(cyg_spi_lpc2xxx_dev_t *pspi);
 
 void encIsr(void) __attribute__ ((interrupt));
 
