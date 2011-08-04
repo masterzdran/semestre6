@@ -19,7 +19,7 @@
 SOURCE				= $(PROJECT_PATH)/src
 COLLECTION			= $(SOURCE)/collection
 DEVICE				= $(SOURCE)/device
-PERIPHERICAL		= $(SOURCE)/peripherical
+PERIPHERICAL			= $(SOURCE)/peripherical
 DEBUGGER			= $(SOURCE)/debugger
 TODEPLOY			= $(SOURCE)/deploy
 PROGRAM				= $(SOURCE)/program
@@ -39,7 +39,7 @@ ECOS_LIBRARY    	= $(PECOS)/lib
 ECOS_TESTS		= $(PCOMPILE)/ecos
 HEADER			= 
 SEARCHINCLUDE	= -I$(ECOS_INCLUDE) -I$(INCLUDE) -I$(SOURCE)/include_eCos
-SEARCHLIB		= -L$(ECOS_LIBRARY) -L$(SOURCE)/lib_eCos
+SEARCHLIB		= -L$(ECOS_LIBRARY) -L$(SOURCE)/lib_eCos -L$(SOURCE)/lib
 VPATH 			= $(MYLIB):$(ECOS_LIBRARY)
 #Executables
 CC 				= arm-eabi-gcc
