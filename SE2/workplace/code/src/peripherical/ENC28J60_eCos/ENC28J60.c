@@ -8,7 +8,7 @@ static cyg_spi_lpc2xxx_dev_t *spi_enc28j60_dev;
 	 spi_enc28j60_dev=pspi;
  }
 
-#define SPI_DEV	(cyg_spi_device *)&spi_enc28j60_dev
+#define SPI_DEV	(cyg_spi_device*) spi_enc28j60_dev
 
 static inline void do_single_transaction(U32 size, const U8 *tx_data, U8 *rx_buffer){
   /*SPI_start_device(spi);

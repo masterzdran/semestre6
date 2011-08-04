@@ -133,12 +133,12 @@ typedef struct _GPIO{
 #define GPIO_WRITE(pin_mask,value)  (HAL_WRITE_UINT32( pin_mask, value ))
 #define GPIO_READ(pin_mask,value)	(HAL_READ_UINT32( pin_mask, value ))
 #define GPIO_SET_DIRECTION(value,direction) {cyg_uint32 iodir;\
-	HAL_READ_UINT32((pGPIO)->IODIR, iodir); \
-	HAL_WRITE_UINT32(pGPIO)->IODIR, (direction)?(iodir |value):(iodir & (~value)))}
-#define  GPIO_INIT_PINSEL0(mask)	{cyg_uint32 pinsel;	\
+	HAL_READ_UINT32((pGPIO)->IODIR, iodir);\
+	HAL_WRITE_UINT32((pGPIO)->IODIR, ((direction)?(iodir | value):(iodir & (~value))));}
+#define  GPIO_INIT_PINSEL0(mask)	{cyg_uint32 pinsel;\
 	HAL_READ_UINT32(PINSEL0, pinsel);\
 	HAL_WRITE_UINT32(PINSEL0, pinsel & mask);}
-#define  GPIO_INIT_PINSEL1(mask)	{cyg_uint32 pinsel;	\
+#define  GPIO_INIT_PINSEL1(mask)	{cyg_uint32 pinsel;\
 	HAL_READ_UINT32(PINSEL1, pinsel);\
 	HAL_WRITE_UINT32(PINSEL1, pinsel & mask);}
 #endif

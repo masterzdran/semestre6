@@ -1,7 +1,7 @@
 #include "BUFFER.h"
 #define IS_EMPTY(A)                ((A)->readIdx == (A)->writeIdx)
 #define IS_FULL(A)                 (((((A)->w + 1) >= (A)->buffersize)?0:(A)->readIdx + 1) == (A)->writeIdx)
-#define SET_THE_RECORD(A,B)           {(*(A))++;if((*(A)) >= (B)){*(A) = 0;}}
+#define SET_THE_RECORD(A,B)        {(*(A))++;if((*(A)) >= (B)){*(A) = 0;}}
 
 
 void buffer_init(pBUFFER ringBuffer, U8* bufferspace, U32 buffersize){

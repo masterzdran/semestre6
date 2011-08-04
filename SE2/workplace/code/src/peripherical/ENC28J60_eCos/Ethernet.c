@@ -22,7 +22,7 @@
 #define HALF_DUPLEX  0x12
 #define MAIPGH_HALF_DUPLEX	0x0C12
 #define MAIPGH_FULL_DUPLEX	0x12
-#define CS_PIN 1<<8
+#define CS_PIN 1<<7
 
 static pETHERNET_Device ethDevice;
 
@@ -35,10 +35,13 @@ static PU8 rx_Buffer_Space[__ETHERNET_RX_BUFFER_SIZE__];
 
 static void enc28j60_cs(int select) {
 	if (select)
-		GPIO_CLEAR(CS_PIN);
+		HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_IO_BASE +
+				CYGARC_HAL_LPC2XXX_REG_IOCLR, 1 << CS_PIN);
 	else
-		GPIO_SET(CS_PIN);
+		HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_IO_BASE +
+				CYGARC_HAL_LPC2XXX_REG_IOSET, 1 << CS_PIN);
 }
+
 cyg_spi_lpc2xxx_dev_t spi_enc28j60_dev CYG_SPI_DEVICE_ON_BUS(0) =
 {
 	.spi_device.spi_bus = &cyg_spi_lpc2xxx_bus0.spi_bus,
@@ -58,12 +61,15 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
 	
     ethDevice = ethernetDevice;
     /* Definition of Enc28j60 spi default values */
+    /*
     ethDevice->ethernetDevice.spi_device.spi_bus = &cyg_spi_lpc2xxx_bus0.spi_bus;
     ethDevice->ethernetDevice.spi_cpha = 0;  // Clock phase (0 or 1)
     ethDevice->ethernetDevice.spi_cpol = 0;  // Clock polarity (0 or 1)
     ethDevice->ethernetDevice.spi_lsbf = 0;  // MSBF
     ethDevice->ethernetDevice.spi_baud = 10000;  // Clock baud rate
     ethDevice->ethernetDevice.spi_cs   = enc28j60_cs;
+    */
+    ethDevice->ethernetDevice=&spi_enc28j60_dev;
 
 /*
     ethDevice->ethernetDevice.mode       = SPI_PRIOR_TO_FIRST_SCK_RISING_EDGE;
@@ -78,7 +84,7 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
         return ETHERNET_SPI_INIT_ERROR;
     }*/
     //void ENC_init(cyg_spi_lpc2xxx_bus_t *pspi);
-	ENC_init((cyg_spi_lpc2xxx_dev_t*)(&ethDevice->ethernetDevice));
+	ENC_init((cyg_spi_lpc2xxx_dev_t*)(ethDevice->ethernetDevice));
     /*Reset Enc28j60 to default values*/
     ENC_system_reset_command();
     
