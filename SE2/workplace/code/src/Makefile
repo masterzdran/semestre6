@@ -35,11 +35,19 @@ MAKE_PERIPHERICAL		= peripherical
 MAKE_UIP				= uip-1.0/lpc-2106
 #=======================================================================
 
-all: 	
+all:
 	@$(foreach MPATH, $(MAKE_DEVICE), $(MAKE) -C $(SOURCE)/$(MPATH);)
+	@$(foreach MPATH, $(MAKE_PERIPHERICAL), $(MAKE) -C $(SOURCE)/$(MPATH);)
+	@echo "=============================================================================================================================================="
+	@echo "Compiling the uIP and WebServer example"
+	@echo "=============================================================================================================================================="	
 	@$(foreach MPATH, $(MAKE_UIP), $(MAKE) -C $(SOURCE)/$(MPATH);)
 clean:
 	@$(foreach MPATH, $(MAKE_DEVICE), $(MAKE) -C $(SOURCE)/$(MPATH) clean;)
+	@$(foreach MPATH, $(MAKE_PERIPHERICAL), $(MAKE) -C $(SOURCE)/$(MPATH) clean;)
+	@echo "=============================================================================================================================================="
+	@echo "Cleaning the uIP and WebServer example"
+	@echo "=============================================================================================================================================="
 	@$(foreach MPATH, $(MAKE_UIP), $(MAKE) -C $(SOURCE)/$(MPATH) clean;)
 clear:
 	clear
