@@ -81,9 +81,11 @@ int console_vprintf(const char * fmt, va_list vlp) {
 	return r;
 }
 
-#include <_stdio.h>
+
+//#include <_stdio.h>
 
 static int scan_read_char(void * str, int ch) {
+	static int _WANT = -1;
 	static char buffer[READ_BUFFER];
 	static int count = 0;
 	if (ch == _WANT)
@@ -97,9 +99,12 @@ static int scan_read_char(void * str, int ch) {
 }
 
 int console_scanf(const char *fmt, ...) {
+	/*		
 	va_list vlp;
 	va_start(vlp, fmt);
 	return _scanf(scan_read_char, (void *) 0, fmt, vlp);
+	*/
+	return 0;
 }
 
 /*---------------------------------------------------------------------------*/

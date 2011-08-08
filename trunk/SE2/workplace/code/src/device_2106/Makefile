@@ -37,7 +37,7 @@ all:
 	@echo "============================"
 	@echo "Compiling the Device Library"
 	@echo "============================"	
-	@$(foreach MPATH, $(MAKEPATHS), $(MAKE) -C $(DEVICE)/$(MPATH);)
+	@$(foreach MAKEPATHS, $(MAKEPATHS), $(MAKE) -C $(DEVICE)/$(MPATH);)
 	$(AR) $(MYLIB)/libLPC2106.a $(MYLIB)/*.o
 	@rm -rf $(MYLIB)/*.o	
 
@@ -45,7 +45,7 @@ clean:
 	@echo "============================"
 	@echo "Cleaning the Device Library"
 	@echo "============================"	
-	@$(foreach MPATH, $(MAKEPATHS), $(MAKE) -C $(DEVICE)/$(MPATH) clean;)
+	@$(foreach MAKEPATHS, $(MAKEPATHS), $(MAKE) -C $(DEVICE)/$(MPATH) clean;)
 	@rm -rf $(MYLIB)/libLPC2106.a
 	
 clear:

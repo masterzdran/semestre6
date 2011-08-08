@@ -5,6 +5,8 @@
 #include <cyg/io/spi_lpc2xxx.h>
 #include <cyg/infra/cyg_type.h>
 
+#define CS_PIN 1<<8
+#define RESET  1<<9
 
 #define ADDR_MASK	0x1F
 #define BANK_MASK	0x60
@@ -399,6 +401,8 @@ void ENC_bit_field_set(U8 address, U8 data);
 void ENC_bit_field_clear(U8 address, U8 data);
 void ENC_system_reset_command();
 void ENC_init(cyg_spi_lpc2xxx_dev_t *pspi);
+
+U8 ENC_test();
 
 void encIsr(void) __attribute__ ((interrupt));
 

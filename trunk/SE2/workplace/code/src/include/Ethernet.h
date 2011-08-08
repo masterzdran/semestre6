@@ -3,6 +3,7 @@
 /*#include "SPI_Public.h"*/
 #include <cyg/io/spi_lpc2xxx.h>
 #include "TYPES.h"
+#include "ENC28J60.h"
 
 #define MAX_FRAME_LEN   1518
 #define MAX_TX_RETRY    10
@@ -11,7 +12,6 @@
 #define __ETHERNET_RX_END_PTR__          0x0FFF
 #define __ETHERNET_TX_START_PTR__        0x1000
 #define __ETHERNET_TX_END_PTR__          0x1F00 
-
 
 #define __ETHERNET_RX_BUFFER_SIZE__   4096
 #define __ETHERNET_TX_BUFFER_SIZE__   4096
