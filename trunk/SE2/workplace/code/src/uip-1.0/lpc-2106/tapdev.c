@@ -45,12 +45,14 @@
 #include "Ethernet.h"
 
 
+ETHERNET_Device ethernetDevice ;
+/*
 ETHERNET_Device ethernetDevice ={
 	{},
 	ETHERNET_FULL_DUPLEX,
 	{0x02, 0x65, 0x7A, 0x65, 0x71, 00}
 };
-
+*/
 /*---------------------------------------------------------------------------*/
 /*void tapdev_init(void){}*/
 

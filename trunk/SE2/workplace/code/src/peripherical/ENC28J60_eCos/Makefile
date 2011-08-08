@@ -45,8 +45,10 @@ ETHERNET.o: Ethernet.c Ethernet.h
 
 clean:
 	rm  ENC28J60.o
+	rm  $(MYLIB)/ENC28J60.o
 	rm  $(INCLUDE)/ENC28J60.h
 	rm  ETHERNET.o
+	rm  $(MYLIB)/ETHERNET.o
 	rm  $(INCLUDE)/Ethernet.h
 
 clear:

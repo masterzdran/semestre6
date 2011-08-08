@@ -32,7 +32,7 @@ typedef enum{
 }ETHERNET_COM_SYSTEM;
 
 typedef struct{
-    cyg_spi_lpc2xxx_dev_t ethernetDevice;
+    cyg_spi_lpc2xxx_dev_t *ethernetDevice;
     ETHERNET_COM_SYSTEM duplex;
     cyg_uint8 mac[MAC_NBR_BYTES];
 }ETHERNET_Device,*pETHERNET_Device;

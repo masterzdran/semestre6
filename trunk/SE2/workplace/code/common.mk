@@ -19,7 +19,7 @@
 SOURCE				= $(PROJECT_PATH)/src
 COLLECTION			= $(SOURCE)/collection
 DEVICE				= $(SOURCE)/device
-PERIPHERICAL			= $(SOURCE)/peripherical
+PERIPHERICAL		= $(SOURCE)/peripherical
 DEBUGGER			= $(SOURCE)/debugger
 TODEPLOY			= $(SOURCE)/deploy
 PROGRAM				= $(SOURCE)/program
