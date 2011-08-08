@@ -5,7 +5,7 @@
 #include "startosc.h"
 #include "stdio.h"
 #include "I2C.h"
-#include "VIC.h"
+//#include "VIC.h"
 #include "WATCHDOG.h"
 #include "SPI.h"
 #include "console.h"

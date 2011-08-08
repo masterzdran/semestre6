@@ -22,24 +22,25 @@
 #define HALF_DUPLEX  0x12
 #define MAIPGH_HALF_DUPLEX	0x0C12
 #define MAIPGH_FULL_DUPLEX	0x12
-#define CS_PIN 1<<7
+
+#define __BUFFER_RX_SIZE__		512
+#define __BUFFER_TX_SIZE__		512
 
 static pETHERNET_Device ethDevice;
 
 /*
-static PU8 tx_Buffer;
-static PU8 rx_Buffer;
 static PU8 tx_Buffer_Space[__ETHERNET_TX_BUFFER_SIZE__];
 static PU8 rx_Buffer_Space[__ETHERNET_RX_BUFFER_SIZE__];
 */
 
+
 static void enc28j60_cs(int select) {
 	if (select)
 		HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_IO_BASE +
-				CYGARC_HAL_LPC2XXX_REG_IOCLR, 1 << CS_PIN);
+				CYGARC_HAL_LPC2XXX_REG_IOCLR, CS_PIN);
 	else
 		HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_IO_BASE +
-				CYGARC_HAL_LPC2XXX_REG_IOSET, 1 << CS_PIN);
+				CYGARC_HAL_LPC2XXX_REG_IOSET, CS_PIN);
 }
 
 cyg_spi_lpc2xxx_dev_t spi_enc28j60_dev CYG_SPI_DEVICE_ON_BUS(0) =
@@ -48,7 +49,7 @@ cyg_spi_lpc2xxx_dev_t spi_enc28j60_dev CYG_SPI_DEVICE_ON_BUS(0) =
 	.spi_cpha = 0, //Clock phase (0 or 1)
 	.spi_cpol = 0, // Clock polarity (0 or 1)
 	.spi_lsbf = 0, // MSBF
-	.spi_baud = 10000, // Clock baud rate
+	.spi_baud = 1000000, // Clock baud rate
 	.spi_cs = enc28j60_cs
 };
 
@@ -79,6 +80,7 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
     ethDevice->ethernetDevice.started    = 0;
     */
     /*Intialization of spi device of ethernet*/
+
     /*
     if ( SPI_init(&(ethDevice->ethernetDevice),1) != SPI_SUCESS ){
         return ETHERNET_SPI_INIT_ERROR;
@@ -87,7 +89,7 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
 	ENC_init((cyg_spi_lpc2xxx_dev_t*)(ethDevice->ethernetDevice));
     /*Reset Enc28j60 to default values*/
     ENC_system_reset_command();
-    
+	cyg_thread_delay( 500 );
     /*6.1 Receive Buffer*/
     /*
 	ENC_write_reg(B0_ERXSTL,BANK00,__ETHERNET_RX_START_PTR__,true);
@@ -132,16 +134,7 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
     /**
      * @todo
      * Config Full Duplex     
-     * *//*
-	if ( ethernetDevice->duplex == ETHERNET_FULL_DUPLEX){
-        ENC_write_reg(B2_MABBIPG,BANK02,FULL_DUPLEX,false);
-        ENC_write_reg(B2_MAIPGL,BANK02,MAIPGH_FULL_DUPLEX,true);
-	}else{
-        ENC_write_reg(B2_MABBIPG,BANK02,HALF_DUPLEX,false);
-        ENC_write_reg(B2_MAIPGL,BANK02,MAIPGH_HALF_DUPLEX,true);
-    }
-    ENC_write_reg(ECON1,BANK02,ECON1_RXEN,false);	
-    */
+     * */
     if ( ethernetDevice->duplex == ETHERNET_FULL_DUPLEX){
         ENC_WRITE_REG8(B2_MABBIPG,BANK02,FULL_DUPLEX);
         ENC_WRITE_REG16(B2_MAIPGL,BANK02,MAIPGH_FULL_DUPLEX);
@@ -179,7 +172,7 @@ static inline void Ethernet_start_tx(){
 }
 
 
-static pETHERNET_Device ethDevice;
+//static pETHERNET_Device ethDevice;
 
 /**
  * @todo Use of software buffers to add bytes from both buffers.
@@ -188,7 +181,7 @@ static pETHERNET_Device ethDevice;
 U8 Ethernet_send(U8* packet, U16 packet_size){
 	U8 tsv[TSV_SIZE],aux;
 	U8 retry = 0;
-	/*U8 i;*/
+
 	if (packet == 0)
 		return ETHERNET_NULL_POINTER;
 	if(packet_size == 0 )
@@ -201,11 +194,11 @@ U8 Ethernet_send(U8* packet, U16 packet_size){
 	do{
 		Ethernet_start_tx();
 		do{
-			/*aux = ENC_read_reg(EIR,BANK00,false);*/
+			//aux = ENC_read_reg(EIR,BANK00,false);
 			
             aux = ENC_READ_REG8(EIR,BANK00);
 		}while((aux & EIR_TXIF) == 0);
-        
+
 		ENC_WRITE_REG16(B0_ERDPTL,BANK00,__ETHERNET_TX_START_PTR__ + packet_size + 1);
 		/*ENC_write_reg(B0_ERDPTL,BANK00,__ETHERNET_TX_START_PTR__ + packet_size + 1,true);*/
 		ENC_read_buffer_memory(tsv,TSV_SIZE);

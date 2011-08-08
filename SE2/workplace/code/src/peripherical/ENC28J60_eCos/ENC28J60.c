@@ -3,12 +3,28 @@
 
 /*static pSPI_Device spi;*/
 static cyg_spi_lpc2xxx_dev_t *spi_enc28j60_dev;
+#define SPI_DEV (cyg_spi_device *) spi_enc28j60_dev
 
  void ENC_init(cyg_spi_lpc2xxx_dev_t *pspi){
+	 //GPIO_INIT_PINSEL0((PINSEL0_SPI_SPP_SSEL|PINSEL0_SPI_SPP_MOSI|PINSEL0_SPI_SPP_MISO|PINSEL0_SPI_SPP_SCK));
 	 spi_enc28j60_dev=pspi;
  }
 
-#define SPI_DEV	(cyg_spi_device*) spi_enc28j60_dev
+
+ U8 ENC_test(){
+ 		U32 size=2;
+ 		const U8 tx_data[2] = {0x1E, 0xFF};
+ 		U8 rx_buffer[2] = {0x0, 0x0};
+ 		/*RESET ENC*/
+ 		HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_IO_BASE + CYGARC_HAL_LPC2XXX_REG_IOCLR, RESET);
+ 		HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_IO_BASE + CYGARC_HAL_LPC2XXX_REG_IOSET, RESET);
+
+ 		/*READ CONTENT OF ECON2*/
+ 		cyg_spi_transaction_begin(SPI_DEV);
+ 	    cyg_spi_transaction_transfer(SPI_DEV, true, size, tx_data, rx_buffer, true);
+ 	    cyg_spi_transaction_end(SPI_DEV);
+ 	    return rx_buffer[1];
+ }
 
 static inline void do_single_transaction(U32 size, const U8 *tx_data, U8 *rx_buffer){
   /*SPI_start_device(spi);

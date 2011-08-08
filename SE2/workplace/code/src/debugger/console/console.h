@@ -3,6 +3,7 @@
 
 #include <stdarg.h>
 #include <string.h>
+#include <stdio.h>
 #include "TYPES.h"
 #include "LPC21XX.h"
 
