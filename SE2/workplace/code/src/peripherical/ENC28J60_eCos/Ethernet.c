@@ -28,11 +28,6 @@
 
 static pETHERNET_Device ethDevice;
 
-/*
-static PU8 tx_Buffer_Space[__ETHERNET_TX_BUFFER_SIZE__];
-static PU8 rx_Buffer_Space[__ETHERNET_RX_BUFFER_SIZE__];
-*/
-
 
 static void enc28j60_cs(int select) {
 	if (select)
@@ -49,7 +44,7 @@ cyg_spi_lpc2xxx_dev_t spi_enc28j60_dev CYG_SPI_DEVICE_ON_BUS(0) =
 	.spi_cpha = 0, //Clock phase (0 or 1)
 	.spi_cpol = 0, // Clock polarity (0 or 1)
 	.spi_lsbf = 0, // MSBF
-	.spi_baud = 1000000, // Clock baud rate
+	.spi_baud = 10000, // Clock baud rate
 	.spi_cs = enc28j60_cs
 };
 
@@ -89,7 +84,6 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
 	ENC_init((cyg_spi_lpc2xxx_dev_t*)(ethDevice->ethernetDevice));
     /*Reset Enc28j60 to default values*/
     ENC_system_reset_command();
-	cyg_thread_delay( 500 );
     /*6.1 Receive Buffer*/
     /*
 	ENC_write_reg(B0_ERXSTL,BANK00,__ETHERNET_RX_START_PTR__,true);
