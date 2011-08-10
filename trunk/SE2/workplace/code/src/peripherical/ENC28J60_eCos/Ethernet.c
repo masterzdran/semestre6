@@ -94,7 +94,13 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
 	ENC_WRITE_REG16(B0_ERXNDL,BANK00,__ETHERNET_RX_END_PTR__);
 	ENC_WRITE_REG16(B0_ERXRDPTL,BANK00,__ETHERNET_RX_END_PTR__);
     
-    
+	/*DEBUG*/
+	U16 aux16;
+	U8  aux8;
+	aux16 = ENC_READ_REG16(B0_ERXSTL,BANK00);
+	aux16 = ENC_READ_REG16(B0_ERXNDL,BANK00);
+	aux16 = ENC_READ_REG16(B0_ERXRDPTL,BANK00);
+
     /*
 	ENC_write_reg(B1_ERXFCON,BANK01,PROMISCUOUS_MODE,false);
 	ENC_write_reg(B3_MAADR1,BANK03,ethernetDevice->mac[0],false);
@@ -111,6 +117,8 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
     /*6.3 Receive Filters*/
     ENC_WRITE_REG8(B1_ERXFCON,BANK01,PROMISCUOUS_MODE);
     
+    aux8 = ENC_READ_REG8(B1_ERXFCON,BANK01);
+
     /*6.5 MAC Initialization Settings*/
 	ENC_WRITE_REG8(B3_MAADR1,BANK03,ethernetDevice->mac[0]);
 	ENC_WRITE_REG8(B3_MAADR2,BANK03,ethernetDevice->mac[1]);
@@ -119,12 +127,27 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
 	ENC_WRITE_REG8(B3_MAADR5,BANK03,ethernetDevice->mac[4]);
 	ENC_WRITE_REG8(B3_MAADR6,BANK03,ethernetDevice->mac[5]);
 	
+	aux8 = ENC_READ_REG8(B3_MAADR1,BANK03);
+	aux8 = ENC_READ_REG8(B3_MAADR2,BANK03);
+	aux8 = ENC_READ_REG8(B3_MAADR3,BANK03);
+	aux8 = ENC_READ_REG8(B3_MAADR4,BANK03);
+	aux8 = ENC_READ_REG8(B3_MAADR5,BANK03);
+	aux8 = ENC_READ_REG8(B3_MAADR6,BANK03);
+
 	ENC_WRITE_REG8(B2_MACON1,BANK02,MACON1_MARXEN);
 	ENC_WRITE_REG8(B2_MACON3,BANK02,MACON3_FRMLNEN + MACON3_TXCRCEN + MACON3_PADCFG0);
 	ENC_WRITE_REG8(B2_MACON4,BANK02,MACON4_DEFER);
     
+	aux8 = ENC_READ_REG8(B2_MACON1,BANK02);
+	aux8 = ENC_READ_REG8(B2_MACON3,BANK02);
+	aux8 = ENC_READ_REG8(B2_MACON4,BANK02);
+
+
 	/*ENC_write_reg(B2_MAMXFLL,BANK02,MAX_FRAME_LEN,true);*/
     ENC_WRITE_REG16(B2_MAMXFLL,BANK02,MAX_FRAME_LEN);
+
+    aux16 = ENC_READ_REG16(B2_MAMXFLL,BANK02);
+
     /**
      * @todo
      * Config Full Duplex     
@@ -136,9 +159,15 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
         ENC_WRITE_REG8(B2_MABBIPG,BANK02,HALF_DUPLEX);
         ENC_WRITE_REG16(B2_MAIPGL,BANK02,MAIPGH_HALF_DUPLEX);
     }
+
+    aux8 = ENC_READ_REG8(B2_MABBIPG,BANK02);
+    aux16 = ENC_READ_REG16(B2_MAIPGL,BANK02);
+
     ENC_WRITE_REG8(ECON1,BANK02,ECON1_RXEN);
 	
-	/*
+    aux8 = ENC_READ_REG8(ECON1,BANK02);
+
+    /*
 	 * Prepare Software Buffer.
 	 * */
    /*buffer_init(&rx_Buffer,&rx_Buffer_Space,__ETHERNET_RX_BUFFER_SIZE__);
@@ -164,7 +193,13 @@ static inline void Ethernet_start_tx(){
 	ENC_bit_field_clear(EIR,EIR_TXERIF|EIR_TXIF);
 	ENC_bit_field_set(ECON1,ECON1_TXRTS);	
 }
+static inline void Ethernet_end_tx(U16 packet_size, U8 tsv){
+	ENC_bit_field_clear(ECON1,ECON1_TXRTS);
+	ENC_WRITE_REG16(B0_ERDPTL,BANK00,__ETHERNET_TX_START_PTR__ + packet_size + 1);
+	ENC_read_buffer_memory(tsv,TSV_SIZE);
 
+
+}
 
 //static pETHERNET_Device ethDevice;
 
@@ -193,10 +228,7 @@ U8 Ethernet_send(U8* packet, U16 packet_size){
             aux = ENC_READ_REG8(EIR,BANK00);
 		}while((aux & EIR_TXIF) == 0);
 
-		ENC_WRITE_REG16(B0_ERDPTL,BANK00,__ETHERNET_TX_START_PTR__ + packet_size + 1);
-		/*ENC_write_reg(B0_ERDPTL,BANK00,__ETHERNET_TX_START_PTR__ + packet_size + 1,true);*/
-		ENC_read_buffer_memory(tsv,TSV_SIZE);
-		/*aux =  ENC_read_reg(EIR,BANK00,false);*/
+		Ethernet_end_tx(packet_size, tsv);
         aux =  ENC_READ_REG8(EIR,BANK00);
 	}while((aux & EIR_TXERIF) && TRANSMITE_LATE_COLLITION_BUG(tsv) && (retry++ < MAX_TX_RETRIES) )	;
 	return ETHERNET_OK;

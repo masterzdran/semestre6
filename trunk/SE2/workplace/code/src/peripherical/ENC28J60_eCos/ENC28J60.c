@@ -92,7 +92,7 @@ static inline void do_double_transaction(U8* command, U8 commandSize, U32 dataSi
     SPI_stop_device(spi);*/
 
 	cyg_spi_transaction_begin(SPI_DEV);
-    cyg_spi_transaction_transfer(SPI_DEV, true, (U32)(commandSize), tx_data, rx_buffer, false);
+    cyg_spi_transaction_transfer(SPI_DEV, true, (U32)(commandSize), command, command, false);
     cyg_spi_transaction_transfer(SPI_DEV, true, dataSize, tx_data, rx_buffer, true);
     cyg_spi_transaction_end(SPI_DEV);
 }
@@ -163,7 +163,7 @@ U16 ENC_read_reg(U8 address, U8 bankID,bool asShort){
     U16 data = 0;
     ENC_bank_select(bankID);
     data = ENC_read_control_register(address);
-    return ((asShort)?((data << 8) + ENC_read_control_register(address+1)) : data);    
+    return ((asShort)?((ENC_read_control_register(address+1)<<8) + data) : data);
 }
 
 /*
