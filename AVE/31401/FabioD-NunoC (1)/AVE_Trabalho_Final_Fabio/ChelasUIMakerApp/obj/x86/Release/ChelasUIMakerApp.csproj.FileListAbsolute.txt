@@ -1,0 +1,7 @@
+C:\Users\Fabius\Dropbox\Disciplinas ISEL\AVE_meu\AVE_Trabalho_Final\ChelasUIMakerApp\bin\Release\ChelasUIMakerApp.exe
+C:\Users\Fabius\Dropbox\Disciplinas ISEL\AVE_meu\AVE_Trabalho_Final\ChelasUIMakerApp\bin\Release\ChelasUIMakerApp.pdb
+C:\Users\Fabius\Dropbox\Disciplinas ISEL\AVE_meu\AVE_Trabalho_Final\ChelasUIMakerApp\bin\Release\ChelasUIMaker.Engine.dll
+C:\Users\Fabius\Dropbox\Disciplinas ISEL\AVE_meu\AVE_Trabalho_Final\ChelasUIMakerApp\bin\Release\ChelasUIMaker.Engine.pdb
+C:\Users\Fabius\Dropbox\Disciplinas ISEL\AVE_meu\AVE_Trabalho_Final\ChelasUIMakerApp\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Fabius\Dropbox\Disciplinas ISEL\AVE_meu\AVE_Trabalho_Final\ChelasUIMakerApp\obj\x86\Release\ChelasUIMakerApp.exe
+C:\Users\Fabius\Dropbox\Disciplinas ISEL\AVE_meu\AVE_Trabalho_Final\ChelasUIMakerApp\obj\x86\Release\ChelasUIMakerApp.pdb

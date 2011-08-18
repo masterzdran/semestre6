@@ -1,0 +1,332 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ControlExtensions.cs" caret="0" fromTop="0" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:IArea.cs" caret="71" fromTop="3" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:Controller.cs" caret="216" fromTop="10" />
+      <File id="391FD2BC-DB2E-43F1-A151-FCAE2BFF4DBF/f:CalcController.cs" caret="311" fromTop="13" />
+      <File id="C79312EA-378F-4695-B8EA-7DE00E2A4EAF/f:Program.cs" caret="282" fromTop="13" />
+      <File id="C79312EA-378F-4695-B8EA-7DE00E2A4EAF/f:MyConfig.cs" caret="1113" fromTop="24" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:XView.cs" caret="128" fromTop="4" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:View.cs" caret="264" fromTop="12" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:Config.cs" caret="1320" fromTop="52" />
+      <File id="C79312EA-378F-4695-B8EA-7DE00E2A4EAF/f:MyController.cs" caret="240" fromTop="9" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="878" fromTop="4" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:Config.cs" caret="1996" fromTop="29" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="3228" fromTop="25" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:XView.cs" caret="81" fromTop="4" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="4810" fromTop="18" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:Config.cs" caret="1318" fromTop="16" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="1220" fromTop="37" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="1306" fromTop="27" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="3134" fromTop="50" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:Config.cs" caret="1320" fromTop="22" />
+      <File id="C79312EA-378F-4695-B8EA-7DE00E2A4EAF/f:MyConfig.cs" caret="1219" fromTop="27" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="925" fromTop="31" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="3862" fromTop="6" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="5250" fromTop="33" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="2154" fromTop="40" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="2392" fromTop="47" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="3811" fromTop="38" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="741" fromTop="20" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="559" fromTop="14" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="1131" fromTop="32" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="663" fromTop="18" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="417" fromTop="16" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="5227" fromTop="39" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="5193" fromTop="32" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="5191" fromTop="35" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="5227" fromTop="35" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="2806" fromTop="40" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="2037" fromTop="23" />
+      <File id="042050BA-C709-4F07-9C28-E82408068627/f:ViewEngine.cs" caret="5008" fromTop="20" />
+      <File id="C79312EA-378F-4695-B8EA-7DE00E2A4EAF/f:MyController.cs" caret="646" fromTop="18" />
+      <File id="C79312EA-378F-4695-B8EA-7DE00E2A4EAF/f:MyController.cs" caret="240" fromTop="9" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir>C:\Program Files (x86)\NUnit 2.5.9\bin\net-2.0\</NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="CSharpCodeCompletionContext">
+      <Item value="internal" priority="31" />
+      <Item value="class" priority="63" />
+      <Item value="XView`0" priority="127" />
+      <Item value="public" priority="159" />
+      <Item value="MyView`0" priority="31" />
+      <Item value="Config`0" priority="31" />
+      <Item value="mbox" priority="31" />
+      <Item value="myConfig" priority="95" />
+      <Item value="return" priority="383" />
+      <Item value="_form" priority="128" />
+      <Item value="value" priority="127" />
+      <Item value="new" priority="415" />
+      <Item value="MyView" priority="28" />
+      <Item value="MulticastDelegate`0" priority="31" />
+      <Item value="Load`0" priority="31" />
+      <Item value="Control" priority="209" />
+      <Item value="private" priority="159" />
+      <Item value="IArea" priority="158" />
+      <Item value="MyArea" priority="64" />
+      <Item value="Action`0" priority="63" />
+      <Item value="FormatException`0" priority="31" />
+      <Item value="T" priority="86" />
+      <Item value="action" priority="64" />
+      <Item value="T`0" priority="127" />
+      <Item value="_t" priority="223" />
+      <Item value="content" priority="255" />
+      <Item value="as" priority="287" />
+      <Item value="Component`0" priority="32" />
+      <Item value="container" priority="31" />
+      <Item value="C`0" priority="31" />
+      <Item value="this" priority="127" />
+      <Item value="var" priority="351" />
+      <Item value="Console`0" priority="794" />
+      <Item value="else" priority="159" />
+      <Item value="Container`0" priority="32" />
+      <Item value="foreach" priority="346" />
+      <Item value="Panel`0" priority="32" />
+      <Item value="ScrollableControl`0" priority="163" />
+      <Item value="ctrl" priority="575" />
+      <Item value="c" priority="95" />
+      <Item value="MethodInvoker`0" priority="31" />
+      <Item value="Type`0" priority="127" />
+      <Item value="int" priority="63" />
+      <Item value="i" priority="63" />
+      <Item value="if" priority="351" />
+      <Item value="t" priority="95" />
+      <Item value="null" priority="255" />
+      <Item value="scrollable" priority="32" />
+      <Item value="readonly" priority="58" />
+      <Item value="_scrollable" priority="31" />
+      <Item value="U`0" priority="31" />
+      <Item value="type" priority="63" />
+      <Item value="ContainerControl" priority="26" />
+      <Item value="#define" priority="31" />
+      <Item value="toAdd" priority="224" />
+      <Item value="Type" priority="58" />
+      <Item value="construtor" priority="31" />
+      <Item value="TextBox" priority="28" />
+      <Item value="customAttributeData" priority="31" />
+      <Item value="Action" priority="31" />
+      <Item value="constructor" priority="63" />
+      <Item value="VARIABLE" priority="31" />
+      <Item value="parameterInfo" priority="31" />
+      <Item value="false" priority="63" />
+      <Item value="IDataGridColumnStyleEditingNotificationService`0" priority="31" />
+      <Item value="area" priority="63" />
+      <Item value="BindingFlags`0" priority="191" />
+      <Item value="memberInfo" priority="31" />
+      <Item value="static" priority="63" />
+      <Item value="act" priority="31" />
+      <Item value="String`0" priority="31" />
+      <Item value="_control" priority="351" />
+      <Item value="ref" priority="95" />
+      <Item value="typeof" priority="63" />
+      <Item value="Control`0" priority="191" />
+      <Item value="_controlProperties" priority="31" />
+      <Item value="Intersect`1" priority="26" />
+      <Item value="inputProperties" priority="31" />
+      <Item value="DataGridViewCellValidatingEventArgs`0" priority="31" />
+      <Item value="Where`1" priority="107" />
+      <Item value="input" priority="128" />
+      <Item value="resultingProperties" priority="31" />
+      <Item value="controlProperties" priority="31" />
+      <Item value="GroupBy`2" priority="26" />
+      <Item value="Select`2" priority="53" />
+      <Item value="true" priority="63" />
+      <Item value="Contains`1" priority="26" />
+      <Item value="Skip`1" priority="26" />
+      <Item value="SkipWhile`1" priority="26" />
+      <Item value="TakeWhile`1" priority="26" />
+      <Item value="mtdName" priority="31" />
+      <Item value="mtd" priority="63" />
+      <Item value="EventHandler`0" priority="64" />
+      <Item value="_ctrl" priority="287" />
+      <Item value="methodInfo" priority="63" />
+      <Item value="Delegate`0" priority="31" />
+      <Item value="object" priority="61" />
+      <Item value="sender" priority="31" />
+      <Item value="eventArgs" priority="31" />
+      <Item value="EventInfo`0" priority="31" />
+      <Item value="eventMtd" priority="31" />
+      <Item value="controlCollection" priority="31" />
+      <Item value="evInfo" priority="31" />
+      <Item value="eventName" priority="31" />
+      <Item value="internalControl" priority="223" />
+      <Item value="_controller" priority="31" />
+      <Item value="TypeAccessException`0" priority="31" />
+      <Item value="_graphics" priority="191" />
+      <Item value="AutoCompleteStringCollection`0" priority="95" />
+      <Item value="in" priority="31" />
+      <Item value="GC`0" priority="31" />
+      <Item value="arr" priority="62" />
+      <Item value="Length" priority="26" />
+      <Item value="XView" priority="57" />
+      <Item value="protected" priority="31" />
+      <Item value="xView" priority="32" />
+      <Item value="string" priority="31" />
+      <Item value="s" priority="31" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ChelasUIMaker.Engine.Config">
+      <Item value="Load`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ComponentModel.Container">
+      <Item value="Add`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ChelasUIMaker.Engine.Config+MyArea`1">
+      <Item value="WithController`1" priority="26" />
+      <Item value="GetType`0" priority="26" />
+      <Item value="_t" priority="81" />
+      <Item value="_internalControl" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Type">
+      <Item value="GetMethod`0" priority="108" />
+      <Item value="IsInstanceOfType`0" priority="26" />
+      <Item value="GetConstructor`0" priority="107" />
+      <Item value="GetType`0" priority="53" />
+      <Item value="GetGenericArguments`0" priority="26" />
+      <Item value="GetCustomAttributesData`0" priority="22" />
+      <Item value="GetFields`0" priority="26" />
+      <Item value="GetMembers`0" priority="26" />
+      <Item value="GetProperties`0" priority="80" />
+      <Item value="GetEvent`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.MethodInfo">
+      <Item value="GetType`0" priority="53" />
+      <Item value="GetGenericArguments`0" priority="76" />
+      <Item value="GetGenericMethodDefinition`0" priority="26" />
+      <Item value="GetCustomAttributes`0" priority="26" />
+      <Item value="Name" priority="53" />
+      <Item value="GetMethodBody`0" priority="26" />
+      <Item value="MethodHandle" priority="53" />
+      <Item value="Invoke`0" priority="107" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="WriteLine`0" priority="674" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Form">
+      <Item value="Container" priority="26" />
+      <Item value="Controls" priority="80" />
+      <Item value="AccessibleDefaultActionDescription" priority="53" />
+      <Item value="AccessibleName" priority="26" />
+      <Item value="AccessibleRole" priority="26" />
+      <Item value="AutoScrollOffset" priority="26" />
+      <Item value="Name" priority="49" />
+      <Item value="Width" priority="26" />
+      <Item value="Height" priority="26" />
+      <Item value="AutoSize" priority="26" />
+      <Item value="Text" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Control">
+      <Item value="AccessibilityObject" priority="53" />
+      <Item value="Container" priority="81" />
+      <Item value="AccessibleDefaultActionDescription" priority="26" />
+      <Item value="AccessibleDescription" priority="26" />
+      <Item value="AccessibleName" priority="26" />
+      <Item value="AccessibleRole" priority="26" />
+      <Item value="AllowDrop" priority="26" />
+      <Item value="Anchor" priority="26" />
+      <Item value="AutoScrollOffset" priority="26" />
+      <Item value="Name" priority="80" />
+      <Item value="Width" priority="26" />
+      <Item value="Height" priority="26" />
+      <Item value="AutoSize" priority="26" />
+      <Item value="Text" priority="26" />
+      <Item value="MouseEnter" priority="53" />
+      <Item value="Controls" priority="269" />
+      <Item value="GetContainerControl`0" priority="53" />
+      <Item value="Equals`0" priority="26" />
+      <Item value="TopLevelControl" priority="108" />
+      <Item value="CreateControl`0" priority="80" />
+      <Item value="SuspendLayout`0" priority="53" />
+      <Item value="ResumeLayout`0" priority="49" />
+      <Item value="GetHashCode`0" priority="26" />
+      <Item value="GetNextControl`0" priority="54" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ComponentModel.IContainer">
+      <Item value="Add`0" priority="80" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.ConstructorInfo">
+      <Item value="Invoke`0" priority="80" />
+      <Item value="GetParameters`0" priority="26" />
+      <Item value="GetCustomAttributes`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ChelasUIMaker.Engine.IArea`1">
+      <Item value="GetType`0" priority="80" />
+      <Item value="ToString`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ScrollableControl">
+      <Item value="Container" priority="107" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Control+ControlCollection">
+      <Item value="Add`0" priority="242" />
+      <Item value="Count" priority="80" />
+      <Item value="GetEnumerator`0" priority="80" />
+      <Item value="GetHashCode`0" priority="26" />
+      <Item value="AsQueryable`0" priority="22" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.ParameterInfo">
+      <Item value="GetRealObject`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Reflection.BindingFlags">
+      <Item value="Default" priority="53" />
+      <Item value="NonPublic" priority="108" />
+      <Item value="Instance" priority="26" />
+      <Item value="DeclaredOnly" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.PropertyInfo">
+      <Item value="SetValue`0" priority="26" />
+      <Item value="Equals`0" priority="26" />
+      <Item value="Name" priority="107" />
+      <Item value="GetValue`0" priority="26" />
+      <Item value="CanWrite" priority="26" />
+      <Item value="CanRead" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Equals`0" priority="53" />
+      <Item value="Substring`0" priority="26" />
+      <Item value="IndexOf`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="First`1" priority="26" />
+      <Item value="OrderBy`2" priority="26" />
+      <Item value="Single`1" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.EventInfo">
+      <Item value="AddEventHandler`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Object">
+      <Item value="GetType`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.IContainerControl">
+      <Item value="ActiveControl" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.GC">
+      <Item value="Collect`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ChelasUIMaker.Engine.XView">
+      <Item value="Control" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ChelasUIMaker.Engine.ViewEngine+MyView">
+      <Item value="xview" priority="26" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

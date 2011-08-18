@@ -1,0 +1,20 @@
+C:\lfalcao\Work\ISEL\Disciplinas\2010-2011\AVEVer2010_2011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker.Engine\bin\Debug\ChelasUIMaker.Engine.dll
+C:\lfalcao\Work\ISEL\Disciplinas\2010-2011\AVEVer2010_2011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker.Engine\bin\Debug\ChelasUIMaker.Engine.pdb
+C:\lfalcao\Work\ISEL\Disciplinas\2010-2011\AVEVer2010_2011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ResolveAssemblyReference.cache
+C:\lfalcao\Work\ISEL\Disciplinas\2010-2011\AVEVer2010_2011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ChelasUIMaker.Engine.dll
+C:\lfalcao\Work\ISEL\Disciplinas\2010-2011\AVEVer2010_2011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ChelasUIMaker.Engine.pdb
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\bin\Debug\ChelasUIMaker.Engine.dll
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\bin\Debug\ChelasUIMaker.Engine.pdb
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ResolveAssemblyReference.cache
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ChelasUIMaker.Engine.dll
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ChelasUIMaker.Engine.pdb
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\bin\Debug\ChelasUIMaker.Engine.dll
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\bin\Debug\ChelasUIMaker.Engine.pdb
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ResolveAssemblyReference.cache
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ChelasUIMaker.Engine.dll
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ChelasUIMaker.Engine.pdb
+C:\Users\Fabius\Dropbox\Disciplinas ISEL\AVE_meu\AVE_Trabalho_Final\ChelasUIMaker.Engine\bin\Debug\ChelasUIMaker.Engine.dll
+C:\Users\Fabius\Dropbox\Disciplinas ISEL\AVE_meu\AVE_Trabalho_Final\ChelasUIMaker.Engine\bin\Debug\ChelasUIMaker.Engine.pdb
+C:\Users\Fabius\Dropbox\Disciplinas ISEL\AVE_meu\AVE_Trabalho_Final\ChelasUIMaker.Engine\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Fabius\Dropbox\Disciplinas ISEL\AVE_meu\AVE_Trabalho_Final\ChelasUIMaker.Engine\obj\Debug\ChelasUIMaker.Engine.dll
+C:\Users\Fabius\Dropbox\Disciplinas ISEL\AVE_meu\AVE_Trabalho_Final\ChelasUIMaker.Engine\obj\Debug\ChelasUIMaker.Engine.pdb
