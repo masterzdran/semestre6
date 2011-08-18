@@ -1,0 +1,7 @@
+<Modules>
+  <Module PersistentId="C79312EA-378F-4695-B8EA-7DE00E2A4EAF" ModuleId="ChelasUIMakerApp" />
+  <Module PersistentId="042050BA-C709-4F07-9C28-E82408068627" ModuleId="ChelasUIMaker.Engine" />
+  <Module PersistentId="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System.Windows.Forms" />
+  <Module PersistentId="391FD2BC-DB2E-43F1-A151-FCAE2BFF4DBF" ModuleId="ChelasUIMakerCalcApp" />
+  <Module PersistentId="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System.Windows.Forms_1" />
+</Modules>

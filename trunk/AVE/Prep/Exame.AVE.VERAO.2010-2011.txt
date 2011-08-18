@@ -117,3 +117,9 @@ c.  [1] Implemente o método  void Apply(  object  instance  )  como um método de
             }
 
         } 
+        
+b.  [1] Considere a nova definição do método  Join  –  void Join(ref int j). Que alterações  seriam necessárias nas restantes classes? Irá existir alguma diferença no output? Justifique. 
+Todas as chamadas do método tinham que ser alterados para contemplar o argumento como referencia. As alterações efectuadas no método seriam reflectidas directamente sobre as referencias em argumento.
+Uma vez que os valores são passados por referencia, os outputs iam ser diferentes porque as acções ocurridas vias box/unbox são efectuadas com as referencias dos objectos e não estariam guardados no stack da operação box/unbox.
+
+ 
