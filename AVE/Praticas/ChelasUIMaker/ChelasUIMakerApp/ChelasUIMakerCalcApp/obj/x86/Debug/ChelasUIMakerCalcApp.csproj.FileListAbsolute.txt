@@ -1,0 +1,14 @@
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMakerCalcApp.exe
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMakerCalcApp.pdb
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMaker.Engine.dll
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMaker.Engine.pdb
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\obj\x86\Debug\ChelasUIMakerCalcApp.exe
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\obj\x86\Debug\ChelasUIMakerCalcApp.pdb
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\obj\x86\Debug\ChelasUIMakerCalcApp.pdb
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMakerCalcApp.exe
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMakerCalcApp.pdb
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMaker.Engine.dll
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMaker.Engine.pdb
+D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\obj\x86\Debug\ChelasUIMakerCalcApp.exe
