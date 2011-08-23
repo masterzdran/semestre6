@@ -61,11 +61,13 @@ all: $(END_EXEC)
 #Generate the executable
 #$(OBJECT)
 $(END_EXEC): program 
-	cp src/device/STARTUP/start.o src/lib/start.o
+#	cp src/device/STARTUP/start.o src/lib/start.o
 #	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(MYLIB)/start.o $(PROGRAM)/tacografo.o -L$(MYLIB) -lPeripherical -lLPC2106 -lc -lgcc
-	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(OBJECT) -L$(MYLIB) $(LYBRARIES)
+#	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  -L$(MYLIB) -L$(UIP_LIBRARY) -L$(ECOS_LIBRARY) -L$(LYBRARIES)
+	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(SEARCHLIB) -L$(LYBRARIES)
 
-peripherical: collection
+#peripherical: collection
+peripherical:
 	@echo "----------------------------------------------------------------------"
 	$(MAKE) -C $(PERIPHERICAL)
 
@@ -82,7 +84,8 @@ collection: device
 	@echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 	$(MAKE) -C $(COLLECTION)
 	
-program:  device  collection peripherical debugger  
+#program:  device  collection peripherical debugger
+program:  device peripherical    
 	@echo "----------------------------------------------------------------------"
 	$(MAKE) -C $(PCOMPILE)
 

@@ -1150,13 +1150,15 @@ extern u16_t uip_urglen, uip_surglen;
  * file pointers) for the connection. The type of this field is
  * configured in the "uipopt.h" header file.
  */
+
+
 struct uip_conn {
   uip_ipaddr_t ripaddr;   /**< The IP address of the remote host. */
-  
+
   u16_t lport;        /**< The local TCP port, in network byte order. */
   u16_t rport;        /**< The local remote TCP port, in network byte
 			 order. */
-  
+
   u8_t rcv_nxt[4];    /**< The sequence number that we expect to
 			 receive next. */
   u8_t snd_nxt[4];    /**< The sequence number that was last sent by

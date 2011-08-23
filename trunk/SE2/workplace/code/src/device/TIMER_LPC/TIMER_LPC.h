@@ -17,8 +17,8 @@
 # ISEL  - Instituto Superior de Engenharia de Lisboa
 #=======================================================================
 **/ 
-#ifndef TIMER_H
-#define TIMER_H
+#ifndef TIMER_LPC_H
+#define TIMER_LPC_H
 #include "TYPES.h"
 #include "LPC21XX.h"
 #include "GPIO.h"
@@ -145,56 +145,56 @@ typedef struct _TIMER{
  * @brief Delay of B seconds on Timer A:
  * MACRO Signature: timer_sleep_seconds(pLPC_TIMER timer, U32 elapse)
  * */
-#define     timer_sleep_seconds(A,B)            (TIMER_delay(A,((( getPeriphericalClock()/SECOND)/((A)->PR))*B)))
+#define     timer_lpc_sleep_seconds(A,B)            (TIMER_delay(A,((( getPeriphericalClock()/SECOND)/((A)->PR))*B)))
 
 /**
  * @brief Delay of B mili-seconds on Timer A:
  * MACRO Signature: timer_sleep_miliseconds(pLPC_TIMER timer, U32 elapse)
  * */
-#define     timer_sleep_miliseconds(A,B)        (TIMER_delay(A,((( getPeriphericalClock()/MILI)/((A)->PR))*B)))
+#define     timer_lpc_sleep_miliseconds(A,B)        (TIMER_delay(A,((( getPeriphericalClock()/MILI)/((A)->PR))*B)))
 
 /**
  * @brief Delay of B micro-seconds on Timer A:
  * MACRO Signature: timer_sleep_microseconds(pLPC_TIMER timer, U32 elapse)
  * */
-#define     timer_sleep_microseconds(A,B)     	(TIMER_delay(A,((( getPeriphericalClock()/MICRO)/((A)->PR))*B)))
+#define     timer_lpc_sleep_microseconds(A,B)     	(TIMER_delay(A,((( getPeriphericalClock()/MICRO)/((A)->PR))*B)))
 
 /**
  * @brief Enable of Timer A:
  * MACRO Signature: timer_start(pLPC_TIMER timer)
  * */
-#define timer_start(A)                  ((A)->TCR |= __TCR_ENABLE__)
+#define timer_lpc_start(A)                  ((A)->TCR |= __TCR_ENABLE__)
 
 /**
  * @brief Disable of Timer A:
  * MACRO Signature: timer_stop(pLPC_TIMER timer)
  * */
-#define timer_stop(A)                   ((A)->TCR &= ~(__TCR_ENABLE__))
+#define timer_lpc_stop(A)                   ((A)->TCR &= ~(__TCR_ENABLE__))
 
 /**
  * @brief Elapsed time:
  * MACRO Signature: timer_elapsed(pLPC_TIMER timer, U32 lastTime)
  * */
-#define timer_elapsed(A,B)              ((A)->TC - B)
+#define timer_lpc_elapsed(A,B)              ((A)->TC - B)
 
 /**
  * @brief Current timer value:
  * MACRO Signature: timer_now(pLPC_TIMER timer)
  * */
-#define timer_now(A)					((A)->TC)
+#define timer_lpc_now(A)					((A)->TC)
 /**
  * @brief Reset of the timer value:
  * MACRO Signature: timer_reset(pLPC_TIMER timer)
  * */
-#define timer_reset(A)                  {(A)->TCR |= __TCR_RESET_ENABLE__; (A)->TCR &= ~(__TCR_RESET_ENABLE__);}
+#define timer_lpc_reset(A)                  {(A)->TCR |= __TCR_RESET_ENABLE__; (A)->TCR &= ~(__TCR_RESET_ENABLE__);}
 
-void TIMER_init(pLPC_TIMER timer, U32 countNbr);
-void TIMER_delay(pLPC_TIMER timer, U32 elapse);
-void TIMER_capture_init(pLPC_TIMER timer,U8 channel, U32 captureMask, U32 countNbr,tCtcrFunction ctcrFunction);
-void TIMER_enable(pLPC_TIMER timer);
-void TIMER_ext_match_init(pLPC_TIMER timer,U8 channel, U32 MatchMask, U32 countNbr,tEmrFunction emrFunction);
-void TIMER_ext_match_changeTime(pLPC_TIMER timer,U8 channel,U8 up, U8 dif);
-void TIMER_ext_match_stop(pLPC_TIMER timer,U8 channel, U32 emrFunction);
-void TIMER_ext_match_start(pLPC_TIMER timer,U8 channel, U32 emrFunction);
+void TIMER_LPC_init(pLPC_TIMER timer, U32 countNbr);
+void TIMER_LPC_delay(pLPC_TIMER timer, U32 elapse);
+void TIMER_LPC_capture_init(pLPC_TIMER timer,U8 channel, U32 captureMask, U32 countNbr,tCtcrFunction ctcrFunction);
+void TIMER_LPC_LPC_enable(pLPC_TIMER timer);
+void TIMER_LPC_ext_match_init(pLPC_TIMER timer,U8 channel, U32 MatchMask, U32 countNbr,tEmrFunction emrFunction);
+void TIMER_LPC_ext_match_changeTime(pLPC_TIMER timer,U8 channel,U8 up, U8 dif);
+void TIMER_LPC_ext_match_stop(pLPC_TIMER timer,U8 channel, U32 emrFunction);
+void TIMER_LPC_ext_match_start(pLPC_TIMER timer,U8 channel, U32 emrFunction);
 
 #endif

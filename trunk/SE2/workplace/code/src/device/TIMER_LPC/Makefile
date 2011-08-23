@@ -31,18 +31,18 @@ include $(PROJECT_PATH)/common.mk
 .PHONY					= clear
 #=======================================================================
 
-all: TIMER.o
+all: TIMER_LPC.o
 
 
-TIMER.o:TIMER.c TIMER.h 
+TIMER_LPC.o:TIMER_LPC.c TIMER_LPC.h 
 	@echo "----------------------------------------------------------------------"
 	$(CC)   $(COPTIONS)  $(SEARCHLIB) $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $< 
 	cp $@ $(MYLIB)/$@
-	cp TIMER.h $(INCLUDE)/
+	cp TIMER_LPC.h $(INCLUDE)/
 	
 clean:
 	@echo "----------------------------------------------------------------------"
-	rm  TIMER.o
+	rm  TIMER_LPC.o
 	rm  $(INCLUDE)/TIMER.h
 	
 	
