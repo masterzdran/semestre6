@@ -30,8 +30,8 @@ include $(PROJECT_PATH)/common.mk
 .PHONY 					= clean
 .PHONY					= clear
 .PHONY					= all
-MAKEPATHS				= LPC GPIO SPI TIMER RTC 
-AR_OBJ					= $(MYLIB)/TIMER.o $(MYLIB)/RTC.o
+MAKEPATHS				= LPC GPIO SPI TIMER_LPC RTC 
+AR_OBJ					= $(MYLIB)/TIMER_LPC.o $(MYLIB)/RTC.o
 #=======================================================================
 all: 
 	@echo "============================"

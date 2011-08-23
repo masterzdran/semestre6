@@ -496,7 +496,7 @@ void uip_log(char *msg);
  *
  * The following example illustrates how this can look.
  \code
-
+*
 void httpd_appcall(void);
 #define UIP_APPCALL     httpd_appcall
 

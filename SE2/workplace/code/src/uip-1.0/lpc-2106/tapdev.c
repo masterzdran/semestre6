@@ -50,7 +50,7 @@ ETHERNET_Device ethernetDevice ;
 ETHERNET_Device ethernetDevice ={
 	{},
 	ETHERNET_FULL_DUPLEX,
-	{0x02, 0x65, 0x7A, 0x65, 0x71, 00}
+	{0x02, 0x6E, 0x75, 0x6E, 0x6F, 00};
 };
 */
 /*---------------------------------------------------------------------------*/
@@ -58,6 +58,12 @@ ETHERNET_Device ethernetDevice ={
 
 void tapdev_init(void)
 {
+	ETHERNET_Device ethernetDevice ={
+	NULL,
+	ETHERNET_FULL_DUPLEX,
+	{0x02, 0x6E, 0x75, 0x6E, 0x6F, 00}
+	};
+
 	Ethernet_init(&ethernetDevice);
 
 }
