@@ -44,10 +44,9 @@ UIP_LIBRARY		= $(PUIP)/uip/obj
 UIP_LPC			= $(PUIP)/lpc-2106
 HEADER			= 
 SEARCHINCLUDE	= -I$(ECOS_INCLUDE) -I$(INCLUDE) -I$(SOURCE)/include_eCos -I$(UIP_INCLUDE) -I$(UIP_LPC)
-SEARCHLIB		= -L$(ECOS_LIBRARY) -L$(SOURCE)/lib_eCos -L$(SOURCE)/lib -L$(UIP_LIBRARY)
+SEARCHLIB		= -L$(ECOS_LIBRARY) -L$(SOURCE)/lib -L$(UIP_LIBRARY)
 VPATH 			= $(MYLIB):$(ECOS_LIBRARY)
 
-LDSCRIPT_FILE 		= ../../../../code/src/eCos/lib/
 #Executables
 CC 				= arm-eabi-gcc
 LD 				= arm-eabi-gcc

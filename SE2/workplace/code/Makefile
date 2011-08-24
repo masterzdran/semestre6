@@ -38,21 +38,25 @@ include $(PROJECT_PATH)/common.mk
 LDS_PATH		=  	$(TODEPLOY)/ldscript
 OPENOCD_FILE	=	$(TODEPLOY)/openocd/openocd_lpc2106.cfg
 #Set the Correct LdScript
-ifdef ROM
-LDSCRIPT_FILE	= $(LDS_PATH)/ldscript_rom
-EXEC				= rom.elf
-END_EXEC		= $(TARGET)/rom.elf
-else
-LDSCRIPT_FILE	= $(LDS_PATH)/ldscript_ram
-EXEC				= ram.elf
-END_EXEC		= $(TARGET)/ram.elf
-endif
+
+LDSCRIPT_FILE	= $(ECOS_LIBRARY)/target.ld
+END_EXEC		= $(TARGET)/program.elf
+
+#ifdef ROM
+#LDSCRIPT_FILE	= $(LDS_PATH)/ldscript_rom
+#EXEC				= rom.elf
+#END_EXEC		= $(TARGET)/rom.elf
+#else
+#LDSCRIPT_FILE	= $(LDS_PATH)/ldscript_ram
+#EXEC				= ram.elf
+#END_EXEC		= $(TARGET)/ram.elf
+#endif
 
 VPATH 			= $(MYLIB):$(CLIB):$(libdir)
 #VPATH 			= $(MYLIB)
 #=======================================================================
 #LIBOBJECT =		libc.a libgcc.a  libLPC2106.a libPeripherical.a libDebugger.a
-LYBRARIES = 	 -lc -lgcc -lLPC2106  -lPeripherical
+LYBRARIES = 	 -lLPC2106  -lPeripherical -lc -lgcc 
 OBJECT =		$(MYLIB)/start.o $(PROGRAM)/test.o $(MYLIB)/console.o  $(MYLIB)/BUFFER.o
 #$(MYLIB)/BUFFER.o
 #=======================================================================
@@ -64,7 +68,7 @@ $(END_EXEC): program
 #	cp src/device/STARTUP/start.o src/lib/start.o
 #	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(MYLIB)/start.o $(PROGRAM)/tacografo.o -L$(MYLIB) -lPeripherical -lLPC2106 -lc -lgcc
 #	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  -L$(MYLIB) -L$(UIP_LIBRARY) -L$(ECOS_LIBRARY) -L$(LYBRARIES)
-	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(SEARCHLIB) -L$(LYBRARIES)
+	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(SEARCHLIB) $(LYBRARIES)
 
 #peripherical: collection
 peripherical:
@@ -85,7 +89,7 @@ collection: device
 	$(MAKE) -C $(COLLECTION)
 	
 #program:  device  collection peripherical debugger
-program:  device peripherical    
+program: 
 	@echo "----------------------------------------------------------------------"
 	$(MAKE) -C $(PCOMPILE)
 
@@ -98,11 +102,11 @@ program:  device peripherical
 #clean files
 clean:
 	@echo "----------------------------------------------------------------------"
-	$(MAKE) -C $(DEVICE) clean
-	$(MAKE) -C $(PERIPHERICAL) clean
-	$(MAKE) -C $(DEBUGGER) clean	
+#	$(MAKE) -C $(DEVICE) clean
+#	$(MAKE) -C $(PERIPHERICAL) clean
+#	$(MAKE) -C $(DEBUGGER) clean	
 	$(MAKE) -C $(PCOMPILE) clean
-	$(MAKE) -C $(COLLECTION) clean
+#	$(MAKE) -C $(COLLECTION) clean
 
 deploy: $(END_EXEC)
 	$(OPENOCD) -f $(OPENOCD_FILE) -c "flash write_image erase $^" -c "sleep 100" -c "reset run" -c "shutdown"
