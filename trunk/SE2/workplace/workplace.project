@@ -277,6 +277,12 @@
           <File Name="code/src/tests/test/test.c"/>
           <File Name="code/src/tests/test/test.h"/>
         </VirtualDirectory>
+        <VirtualDirectory Name="uIP">
+          <File Name="code/src/tests/uIP/test_uIP.h"/>
+          <File Name="code/src/tests/uIP/test_uIP.c"/>
+          <File Name="code/src/tests/uIP/test.c"/>
+          <File Name="code/src/tests/uIP/Makefile"/>
+        </VirtualDirectory>
       </VirtualDirectory>
       <VirtualDirectory Name="deploy">
         <VirtualDirectory Name="ldscript">
