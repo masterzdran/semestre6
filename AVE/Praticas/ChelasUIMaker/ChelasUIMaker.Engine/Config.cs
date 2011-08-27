@@ -11,6 +11,7 @@
         Type[] _types;
         //Não Gosto
         public static Control _control;
+        public static Type _controller;
 
         public void Load()
         {

@@ -8,6 +8,7 @@ namespace ChelasUIMaker.Engine
 {
     public class Controller
     {
-        public View View { get; set; }
+        private View view;
+        public View View { get { return view; } set { view = value; } }
     }
 }
