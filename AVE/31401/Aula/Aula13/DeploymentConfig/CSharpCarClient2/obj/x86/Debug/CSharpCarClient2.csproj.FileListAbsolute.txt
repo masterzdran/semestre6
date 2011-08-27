@@ -18,3 +18,6 @@ D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin
 D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Debug\CSharpCarClient2.application
 D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Debug\CSharpCarClient2.exe.manifest
 D:\visual studio 2010\Projects\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Debug\CSharpCarClient2.application
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula13\DeploymentConfig\CSharpCarClient2\bin\Debug\CSharpCarClient2.exe.config
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Debug\CSharpCarClient2.exe
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula13\DeploymentConfig\CSharpCarClient2\obj\x86\Debug\CSharpCarClient2.pdb
