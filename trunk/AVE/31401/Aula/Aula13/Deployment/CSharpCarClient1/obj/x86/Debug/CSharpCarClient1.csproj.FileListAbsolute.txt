@@ -5,3 +5,5 @@ D:\work\AVE2011\ExerciciosCSharp\Deployment\CSharpCarClient1\bin\Debug\CarLibrar
 D:\work\AVE2011\ExerciciosCSharp\Deployment\CSharpCarClient1\obj\x86\Debug\CSharpCarClient1.exe
 D:\work\AVE2011\ExerciciosCSharp\Deployment\CSharpCarClient1\obj\x86\Debug\CSharpCarClient1.pdb
 D:\work\AVE2011\ExerciciosCSharp\Deployment\CSharpCarClient1\bin\Debug\CarLibrary1.dll
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula13\Deployment\CSharpCarClient1\obj\x86\Debug\CSharpCarClient1.exe
+C:\WorkingArea\ISEL\semestre6\AVE\31401\Aula\Aula13\Deployment\CSharpCarClient1\obj\x86\Debug\CSharpCarClient1.pdb

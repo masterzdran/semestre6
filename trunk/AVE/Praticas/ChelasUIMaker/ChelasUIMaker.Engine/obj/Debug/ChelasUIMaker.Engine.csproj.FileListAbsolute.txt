@@ -13,3 +13,8 @@ D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUI
 D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ResolveAssemblyReference.cache
 D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ChelasUIMaker.Engine.dll
 D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ChelasUIMaker.Engine.pdb
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMaker.Engine\bin\Debug\ChelasUIMaker.Engine.dll
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMaker.Engine\bin\Debug\ChelasUIMaker.Engine.pdb
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ResolveAssemblyReference.cache
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ChelasUIMaker.Engine.dll
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMaker.Engine\obj\Debug\ChelasUIMaker.Engine.pdb

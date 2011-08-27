@@ -9,7 +9,11 @@ namespace ChelasUIMaker.Engine
     {
         public static XView LoadConfig(Config myConfig)
         {
-            throw new NotImplementedException();
+            if (myConfig == null)
+                throw new InvalidOperationException();
+
+            myConfig.Load();
+            return new XView(myConfig);
         }
     }
 }

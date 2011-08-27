@@ -31,12 +31,12 @@ namespace ChelasUIMakerCalcApp
                 .WithContent<Button>(DefineArea<Button>(b3 => { b3.Text = "3"; b3.Left=200; b3.ForeColor = Color.White; }))
                 .WithContent<Button>(DefineArea<Button>(b4 => { b4.Text = "4"; b4.Top=50; b4.ForeColor = Color.White; }))
                 .WithContent<Button>(DefineArea<Button>(b5 => { b5.Text = "5";  b5.Top=50; b5.Left=100; b5.ForeColor = Color.White; }))
-                 .WithContent<Button>(DefineArea<Button>(b6 => { b6.Text = "6"; b6.Top=50; b6.Left=100; b6.ForeColor = Color.White; }))
+                .WithContent<Button>(DefineArea<Button>(b6 => { b6.Text = "6"; b6.Top=50; b6.Left=100; b6.ForeColor = Color.White; }))
                 .WithContent<Button>(DefineArea<Button>(b7 => { b7.Text = "7"; b7.Top=100; b7.ForeColor = Color.White; }))
-                 .WithContent<Button>(DefineArea<Button>(b8 => { b8.Text = "8"; b8.Top=100; b8.Left=100; b8.ForeColor = Color.White; }))
-                  .WithContent<Button>(DefineArea<Button>(b9 => { b9.Text = "9"; b9.Top=100; b9.Left=200; b9.ForeColor = Color.White; }))
-.WithContent<Button>(DefineArea<Button>(b0 => { b0.Text = "0"; b0.Top=150; b0.ForeColor = Color.White; }))
-.WithContent<Button>(DefineArea<Button>(bC => { bC.Text = "C"; bC.Top=150; bC.Left=200; bC.ForeColor = Color.White; }));
+                .WithContent<Button>(DefineArea<Button>(b8 => { b8.Text = "8"; b8.Top=100; b8.Left=100; b8.ForeColor = Color.White; }))
+                .WithContent<Button>(DefineArea<Button>(b9 => { b9.Text = "9"; b9.Top=100; b9.Left=200; b9.ForeColor = Color.White; }))
+                .WithContent<Button>(DefineArea<Button>(b0 => { b0.Text = "0"; b0.Top=150; b0.ForeColor = Color.White; }))
+                .WithContent<Button>(DefineArea<Button>(bC => { bC.Text = "C"; bC.Top=150; bC.Left=200; bC.ForeColor = Color.White; }));
 
     DefineArea<Form>(f => { f.Text = "Calculadora"; f.Height = 400;f.Width=300; })
          .WithController<CalcController>()
