@@ -25,6 +25,7 @@ namespace ChelasUIMaker.Engine
 
             //Type t = config.Area.GetType().GetField("_controller").GetValue(config) as Type;
             Type t = typeof(Config).GetField("_controller").GetValue(config) as Type;
+            
             object o = t.GetConstructor(new Type[] { }).Invoke(null);
  
             //add controller to view
@@ -47,7 +48,8 @@ namespace ChelasUIMaker.Engine
             {
                 Control c = null;
                 processControl(s, ref c, _control.Controls, true);
-                c = value;
+                if (c != null)
+                    _control.Controls.Add(value);
             }
         }
         /*TODO:*/
@@ -71,7 +73,7 @@ namespace ChelasUIMaker.Engine
             foreach (var mi in m)
             {
                 String[] bnfHandler = mi.Name.Split('_');
-                String event_ = bnfHandler[ bnfHandler.Length - 1];
+                String event_ = bnfHandler[bnfHandler.Length - 1];
                 String element_ = (bnfHandler.Length < 2) ? null : bnfHandler[bnfHandler.Length - 2];
                 String context_ = (bnfHandler.Length < 3) ? null : bnfHandler[bnfHandler.Length - 3];
 
@@ -79,6 +81,8 @@ namespace ChelasUIMaker.Engine
                 processControls(_control.Controls.Cast<Control>(), ref control, element_);
                 AddHandler(control, object_, event_, mi);
             }
+            
+
         }
 
         private void AddHandler(IEnumerable<Control> control, Object object_, String name, MethodInfo methodInfo)
@@ -101,7 +105,7 @@ namespace ChelasUIMaker.Engine
                 if (name == null || name.Trim().Equals("") || c.Name.Equals(name) || c.GetType().Name.Equals(name)){
                     list.AddFirst(c);
                     if (c.Controls.Count > 0) processControls(c.Controls.Cast<Control>(), ref list, name);
-                }
+                }                
             }
         }
 
