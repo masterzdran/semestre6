@@ -35,7 +35,7 @@ all: test_uIP.o
 
 test_uIP.o: test_uIP.c test_uIP.h
 	@echo "----------------------------------------------------------------------"
-	$(CC)  $(COPTIONS)  $(SEARCHLIB) -I$(SVN_PATH)/code/src/uip-1.0/apps/webserver $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $<
+	$(CC)  $(COPTIONS)  $(SEARCHLIB) $(SEARCHINCLUDE) -I$(SVN_PATH)/code/src/uip-1.0/apps/webserver $(DEBUGSYMBOLS) $(COMPILE_ONLY) $(OUTPUT) $@  $<
 	cp $@ $(PROGRAM)/$@
 	cp test_uIP.h $(INCLUDE)/
 	

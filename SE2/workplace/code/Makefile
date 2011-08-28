@@ -36,10 +36,10 @@ PROJECT_PATH	= $(SVN_PATH)/code
 include $(PROJECT_PATH)/common.mk
 #=======================================================================
 LDS_PATH		=  	$(TODEPLOY)/ldscript
-OPENOCD_FILE	=	$(TODEPLOY)/openocd/openocd_lpc2106.cfg
+OPENOCD_FILE		=	$(TODEPLOY)/openocd/openocd_lpc2106.cfg
 #Set the Correct LdScript
 
-LDSCRIPT_FILE	= $(ECOS_LIBRARY)/target.ld
+LDSCRIPT_FILE		= $(ECOS_LIBRARY)/target.ld
 END_EXEC		= $(TARGET)/program.elf
 
 #ifdef ROM
@@ -56,8 +56,9 @@ VPATH 			= $(MYLIB):$(CLIB):$(libdir)
 #VPATH 			= $(MYLIB)
 #=======================================================================
 #LIBOBJECT =		libc.a libgcc.a  libLPC2106.a libPeripherical.a libDebugger.a
-LYBRARIES = 	 -lLPC2106  -lPeripherical -lc -lgcc 
-OBJECT =		$(MYLIB)/start.o $(PROGRAM)/test.o $(MYLIB)/console.o  $(MYLIB)/BUFFER.o
+LYBRARIES = 		-lLPC2106
+#OBJECT =		$(MYLIB)/start.o $(PROGRAM)/test.o $(MYLIB)/console.o  $(MYLIB)/BUFFER.o
+OBJECT =		$(MYLIB)/ENC28J60.o $(MYLIB)/ETHERNET.o
 #$(MYLIB)/BUFFER.o
 #=======================================================================
 all: $(END_EXEC) 
@@ -68,7 +69,8 @@ $(END_EXEC): program
 #	cp src/device/STARTUP/start.o src/lib/start.o
 #	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(MYLIB)/start.o $(PROGRAM)/tacografo.o -L$(MYLIB) -lPeripherical -lLPC2106 -lc -lgcc
 #	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  -L$(MYLIB) -L$(UIP_LIBRARY) -L$(ECOS_LIBRARY) -L$(LYBRARIES)
-	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(SEARCHLIB) $(LYBRARIES)
+	$(LD) $(LDSCRIPT)$(LDSCRIPT_FILE) $(OUTPUT) $@  -nostdlib $(PROGRAM)/test_uIP.o $(OBJECT) $(SEARCHLIB) -lLPC2106 -luip -lapps
+
 
 #peripherical: collection
 peripherical:
@@ -88,9 +90,12 @@ collection: device
 	@echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 	$(MAKE) -C $(COLLECTION)
 	
+
+
 #program:  device  collection peripherical debugger
 program: 
 	@echo "----------------------------------------------------------------------"
+	$(MAKE) -C $(SOURCE)
 	$(MAKE) -C $(PCOMPILE)
 
 #Start the Debugger	
@@ -102,11 +107,12 @@ program:
 #clean files
 clean:
 	@echo "----------------------------------------------------------------------"
-#	$(MAKE) -C $(DEVICE) clean
-#	$(MAKE) -C $(PERIPHERICAL) clean
-#	$(MAKE) -C $(DEBUGGER) clean	
-	$(MAKE) -C $(PCOMPILE) clean
-#	$(MAKE) -C $(COLLECTION) clean
+#	$(MAKE) -C $(DEVICE) 		clean
+#	$(MAKE) -C $(PERIPHERICAL) 	clean
+#	$(MAKE) -C $(DEBUGGER) 		clean	
+	$(MAKE) -C $(SOURCE) 		clean
+	$(MAKE) -C $(PCOMPILE) 		clean
+#	$(MAKE) -C $(COLLECTION) 	clean
 
 deploy: $(END_EXEC)
 	$(OPENOCD) -f $(OPENOCD_FILE) -c "flash write_image erase $^" -c "sleep 100" -c "reset run" -c "shutdown"

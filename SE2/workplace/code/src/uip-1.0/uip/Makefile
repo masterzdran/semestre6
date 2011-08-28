@@ -54,8 +54,7 @@ $(OBJECTDIR)/%.d: %.c
 	sed 's,\($*\)\.o[ :]*,$(OBJECTDIR)/\1.o $@ : ,g' < $@.$$$$ > $@; \
 	rm -f $@.$$$$
 
-UIP_SOURCES=uip.c uip_arp.c uiplib.c psock.c timer.c uip-neighbor.c
-
+UIP_SOURCES=uip.c uip_arp.c uiplib.c psock.c timer.c uip-neighbor.c clock-arch.c
 
 ifneq ($(MAKECMDGOALS),clean)
 -include $(addprefix $(OBJECTDIR)/,$(UIP_SOURCES:.c=.d) \

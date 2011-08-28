@@ -85,7 +85,7 @@ void uip_activity() {
 			}
 		}
 		for (i = 0; i < UIP_UDP_CONNS; i++) {
-			uip_udp_periodic(i);
+			//uip_udp_periodic(i);
 			if (uip_len > 0) {
 				uip_arp_out();
 				Ethernet_send(uip_buf, uip_len);
@@ -113,6 +113,15 @@ void gpio_init(){
 	HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_IO_BASE + CYGARC_HAL_LPC2XXX_REG_IOSET, RESET);
 
 }
+
+static void main_application_init(){
+		uip_listen(HTONS(1234));
+}
+void main_application(void){
+	if (uip_newdata())
+		uip_send(uip_appdata, uip_datalen());
+}
+
 int main(){
 
 	diag_printf("Testing uip\n\r");
@@ -121,14 +130,12 @@ int main(){
 	//enc_test(1,5,5);
 	uip_setup();
 
-	uip_listen(HTONS(1234));
+	main_application_init();
 
 	while(1){
 		uip_activity();
-
 	}
 	return 0;
-
 }
 
 
