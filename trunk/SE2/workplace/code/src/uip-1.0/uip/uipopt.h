@@ -404,6 +404,7 @@
  *
  * \hideinitializer
  */
+
 #ifndef UIP_CONF_LOGGING
 #define UIP_LOGGING     0
 #else /* UIP_CONF_LOGGING */

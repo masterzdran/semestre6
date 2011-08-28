@@ -867,7 +867,7 @@ uip_process(u8_t flag)
 		      header (40 bytes). */
 #endif /* UIP_CONF_IPV6 */
   } else {
-    UIP_LOG("ip: packet shorter than reported in IP header.");
+    //UIP_LOG("ip: packet shorter than reported in IP header.");
     goto drop;
   }
 
@@ -1388,7 +1388,7 @@ uip_process(u8_t flag)
      before we accept the reset. */
   if(BUF->flags & TCP_RST) {
     uip_connr->tcpstateflags = UIP_CLOSED;
-    UIP_LOG("tcp: got reset, aborting connection.");
+    //UIP_LOG("tcp: got reset, aborting connection.");
     uip_flags = UIP_ABORT;
     UIP_APPCALL();
     goto drop;

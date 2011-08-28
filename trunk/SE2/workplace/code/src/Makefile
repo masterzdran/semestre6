@@ -42,6 +42,8 @@ all:
 	@echo "Compiling the uIP and WebServer example"
 	@echo "=============================================================================================================================================="	
 	@$(foreach MPATH, $(MAKE_UIP), $(MAKE) -C $(SOURCE)/$(MPATH);)
+	cp uip-1.0/lpc-2106/apps.a lib/libapps.a
+	cp uip-1.0/lpc-2106/uip.a lib/libuip.a	
 clean:
 	@$(foreach MPATH, $(MAKE_DEVICE), $(MAKE) -C $(SOURCE)/$(MPATH) clean;)
 	@$(foreach MPATH, $(MAKE_PERIPHERICAL), $(MAKE) -C $(SOURCE)/$(MPATH) clean;)
