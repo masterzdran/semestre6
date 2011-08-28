@@ -10,7 +10,6 @@ namespace ChelasUIMakerApp
         {
             Control c = (Control)sender;
             View["visor"].Text = sender.GetType().FullName + "(" + c.Name + ")";
-            Console.WriteLine(sender.GetType().FullName + "(" + c.Name + ")");
         }
 
         protected void Control_MouseLeave(object sender, EventArgs args)
