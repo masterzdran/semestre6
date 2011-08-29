@@ -69,7 +69,8 @@ $(END_EXEC): program
 #	cp src/device/STARTUP/start.o src/lib/start.o
 #	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  $(MYLIB)/start.o $(PROGRAM)/tacografo.o -L$(MYLIB) -lPeripherical -lLPC2106 -lc -lgcc
 #	$(LD) $(LDSCRIPT) $(LDSCRIPT_FILE) $(OUTPUT) $@  -L$(MYLIB) -L$(UIP_LIBRARY) -L$(ECOS_LIBRARY) -L$(LYBRARIES)
-	$(LD) $(LDSCRIPT)$(LDSCRIPT_FILE) $(OUTPUT) $@  -nostdlib $(PROGRAM)/test_uIP.o $(OBJECT) $(SEARCHLIB) -lLPC2106 -luip -lapps
+#	$(LD) $(LDSCRIPT)$(LDSCRIPT_FILE) $(OUTPUT) $@  -nostdlib $(PROGRAM)/test_uIP.o $(OBJECT) $(SEARCHLIB) -lLPC2106 -luip -lapps
+	$(LD) $(LDSCRIPT)$(LDSCRIPT_FILE) $(OUTPUT) $@  -nostdlib  $(OBJECT) $(SEARCHLIB) $(LYBRARIES) -luip -lapps
 
 
 #peripherical: collection
