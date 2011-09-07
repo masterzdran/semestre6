@@ -46,9 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChelasUIArea.cs" />
-    <None Include="ChelasUIView.cs">
-      <SubType>Code</SubType>
-    </None>
     <Compile Include="Config.cs" />
     <Compile Include="ControlExtensions.cs" />
     <Compile Include="Controller.cs" />

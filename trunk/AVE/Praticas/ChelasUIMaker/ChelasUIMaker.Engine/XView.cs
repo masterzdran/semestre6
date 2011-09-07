@@ -1,5 +1,4 @@
-﻿
-namespace ChelasUIMaker.Engine
+﻿namespace ChelasUIMaker.Engine
 {
     using System;
     using System.Collections.Generic;
@@ -13,25 +12,29 @@ namespace ChelasUIMaker.Engine
         private Form _formControl;
         public System.Windows.Forms.Form Control { get { return _formControl; } set { _formControl = value; } }
 
+        Config _config;
+        
         public XView(Config config)
         {
             if (config == null) return;
 
-            Control c = typeof(Config).GetField("_control").GetValue(config) as Control;
+            _config = config;
+            Type x = config.IArea.GetType();
+            Control c = new Control();
+            
             if (c != null)
             {
                 _formControl = new Form();
                 processProperties(c);
             }
-
-            Type t = typeof(Config).GetField("_controller").GetValue(config) as Type;
-            object o = t.GetConstructor(new Type[] { }).Invoke(null);
+            Type t = config.GetType();
             
-            //add controller to view
-            processController(o);
+            //object o = t.GetConstructor(new Type[] { }).Invoke(null);
+
+            processController(t);
 
             //set view in the controller
-            if (t != null) t.GetProperty("View").SetValue(o, this, null);
+            if (t != null) t.GetProperty("View").SetValue(t, this, null);
         }
 
         public override System.Windows.Forms.Control this[string s]
@@ -63,17 +66,7 @@ namespace ChelasUIMaker.Engine
                 if (ctrl.Controls.Count > 0) fetchControlWithName(s, ctrl.Controls.Cast<Control>(), ref c);
             }
         }
-        /*
-        private void printAllCtrls(IEnumerable<Control> controls) //TODO debug
-        {
-            foreach (Control ctrl in controls)
-            {
-                Console.WriteLine("added control = " + ctrl + " :: with name = " + ctrl.Name);
-                if (ctrl.Controls.Count > 0) printAllCtrls(ctrl.Controls.Cast<Control>());
-            }
-        }
-        */
-        /*TODO:*/
+
         private void processProperties(Control control)
         {
             _formControl.Controls.AddRange(control.Controls.Cast<Control>().ToArray());
@@ -83,15 +76,20 @@ namespace ChelasUIMaker.Engine
             _formControl.Height = control.Height;
         }
 
-        private void processController(Object object_)
+        private void processController(Type t)
         {
-            if (object_ == null) return;
+            if (t == null) return;
 
-            Type t = object_.GetType();
+            //Type t = object_;
 
-            var m = t.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+            MessageBox.Show(t.BaseType.Name);
 
-            foreach (var mi in m)
+            MethodInfo[] m = t.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+            String[] bnfHandler;
+            int size;
+            String event_, element_, context_;
+            
+            foreach (MethodInfo mi in m)
             {
                 /*
                  * BNF Controller Handler
@@ -100,19 +98,20 @@ namespace ChelasUIMaker.Engine
                  * 
                  */
 
-                String[] bnfHandler = mi.Name.Split('_');
-                int size = bnfHandler.Length;
-                String event_ = bnfHandler[bnfHandler.Length - 1]; 
-                String element_ = (bnfHandler.Length < 3) ? null : bnfHandler[bnfHandler.Length - 2]; 
-                //String context_ = (bnfHandler.Length >= 3) ? null : bnfHandler[bnfHandler.Length - 3]; 
+                bnfHandler = mi.Name.Split('_');
+                size = bnfHandler.Length;
+                event_ = bnfHandler[bnfHandler.Length - 1]; 
+                element_ = (bnfHandler.Length < 2) ? null : bnfHandler[bnfHandler.Length - 2]; 
+                context_ = (bnfHandler.Length < 3) ?  null : bnfHandler[bnfHandler.Length - 3]; 
 
                 LinkedList<Control> control = new LinkedList<Control>();
+
                 processControls(_formControl.Controls.Cast<Control>(), ref control, element_);
-                AddHandler(control, object_, event_, mi);
+                AddHandler(control, t, event_, mi);
             }
         }
 
-        private void AddHandler(IEnumerable<Control> control, Object object_, String name, MethodInfo methodInfo)
+        private void AddHandler(IEnumerable<Control> control, Type object_, String name, MethodInfo methodInfo)
         {
             EventInfo event_;
             foreach (Control c in control)
@@ -129,9 +128,10 @@ namespace ChelasUIMaker.Engine
 
             foreach (Control c in control)
             {
-
+                
                 if (name == null || name.Trim().Equals("") || c.Name.Equals(name) || c.GetType().Name.Equals(name))
                 {
+
                     list.AddFirst(c);
                     if (c.Controls.Count > 0) processControls(c.Controls.Cast<Control>(), ref list, name);
                 }
