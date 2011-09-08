@@ -17,7 +17,7 @@ namespace ChelasUIMaker.Engine
     {
         public static Control SetFont(this Control ctrl, string font)
         {
-            //ctrl.Font = new Font(font);
+            ctrl.Font = new Font(font,12);
             return ctrl;
         }
 

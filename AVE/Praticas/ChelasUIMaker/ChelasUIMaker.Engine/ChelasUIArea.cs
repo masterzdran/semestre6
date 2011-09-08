@@ -18,8 +18,7 @@ namespace ChelasUIMaker.Engine
             _type = new T();
             if (action != null) action(_type);
             _control = _type as Control;
-            
-        }
+       }
         public IArea<T> WithController<C>()
         {
             _controller = typeof(C);
@@ -30,10 +29,10 @@ namespace ChelasUIMaker.Engine
         {
             if (content != null)
             {
-                var c = content.Control();
+                Control c = content.Control();
                 if (_control != null && c != null)
                 {
-                    _control.Controls.Add((Control)c);
+                    _control.Controls.Add(c);
                 }
             }
             return this;
