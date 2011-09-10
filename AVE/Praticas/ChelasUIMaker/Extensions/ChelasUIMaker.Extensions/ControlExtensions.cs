@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="ControlExtensions.cs" company="Microsoft">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace ChelasUIMaker.Engine
+﻿namespace ChelasUIMaker.Extensions
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +11,9 @@ namespace ChelasUIMaker.Engine
     {
         public static Control SetFont(this Control ctrl, string font)
         {
-            ctrl.Font = new Font(font,12);
+            var x = font.Split(',');
+            
+            ctrl.Font = new Font(x[0],Int16.Parse(x[1]));
             return ctrl;
         }
 
@@ -29,4 +25,3 @@ namespace ChelasUIMaker.Engine
 
     }
 }
-

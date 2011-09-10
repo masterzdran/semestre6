@@ -12,10 +12,12 @@ D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUI
 D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMaker.Engine.dll
 D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMaker.Engine.pdb
 D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\obj\x86\Debug\ChelasUIMakerCalcApp.exe
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMakerCalcApp.exe
 C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMakerCalcApp.pdb
 C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMaker.Engine.dll
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMaker.Extensions.dll
 C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMaker.Engine.pdb
-C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\bin\Debug\ChelasUIMaker.Extensions.pdb
 C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\obj\x86\Debug\ChelasUIMakerCalcApp.exe
 C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\ChelasUIMakerCalcApp\obj\x86\Debug\ChelasUIMakerCalcApp.pdb
