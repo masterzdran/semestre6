@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{042050BA-C709-4F07-9C28-E82408068627}</ProjectGuid>
+    <ProjectGuid>{FA7EFC1F-312D-4C68-8B4F-E8E332D31E7A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChelasUIMaker.Engine</RootNamespace>
-    <AssemblyName>ChelasUIMaker.Engine</AssemblyName>
+    <RootNamespace>ChelasUIMaker.Extensions</RootNamespace>
+    <AssemblyName>ChelasUIMaker.Extensions</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Accessibility">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -45,17 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChelasUIArea.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="Controller.cs" />
-    <Compile Include="IArea.cs" />
-    <Compile Include="View.cs" />
-    <Compile Include="ViewEngine.cs" />
+    <Compile Include="ControlExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XView.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

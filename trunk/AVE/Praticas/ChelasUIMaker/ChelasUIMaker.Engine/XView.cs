@@ -7,6 +7,7 @@
     using System.Windows.Forms;
     using System.Reflection;
 
+
     public class XView : View
     {
         private Form _formControl;

@@ -1,72 +1,79 @@
-﻿using System;
+﻿
+using System;
 using System.Windows.Forms;
 using System.Drawing;
+using ChelasUIMaker.Engine;
+using ChelasUIMaker.Extensions;
+
 
 namespace ChelasUIMakerCalcApp
 {
-    using ChelasUIMaker.Engine;
     internal class MyCalcConfig : Config
     {
+
         protected override void LoadConfig()
         {
-            // <extra area>
-            var area0 = DefineArea<Panel>(p => { p.Height = 20; p.Width = 280; p.BackColor = Color.Gray; })
-                .WithContent<TextBox>(DefineArea<TextBox>(tb =>
-                {
-                    tb.BackColor = Color.LightBlue;
-                    tb.Text = "integer calculator";
-                    tb.TextAlign = HorizontalAlignment.Center;
-                    tb.SetFont("Verdana,11");
-                    //tb.SetSize(280, 30);
-                    tb.Width = 280;
-                    tb.Enabled = false;
-                }));
-            // </extra area>
 
-            var area1 = DefineArea<Panel>(p => { p.Top = 30; /*p.SetSize(280, 70);*/ p.Height = 70; p.Width = 280; p.BackColor = Color.Gray; })
-                .WithContent<TextBox>(DefineArea<TextBox>(tb =>
-                {
-                    tb.Top = 6;
-                    tb.Name = "visor";
-                    tb.BackColor = Color.LightYellow;
-                    tb.Text = "0";
-                    tb.TextAlign = HorizontalAlignment.Right;
-                    tb.SetFont("Consolas,14");
-                    //tb.Height = 70; // dont care 
-                    tb.Width = 280; // added this
-                    tb.Enabled = false;
-                }));
-
-            var area2 = DefineArea<Panel>(p => { p.Name = "operations"; p.Top = 70 + 30;/* p.SetSize(280, 100); */p.Width=280; p.Height=100; p.SetBackColor(0x30FFFF30); })
-                .WithContent<Button>(DefineArea<Button>(b1 => { b1.Text = "+"; b1.Top = 10; }))
-                .WithContent<Button>(DefineArea<Button>(b2 => { b2.Text = "+/-"; b2.Top = 10; b2.Left = 100; }))
-                .WithContent<Button>(DefineArea<Button>(b3 => { b3.Text = "-"; b3.Top = 10; b3.Left = 200; }))
-                .WithContent<Button>(DefineArea<Button>(b4 => { b4.Text = "*"; b4.Top = 50; }))
-                .WithContent<Button>(DefineArea<Button>(b5 => { b5.Text = "/"; b5.Top = 50; b5.Left = 200; }))
-                .WithContent<Button>(DefineArea<Button>(b6 => { b6.Text = "="; b6.Top = 50; b6.Left = 100; }));
+            var area1 = DefineArea<Panel>(p => { p.Height = 50; p.Width = 280; p.BackColor = Color.Gray; })
+                       .WithContent<TextBox>(DefineArea<TextBox>(tb =>
+                       {
+                           tb.Top = 6; tb.Enabled = false;
+                           tb.Left = 5;
+                           tb.Name = "visor";
+                           tb.BackColor = Color.LightYellow; tb.Text = "0";
+                           tb.TextAlign = HorizontalAlignment.Right;
+                           tb.SetFont("Consolas,18");
+                           tb.Width = 270;
+                       }));
 
 
-            var area3 = DefineArea<Panel>(p => { p.Top = 170 + 30; /*p.SetSize(280, 200); */p.Width = 280; p.Height=200; p.BackColor = Color.Gray; })
-                .WithContent<Button>(DefineArea<Button>(b1 => { b1.Text = "1"; b1.ForeColor = Color.White; }))
-                .WithContent<Button>(DefineArea<Button>(b2 => { b2.Text = "2"; b2.Left = 100; b2.ForeColor = Color.White; }))
-                .WithContent<Button>(DefineArea<Button>(b3 => { b3.Text = "3"; b3.Left = 200; b3.ForeColor = Color.White; }))
-                .WithContent<Button>(DefineArea<Button>(b4 => { b4.Text = "4"; b4.Top = 50; b4.ForeColor = Color.White; }))
-                .WithContent<Button>(DefineArea<Button>(b5 => { b5.Text = "5"; b5.Top = 50; b5.Left = 100; b5.ForeColor = Color.White; }))
-                .WithContent<Button>(DefineArea<Button>(b6 => { b6.Text = "6"; b6.Top = 50; b6.Left = 200; b6.ForeColor = Color.White; }))
-                .WithContent<Button>(DefineArea<Button>(b7 => { b7.Text = "7"; b7.Top = 100; b7.ForeColor = Color.White; }))
-                .WithContent<Button>(DefineArea<Button>(b8 => { b8.Text = "8"; b8.Top = 100; b8.Left = 100; b8.ForeColor = Color.White; }))
-                .WithContent<Button>(DefineArea<Button>(b9 => { b9.Text = "9"; b9.Top = 100; b9.Left = 200; b9.ForeColor = Color.White; }))
-                .WithContent<Button>(DefineArea<Button>(b0 => { b0.Text = "0"; b0.Top = 150; b0.ForeColor = Color.White; }))
-                .WithContent<Button>(DefineArea<Button>(bC => { bC.Text = "C"; bC.Top = 150; bC.Left = 100; bC.ForeColor = Color.White; }));
+            var area2 = DefineArea<Panel>(p =>
+            {
+                p.Name = "operations"; p.Top = 50; p.Width = 280; p.Height = 100;
+                p.SetBackColor(0x30FFFF30);
+            })
+                       .WithContent<Button>(DefineArea<Button>(b1 => { b1.Text = "+"; b1.Top = 10; }))
+                        .WithContent<Button>(DefineArea<Button>(b2 =>{ b2.Text = "+/-"; b2.Top = 10; b2.Left = 100; }))
+                       .WithContent<Button>(DefineArea<Button>(b3 => { b3.Text = "-"; b3.Top = 10; b3.Left = 200; }))
+                       .WithContent<Button>(DefineArea<Button>(b4 => { b4.Text = "*"; b4.Top = 50; }))
+                       .WithContent<Button>(DefineArea<Button>(b5 => { b5.Text = "/"; b5.Top = 50; b5.Left = 200; }))
+                       .WithContent<Button>(DefineArea<Button>(b6 => { b6.Text = "="; b6.Top = 50; b6.Left = 100; }));
 
-            DefineArea<Form>(f => { f.Text = "Calculadora"; /*f.SetSize(295, 430); */f.Height = 400+20;f.Width=295;})
+
+            var area3 = DefineArea<Panel>(p =>
+            {
+                p.Top = 150; p.Width = 280; p.Height = 200;
+                p.BackColor = Color.Gray;
+            })
+                       .WithContent<Button>(
+                           DefineArea<Button>(b1 => { b1.Text = "1"; b1.ForeColor = Color.White; }))
+                       .WithContent<Button>(
+                           DefineArea<Button>(b2 => { b2.Text = "2"; b2.Left = 100; b2.ForeColor = Color.White; }))
+                       .WithContent<Button>(
+                           DefineArea<Button>(b3 => { b3.Text = "3"; b3.Left = 200; b3.ForeColor = Color.White; }))
+                       .WithContent<Button>(
+                           DefineArea<Button>(b4 => { b4.Text = "4"; b4.Top = 50; b4.ForeColor = Color.White; }))
+                       .WithContent<Button>(
+                            DefineArea<Button>(b5 => { b5.Text = "5"; b5.Top = 50; b5.Left = 100; b5.ForeColor = Color.White; }))
+                       .WithContent<Button>(DefineArea<Button>(
+                                  b6 => { b6.Text = "6"; b6.Top = 50; b6.Left = 200; b6.ForeColor = Color.White; }))
+                       .WithContent<Button>(DefineArea<Button>(
+                                  b7 => { b7.Text = "7"; b7.Top = 100; b7.ForeColor = Color.White; }))
+                       .WithContent<Button>(DefineArea<Button>(
+                                  b8 => { b8.Text = "8"; b8.Top = 100; b8.Left = 100; b8.ForeColor = Color.White; }))
+                       .WithContent<Button>(DefineArea<Button>(
+                                  b9 => { b9.Text = "9"; b9.Top = 100; b9.Left = 200; b9.ForeColor = Color.White; }))
+                       .WithContent<Button>(DefineArea<Button>(
+                                  b0 => { b0.Text = "0"; b0.Top = 150; b0.ForeColor = Color.White; }))
+                       .WithContent<Button>(DefineArea<Button>(
+                                  bC => { bC.Text = "C"; bC.Top = 150; bC.Left = 100; bC.ForeColor = Color.White; }));
+
+
+            DefineArea<Form>(f => { f.Text = "Calculadora"; f.Height = 380; f.Width = 300; })
                 .WithController<CalcController>()
-                .WithContent(area0)
                 .WithContent(area1)
                 .WithContent(area2)
                 .WithContent(area3);
         }
     }
 }
-
-

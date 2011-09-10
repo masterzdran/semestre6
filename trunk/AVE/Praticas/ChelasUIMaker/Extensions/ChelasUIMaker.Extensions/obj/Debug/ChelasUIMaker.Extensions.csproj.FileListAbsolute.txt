@@ -1,0 +1,5 @@
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\Extensions\ChelasUIMaker.Extensions\bin\Debug\ChelasUIMaker.Extensions.dll
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\Extensions\ChelasUIMaker.Extensions\bin\Debug\ChelasUIMaker.Extensions.pdb
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\Extensions\ChelasUIMaker.Extensions\obj\Debug\ResolveAssemblyReference.cache
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\Extensions\ChelasUIMaker.Extensions\obj\Debug\ChelasUIMaker.Extensions.dll
+C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\Extensions\ChelasUIMaker.Extensions\obj\Debug\ChelasUIMaker.Extensions.pdb
