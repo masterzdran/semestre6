@@ -103,8 +103,6 @@
                 //element_ = (bnfHandler.Length < 2) ? null : bnfHandler[bnfHandler.Length - 2];
                 context_ = (bnfHandler.Length >= 3 &&  bnfHandler[bnfHandler.Length - 3].Equals( _config.ParameterType.Name))? _config.ParameterType.Name:null; 
 
-
-
                 LinkedList<Control> control = new LinkedList<Control>();
 
                 processControls(_formControl.Controls.Cast<Control>(), ref control, context_);
