@@ -14,10 +14,3 @@ D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUI
 D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\bin\Debug\ChelasUIMakerApp.pdb
 D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\bin\Debug\ChelasUIMaker.Engine.dll
 D:\work\AVE2011\AVESV1011\TrabalhoFinal\ChelasUIMakerGood\ChelasUIMaker\ChelasUIMaker\ChelasUIMakerApp\bin\Debug\ChelasUIMaker.Engine.pdb
-C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\bin\Debug\ChelasUIMakerApp.exe
-C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\bin\Debug\ChelasUIMakerApp.pdb
-C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\bin\Debug\ChelasUIMaker.Engine.dll
-C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\bin\Debug\ChelasUIMaker.Engine.pdb
-C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\obj\x86\Debug\ChelasUIMakerApp.exe
-C:\WorkingArea\ISEL\semestre6\AVE\Praticas\ChelasUIMaker\ChelasUIMakerApp\obj\x86\Debug\ChelasUIMakerApp.pdb
