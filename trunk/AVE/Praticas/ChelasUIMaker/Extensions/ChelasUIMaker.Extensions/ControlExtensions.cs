@@ -12,8 +12,8 @@
         public static Control SetFont(this Control ctrl, string font)
         {
             var x = font.Split(',');
-            
-            ctrl.Font = new Font(x[0],Int16.Parse(x[1]));
+            if (x.Length >= 2)
+                ctrl.Font = new Font(x[0],float.Parse(x[1]));
             return ctrl;
         }
 
