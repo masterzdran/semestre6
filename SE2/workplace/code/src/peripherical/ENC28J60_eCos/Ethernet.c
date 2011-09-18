@@ -56,32 +56,11 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
 		return ETHERNET_MAC_NULL_POINTER;
 	
     ethDevice = ethernetDevice;
-    /* Definition of Enc28j60 spi default values */
-    /*
-    ethDevice->ethernetDevice.spi_device.spi_bus = &cyg_spi_lpc2xxx_bus0.spi_bus;
-    ethDevice->ethernetDevice.spi_cpha = 0;  // Clock phase (0 or 1)
-    ethDevice->ethernetDevice.spi_cpol = 0;  // Clock polarity (0 or 1)
-    ethDevice->ethernetDevice.spi_lsbf = 0;  // MSBF
-    ethDevice->ethernetDevice.spi_baud = 10000;  // Clock baud rate
-    ethDevice->ethernetDevice.spi_cs   = enc28j60_cs;
-    */
+
     ethDevice->ethernetDevice=&spi_enc28j60_dev;
 
-/*
-    ethDevice->ethernetDevice.mode       = SPI_PRIOR_TO_FIRST_SCK_RISING_EDGE;
-    ethDevice->ethernetDevice.role       = SPI_MASTER;
-    ethDevice->ethernetDevice.nbrbits    = 8;
-    ethDevice->ethernetDevice.byteShift  = SPI_MSB;
-    ethDevice->ethernetDevice.started    = 0;
-    */
-    /*Intialization of spi device of ethernet*/
+    ENC_init((cyg_spi_lpc2xxx_dev_t*)(ethDevice->ethernetDevice));
 
-    /*
-    if ( SPI_init(&(ethDevice->ethernetDevice),1) != SPI_SUCESS ){
-        return ETHERNET_SPI_INIT_ERROR;
-    }*/
-    //void ENC_init(cyg_spi_lpc2xxx_bus_t *pspi);
-	ENC_init((cyg_spi_lpc2xxx_dev_t*)(ethDevice->ethernetDevice));
     /*Reset Enc28j60 to default values*/
     ENC_system_reset_command();
     /*6.1 Receive Buffer*/
@@ -94,19 +73,6 @@ U8 Ethernet_init(pETHERNET_Device ethernetDevice){
 	ENC_WRITE_REG16(B0_ERXNDL,BANK00,__ETHERNET_RX_END_PTR__);
 	ENC_WRITE_REG16(B0_ERXRDPTL,BANK00,__ETHERNET_RX_END_PTR__);
     
-    /*
-	ENC_write_reg(B1_ERXFCON,BANK01,PROMISCUOUS_MODE,false);
-	ENC_write_reg(B3_MAADR1,BANK03,ethernetDevice->mac[0],false);
-	ENC_write_reg(B3_MAADR2,BANK03,ethernetDevice->mac[1],false);
-	ENC_write_reg(B3_MAADR3,BANK03,ethernetDevice->mac[2],false);
-	ENC_write_reg(B3_MAADR4,BANK03,ethernetDevice->mac[3],false);
-	ENC_write_reg(B3_MAADR5,BANK03,ethernetDevice->mac[4],false);
-	ENC_write_reg(B3_MAADR6,BANK03,ethernetDevice->mac[5],false);
-	
-	ENC_write_reg(B2_MACON1,BANK02,MACON1_MARXEN,false);
-	ENC_write_reg(B2_MACON3,BANK02,MACON3_FRMLNEN + MACON3_TXCRCEN + MACON3_PADCFG0,false);
-	ENC_write_reg(B2_MACON4,BANK02,MACON4_DEFER,false);
-    */
     /*6.3 Receive Filters*/
     ENC_WRITE_REG8(B1_ERXFCON,BANK01,PROMISCUOUS_MODE);
 
@@ -183,9 +149,7 @@ U8 Ethernet_send(U8* packet, U16 packet_size){
 	
 	do{
 		Ethernet_start_tx();
-		do{
-			//aux = ENC_read_reg(EIR,BANK00,false);
-			
+		do{			
             aux = ENC_READ_REG8(EIR,BANK00);
 		}while((aux & EIR_TXIF) == 0);
 

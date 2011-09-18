@@ -123,6 +123,9 @@
           <File Name="code/src/uip-1.0/lpc-2106/tapdev.h"/>
           <File Name="code/src/uip-1.0/lpc-2106/tapdev.c"/>
           <File Name="code/src/uip-1.0/lpc-2106/main_uip.c"/>
+          <File Name="code/src/uip-1.0/lpc-2106/main.c"/>
+          <File Name="code/src/uip-1.0/lpc-2106/main_uip_original.c"/>
+          <File Name="code/src/uip-1.0/lpc-2106/client.c"/>
         </VirtualDirectory>
       </VirtualDirectory>
       <VirtualDirectory Name="debugger">
