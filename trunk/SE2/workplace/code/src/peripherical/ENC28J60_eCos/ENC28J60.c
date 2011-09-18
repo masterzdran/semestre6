@@ -12,51 +12,42 @@ static cyg_spi_lpc2xxx_dev_t *spi_enc28j60_dev;
 #define __SPI_PORTS__		0xff00
 
  void ENC_init(cyg_spi_lpc2xxx_dev_t *pspi){
-	 spi_enc28j60_dev=pspi;
+	spi_enc28j60_dev=pspi;
+	cyg_uint32 aux;
 
-	 cyg_uint32 aux;
-	 /*Ensure SSP is disable - PIN 21*/
-	 HAL_READ_UINT32(CYGARC_HAL_LPC2XXX_REG_SCB_BASE + CYGARC_HAL_LPC2XXX_REG_PCONP, aux);
-	 aux&=~(PW_SSP);
-	 HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_SCB_BASE + CYGARC_HAL_LPC2XXX_REG_PCONP, (aux));
+	/*activate gpio for CS, Reset*/
+	/*GPIO_INIT_PINSEL0((CS_PIN | RESET));*/
 
-	 /*Turn SPI on - PIN 8*/
-	 HAL_READ_UINT32(CYGARC_HAL_LPC2XXX_REG_SCB_BASE + CYGARC_HAL_LPC2XXX_REG_PCONP, aux);
-	 HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_SCB_BASE + CYGARC_HAL_LPC2XXX_REG_PCONP, (aux | PW_SPI));
+	/*set dir to output for CS and Reset*/
+	HAL_READ_UINT32((pGPIO)->IODIR, aux);
+	aux = aux | (CS_PIN | RESET);
+	HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_IO_BASE+CYGARC_HAL_LPC2XXX_REG_IODIR, aux);
 
-	 /*Configure Pinsel0 pins for SPI*/
-	 //GPIO_INIT_PINSEL0((PINSEL0_SPI_SPP_SSEL|PINSEL0_SPI_SPP_MOSI|PINSEL0_SPI_SPP_MISO|PINSEL0_SPI_SPP_SCK));
-	 HAL_READ_UINT32(CYGARC_HAL_LPC2XXX_REG_PIN_BASE + CYGARC_HAL_LPC2XXX_REG_PINSEL0, aux);
-	 aux&=~__SPI_PORTS__;	//clear SPI config pins
-	 aux|=__SPI_CONFIG_PORT__;
-	 HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_PIN_BASE + CYGARC_HAL_LPC2XXX_REG_PINSEL0, aux);
+	/*CS OFF & RESET OFF*/
+	HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_IO_BASE + CYGARC_HAL_LPC2XXX_REG_IOSET, CS_PIN);
+	HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_IO_BASE + CYGARC_HAL_LPC2XXX_REG_IOSET, RESET);
+
+	/*Ensure SSP is disable - PIN 21*/
+	HAL_READ_UINT32(CYGARC_HAL_LPC2XXX_REG_SCB_BASE + CYGARC_HAL_LPC2XXX_REG_PCONP, aux);
+	aux&=~(PW_SSP);
+	HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_SCB_BASE + CYGARC_HAL_LPC2XXX_REG_PCONP, (aux));
+
+	/*Turn SPI on - PIN 8*/
+	HAL_READ_UINT32(CYGARC_HAL_LPC2XXX_REG_SCB_BASE + CYGARC_HAL_LPC2XXX_REG_PCONP, aux);
+	HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_SCB_BASE + CYGARC_HAL_LPC2XXX_REG_PCONP, (aux | PW_SPI));
+
+	/*Configure Pinsel0 pins for SPI*/
+	//GPIO_INIT_PINSEL0((PINSEL0_SPI_SPP_SSEL|PINSEL0_SPI_SPP_MOSI|PINSEL0_SPI_SPP_MISO|PINSEL0_SPI_SPP_SCK));
+	HAL_READ_UINT32(CYGARC_HAL_LPC2XXX_REG_PIN_BASE + CYGARC_HAL_LPC2XXX_REG_PINSEL0, aux);
+	aux&=~__SPI_PORTS__;	//clear SPI config pins
+	aux|=__SPI_CONFIG_PORT__;
+	HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_PIN_BASE + CYGARC_HAL_LPC2XXX_REG_PINSEL0, aux);
 
 //	 POWER_Off_Peripherical(PW_SSP);     		/* Ensure SSP is disable */
 //	 POWER_On_Peripherical(PW_SPI);      		/* (1) */
 //	 gpio_init_PINSEL0(__SPI_CONFIG_PORT__); 	/* (3) */
 //	 pSPI->CONTROL &= ~__SPCR_MSTR__;      		/* Set as slave to prevent communications */
-
-
-/*
-		cyg_uint32 aux;
-		aux = CYGARC_HAL_LPC2XXX_REG_IO_BASE;
-		aux = CYGARC_HAL_LPC2XXX_REG_IODIR;
-		//Activar o spi
-		HAL_READ_UINT32(CYGARC_HAL_LPC2XXX_REG_SCB_BASE + CYGARC_HAL_LPC2XXX_REG_PCONP, aux);
-		diag_printf("Valor lido de PCONP: %x\n", aux);
-		aux |= 0x100;
-		diag_printf("Valor a ser programado em PCONP: %x\n", aux);
-		HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_SCB_BASE + CYGARC_HAL_LPC2XXX_REG_PCONP, aux);
-
-		HAL_READ_UINT32(CYGARC_HAL_LPC2XXX_REG_PIN_BASE + CYGARC_HAL_LPC2XXX_REG_PINSEL0, aux);
-		diag_printf("Valor lido de PINSEL0: %x\n", aux);
-		aux &= (~0xff00);
-		aux |= 0x5500;
-		diag_printf("Valor a ser programado em PINSEL0: %x\n", aux);
-		HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_PIN_BASE + CYGARC_HAL_LPC2XXX_REG_PINSEL0, aux);
-*/
-
- }
+}
 
 
  U8 ENC_test(){
@@ -67,7 +58,7 @@ static cyg_spi_lpc2xxx_dev_t *spi_enc28j60_dev;
  		HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_IO_BASE + CYGARC_HAL_LPC2XXX_REG_IOCLR, RESET);
  		HAL_WRITE_UINT32(CYGARC_HAL_LPC2XXX_REG_IO_BASE + CYGARC_HAL_LPC2XXX_REG_IOSET, RESET);
 
- 		cyg_thread_delay(500);
+ 		/*cyg_thread_delay(500);*/
  		/*READ CONTENT OF ECON2*/
  		cyg_spi_transaction_begin(SPI_DEV);
  	    cyg_spi_transaction_transfer(SPI_DEV, true, size, tx_data, rx_buffer, true);

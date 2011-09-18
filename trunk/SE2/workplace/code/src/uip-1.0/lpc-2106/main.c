@@ -1,46 +1,17 @@
-/*
- * Copyright (c) 2001, Adam Dunkels.
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * 3. All advertising materials mentioning features or use of this software
- *    must display the following acknowledgement:
- *      This product includes software developed by Adam Dunkels.
- * 4. The name of the author may not be used to endorse or promote
- *    products derived from this software without specific prior
- *    written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS
- * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- * This file is part of the uIP TCP/IP stack.
- *
- * $Id: main.c,v 1.16 2006/06/11 21:55:03 adam Exp $
- *
- */
 
+#include <cyg/kernel/kapi.h>
+#include <string.h>
 
 #include "uip.h"
 #include "uip_arp.h"
 #include "tapdev.h"
 #include "timer.h"
+#include "uip-conf.h"
 #include <stdio.h>
+
+#include "TYPES.h"
+#include "ENC28J60.h"
+#include "Ethernet.h"
 
 #define BUF ((struct uip_eth_hdr *)&uip_buf[0])
 
@@ -48,19 +19,24 @@
 #define NULL (void *)0
 #endif /* NULL */
 
-/*---------------------------------------------------------------------------*/
-int
-main(void)
-{
-  int i;
-  uip_ipaddr_t ipaddr;
-  struct timer periodic_timer, arp_timer;
+static struct uip_eth_addr ether_addr = {
+  {0x02, 0x6E, 0x75, 0x6E, 0x6F, 00}
+};
+struct timer periodic_timer, arp_timer;
 
+/*---------------------------------------------------------------------------*/
+void uip_setup(){
+  uip_ipaddr_t ipaddr;
   timer_set(&periodic_timer, CLOCK_SECOND / 2);
   timer_set(&arp_timer, CLOCK_SECOND * 10);
-  
+
+	diag_printf("Timers set. Tapdev_init starting...\n\r");
   tapdev_init();
+	diag_printf("Tapdev_init ended. Starting uip_init...\n\r");
   uip_init();
+	diag_printf("uip_init ended. Start set address...\n\r");
+
+  uip_setethaddr(ether_addr);
 
   uip_ipaddr(ipaddr, 192,168,0,2);
   uip_sethostaddr(ipaddr);
@@ -68,125 +44,79 @@ main(void)
   uip_setdraddr(ipaddr);
   uip_ipaddr(ipaddr, 255,255,255,0);
   uip_setnetmask(ipaddr);
-
-  httpd_init();
-  
-  while(1) {
-    uip_len = tapdev_read();
-    if(uip_len > 0) {
-      if((BUF)->type == htons((UIP_ETHTYPE_IP))) {
-	uip_arp_ipin();
-	uip_input();
-	/* If the above function invocation resulted in data that
-	   should be sent out on the network, the global variable
-	   uip_len is set to a value > 0. */
-	if(uip_len > 0) {
-	  uip_arp_out();
-	  tapdev_send();
-	}
-      } else if((BUF)->type == htons(UIP_ETHTYPE_ARP)) {
-	uip_arp_arpin();
-	/* If the above function invocation resulted in data that
-	   should be sent out on the network, the global variable
-	   uip_len is set to a value > 0. */
-	if(uip_len > 0) {
-	  tapdev_send();
-	}
-      }
-
-    } else if(timer_expired(&periodic_timer)) {
-      timer_reset(&periodic_timer);
-      for(i = 0; i < UIP_CONNS; i++) {
-	uip_periodic(i);
-	/* If the above function invocation resulted in data that
-	   should be sent out on the network, the global variable
-	   uip_len is set to a value > 0. */
-	if(uip_len > 0) {
-	  uip_arp_out();
-	  tapdev_send();
-	}
-      }
-
-#if UIP_UDP
-      for(i = 0; i < UIP_UDP_CONNS; i++) {
-	uip_udp_periodic(i);
-	/* If the above function invocation resulted in data that
-	   should be sent out on the network, the global variable
-	   uip_len is set to a value > 0. */
-	if(uip_len > 0) {
-	  uip_arp_out();
-	  tapdev_send();
-	}
-      }
-#endif /* UIP_UDP */
-      
-      /* Call the ARP timer function every 10 seconds. */
-      if(timer_expired(&arp_timer)) {
-	timer_reset(&arp_timer);
-	uip_arp_timer();
-      }
-    }
-  }
-  return 0;
+	
 }
 /*---------------------------------------------------------------------------*/
-void
-uip_log(char *m)
-{
-  printf("uIP log message: %s\n", m);
-}
+void uip_activity(){
+  int i;
 
-void resolv_found(char *name, u16_t *ipaddr)
-{
-  if(ipaddr == NULL) {
-    printf("Host '%s' not found.\n", name);
-  } else {
-    printf("Found name '%s' = %d.%d.%d.%d\n", name,
-	   htons(ipaddr[0]) >> 8,
-	   htons(ipaddr[0]) & 0xff,
-	   htons(ipaddr[1]) >> 8,
-	   htons(ipaddr[1]) & 0xff);
-    /*    webclient_get("www.sics.se", 80, "/~adam/uip");*/
-  }
-}
-#ifdef __DHCPC_H__
-void
-dhcpc_configured(const struct dhcpc_state *s)
-{
-  uip_sethostaddr(s->ipaddr);
-  uip_setnetmask(s->netmask);
-  uip_setdraddr(s->default_router);
-  resolv_conf(s->dnsaddr);
-}
-#endif /* __DHCPC_H__ */
-void
-smtp_done(unsigned char code)
-{
-  printf("SMTP done with code %d\n", code);
-}
-void
-webclient_closed(void)
-{
-  printf("Webclient: connection closed\n");
-}
-void
-webclient_aborted(void)
-{
-  printf("Webclient: connection aborted\n");
-}
-void
-webclient_timedout(void)
-{
-  printf("Webclient: connection timed out\n");
-}
-void
-webclient_connected(void)
-{
-  printf("Webclient: connected, waiting for data...\n");
-}
-void
-webclient_datahandler(char *data, u16_t len)
-{
-  printf("Webclient: got %d bytes of data.\n", len);
+  uip_len = Ethernet_receive(uip_buf, UIP_BUFSIZE);
+  if (uip_len > 0) {
+    if (BUF->type == htons(UIP_ETHTYPE_IP)) {
+      uip_arp_ipin();
+      uip_input();
+			if (uip_len > 0) {
+				uip_arp_out();
+				//Ethernet_send(uip_buf, uip_len);
+				tapdev_send();
+			}
+		}
+		else if (BUF->type == htons(UIP_ETHTYPE_ARP)) {
+			uip_arp_arpin();
+			if (uip_len > 0) {
+				//Ethernet_send(uip_buf, uip_len);
+				tapdev_send();
+			}
+		}
+	} else if (timer_expired(&periodic_timer)) {
+		timer_reset(&periodic_timer);
+		for (i = 0; i < UIP_CONNS; i++) {
+			uip_periodic(i);
+			if (uip_len > 0) {
+				uip_arp_out();
+				//Ethernet_send(uip_buf, uip_len);
+				tapdev_send();
+			}
+		}
+		for (i = 0; i < UIP_UDP_CONNS; i++) {
+			//uip_udp_periodic(i);
+			if (uip_len > 0) {
+				uip_arp_out();
+				//Ethernet_send(uip_buf, uip_len);
+				tapdev_send();
+			}
+		}
+		if (timer_expired(&arp_timer)) {
+			timer_reset(&arp_timer);
+			uip_arp_timer();
+		}
+	}
 }
 /*---------------------------------------------------------------------------*/
+static void main_application_init() {
+	diag_printf("uip_listen(");
+	diag_printf("HTONS(1234)");
+	diag_printf(")\n\r");
+	uip_listen(HTONS(1234));
+}
+/*---------------------------------------------------------------------------*/
+void main_application(void){
+	if (uip_newdata())
+		uip_send(uip_appdata, uip_datalen());
+}
+/*---------------------------------------------------------------------------*/
+int main(void){
+	diag_printf("Test uip\n\r");
+	uip_setup();
+	diag_printf("uip setup end.\n\r");
+
+	main_application_init();
+	diag_printf("main_app initialized\n\r");	
+	
+	while (1){
+		uip_activity();
+	}
+}
+/*---------------------------------------------------------------------------*/
+
+

@@ -58,7 +58,7 @@ VPATH 			= $(MYLIB):$(CLIB):$(libdir)
 #LIBOBJECT =		libc.a libgcc.a  libLPC2106.a libPeripherical.a libDebugger.a
 LYBRARIES = 		-lLPC2106
 #OBJECT =		$(MYLIB)/start.o $(PROGRAM)/test.o $(MYLIB)/console.o  $(MYLIB)/BUFFER.o
-OBJECT =		$(MYLIB)/ENC28J60.o $(MYLIB)/ETHERNET.o
+OBJECT =		$(MYLIB)/ENC28J60.o $(MYLIB)/ETHERNET.o $(UIP_LPC)/obj/main.o $(UIP_LPC)/obj/tapdev.o $(UIP_LPC)/obj/psock.o
 #$(MYLIB)/BUFFER.o
 #=======================================================================
 all: $(END_EXEC) 

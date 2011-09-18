@@ -14,6 +14,9 @@
 #include "uip-conf.h"
 #include "uip_arp.h"
 
+#ifndef UIP_APPCALL
+#define UIP_APPCALL     main_application
+#endif
 
 #define PACKET_SIZE 1516
 static U8 ether_addr[] = {0x02, 0x6E, 0x75, 0x6E, 0x6F, 00};
@@ -25,10 +28,10 @@ struct timer periodic_timer, arp_timer;
 void uip_setup(){
 
 	ETHERNET_Device eth ={
-						NULL,
-						ETHERNET_FULL_DUPLEX,
-						{0x02, 0x6E, 0x75, 0x6E, 0x6F, 00}
-						};
+		NULL,
+		ETHERNET_FULL_DUPLEX,
+		{0x02, 0x6E, 0x75, 0x6E, 0x6F, 00}
+	};
 
 	uip_ipaddr_t ipaddr;
 	timer_set(&periodic_timer, CLOCK_SECOND / 2);
