@@ -52,6 +52,12 @@ static cyg_spi_lpc2xxx_dev_t *spi_enc28j60_dev;
 
  U8 ENC_test(){
  		U32 size=2;
+ 		
+ 		GPIO_INIT_PINSEL0(0x0);
+ 		GPIO_SET_DIRECTION(1<<8|1<<9,GPIO_OUT)
+ 		GPIO_CLEAR(1<<8|1<<9);
+ 		
+ 		GPIO_SET(1<<8|1<<9);
  		const U8 tx_data[2] = {0x1E, 0xFF};
  		U8 rx_buffer[2] = {0x0, 0x0};
  		/*RESET ENC*/

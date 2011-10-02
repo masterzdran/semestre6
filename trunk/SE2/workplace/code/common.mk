@@ -58,11 +58,11 @@ OPENOCD			= openocd
 #Debugger
 #DEBUGGER		= arm-eabi-insight
 #Commom Options
-OUTPUT 				= -o
+OUTPUT 				= -nostdlib  -o
 LDSCRIPT			= -T  
 DEBUGSTABS			= --gstabs
 DEBUGSYMBOLS		= -g
-COPTIONS 			= -Wall  -ffunction-sections -fdata-sections  -Wa,-a=$*.lst $(SEARCHINCLUDE)
+COPTIONS 			= -Wall  -ffunction-sections -fdata-sections -fpack-struct -Wa,-a=$*.lst $(SEARCHINCLUDE)
 LDFLAGS 			= $(SEARCHLIB) -Wl,--gc-sections -Wl,--Map -Wl,basic.map
 COMPILE_ONLY 		= -c 
 
