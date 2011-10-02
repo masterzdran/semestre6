@@ -25,7 +25,7 @@
 /**
  * @brief Definition of the External Interrupt structure
  **/
-typedef struct _EXT{
+typedef struct __attribute__ ((aligned)) _EXT{
     U8     EXTINT;
     U8     DUMMY01[3];
     U8     EXTWAKE;
@@ -39,7 +39,7 @@ typedef struct _EXT{
 /**
  * @brief Definition of the MAM structure
  **/
-typedef struct _MAM{
+typedef struct __attribute__ ((aligned)) _MAM{
     U32 CONTROL_REGISTER;
     U32 TIMING;          
     U32 DUMMY01[14];         
@@ -50,7 +50,7 @@ typedef struct _MAM{
 /**
  * @brief Definition of the PLL structure
  **/
-typedef struct _PLL{
+typedef struct __attribute__ ((aligned)) _PLL{
     U8    CONTROL;
     U8    DUMMY01[3];
     U8    CONFIGURATION;
@@ -64,7 +64,7 @@ typedef struct _PLL{
 /**
  * @brief Definition of the POWER structure
  **/
-typedef struct _POWER{
+typedef struct __attribute__ ((aligned)) _POWER{
     U32   POWER_CONTROL;
     U32   POWER_CONTROL_PERIPHERICAL;
 }LPC_POWER,*pLPC_POWER;
@@ -73,14 +73,14 @@ typedef struct _POWER{
 /**
  * @brief Definition of the APB structure
  **/
-typedef struct _APB{
+typedef struct __attribute__ ((aligned)) _APB{
     U32   APBDIV;
 }LPC_APB,*pLPC_APB;
 
 /**
  * @brief Definition of the SCS structure
  **/
-typedef struct _SCS{
+typedef struct __attribute__ ((aligned)) _SCS{
     U32   SCS;  
 }LPC_SCS,*pLPC_SCS;
 /**

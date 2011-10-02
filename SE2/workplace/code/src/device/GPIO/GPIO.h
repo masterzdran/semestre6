@@ -120,7 +120,7 @@ typedef enum {
  * 
  * Should use gpio_init(U32 pinsel0_mask,U32 pinsel1_mask),gpio_init_PINSEL0(U32 mask),gpio_init_PINSEL1(U32 mask) functions, so this register could be properly read.
  **/ 
-typedef struct _GPIO{
+typedef struct __attribute__ ((aligned)) _GPIO{
 	U32 IOPIN;	
 	U32 IOSET;	
 	U32 IODIR;	
@@ -132,9 +132,12 @@ typedef struct _GPIO{
 #define GPIO_SET(set_pin) 			(HAL_WRITE_UINT32((pGPIO)->IOSET, 1 << set_pin))
 #define GPIO_WRITE(pin_mask,value)  (HAL_WRITE_UINT32( pin_mask, value ))
 #define GPIO_READ(pin_mask,value)	(HAL_READ_UINT32( pin_mask, value ))
-#define GPIO_SET_DIRECTION(value,direction) {cyg_uint32 iodir;\
-	HAL_READ_UINT32((pGPIO)->IODIR, iodir); \
-	HAL_WRITE_UINT32(pGPIO)->IODIR, (direction)?(iodir |value):(iodir & (~value)))}
+#define GPIO_SET_DIRECTION(value,direction) 	{	  if (direction){ pGPIO->IODIR |= value;}  else{    pGPIO->IODIR &= ~value;}}
+	/*cyg_uint32 iodir;\
+									HAL_READ_UINT32( (pGPIO)->IODIR , iodir); \
+									HAL_WRITE_UINT32((pGPIO)->IODIR ,(direction)?(iodir |value):(iodir & (~value)));\
+									
+	}*/
 #define  GPIO_INIT_PINSEL0(mask)	{cyg_uint32 pinsel;	\
 	HAL_READ_UINT32(PINSEL0, pinsel);\
 	HAL_WRITE_UINT32(PINSEL0, pinsel & mask);}

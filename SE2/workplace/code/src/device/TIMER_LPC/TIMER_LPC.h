@@ -117,7 +117,7 @@ typedef enum CTCR_FUNCTION {TIMER_MODE=0,COUNTER_MODE_RISE,COUNTER_MODE_FALL,COU
 /**
  * @brief Definition of the Timer  structure. 
  * */
-typedef struct _TIMER{
+typedef struct __attribute__ ((aligned)) _TIMER{
     U32		IR;             
     U32		TCR;
     U32		TC;

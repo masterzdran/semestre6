@@ -28,7 +28,7 @@
 /**
  * @brief Definition of the RTC structure
  * */
-typedef struct _RTC{
+typedef struct __attribute__ ((aligned)) _RTC{
                       /*SIZE|Description                  |Address    */
     U8     ILR;       /*  02|Interrupt Location Register  |0xE002 4000*/
     U8     DUMMY01[3];

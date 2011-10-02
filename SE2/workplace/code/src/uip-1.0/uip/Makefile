@@ -18,7 +18,6 @@ AR     = arm-eabi-ar
 
 APPS   = webserver
 
-APPS   = webserver
 CFLAGS = -Wall -g -I../uip -I. -fpack-struct -Os
 
 

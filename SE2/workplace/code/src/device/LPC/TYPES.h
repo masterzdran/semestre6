@@ -45,7 +45,7 @@ typedef   PU32  PDWord;
 /**
  * @brief Date structure definition
  **/
-typedef struct _date{
+typedef struct __attribute__ ((aligned)) _date{
   U16    year; 
   U8     month;
   U8     day;  
@@ -53,7 +53,7 @@ typedef struct _date{
 /**
  * @brief Time structure definition 
  **/
-typedef struct _time{
+typedef struct __attribute__ ((aligned)) _time{
   U8     hour;
   U8     minute;
   U8     second;  
@@ -63,7 +63,7 @@ typedef struct _time{
 /**
  * @brief Date-Time structure definition
  **/
-typedef struct _datetime{
+typedef struct __attribute__ ((aligned)) _datetime{
   DATE date;
   TIME time;
 }DATE_TIME;

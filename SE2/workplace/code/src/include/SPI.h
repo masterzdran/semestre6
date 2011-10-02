@@ -59,7 +59,7 @@ typedef enum _spi_byte_shift{
  * @param started: should be 0 when created
  * @param byteShift: @see SPI_BYTE_SHIFT
  * */
-typedef struct _SPI_DEVICE{
+typedef struct __attribute__ ((aligned)) _SPI_DEVICE{
   const void (*irqHandler)(void);	/*função de tratamento de interrupções*/
   U32   clock;		     			/*ritmo do sinal de relógio*/  
   U32   chipSelect;	  				/*define a identificação do periférico*/
