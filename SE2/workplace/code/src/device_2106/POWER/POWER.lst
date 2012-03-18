@@ -1,0 +1,1079 @@
+ARM GAS  /tmp/ccsbzIdS.s 			page 1
+
+
+   1              		.cpu arm7tdmi
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 18, 4
+  11              		.file	"POWER.c"
+  12              		.section	.debug_abbrev,"",%progbits
+  13              	.Ldebug_abbrev0:
+  14              		.section	.debug_info,"",%progbits
+  15              	.Ldebug_info0:
+  16              		.section	.debug_line,"",%progbits
+  17              	.Ldebug_line0:
+  18 0000 E8000000 		.text
+  18      02009900 
+  18      00000201 
+  18      FB0E0D00 
+  18      01010101 
+  19              	.Ltext0:
+  20              		.section	.text.POWER_Off_Peripherical,"ax",%progbits
+  21              		.align	2
+  22              		.global	POWER_Off_Peripherical
+  23              		.type	POWER_Off_Peripherical, %function
+  24              	POWER_Off_Peripherical:
+  25              	.LFB2:
+  26              		.file 1 "POWER.c"
+   1:POWER.c       **** /*
+   2:POWER.c       **** #=======================================================================
+   3:POWER.c       **** # SE1   - Sistemas Embebidos 1
+   4:POWER.c       **** #-----------------------------------------------------------------------
+   5:POWER.c       **** # Turma:	LI51N
+   6:POWER.c       **** # Semestre:	Inverno 2010/2011
+   7:POWER.c       **** # Data:		Novembro/2010
+   8:POWER.c       **** #-----------------------------------------------------------------------
+   9:POWER.c       **** # Nome: 	Nuno Cancelo
+  10:POWER.c       **** # Numero:	31401
+  11:POWER.c       **** #-----------------------------------------------------------------------
+  12:POWER.c       **** # Nome:		Nuno Sousa
+  13:POWER.c       **** # Numero:	33595
+  14:POWER.c       **** #-----------------------------------------------------------------------
+  15:POWER.c       **** # LEIC  - Licenciatura em Engenharia Informática e Computadores
+  16:POWER.c       **** # DEETC - Dep. de Eng. Electrónica e Telecomunicações e Computadores
+  17:POWER.c       **** # ISEL  - Instituto Superior de Engenharia de Lisboa
+  18:POWER.c       **** #=======================================================================
+  19:POWER.c       **** */
+  20:POWER.c       **** /**
+  21:POWER.c       ****  * @author Nuno Cancelo, (nuno.cancelo<at>gmail.com)
+  22:POWER.c       ****  * @author Nuno Sousa,   (ng.sousa<at>gmail.com)
+  23:POWER.c       ****  * @date November/2010
+  24:POWER.c       ****  * 
+  25:POWER.c       ****  * @file  POWER.c
+  26:POWER.c       ****  * @brief Module to configure GPIO ports of LPC2106 from Philips
+  27:POWER.c       ****  * 
+ARM GAS  /tmp/ccsbzIdS.s 			page 2
+
+
+  28:POWER.c       ****  * */
+  29:POWER.c       **** #include "POWER.h"
+  30:POWER.c       **** 
+  31:POWER.c       **** /**
+  32:POWER.c       ****  * @brief Turn off the peripherical device in peripherical.
+  33:POWER.c       ****  * @remarks Should use the appropriate value in enum 'ePWPeripherical', for best accurracy. 
+  34:POWER.c       ****  * @param peripherical: Peripherical to be powered off.
+  35:POWER.c       ****  * */
+  36:POWER.c       **** void POWER_Off_Peripherical(ePWPeripherical peripherical){
+  27              		.loc 1 36 0
+  28              		@ Function supports interworking.
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 0DC0A0E1 		mov	ip, sp
+  32              	.LCFI0:
+  33 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+  34              	.LCFI1:
+  35 0008 04B04CE2 		sub	fp, ip, #4
+  36              	.LCFI2:
+  37 000c 08D04DE2 		sub	sp, sp, #8
+  38              	.LCFI3:
+  39 0010 10000BE5 		str	r0, [fp, #-16]
+  37:POWER.c       ****     pPOWER->POWER_CONTROL_PERIPHERICAL &= ~peripherical;
+  40              		.loc 1 37 0
+  41 0014 0E22A0E3 		mov	r2, #-536870912
+  42 0018 7F2982E2 		add	r2, r2, #2080768
+  43 001c 062C82E2 		add	r2, r2, #1536
+  44 0020 0E32A0E3 		mov	r3, #-536870912
+  45 0024 7F3983E2 		add	r3, r3, #2080768
+  46 0028 063C83E2 		add	r3, r3, #1536
+  47 002c 041093E5 		ldr	r1, [r3, #4]
+  48 0030 10301BE5 		ldr	r3, [fp, #-16]
+  49 0034 0330E0E1 		mvn	r3, r3
+  50 0038 033001E0 		and	r3, r1, r3
+  51 003c 043082E5 		str	r3, [r2, #4]
+  38:POWER.c       **** }
+  52              		.loc 1 38 0
+  53 0040 0CD04BE2 		sub	sp, fp, #12
+  54 0044 00689DE8 		ldmfd	sp, {fp, sp, lr}
+  55 0048 1EFF2FE1 		bx	lr
+  56              	.LFE2:
+  57              		.size	POWER_Off_Peripherical, .-POWER_Off_Peripherical
+  58              		.section	.text.POWER_On_Peripherical,"ax",%progbits
+  59              		.align	2
+  60              		.global	POWER_On_Peripherical
+  61              		.type	POWER_On_Peripherical, %function
+  62              	POWER_On_Peripherical:
+  63              	.LFB3:
+  39:POWER.c       **** 
+  40:POWER.c       **** /**
+  41:POWER.c       ****  * @brief Turn on the peripherical device in  peripherical.
+  42:POWER.c       ****  * @remarks Should use the appropriate value in enum 'ePWPeripherical', for best accurracy. 
+  43:POWER.c       ****  * @param peripherical: Peripherical to be powered on.
+  44:POWER.c       ****  * */
+  45:POWER.c       **** void POWER_On_Peripherical(ePWPeripherical peripherical){
+  64              		.loc 1 45 0
+  65              		@ Function supports interworking.
+ARM GAS  /tmp/ccsbzIdS.s 			page 3
+
+
+  66              		@ args = 0, pretend = 0, frame = 8
+  67              		@ frame_needed = 1, uses_anonymous_args = 0
+  68 0000 0DC0A0E1 		mov	ip, sp
+  69              	.LCFI4:
+  70 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+  71              	.LCFI5:
+  72 0008 04B04CE2 		sub	fp, ip, #4
+  73              	.LCFI6:
+  74 000c 08D04DE2 		sub	sp, sp, #8
+  75              	.LCFI7:
+  76 0010 10000BE5 		str	r0, [fp, #-16]
+  46:POWER.c       ****     pPOWER->POWER_CONTROL_PERIPHERICAL|= peripherical;
+  77              		.loc 1 46 0
+  78 0014 0E22A0E3 		mov	r2, #-536870912
+  79 0018 7F2982E2 		add	r2, r2, #2080768
+  80 001c 062C82E2 		add	r2, r2, #1536
+  81 0020 0E32A0E3 		mov	r3, #-536870912
+  82 0024 7F3983E2 		add	r3, r3, #2080768
+  83 0028 063C83E2 		add	r3, r3, #1536
+  84 002c 041093E5 		ldr	r1, [r3, #4]
+  85 0030 10301BE5 		ldr	r3, [fp, #-16]
+  86 0034 033081E1 		orr	r3, r1, r3
+  87 0038 043082E5 		str	r3, [r2, #4]
+  47:POWER.c       **** }
+  88              		.loc 1 47 0
+  89 003c 0CD04BE2 		sub	sp, fp, #12
+  90 0040 00689DE8 		ldmfd	sp, {fp, sp, lr}
+  91 0044 1EFF2FE1 		bx	lr
+  92              	.LFE3:
+  93              		.size	POWER_On_Peripherical, .-POWER_On_Peripherical
+  94              		.section	.text.POWER_Down,"ax",%progbits
+  95              		.align	2
+  96              		.global	POWER_Down
+  97              		.type	POWER_Down, %function
+  98              	POWER_Down:
+  99              	.LFB4:
+  48:POWER.c       **** 
+  49:POWER.c       **** /**
+  50:POWER.c       ****  * @brief Function that powerdown the device. 
+  51:POWER.c       ****  * @details 
+  52:POWER.c       ****  * According to the Manual, page 32:
+  53:POWER.c       ****  * "Power-down mode - when 1, this bit causes the oscillator and all on-chip clocks to be stopped. 
+  54:POWER.c       ****  * A wakeup condition from an external interrupt can cause the oscillator to restart, 
+  55:POWER.c       ****  * the PD bit to be cleared, and the processor to resume execution."
+  56:POWER.c       ****  **/
+  57:POWER.c       **** void POWER_Down(){
+ 100              		.loc 1 57 0
+ 101              		@ Function supports interworking.
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 1, uses_anonymous_args = 0
+ 104 0000 0DC0A0E1 		mov	ip, sp
+ 105              	.LCFI8:
+ 106 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 107              	.LCFI9:
+ 108 0008 04B04CE2 		sub	fp, ip, #4
+ 109              	.LCFI10:
+  58:POWER.c       ****     pPOWER->POWER_CONTROL |= __PCON_PD__;
+ARM GAS  /tmp/ccsbzIdS.s 			page 4
+
+
+ 110              		.loc 1 58 0
+ 111 000c 0E22A0E3 		mov	r2, #-536870912
+ 112 0010 7F2982E2 		add	r2, r2, #2080768
+ 113 0014 062C82E2 		add	r2, r2, #1536
+ 114 0018 0E32A0E3 		mov	r3, #-536870912
+ 115 001c 7F3983E2 		add	r3, r3, #2080768
+ 116 0020 063C83E2 		add	r3, r3, #1536
+ 117 0024 003093E5 		ldr	r3, [r3, #0]
+ 118 0028 023083E3 		orr	r3, r3, #2
+ 119 002c 003082E5 		str	r3, [r2, #0]
+  59:POWER.c       **** }
+ 120              		.loc 1 59 0
+ 121 0030 0CD04BE2 		sub	sp, fp, #12
+ 122 0034 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 123 0038 1EFF2FE1 		bx	lr
+ 124              	.LFE4:
+ 125              		.size	POWER_Down, .-POWER_Down
+ 126              		.section	.text.POWER_Idle,"ax",%progbits
+ 127              		.align	2
+ 128              		.global	POWER_Idle
+ 129              		.type	POWER_Idle, %function
+ 130              	POWER_Idle:
+ 131              	.LFB5:
+  60:POWER.c       **** 
+  61:POWER.c       **** /**
+  62:POWER.c       ****  * @brief Function that turn the device into idle mode. 
+  63:POWER.c       ****  * @details 
+  64:POWER.c       ****  * According to the Manual, page 32:
+  65:POWER.c       ****  * "Idle mode - when 1, this bit causes the processor clock to be stopped, 
+  66:POWER.c       ****  * while on-chip peripherals remain active. Any enabled interrupt from a 
+  67:POWER.c       ****  * peripheral or an external interrupt source will cause the processor to 
+  68:POWER.c       ****  * resume execution."
+  69:POWER.c       ****  **/
+  70:POWER.c       **** void POWER_Idle(){
+ 132              		.loc 1 70 0
+ 133              		@ Function supports interworking.
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 1, uses_anonymous_args = 0
+ 136 0000 0DC0A0E1 		mov	ip, sp
+ 137              	.LCFI11:
+ 138 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 139              	.LCFI12:
+ 140 0008 04B04CE2 		sub	fp, ip, #4
+ 141              	.LCFI13:
+  71:POWER.c       ****   pPOWER->POWER_CONTROL |= __PCON_IDL__;
+ 142              		.loc 1 71 0
+ 143 000c 0E22A0E3 		mov	r2, #-536870912
+ 144 0010 7F2982E2 		add	r2, r2, #2080768
+ 145 0014 062C82E2 		add	r2, r2, #1536
+ 146 0018 0E32A0E3 		mov	r3, #-536870912
+ 147 001c 7F3983E2 		add	r3, r3, #2080768
+ 148 0020 063C83E2 		add	r3, r3, #1536
+ 149 0024 003093E5 		ldr	r3, [r3, #0]
+ 150 0028 013083E3 		orr	r3, r3, #1
+ 151 002c 003082E5 		str	r3, [r2, #0]
+  72:POWER.c       **** }
+ 152              		.loc 1 72 0
+ARM GAS  /tmp/ccsbzIdS.s 			page 5
+
+
+ 153 0030 0CD04BE2 		sub	sp, fp, #12
+ 154 0034 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 155 0038 1EFF2FE1 		bx	lr
+ 156              	.LFE5:
+ 157              		.size	POWER_Idle, .-POWER_Idle
+ 158              		.section	.debug_frame,"",%progbits
+ 159              	.Lframe0:
+ 160 0000 0C000000 		.4byte	.LECIE0-.LSCIE0
+ 161              	.LSCIE0:
+ 162 0004 FFFFFFFF 		.4byte	0xffffffff
+ 163 0008 01       		.byte	0x1
+ 164 0009 00       		.ascii	"\000"
+ 165 000a 01       		.uleb128 0x1
+ 166 000b 7C       		.sleb128 -4
+ 167 000c 0E       		.byte	0xe
+ 168 000d 0C       		.byte	0xc
+ 169 000e 0D       		.uleb128 0xd
+ 170 000f 00       		.uleb128 0x0
+ 171              		.align	2
+ 172              	.LECIE0:
+ 173              	.LSFDE0:
+ 174 0010 1C000000 		.4byte	.LEFDE0-.LASFDE0
+ 175              	.LASFDE0:
+ 176 0014 00000000 		.4byte	.Lframe0
+ 177 0018 00000000 		.4byte	.LFB2
+ 178 001c 4C000000 		.4byte	.LFE2-.LFB2
+ 179 0020 44       		.byte	0x4
+ 180              		.4byte	.LCFI0-.LFB2
+ 181 0021 0D       		.byte	0xd
+ 182 0022 0C       		.uleb128 0xc
+ 183 0023 44       		.byte	0x4
+ 184              		.4byte	.LCFI1-.LCFI0
+ 185 0024 8E       		.byte	0x8e
+ 186 0025 02       		.uleb128 0x2
+ 187 0026 8D       		.byte	0x8d
+ 188 0027 03       		.uleb128 0x3
+ 189 0028 8B       		.byte	0x8b
+ 190 0029 04       		.uleb128 0x4
+ 191 002a 44       		.byte	0x4
+ 192              		.4byte	.LCFI2-.LCFI1
+ 193 002b 0C       		.byte	0xc
+ 194 002c 0B       		.uleb128 0xb
+ 195 002d 04       		.uleb128 0x4
+ 196 002e 0000     		.align	2
+ 197              	.LEFDE0:
+ 198              	.LSFDE2:
+ 199 0030 1C000000 		.4byte	.LEFDE2-.LASFDE2
+ 200              	.LASFDE2:
+ 201 0034 00000000 		.4byte	.Lframe0
+ 202 0038 00000000 		.4byte	.LFB3
+ 203 003c 48000000 		.4byte	.LFE3-.LFB3
+ 204 0040 44       		.byte	0x4
+ 205              		.4byte	.LCFI4-.LFB3
+ 206 0041 0D       		.byte	0xd
+ 207 0042 0C       		.uleb128 0xc
+ 208 0043 44       		.byte	0x4
+ 209              		.4byte	.LCFI5-.LCFI4
+ARM GAS  /tmp/ccsbzIdS.s 			page 6
+
+
+ 210 0044 8E       		.byte	0x8e
+ 211 0045 02       		.uleb128 0x2
+ 212 0046 8D       		.byte	0x8d
+ 213 0047 03       		.uleb128 0x3
+ 214 0048 8B       		.byte	0x8b
+ 215 0049 04       		.uleb128 0x4
+ 216 004a 44       		.byte	0x4
+ 217              		.4byte	.LCFI6-.LCFI5
+ 218 004b 0C       		.byte	0xc
+ 219 004c 0B       		.uleb128 0xb
+ 220 004d 04       		.uleb128 0x4
+ 221 004e 0000     		.align	2
+ 222              	.LEFDE2:
+ 223              	.LSFDE4:
+ 224 0050 1C000000 		.4byte	.LEFDE4-.LASFDE4
+ 225              	.LASFDE4:
+ 226 0054 00000000 		.4byte	.Lframe0
+ 227 0058 00000000 		.4byte	.LFB4
+ 228 005c 3C000000 		.4byte	.LFE4-.LFB4
+ 229 0060 44       		.byte	0x4
+ 230              		.4byte	.LCFI8-.LFB4
+ 231 0061 0D       		.byte	0xd
+ 232 0062 0C       		.uleb128 0xc
+ 233 0063 44       		.byte	0x4
+ 234              		.4byte	.LCFI9-.LCFI8
+ 235 0064 8E       		.byte	0x8e
+ 236 0065 02       		.uleb128 0x2
+ 237 0066 8D       		.byte	0x8d
+ 238 0067 03       		.uleb128 0x3
+ 239 0068 8B       		.byte	0x8b
+ 240 0069 04       		.uleb128 0x4
+ 241 006a 44       		.byte	0x4
+ 242              		.4byte	.LCFI10-.LCFI9
+ 243 006b 0C       		.byte	0xc
+ 244 006c 0B       		.uleb128 0xb
+ 245 006d 04       		.uleb128 0x4
+ 246 006e 0000     		.align	2
+ 247              	.LEFDE4:
+ 248              	.LSFDE6:
+ 249 0070 1C000000 		.4byte	.LEFDE6-.LASFDE6
+ 250              	.LASFDE6:
+ 251 0074 00000000 		.4byte	.Lframe0
+ 252 0078 00000000 		.4byte	.LFB5
+ 253 007c 3C000000 		.4byte	.LFE5-.LFB5
+ 254 0080 44       		.byte	0x4
+ 255              		.4byte	.LCFI11-.LFB5
+ 256 0081 0D       		.byte	0xd
+ 257 0082 0C       		.uleb128 0xc
+ 258 0083 44       		.byte	0x4
+ 259              		.4byte	.LCFI12-.LCFI11
+ 260 0084 8E       		.byte	0x8e
+ 261 0085 02       		.uleb128 0x2
+ 262 0086 8D       		.byte	0x8d
+ 263 0087 03       		.uleb128 0x3
+ 264 0088 8B       		.byte	0x8b
+ 265 0089 04       		.uleb128 0x4
+ 266 008a 44       		.byte	0x4
+ARM GAS  /tmp/ccsbzIdS.s 			page 7
+
+
+ 267              		.4byte	.LCFI13-.LCFI12
+ 268 008b 0C       		.byte	0xc
+ 269 008c 0B       		.uleb128 0xb
+ 270 008d 04       		.uleb128 0x4
+ 271 008e 0000     		.align	2
+ 272              	.LEFDE6:
+ 273              		.text
+ 274              	.Letext0:
+ 275              		.section	.debug_loc,"",%progbits
+ 276              	.Ldebug_loc0:
+ 277              	.LLST0:
+ 278 0000 00000000 		.4byte	.LFB2
+ 279 0004 04000000 		.4byte	.LCFI0
+ 280 0008 0100     		.2byte	0x1
+ 281 000a 5D       		.byte	0x5d
+ 282 000b 04000000 		.4byte	.LCFI0
+ 283 000f 0C000000 		.4byte	.LCFI2
+ 284 0013 0100     		.2byte	0x1
+ 285 0015 5C       		.byte	0x5c
+ 286 0016 0C000000 		.4byte	.LCFI2
+ 287 001a 4C000000 		.4byte	.LFE2
+ 288 001e 0200     		.2byte	0x2
+ 289 0020 7B       		.byte	0x7b
+ 290 0021 04       		.sleb128 4
+ 291 0022 00000000 		.4byte	0x0
+ 292 0026 00000000 		.4byte	0x0
+ 293              	.LLST1:
+ 294 002a 00000000 		.4byte	.LFB3
+ 295 002e 04000000 		.4byte	.LCFI4
+ 296 0032 0100     		.2byte	0x1
+ 297 0034 5D       		.byte	0x5d
+ 298 0035 04000000 		.4byte	.LCFI4
+ 299 0039 0C000000 		.4byte	.LCFI6
+ 300 003d 0100     		.2byte	0x1
+ 301 003f 5C       		.byte	0x5c
+ 302 0040 0C000000 		.4byte	.LCFI6
+ 303 0044 48000000 		.4byte	.LFE3
+ 304 0048 0200     		.2byte	0x2
+ 305 004a 7B       		.byte	0x7b
+ 306 004b 04       		.sleb128 4
+ 307 004c 00000000 		.4byte	0x0
+ 308 0050 00000000 		.4byte	0x0
+ 309              	.LLST2:
+ 310 0054 00000000 		.4byte	.LFB4
+ 311 0058 04000000 		.4byte	.LCFI8
+ 312 005c 0100     		.2byte	0x1
+ 313 005e 5D       		.byte	0x5d
+ 314 005f 04000000 		.4byte	.LCFI8
+ 315 0063 0C000000 		.4byte	.LCFI10
+ 316 0067 0100     		.2byte	0x1
+ 317 0069 5C       		.byte	0x5c
+ 318 006a 0C000000 		.4byte	.LCFI10
+ 319 006e 3C000000 		.4byte	.LFE4
+ 320 0072 0200     		.2byte	0x2
+ 321 0074 7B       		.byte	0x7b
+ 322 0075 04       		.sleb128 4
+ 323 0076 00000000 		.4byte	0x0
+ARM GAS  /tmp/ccsbzIdS.s 			page 8
+
+
+ 324 007a 00000000 		.4byte	0x0
+ 325              	.LLST3:
+ 326 007e 00000000 		.4byte	.LFB5
+ 327 0082 04000000 		.4byte	.LCFI11
+ 328 0086 0100     		.2byte	0x1
+ 329 0088 5D       		.byte	0x5d
+ 330 0089 04000000 		.4byte	.LCFI11
+ 331 008d 0C000000 		.4byte	.LCFI13
+ 332 0091 0100     		.2byte	0x1
+ 333 0093 5C       		.byte	0x5c
+ 334 0094 0C000000 		.4byte	.LCFI13
+ 335 0098 3C000000 		.4byte	.LFE5
+ 336 009c 0200     		.2byte	0x2
+ 337 009e 7B       		.byte	0x7b
+ 338 009f 04       		.sleb128 4
+ 339 00a0 00000000 		.4byte	0x0
+ 340 00a4 00000000 		.4byte	0x0
+ 341              		.file 2 "./../../../../code/src/eCos//include/cyg/infra/cyg_type.h"
+ 342              		.file 3 "./../../../../code/src/include/SCB.h"
+ 343              		.file 4 "POWER.h"
+ 344              		.file 5 "./../../../../code/src/include/TYPES.h"
+ 345              		.section	.debug_info
+ 346 0000 78010000 		.4byte	0x178
+ 347 0004 0200     		.2byte	0x2
+ 348 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 349 000a 04       		.byte	0x4
+ 350 000b 01       		.uleb128 0x1
+ 351 000c 00000000 		.4byte	.LASF26
+ 352 0010 01       		.byte	0x1
+ 353 0011 CC010000 		.4byte	.LASF27
+ 354 0015 A2000000 		.4byte	.LASF28
+ 355 0019 00000000 		.4byte	0x0
+ 356 001d 00000000 		.4byte	0x0
+ 357 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 358 0025 00000000 		.4byte	.Ldebug_line0
+ 359 0029 02       		.uleb128 0x2
+ 360 002a 04       		.byte	0x4
+ 361 002b 05       		.byte	0x5
+ 362 002c 696E7400 		.ascii	"int\000"
+ 363 0030 03       		.uleb128 0x3
+ 364 0031 04       		.byte	0x4
+ 365 0032 07       		.byte	0x7
+ 366 0033 3A010000 		.4byte	.LASF0
+ 367 0037 03       		.uleb128 0x3
+ 368 0038 01       		.byte	0x1
+ 369 0039 08       		.byte	0x8
+ 370 003a 09010000 		.4byte	.LASF1
+ 371 003e 03       		.uleb128 0x3
+ 372 003f 01       		.byte	0x1
+ 373 0040 06       		.byte	0x6
+ 374 0041 17010000 		.4byte	.LASF2
+ 375 0045 03       		.uleb128 0x3
+ 376 0046 02       		.byte	0x2
+ 377 0047 07       		.byte	0x7
+ 378 0048 52010000 		.4byte	.LASF3
+ 379 004c 03       		.uleb128 0x3
+ 380 004d 02       		.byte	0x2
+ARM GAS  /tmp/ccsbzIdS.s 			page 9
+
+
+ 381 004e 05       		.byte	0x5
+ 382 004f 2E000000 		.4byte	.LASF4
+ 383 0053 04       		.uleb128 0x4
+ 384 0054 70010000 		.4byte	.LASF7
+ 385 0058 02       		.byte	0x2
+ 386 0059 DB       		.byte	0xdb
+ 387 005a 30000000 		.4byte	0x30
+ 388 005e 03       		.uleb128 0x3
+ 389 005f 08       		.byte	0x8
+ 390 0060 07       		.byte	0x7
+ 391 0061 23010000 		.4byte	.LASF5
+ 392 0065 03       		.uleb128 0x3
+ 393 0066 08       		.byte	0x8
+ 394 0067 05       		.byte	0x5
+ 395 0068 5E000000 		.4byte	.LASF6
+ 396 006c 05       		.uleb128 0x5
+ 397 006d 47010000 		.4byte	.LASF8
+ 398 0071 02       		.byte	0x2
+ 399 0072 0201     		.2byte	0x102
+ 400 0074 53000000 		.4byte	0x53
+ 401 0078 06       		.uleb128 0x6
+ 402 0079 55333200 		.ascii	"U32\000"
+ 403 007d 05       		.byte	0x5
+ 404 007e 1A       		.byte	0x1a
+ 405 007f 6C000000 		.4byte	0x6c
+ 406 0083 07       		.uleb128 0x7
+ 407 0084 04       		.byte	0x4
+ 408 0085 07       		.byte	0x7
+ 409 0086 08       		.uleb128 0x8
+ 410 0087 A0010000 		.4byte	.LASF29
+ 411 008b 08       		.byte	0x8
+ 412 008c 03       		.byte	0x3
+ 413 008d 43       		.byte	0x43
+ 414 008e AF000000 		.4byte	0xaf
+ 415 0092 09       		.uleb128 0x9
+ 416 0093 BE010000 		.4byte	.LASF9
+ 417 0097 03       		.byte	0x3
+ 418 0098 44       		.byte	0x44
+ 419 0099 78000000 		.4byte	0x78
+ 420 009d 02       		.byte	0x2
+ 421 009e 23       		.byte	0x23
+ 422 009f 00       		.uleb128 0x0
+ 423 00a0 09       		.uleb128 0x9
+ 424 00a1 13000000 		.4byte	.LASF10
+ 425 00a5 03       		.byte	0x3
+ 426 00a6 45       		.byte	0x45
+ 427 00a7 78000000 		.4byte	0x78
+ 428 00ab 02       		.byte	0x2
+ 429 00ac 23       		.byte	0x23
+ 430 00ad 04       		.uleb128 0x4
+ 431 00ae 00       		.byte	0x0
+ 432 00af 0A       		.uleb128 0xa
+ 433 00b0 8D010000 		.4byte	.LASF30
+ 434 00b4 04       		.byte	0x4
+ 435 00b5 04       		.byte	0x4
+ 436 00b6 16       		.byte	0x16
+ 437 00b7 F8000000 		.4byte	0xf8
+ARM GAS  /tmp/ccsbzIdS.s 			page 10
+
+
+ 438 00bb 0B       		.uleb128 0xb
+ 439 00bc 6C000000 		.4byte	.LASF11
+ 440 00c0 02       		.sleb128 2
+ 441 00c1 0B       		.uleb128 0xb
+ 442 00c2 76000000 		.4byte	.LASF12
+ 443 00c6 04       		.sleb128 4
+ 444 00c7 0B       		.uleb128 0xb
+ 445 00c8 3F000000 		.4byte	.LASF13
+ 446 00cc 08       		.sleb128 8
+ 447 00cd 0B       		.uleb128 0xb
+ 448 00ce 48000000 		.4byte	.LASF14
+ 449 00d2 10       		.sleb128 16
+ 450 00d3 0B       		.uleb128 0xb
+ 451 00d4 65010000 		.4byte	.LASF15
+ 452 00d8 20       		.sleb128 32
+ 453 00d9 0B       		.uleb128 0xb
+ 454 00da 0C000000 		.4byte	.LASF16
+ 455 00de 8001     		.sleb128 128
+ 456 00e0 0B       		.uleb128 0xb
+ 457 00e1 B7010000 		.4byte	.LASF17
+ 458 00e5 8002     		.sleb128 256
+ 459 00e7 0B       		.uleb128 0xb
+ 460 00e8 38000000 		.4byte	.LASF18
+ 461 00ec 8004     		.sleb128 512
+ 462 00ee 0B       		.uleb128 0xb
+ 463 00ef 7B010000 		.4byte	.LASF19
+ 464 00f3 80808001 		.sleb128 2097152
+ 465 00f7 00       		.byte	0x0
+ 466 00f8 04       		.uleb128 0x4
+ 467 00f9 A7010000 		.4byte	.LASF20
+ 468 00fd 04       		.byte	0x4
+ 469 00fe 20       		.byte	0x20
+ 470 00ff AF000000 		.4byte	0xaf
+ 471 0103 0C       		.uleb128 0xc
+ 472 0104 01       		.byte	0x1
+ 473 0105 80000000 		.4byte	.LASF21
+ 474 0109 01       		.byte	0x1
+ 475 010a 24       		.byte	0x24
+ 476 010b 01       		.byte	0x1
+ 477 010c 00000000 		.4byte	.LFB2
+ 478 0110 4C000000 		.4byte	.LFE2
+ 479 0114 00000000 		.4byte	.LLST0
+ 480 0118 2B010000 		.4byte	0x12b
+ 481 011c 0D       		.uleb128 0xd
+ 482 011d 51000000 		.4byte	.LASF23
+ 483 0121 01       		.byte	0x1
+ 484 0122 24       		.byte	0x24
+ 485 0123 F8000000 		.4byte	0xf8
+ 486 0127 02       		.byte	0x2
+ 487 0128 91       		.byte	0x91
+ 488 0129 6C       		.sleb128 -20
+ 489 012a 00       		.byte	0x0
+ 490 012b 0C       		.uleb128 0xc
+ 491 012c 01       		.byte	0x1
+ 492 012d F3000000 		.4byte	.LASF22
+ 493 0131 01       		.byte	0x1
+ 494 0132 2D       		.byte	0x2d
+ARM GAS  /tmp/ccsbzIdS.s 			page 11
+
+
+ 495 0133 01       		.byte	0x1
+ 496 0134 00000000 		.4byte	.LFB3
+ 497 0138 48000000 		.4byte	.LFE3
+ 498 013c 2A000000 		.4byte	.LLST1
+ 499 0140 53010000 		.4byte	0x153
+ 500 0144 0D       		.uleb128 0xd
+ 501 0145 51000000 		.4byte	.LASF23
+ 502 0149 01       		.byte	0x1
+ 503 014a 2D       		.byte	0x2d
+ 504 014b F8000000 		.4byte	0xf8
+ 505 014f 02       		.byte	0x2
+ 506 0150 91       		.byte	0x91
+ 507 0151 6C       		.sleb128 -20
+ 508 0152 00       		.byte	0x0
+ 509 0153 0E       		.uleb128 0xe
+ 510 0154 01       		.byte	0x1
+ 511 0155 82010000 		.4byte	.LASF24
+ 512 0159 01       		.byte	0x1
+ 513 015a 39       		.byte	0x39
+ 514 015b 00000000 		.4byte	.LFB4
+ 515 015f 3C000000 		.4byte	.LFE4
+ 516 0163 54000000 		.4byte	.LLST2
+ 517 0167 0E       		.uleb128 0xe
+ 518 0168 01       		.byte	0x1
+ 519 0169 97000000 		.4byte	.LASF25
+ 520 016d 01       		.byte	0x1
+ 521 016e 46       		.byte	0x46
+ 522 016f 00000000 		.4byte	.LFB5
+ 523 0173 3C000000 		.4byte	.LFE5
+ 524 0177 7E000000 		.4byte	.LLST3
+ 525 017b 00       		.byte	0x0
+ 526              		.section	.debug_abbrev
+ 527 0000 01       		.uleb128 0x1
+ 528 0001 11       		.uleb128 0x11
+ 529 0002 01       		.byte	0x1
+ 530 0003 25       		.uleb128 0x25
+ 531 0004 0E       		.uleb128 0xe
+ 532 0005 13       		.uleb128 0x13
+ 533 0006 0B       		.uleb128 0xb
+ 534 0007 03       		.uleb128 0x3
+ 535 0008 0E       		.uleb128 0xe
+ 536 0009 1B       		.uleb128 0x1b
+ 537 000a 0E       		.uleb128 0xe
+ 538 000b 11       		.uleb128 0x11
+ 539 000c 01       		.uleb128 0x1
+ 540 000d 52       		.uleb128 0x52
+ 541 000e 01       		.uleb128 0x1
+ 542 000f 55       		.uleb128 0x55
+ 543 0010 06       		.uleb128 0x6
+ 544 0011 10       		.uleb128 0x10
+ 545 0012 06       		.uleb128 0x6
+ 546 0013 00       		.byte	0x0
+ 547 0014 00       		.byte	0x0
+ 548 0015 02       		.uleb128 0x2
+ 549 0016 24       		.uleb128 0x24
+ 550 0017 00       		.byte	0x0
+ 551 0018 0B       		.uleb128 0xb
+ARM GAS  /tmp/ccsbzIdS.s 			page 12
+
+
+ 552 0019 0B       		.uleb128 0xb
+ 553 001a 3E       		.uleb128 0x3e
+ 554 001b 0B       		.uleb128 0xb
+ 555 001c 03       		.uleb128 0x3
+ 556 001d 08       		.uleb128 0x8
+ 557 001e 00       		.byte	0x0
+ 558 001f 00       		.byte	0x0
+ 559 0020 03       		.uleb128 0x3
+ 560 0021 24       		.uleb128 0x24
+ 561 0022 00       		.byte	0x0
+ 562 0023 0B       		.uleb128 0xb
+ 563 0024 0B       		.uleb128 0xb
+ 564 0025 3E       		.uleb128 0x3e
+ 565 0026 0B       		.uleb128 0xb
+ 566 0027 03       		.uleb128 0x3
+ 567 0028 0E       		.uleb128 0xe
+ 568 0029 00       		.byte	0x0
+ 569 002a 00       		.byte	0x0
+ 570 002b 04       		.uleb128 0x4
+ 571 002c 16       		.uleb128 0x16
+ 572 002d 00       		.byte	0x0
+ 573 002e 03       		.uleb128 0x3
+ 574 002f 0E       		.uleb128 0xe
+ 575 0030 3A       		.uleb128 0x3a
+ 576 0031 0B       		.uleb128 0xb
+ 577 0032 3B       		.uleb128 0x3b
+ 578 0033 0B       		.uleb128 0xb
+ 579 0034 49       		.uleb128 0x49
+ 580 0035 13       		.uleb128 0x13
+ 581 0036 00       		.byte	0x0
+ 582 0037 00       		.byte	0x0
+ 583 0038 05       		.uleb128 0x5
+ 584 0039 16       		.uleb128 0x16
+ 585 003a 00       		.byte	0x0
+ 586 003b 03       		.uleb128 0x3
+ 587 003c 0E       		.uleb128 0xe
+ 588 003d 3A       		.uleb128 0x3a
+ 589 003e 0B       		.uleb128 0xb
+ 590 003f 3B       		.uleb128 0x3b
+ 591 0040 05       		.uleb128 0x5
+ 592 0041 49       		.uleb128 0x49
+ 593 0042 13       		.uleb128 0x13
+ 594 0043 00       		.byte	0x0
+ 595 0044 00       		.byte	0x0
+ 596 0045 06       		.uleb128 0x6
+ 597 0046 16       		.uleb128 0x16
+ 598 0047 00       		.byte	0x0
+ 599 0048 03       		.uleb128 0x3
+ 600 0049 08       		.uleb128 0x8
+ 601 004a 3A       		.uleb128 0x3a
+ 602 004b 0B       		.uleb128 0xb
+ 603 004c 3B       		.uleb128 0x3b
+ 604 004d 0B       		.uleb128 0xb
+ 605 004e 49       		.uleb128 0x49
+ 606 004f 13       		.uleb128 0x13
+ 607 0050 00       		.byte	0x0
+ 608 0051 00       		.byte	0x0
+ARM GAS  /tmp/ccsbzIdS.s 			page 13
+
+
+ 609 0052 07       		.uleb128 0x7
+ 610 0053 24       		.uleb128 0x24
+ 611 0054 00       		.byte	0x0
+ 612 0055 0B       		.uleb128 0xb
+ 613 0056 0B       		.uleb128 0xb
+ 614 0057 3E       		.uleb128 0x3e
+ 615 0058 0B       		.uleb128 0xb
+ 616 0059 00       		.byte	0x0
+ 617 005a 00       		.byte	0x0
+ 618 005b 08       		.uleb128 0x8
+ 619 005c 13       		.uleb128 0x13
+ 620 005d 01       		.byte	0x1
+ 621 005e 03       		.uleb128 0x3
+ 622 005f 0E       		.uleb128 0xe
+ 623 0060 0B       		.uleb128 0xb
+ 624 0061 0B       		.uleb128 0xb
+ 625 0062 3A       		.uleb128 0x3a
+ 626 0063 0B       		.uleb128 0xb
+ 627 0064 3B       		.uleb128 0x3b
+ 628 0065 0B       		.uleb128 0xb
+ 629 0066 01       		.uleb128 0x1
+ 630 0067 13       		.uleb128 0x13
+ 631 0068 00       		.byte	0x0
+ 632 0069 00       		.byte	0x0
+ 633 006a 09       		.uleb128 0x9
+ 634 006b 0D       		.uleb128 0xd
+ 635 006c 00       		.byte	0x0
+ 636 006d 03       		.uleb128 0x3
+ 637 006e 0E       		.uleb128 0xe
+ 638 006f 3A       		.uleb128 0x3a
+ 639 0070 0B       		.uleb128 0xb
+ 640 0071 3B       		.uleb128 0x3b
+ 641 0072 0B       		.uleb128 0xb
+ 642 0073 49       		.uleb128 0x49
+ 643 0074 13       		.uleb128 0x13
+ 644 0075 38       		.uleb128 0x38
+ 645 0076 0A       		.uleb128 0xa
+ 646 0077 00       		.byte	0x0
+ 647 0078 00       		.byte	0x0
+ 648 0079 0A       		.uleb128 0xa
+ 649 007a 04       		.uleb128 0x4
+ 650 007b 01       		.byte	0x1
+ 651 007c 03       		.uleb128 0x3
+ 652 007d 0E       		.uleb128 0xe
+ 653 007e 0B       		.uleb128 0xb
+ 654 007f 0B       		.uleb128 0xb
+ 655 0080 3A       		.uleb128 0x3a
+ 656 0081 0B       		.uleb128 0xb
+ 657 0082 3B       		.uleb128 0x3b
+ 658 0083 0B       		.uleb128 0xb
+ 659 0084 01       		.uleb128 0x1
+ 660 0085 13       		.uleb128 0x13
+ 661 0086 00       		.byte	0x0
+ 662 0087 00       		.byte	0x0
+ 663 0088 0B       		.uleb128 0xb
+ 664 0089 28       		.uleb128 0x28
+ 665 008a 00       		.byte	0x0
+ARM GAS  /tmp/ccsbzIdS.s 			page 14
+
+
+ 666 008b 03       		.uleb128 0x3
+ 667 008c 0E       		.uleb128 0xe
+ 668 008d 1C       		.uleb128 0x1c
+ 669 008e 0D       		.uleb128 0xd
+ 670 008f 00       		.byte	0x0
+ 671 0090 00       		.byte	0x0
+ 672 0091 0C       		.uleb128 0xc
+ 673 0092 2E       		.uleb128 0x2e
+ 674 0093 01       		.byte	0x1
+ 675 0094 3F       		.uleb128 0x3f
+ 676 0095 0C       		.uleb128 0xc
+ 677 0096 03       		.uleb128 0x3
+ 678 0097 0E       		.uleb128 0xe
+ 679 0098 3A       		.uleb128 0x3a
+ 680 0099 0B       		.uleb128 0xb
+ 681 009a 3B       		.uleb128 0x3b
+ 682 009b 0B       		.uleb128 0xb
+ 683 009c 27       		.uleb128 0x27
+ 684 009d 0C       		.uleb128 0xc
+ 685 009e 11       		.uleb128 0x11
+ 686 009f 01       		.uleb128 0x1
+ 687 00a0 12       		.uleb128 0x12
+ 688 00a1 01       		.uleb128 0x1
+ 689 00a2 40       		.uleb128 0x40
+ 690 00a3 06       		.uleb128 0x6
+ 691 00a4 01       		.uleb128 0x1
+ 692 00a5 13       		.uleb128 0x13
+ 693 00a6 00       		.byte	0x0
+ 694 00a7 00       		.byte	0x0
+ 695 00a8 0D       		.uleb128 0xd
+ 696 00a9 05       		.uleb128 0x5
+ 697 00aa 00       		.byte	0x0
+ 698 00ab 03       		.uleb128 0x3
+ 699 00ac 0E       		.uleb128 0xe
+ 700 00ad 3A       		.uleb128 0x3a
+ 701 00ae 0B       		.uleb128 0xb
+ 702 00af 3B       		.uleb128 0x3b
+ 703 00b0 0B       		.uleb128 0xb
+ 704 00b1 49       		.uleb128 0x49
+ 705 00b2 13       		.uleb128 0x13
+ 706 00b3 02       		.uleb128 0x2
+ 707 00b4 0A       		.uleb128 0xa
+ 708 00b5 00       		.byte	0x0
+ 709 00b6 00       		.byte	0x0
+ 710 00b7 0E       		.uleb128 0xe
+ 711 00b8 2E       		.uleb128 0x2e
+ 712 00b9 00       		.byte	0x0
+ 713 00ba 3F       		.uleb128 0x3f
+ 714 00bb 0C       		.uleb128 0xc
+ 715 00bc 03       		.uleb128 0x3
+ 716 00bd 0E       		.uleb128 0xe
+ 717 00be 3A       		.uleb128 0x3a
+ 718 00bf 0B       		.uleb128 0xb
+ 719 00c0 3B       		.uleb128 0x3b
+ 720 00c1 0B       		.uleb128 0xb
+ 721 00c2 11       		.uleb128 0x11
+ 722 00c3 01       		.uleb128 0x1
+ARM GAS  /tmp/ccsbzIdS.s 			page 15
+
+
+ 723 00c4 12       		.uleb128 0x12
+ 724 00c5 01       		.uleb128 0x1
+ 725 00c6 40       		.uleb128 0x40
+ 726 00c7 06       		.uleb128 0x6
+ 727 00c8 00       		.byte	0x0
+ 728 00c9 00       		.byte	0x0
+ 729 00ca 00       		.byte	0x0
+ 730              		.section	.debug_pubnames,"",%progbits
+ 731 0000 61000000 		.4byte	0x61
+ 732 0004 0200     		.2byte	0x2
+ 733 0006 00000000 		.4byte	.Ldebug_info0
+ 734 000a 7C010000 		.4byte	0x17c
+ 735 000e 03010000 		.4byte	0x103
+ 736 0012 504F5745 		.ascii	"POWER_Off_Peripherical\000"
+ 736      525F4F66 
+ 736      665F5065 
+ 736      72697068 
+ 736      65726963 
+ 737 0029 2B010000 		.4byte	0x12b
+ 738 002d 504F5745 		.ascii	"POWER_On_Peripherical\000"
+ 738      525F4F6E 
+ 738      5F506572 
+ 738      69706865 
+ 738      72696361 
+ 739 0043 53010000 		.4byte	0x153
+ 740 0047 504F5745 		.ascii	"POWER_Down\000"
+ 740      525F446F 
+ 740      776E00
+ 741 0052 67010000 		.4byte	0x167
+ 742 0056 504F5745 		.ascii	"POWER_Idle\000"
+ 742      525F4964 
+ 742      6C6500
+ 743 0061 00000000 		.4byte	0x0
+ 744              		.section	.debug_aranges,"",%progbits
+ 745 0000 34000000 		.4byte	0x34
+ 746 0004 0200     		.2byte	0x2
+ 747 0006 00000000 		.4byte	.Ldebug_info0
+ 748 000a 04       		.byte	0x4
+ 749 000b 00       		.byte	0x0
+ 750 000c 0000     		.2byte	0x0
+ 751 000e 0000     		.2byte	0x0
+ 752 0010 00000000 		.4byte	.LFB2
+ 753 0014 4C000000 		.4byte	.LFE2-.LFB2
+ 754 0018 00000000 		.4byte	.LFB3
+ 755 001c 48000000 		.4byte	.LFE3-.LFB3
+ 756 0020 00000000 		.4byte	.LFB4
+ 757 0024 3C000000 		.4byte	.LFE4-.LFB4
+ 758 0028 00000000 		.4byte	.LFB5
+ 759 002c 3C000000 		.4byte	.LFE5-.LFB5
+ 760 0030 00000000 		.4byte	0x0
+ 761 0034 00000000 		.4byte	0x0
+ 762              		.section	.debug_ranges,"",%progbits
+ 763              	.Ldebug_ranges0:
+ 764 0000 00000000 		.4byte	.Ltext0
+ 765 0004 00000000 		.4byte	.Letext0
+ 766 0008 00000000 		.4byte	.LFB2
+ 767 000c 4C000000 		.4byte	.LFE2
+ARM GAS  /tmp/ccsbzIdS.s 			page 16
+
+
+ 768 0010 00000000 		.4byte	.LFB3
+ 769 0014 48000000 		.4byte	.LFE3
+ 770 0018 00000000 		.4byte	.LFB4
+ 771 001c 3C000000 		.4byte	.LFE4
+ 772 0020 00000000 		.4byte	.LFB5
+ 773 0024 3C000000 		.4byte	.LFE5
+ 774 0028 00000000 		.4byte	0x0
+ 775 002c 00000000 		.4byte	0x0
+ 776              		.section	.debug_str,"MS",%progbits,1
+ 777              	.LASF26:
+ 778 0000 474E5520 		.ascii	"GNU C 4.3.2\000"
+ 778      4320342E 
+ 778      332E3200 
+ 779              	.LASF16:
+ 780 000c 50575F49 		.ascii	"PW_I2C\000"
+ 780      324300
+ 781              	.LASF10:
+ 782 0013 504F5745 		.ascii	"POWER_CONTROL_PERIPHERICAL\000"
+ 782      525F434F 
+ 782      4E54524F 
+ 782      4C5F5045 
+ 782      52495048 
+ 783              	.LASF4:
+ 784 002e 73686F72 		.ascii	"short int\000"
+ 784      7420696E 
+ 784      7400
+ 785              	.LASF18:
+ 786 0038 50575F52 		.ascii	"PW_RTC\000"
+ 786      544300
+ 787              	.LASF13:
+ 788 003f 50575F55 		.ascii	"PW_Uart0\000"
+ 788      61727430 
+ 788      00
+ 789              	.LASF14:
+ 790 0048 50575F55 		.ascii	"PW_Uart1\000"
+ 790      61727431 
+ 790      00
+ 791              	.LASF23:
+ 792 0051 70657269 		.ascii	"peripherical\000"
+ 792      70686572 
+ 792      6963616C 
+ 792      00
+ 793              	.LASF6:
+ 794 005e 6C6F6E67 		.ascii	"long long int\000"
+ 794      206C6F6E 
+ 794      6720696E 
+ 794      7400
+ 795              	.LASF11:
+ 796 006c 50575F54 		.ascii	"PW_Timer0\000"
+ 796      696D6572 
+ 796      3000
+ 797              	.LASF12:
+ 798 0076 50575F54 		.ascii	"PW_Timer1\000"
+ 798      696D6572 
+ 798      3100
+ 799              	.LASF21:
+ 800 0080 504F5745 		.ascii	"POWER_Off_Peripherical\000"
+ARM GAS  /tmp/ccsbzIdS.s 			page 17
+
+
+ 800      525F4F66 
+ 800      665F5065 
+ 800      72697068 
+ 800      65726963 
+ 801              	.LASF25:
+ 802 0097 504F5745 		.ascii	"POWER_Idle\000"
+ 802      525F4964 
+ 802      6C6500
+ 803              	.LASF28:
+ 804 00a2 2F686F6D 		.ascii	"/home/masterzdran/WorkingArea/Isel/semestre6/SE2/wo"
+ 804      652F6D61 
+ 804      73746572 
+ 804      7A647261 
+ 804      6E2F576F 
+ 805 00d5 726B706C 		.ascii	"rkplace/code/src/device/POWER\000"
+ 805      6163652F 
+ 805      636F6465 
+ 805      2F737263 
+ 805      2F646576 
+ 806              	.LASF22:
+ 807 00f3 504F5745 		.ascii	"POWER_On_Peripherical\000"
+ 807      525F4F6E 
+ 807      5F506572 
+ 807      69706865 
+ 807      72696361 
+ 808              	.LASF1:
+ 809 0109 756E7369 		.ascii	"unsigned char\000"
+ 809      676E6564 
+ 809      20636861 
+ 809      7200
+ 810              	.LASF2:
+ 811 0117 7369676E 		.ascii	"signed char\000"
+ 811      65642063 
+ 811      68617200 
+ 812              	.LASF5:
+ 813 0123 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 813      206C6F6E 
+ 813      6720756E 
+ 813      7369676E 
+ 813      65642069 
+ 814              	.LASF0:
+ 815 013a 756E7369 		.ascii	"unsigned int\000"
+ 815      676E6564 
+ 815      20696E74 
+ 815      00
+ 816              	.LASF8:
+ 817 0147 4359475F 		.ascii	"CYG_WORD32\000"
+ 817      574F5244 
+ 817      333200
+ 818              	.LASF3:
+ 819 0152 73686F72 		.ascii	"short unsigned int\000"
+ 819      7420756E 
+ 819      7369676E 
+ 819      65642069 
+ 819      6E7400
+ 820              	.LASF15:
+ 821 0165 50575F50 		.ascii	"PW_PWCLock\000"
+ARM GAS  /tmp/ccsbzIdS.s 			page 18
+
+
+ 821      57434C6F 
+ 821      636B00
+ 822              	.LASF7:
+ 823 0170 6379675F 		.ascii	"cyg_uint32\000"
+ 823      75696E74 
+ 823      333200
+ 824              	.LASF19:
+ 825 017b 50575F53 		.ascii	"PW_SSP\000"
+ 825      535000
+ 826              	.LASF24:
+ 827 0182 504F5745 		.ascii	"POWER_Down\000"
+ 827      525F446F 
+ 827      776E00
+ 828              	.LASF30:
+ 829 018d 506F7765 		.ascii	"PowerPeriphericals\000"
+ 829      72506572 
+ 829      69706865 
+ 829      72696361 
+ 829      6C7300
+ 830              	.LASF29:
+ 831 01a0 5F504F57 		.ascii	"_POWER\000"
+ 831      455200
+ 832              	.LASF20:
+ 833 01a7 65505750 		.ascii	"ePWPeripherical\000"
+ 833      65726970 
+ 833      68657269 
+ 833      63616C00 
+ 834              	.LASF17:
+ 835 01b7 50575F53 		.ascii	"PW_SPI\000"
+ 835      504900
+ 836              	.LASF9:
+ 837 01be 504F5745 		.ascii	"POWER_CONTROL\000"
+ 837      525F434F 
+ 837      4E54524F 
+ 837      4C00
+ 838              	.LASF27:
+ 839 01cc 504F5745 		.ascii	"POWER.c\000"
+ 839      522E6300 
+ 840              		.ident	"GCC: (eCosCentric GNU tools 4.3.2-sw) 4.3.2"
+ARM GAS  /tmp/ccsbzIdS.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 POWER.c
+     /tmp/ccsbzIdS.s:24     .text.POWER_Off_Peripherical:00000000 POWER_Off_Peripherical
+     /tmp/ccsbzIdS.s:31     .text.POWER_Off_Peripherical:00000000 $a
+     /tmp/ccsbzIdS.s:62     .text.POWER_On_Peripherical:00000000 POWER_On_Peripherical
+     /tmp/ccsbzIdS.s:68     .text.POWER_On_Peripherical:00000000 $a
+     /tmp/ccsbzIdS.s:98     .text.POWER_Down:00000000 POWER_Down
+     /tmp/ccsbzIdS.s:104    .text.POWER_Down:00000000 $a
+     /tmp/ccsbzIdS.s:130    .text.POWER_Idle:00000000 POWER_Idle
+     /tmp/ccsbzIdS.s:136    .text.POWER_Idle:00000000 $a
+     /tmp/ccsbzIdS.s:160    .debug_frame:00000000 $d
+     /tmp/ccsbzIdS.s:278    .debug_loc:00000000 $d
+
+NO UNDEFINED SYMBOLS
