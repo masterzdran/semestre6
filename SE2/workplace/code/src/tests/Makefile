@@ -43,8 +43,8 @@ all:
 	@echo "=================================="	
 #$(MAKE) -C lcd-test/
 #$(MAKE) -C Tacografo/
-#$(MAKE) -C test/
-	$(MAKE) -C uIP/
+	$(MAKE) -C test/
+#	$(MAKE) -C uIP/
 
 	
 clean:
@@ -53,7 +53,7 @@ clean:
 	@echo "=================================="	
 #$(MAKE) -C lcd-test/ clean	
 #$(MAKE) -C Tacografo/ clean	
-#$(MAKE) -C test/ clean	
-	$(MAKE) -C uIP/ clean	
+	$(MAKE) -C test/ clean	
+#	$(MAKE) -C uIP/ clean	
 clear:
 	clear

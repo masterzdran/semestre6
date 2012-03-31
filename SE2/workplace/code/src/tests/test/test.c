@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <cyg/hal/hal_io.h>
+#include <cyg/infra/diag.h>
+/*
 #include "GPIO.h"
 #include "TIMER.h"
 #include "RTC.h"
@@ -10,6 +14,8 @@
 #include "SPI.h"
 #include "console.h"
 #include "Ethernet.h"
+*/ 
+/*
 #define  LCD_MASK   ((U32) 0x7F00)
 
 #define PACKET_SIZE 1516
@@ -20,16 +26,16 @@ static U8 packet[PACKET_SIZE];
 
 
 void console_test(){
-	/*
+	
 	U8 aux8;
 	U32 aux32; 
 	U8 hasData; 
 	U8 out_buffer[] = {0x35, 0x7a};
 	U8 out_buffer2[] = {0x1E , 0xFF}; 
-	*/
+	
    console_init();
   while(1){
-	/*console_printf("LPC2106: ENC28J60-H Ethernet\n");*/
+	console_printf("LPC2106: ENC28J60-H Ethernet\n");
 	console_write_str("------------------|.oOo.|----------------------\n\0");
 	console_write_char('S');
 	console_write_char('E');
@@ -41,7 +47,7 @@ void console_test(){
 }
 
 void spi_test(){
-/*
+
   const void (*irqHandler)(void);	
   U32   clock;		     			
   U32   chipSelect;	  				
@@ -51,33 +57,32 @@ void spi_test(){
   U32   started:1;      			
   U32   byteShift:1;    			
 }SPI_Device,*pSPI_Device;
-*/	
 	
 SPI_Device spis[]={ 
 	 {
-      0,									/*função de tratamento de interrupções*/
-      64,               					/*ritmo do sinal de relógio*/  
-      1<<8,             					/*define a identificação do periférico: BITMAP*/
-      8,                					/*número de bits de uma palavra*/
-      SPI_PRIOR_TO_FIRST_SCK_RISING_EDGE,   /*modo SPI (CPHA, CPOL). do tipo SPI_MODE*/
-      SPI_MASTER,    						/*qual o papel do periferico: 1- Master; 0- Slave SPI_ROLE*/
-      0,                					/*indicação se o periférico foi préviamente iniciada. Por omissão o mesmo deve estar a 0. Não se garante o comportamento caso na construção se coloque a 1.*/
-      SPI_MSB           					/*SPI_BYTE_SHIFT*/
+      0,									
+      64,               					
+      1<<8,             					
+      8,                					
+      SPI_PRIOR_TO_FIRST_SCK_RISING_EDGE,
+      SPI_MASTER,    						
+      0,                					
+      SPI_MSB           					
 	}
 };
 	
 	U8 out_buffer[] = {0x35, 0x7a};
-	U8 out_buffer2[] = {0x1E , 0xFF}; /*enviar 0x1E ncomo primeiro byte e depois dummy para receber o 0x80*/
+	U8 out_buffer2[] = {0x1E , 0xFF}; 
 	U8 in_buffer[] = {0x00, 0x00};
 	SPI_init(spis, 1);
 	
 	while(1){
-		gpio_clear(1<<9);      /*activar RST do ENC*/    
-		gpio_set(1<<9);      /*desactivar RST do ENC*/
+		gpio_clear(1<<9);        
+		gpio_set(1<<9);      
 
 	
 		SPI_start_device(&spis[0]);
-/*		SPI_transfer(&spis[0], sizeof(out_buffer), out_buffer, in_buffer);*/
+		SPI_transfer(&spis[0], sizeof(out_buffer), out_buffer, in_buffer);
 		SPI_transfer(&spis[0], sizeof(out_buffer2), out_buffer2, in_buffer);
 		SPI_stop_device(&spis[0]);
 		break;
@@ -106,9 +111,9 @@ void enc_test(U8 receiveTest, U8 sendTest)
 	Ethernet_init(&eth);
 
 	while (receiveTest) {
-		/*Ethernet_receive(packet, PACKET_SIZE,&size);*/
+		Ethernet_receive(packet, PACKET_SIZE,&size);
 		while ((size=Ethernet_receive(packet, PACKET_SIZE))) {
-			/*Ethernet_receive(packet, PACKET_SIZE,&size);*/
+			Ethernet_receive(packet, PACKET_SIZE,&size);
 			console_write_str("Packet received\r\n\0");
 			console_dump_hex(packet, size);
 		}
@@ -128,21 +133,21 @@ void enc_test(U8 receiveTest, U8 sendTest)
 		}
 	}
 
-	
-	
-	
 }
 
+*/
 int main(){
-
+/*
 	TIMER_init(pTIMER1,58982400/MICRO);
   TIMER_init(pTIMER0,58982400/MICRO);
 	rtc_init();
   VIC_init();
 
-/*  console_test();*/
+  console_test();
   spi_test();
 	enc_test(1,1);
+*/
+   printf("Hello World!");
 	return 0;
 }
 

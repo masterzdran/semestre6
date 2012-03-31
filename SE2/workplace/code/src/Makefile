@@ -32,21 +32,22 @@ include $(PROJECT_PATH)/common.mk
 .PHONY					= all
 MAKE_DEVICE				= device  
 MAKE_PERIPHERICAL		= peripherical 
-MAKE_UIP					= uip-1.0/lpc-2106
+#MAKE_UIP					= uip-1.0/lpc-2106
+MAKE_UIP					=  tests
 #=======================================================================
 
 all:
 	@$(foreach MPATH, $(MAKE_DEVICE), $(MAKE) -C $(SOURCE)/$(MPATH);)
-	@$(foreach MPATH, $(MAKE_PERIPHERICAL), $(MAKE) -C $(SOURCE)/$(MPATH);)
+#	@$(foreach MPATH, $(MAKE_PERIPHERICAL), $(MAKE) -C $(SOURCE)/$(MPATH);)
 	@echo "=============================================================================================================================================="
 	@echo "Compiling the uIP and WebServer example"
 	@echo "=============================================================================================================================================="	
 	@$(foreach MPATH, $(MAKE_UIP), $(MAKE) -C $(SOURCE)/$(MPATH);)
-	cp uip-1.0/lpc-2106/apps.a lib/libapps.a
-	cp uip-1.0/lpc-2106/uip.a lib/libuip.a	
+#	cp uip-1.0/lpc-2106/apps.a lib/libapps.a
+#	cp uip-1.0/lpc-2106/uip.a lib/libuip.a	
 clean:
 	@$(foreach MPATH, $(MAKE_DEVICE), $(MAKE) -C $(SOURCE)/$(MPATH) clean;)
-	@$(foreach MPATH, $(MAKE_PERIPHERICAL), $(MAKE) -C $(SOURCE)/$(MPATH) clean;)
+#	@$(foreach MPATH, $(MAKE_PERIPHERICAL), $(MAKE) -C $(SOURCE)/$(MPATH) clean;)
 	@echo "=============================================================================================================================================="
 	@echo "Cleaning the uIP and WebServer example"
 	@echo "=============================================================================================================================================="
