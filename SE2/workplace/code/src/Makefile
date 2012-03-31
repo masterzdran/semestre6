@@ -32,7 +32,7 @@ include $(PROJECT_PATH)/common.mk
 .PHONY					= all
 MAKE_DEVICE				= device  
 MAKE_PERIPHERICAL		= peripherical 
-MAKE_UIP				= uip-1.0/lpc-2106
+MAKE_UIP					= uip-1.0/lpc-2106
 #=======================================================================
 
 all:
