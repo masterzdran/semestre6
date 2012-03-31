@@ -25,7 +25,8 @@ TODEPLOY			= $(SOURCE)/deploy
 PROGRAM				= $(SOURCE)/program
 PCOMPILE			= $(SOURCE)/tests
 #=======================================================================
-PECOS				= $(SOURCE)/eCos/
+#PECOS				= $(SOURCE)/eCos/
+PECOS				= $(SOURCE)/
 #=======================================================================
 PUIP				= $(SOURCE)/uip-1.0/
 #=======================================================================
@@ -36,8 +37,8 @@ MYLIB			= $(SOURCE)/lib
 INCLUDE			= $(SOURCE)/include
 CLIB			= $(SOURCE)/clib/lib
 CINCLUDE		= $(SOURCE)/clib/inc
-ECOS_INCLUDE	= $(PECOS)/include
-ECOS_LIBRARY    = $(PECOS)/lib
+ECOS_INCLUDE	= $(PECOS)/include_eCos
+ECOS_LIBRARY    = $(PECOS)/lib_eCos
 ECOS_TESTS		= $(PCOMPILE)/ecos
 UIP_INCLUDE		= $(PUIP)/uip
 UIP_LIBRARY		= $(PUIP)/lpc-2106
