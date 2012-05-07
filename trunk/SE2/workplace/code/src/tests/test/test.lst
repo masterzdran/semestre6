@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccNd5BhZ.s 			page 1
+ARM GAS  /tmp/cc27RVxI.s 			page 1
 
 
    1              		.cpu arm7tdmi
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccNd5BhZ.s 			page 1
   18:test.c        **** /*
   19:test.c        **** #define  LCD_MASK   ((U32) 0x7F00)
   20:test.c        **** 
-ARM GAS  /tmp/ccNd5BhZ.s 			page 2
+ARM GAS  /tmp/cc27RVxI.s 			page 2
 
 
   21:test.c        **** #define PACKET_SIZE 1516
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccNd5BhZ.s 			page 1
   75:test.c        **** 	U8 out_buffer2[] = {0x1E , 0xFF}; 
   76:test.c        **** 	U8 in_buffer[] = {0x00, 0x00};
   77:test.c        **** 	SPI_init(spis, 1);
-ARM GAS  /tmp/ccNd5BhZ.s 			page 3
+ARM GAS  /tmp/cc27RVxI.s 			page 3
 
 
   78:test.c        **** 	
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccNd5BhZ.s 			page 1
  132:test.c        **** 			Ethernet_send(frame, sizeof(frame));
  133:test.c        **** 		}
  134:test.c        **** 	}
-ARM GAS  /tmp/ccNd5BhZ.s 			page 4
+ARM GAS  /tmp/cc27RVxI.s 			page 4
 
 
  135:test.c        **** 
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccNd5BhZ.s 			page 1
   67 000d 0C       		.byte	0xc
   68 000e 0D       		.uleb128 0xd
   69 000f 00       		.uleb128 0x0
-ARM GAS  /tmp/ccNd5BhZ.s 			page 5
+ARM GAS  /tmp/cc27RVxI.s 			page 5
 
 
   70              		.align	2
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccNd5BhZ.s 			page 1
  124 000b 01       		.uleb128 0x1
  125 000c 3B000000 		.4byte	.LASF14
  126 0010 01       		.byte	0x1
-ARM GAS  /tmp/ccNd5BhZ.s 			page 6
+ARM GAS  /tmp/cc27RVxI.s 			page 6
 
 
  127 0011 0E000000 		.4byte	.LASF15
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccNd5BhZ.s 			page 1
  181 0084 6C000000 		.4byte	0x6c
  182 0088 94000000 		.4byte	0x94
  183 008c 07       		.uleb128 0x7
-ARM GAS  /tmp/ccNd5BhZ.s 			page 7
+ARM GAS  /tmp/cc27RVxI.s 			page 7
 
 
  184 008d 94000000 		.4byte	0x94
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccNd5BhZ.s 			page 1
  238 0009 1B       		.uleb128 0x1b
  239 000a 0E       		.uleb128 0xe
  240 000b 11       		.uleb128 0x11
-ARM GAS  /tmp/ccNd5BhZ.s 			page 8
+ARM GAS  /tmp/cc27RVxI.s 			page 8
 
 
  241 000c 01       		.uleb128 0x1
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccNd5BhZ.s 			page 1
  295 0042 13       		.uleb128 0x13
  296 0043 00       		.byte	0x0
  297 0044 00       		.byte	0x0
-ARM GAS  /tmp/ccNd5BhZ.s 			page 9
+ARM GAS  /tmp/cc27RVxI.s 			page 9
 
 
  298 0045 06       		.uleb128 0x6
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccNd5BhZ.s 			page 1
  352 007b 0B       		.uleb128 0xb
  353 007c 3B       		.uleb128 0x3b
  354 007d 0B       		.uleb128 0xb
-ARM GAS  /tmp/ccNd5BhZ.s 			page 10
+ARM GAS  /tmp/cc27RVxI.s 			page 10
 
 
  355 007e 49       		.uleb128 0x49
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccNd5BhZ.s 			page 1
  406              	.LASF15:
  407 000e 74657374 		.ascii	"test.c\000"
  407      2E6300
-ARM GAS  /tmp/ccNd5BhZ.s 			page 11
+ARM GAS  /tmp/cc27RVxI.s 			page 11
 
 
  408              	.LASF9:
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccNd5BhZ.s 			page 1
  430      7400
  431              	.LASF10:
  432 00df 63686172 		.ascii	"char\000"
-ARM GAS  /tmp/ccNd5BhZ.s 			page 12
+ARM GAS  /tmp/cc27RVxI.s 			page 12
 
 
  432      00
@@ -675,15 +675,15 @@ ARM GAS  /tmp/ccNd5BhZ.s 			page 1
  438      65642063 
  438      68617200 
  439              		.ident	"GCC: (eCosCentric GNU tools 4.3.2-sw) 4.3.2"
-ARM GAS  /tmp/ccNd5BhZ.s 			page 13
+ARM GAS  /tmp/cc27RVxI.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 test.c
-     /tmp/ccNd5BhZ.s:28     .text.main:00000000 main
-     /tmp/ccNd5BhZ.s:35     .text.main:00000000 $a
-     /tmp/ccNd5BhZ.s:54     .text.main:00000028 $d
-     /tmp/ccNd5BhZ.s:102    .debug_loc:00000000 $d
+     /tmp/cc27RVxI.s:28     .text.main:00000000 main
+     /tmp/cc27RVxI.s:35     .text.main:00000000 $a
+     /tmp/cc27RVxI.s:54     .text.main:00000028 $d
+     /tmp/cc27RVxI.s:102    .debug_loc:00000000 $d
 
 UNDEFINED SYMBOLS
 printf
