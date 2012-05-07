@@ -1,0 +1,28 @@
+<xml version="1.0">
+<project name='Automato'>
+	<src>
+		<folder name="device" shortDescription="Device specific code">
+			<object name="GPIO" shortDescription="GPIO Mapping to eCos"/>
+			<object name="LPC" shortDescription="LPC Mapping to eCos"/>
+			<object name="SPI" shortDescription="SPI Mapping to eCos"/>
+			<object name="TIMER" shortDescription="TIMER Mapping to eCos"/>
+			<object name="RTCs" shortDescription="RTC Mapping to eCos"/>
+		</folder>
+		<folder name="peripherical" shortDescription="Peripherical device drivers code">
+			<object name="ENC28J60" shortDescription="Device to eCos"/>
+		</folder>
+		<folder name="include" shortDescription="Our header files"/>
+		<folder name="lib" shortDescription="Our libraries"/>
+		<folder name="eCos" shortDescription="eCos Libraries and Header Files">
+			<object name="include" shortDescription="eCos header Files"/>	
+			<object name="lib" shortDescription="eCos libraries"/>	
+		</folder>
+		<folder name="uip-1.0" shortDescription="uIP header, libraries and source code">
+			<object name="apps" shortDescription="uIP test programs"/>	
+			<object name="lib" shortDescription="some uIP libraries"/>			
+			<object name="uip" shortDescription="uIP source code"/>			
+			<object name="lpc-2106" shortDescription="Device specific code"/>			
+		</folder>
+	</src>
+</project>
+</xml>
